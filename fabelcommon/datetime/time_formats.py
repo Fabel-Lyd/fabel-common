@@ -5,11 +5,6 @@ class TimeFormats():
     def __init__(self):
         pass
 
-    def get_date_time(self):
-        timestamp = datetime.now()
-        formatted_timestamp = timestamp.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
-        return formatted_timestamp
-
     def get_time_delta_hours(self, delta_hours):
         yesterday = datetime.now() - timedelta(hours=delta_hours)
         yesterday_formatted = yesterday.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
