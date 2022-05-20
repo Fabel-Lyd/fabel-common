@@ -1,9 +1,17 @@
 from datetime import datetime, timedelta
+import pytz
 
 
 class TimeFormats():
     def __init__(self):
         pass
+
+    def get_date_time(self):
+        time_gmt = datetime.utcnow()
+        date_str = time_gmt.strftime('%Y-%m-%dT%H:%M:%S') + 'Z'
+        mytime = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
+        mytime = mytime.replace(tzinfo=pytz.timezone('GMT'))
+        return mytime.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
     def get_time_delta_hours(self, delta_hours):
         yesterday = datetime.now() - timedelta(hours=delta_hours)

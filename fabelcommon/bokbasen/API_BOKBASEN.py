@@ -1,8 +1,6 @@
 import json
-from datetime import datetime
 import xml.etree.ElementTree as ET
 import requests
-import pytz
 import xmltodict
 from urllib.parse import urlparse
 from rest_framework import status
@@ -17,14 +15,6 @@ def create_download_url(url_with_id):
     book_id = urlparse(url_with_id).path.strip().rstrip('/').split('/')[-1]
     url = f'{DOWNLOAD_URL_BASE}{book_id}'
     return url
-
-
-def get_date_time():
-    time_gmt = datetime.utcnow()
-    date_str = time_gmt.strftime('%Y-%m-%dT%H:%M:%S') + 'Z'
-    mytime = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
-    mytime = mytime.replace(tzinfo=pytz.timezone('GMT'))
-    return mytime.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
 
 class Auth():
@@ -107,7 +97,7 @@ class Inventory():
 
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json"
         }
         params = {
@@ -128,7 +118,7 @@ class Inventory():
 
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json"
         }
         params = {
@@ -149,7 +139,7 @@ class Inventory():
 
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json"
         }
         params = {
@@ -171,7 +161,7 @@ class Order():
         self.url = "https://api.dds.boknett.no/order/"
         self.head = {
             "Authorization": "",
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json",
         }
 
@@ -192,7 +182,7 @@ class Bokskya():
 
         self.head = {
             "Authorization": "",
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json",
         }
 
@@ -226,7 +216,7 @@ class Bookshelf():
         self.url = "https://api.dds.boknett.no/catalog/personal/"
         self.head = {
             "Authorization": "",
-            "Date": get_date_time()
+            "Date": TimeFormats.get_date_time()
         }
 
     def parse_bookshelf_xml(self, response):
@@ -274,7 +264,7 @@ class Bookshelf():
     def get_download_url(self, fulfillment_link, tgt):
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time(),
+            "Date": TimeFormats.get_date_time(),
             "Accept": "application/json",
             "Content-Type": "application/json"
         }
@@ -306,7 +296,7 @@ class Export():
     def book_by_isbn(self, tgt, isbn):
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time()
+            "Date": TimeFormats.get_date_time()
         }
         self.url = self.url + '/' + isbn
         response = requests.get(url=self.url, headers=head)
@@ -317,7 +307,7 @@ class Export():
     def books_after_timestamp(self, tgt, timestamp):
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time()
+            "Date": TimeFormats.get_date_time()
         }
         self.url = self.url + '?after=' + timestamp + '&subscription=basic'
         response = requests.get(url=self.url, headers=head)
@@ -328,7 +318,7 @@ class Export():
     def books_after_cursor(self, tgt, cursor):
         head = {
             "Authorization": "Boknett {}".format(tgt['boknett-TGT']),
-            "Date": get_date_time()
+            "Date": TimeFormats.get_date_time()
         }
 
         self.url = self.url + '?next=' + cursor + '&subscription=basic'

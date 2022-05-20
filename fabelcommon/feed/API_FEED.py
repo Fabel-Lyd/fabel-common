@@ -946,7 +946,7 @@ class Transform():
         message_number = SubElement(root, "MessageNumber")
         message_number.text = "123"
         sent_date_time = SubElement(root, "SentDateTime")
-        sent_date_time.text = get_date_time()
+        sent_date_time.text = TimeFormats.get_date_time()
         message_note = SubElement(root, "MessageNote")
         message_note.text = "Test Message"
 
