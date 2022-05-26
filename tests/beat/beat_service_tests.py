@@ -13,7 +13,7 @@ def test_get_token(requests_mock):
         status_code=status.HTTP_200_OK,
         text=json.dumps({'access_token': 'token-generated'}))
 
-    beat_service = BeatService('dummy_client_id', 'dummy_client_secret')
+    beat_service = BeatService('dummy_client_id', 'dummy_secret')
     access_token = beat_service.get_token()
     assert access_token == 'token-generated'
 
