@@ -1,0 +1,75 @@
+{
+	"releases": [
+		{
+			"id": "7930",
+			"title": "Sjalusimannen og andre fortellinger",
+			"cover": {},
+			"artist": {
+				"id": "13295",
+				"name": "Jo Nesbø",
+				"url": "https:\/\/player.fabel.no\/artists\/13295"
+			},
+			"actors": [
+				{
+					"id": "13138",
+					"name": "Axel Aubert",
+					"sort_name": "Aubert, Axel",
+					"role": "narrator"
+				},
+				{
+					"id": "13156",
+					"name": "Duc Mai-The",
+					"sort_name": "Mai-The, Duc",
+					"role": "narrator"
+				},
+				{
+					"id": "13190",
+					"name": "Andrea Bræin Hovig",
+					"sort_name": "Hovig, Andrea Bræin",
+					"role": "narrator"
+				},
+				{
+					"id": "13269",
+					"name": "Kim Haugen",
+					"sort_name": "Haugen, Kim",
+					"role": "narrator"
+				},
+				{
+					"id": "13293",
+					"name": "Sven Nordin",
+					"sort_name": "Nordin, Sven",
+					"role": "narrator"
+				},
+				{
+					"id": "13294",
+					"name": "Thorbjørn Harr",
+					"sort_name": "Harr, Thorbjørn",
+					"role": "narrator"
+				},
+				{
+					"id": "13295",
+					"name": "Jo Nesbø",
+					"sort_name": "Nesbø, Jo",
+					"role": "author"
+				}
+			],
+			"type": "audio-book",
+			"favourite": false,
+			"url": "https:\/\/player.fabel.no\/releases\/7930",
+			"copyright": "Lydbokforlaget",
+			"release_date": "2021-04-14",
+			"ids": {
+				"isbn": "9788203368110"
+			},
+			"genres": [
+				[
+					"Skjønnlitteratur",
+					"Noveller"
+				]
+			],
+			"description": "En gresk politietterforsker har med dyrekjøpte erfaringer fra eget liv blitt ekspert på sjalusi. Da en tysk turist meldes savnet på øya Kalymnos, er det han som blir tilkalt. En taxisjåfør finner sin kones øredobb i bilen til taxieieren. Hvordan havnet den der? En kvinne på vei fra London til New York har i kjølvannet av mannens affære med hennes beste venninne bestemt seg for å avslutte sitt eget liv. Men hvem er han som sitter ved siden av henne på flyet?\n\nFortellingene i \"Sjalusimannen\" kretser rundt de sterkeste menneskelige følelsene. På klassisk Nesbø-vis møter vi det potensielt dødelige utfallet av sjalusi, begjær og utroskap.",
+			"language": "nb-NO",
+			"media_available_from": "2022-05-15T23:00:00Z"
+		}
+	]
+}
