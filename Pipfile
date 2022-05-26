@@ -12,6 +12,10 @@ djangorestframework = "==3.12.4"
 [dev-packages]
 flake8 = "*"
 pyright = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-mock = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.9"
