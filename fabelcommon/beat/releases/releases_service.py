@@ -1,5 +1,6 @@
 from fabelcommon.beat.beat_service import BeatService
 import requests
+from fabelcommon.beat.releases.releases_translator import ReleasesTranslator
 
 
 class ReleasesService(BeatService):
@@ -11,4 +12,7 @@ class ReleasesService(BeatService):
         response = requests.get(url, headers=headers, verify=True, allow_redirects=False)
         response.raise_for_status()
 
-        return response.json()['releases']
+        releases = response.json()['releases']
+        releases_translated = ReleasesTranslator.translate_releases(releases)
+
+        return releases_translated

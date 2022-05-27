@@ -20,3 +20,4 @@ def test_releases_search_success(patch_get_token, requests_mock):
     releases = ReleasesService('dummy_client_id', 'dummy_secret')
     result = releases.search(search_phrase)
     assert len(result) == 1, 'Should be found single release'
+    assert result[0] == {'isbn': '9788203368110', 'title': 'Sjalusimannen og andre fortellinger'}
