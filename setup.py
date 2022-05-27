@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='fabelcommon',
-    version='1.1.0',
+    version='1.2.0',
     description='Common API and functions',
     packages=[
         'fabelcommon',
