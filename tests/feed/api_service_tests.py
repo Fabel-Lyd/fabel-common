@@ -1,5 +1,5 @@
 import json
-from urllib.parse import urlparse
+from urllib.parse import parse_qs
 import pytest
 from requests import HTTPError
 from rest_framework import status
@@ -24,9 +24,9 @@ def test_send_request_successful(requests_mock):
     response = feed_api_service.send_request(HttpVerb.POST, 'https://example.com/index.html')
 
     auth_request = auth_request_mock.request_history[0]
-    auth_request_body = urlparse.parse_qs(auth_request.text)
+    auth_request_body = parse_qs(auth_request.text)
 
-    assert auth_request_body['grant_type'] == 'client_credentials'
+    assert auth_request_body['grant_type'][0] == 'client_credentials'
     assert 'Basic' in auth_request.headers.get("Authorization")
     assert response == [1, 2, 3]
 
