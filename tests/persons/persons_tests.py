@@ -10,5 +10,5 @@ from fabelcommon.persons.names import fix_inverted_name
         ('Homer', 'Homer'),
         ('', '')
     ])
-def test_fix_inverted_name(inverted_name, expected):
+def test_fix_inverted_name(inverted_name: str, expected: str) -> None:
     assert fix_inverted_name(inverted_name) == expected
