@@ -1,11 +1,12 @@
+from typing import Dict, List
 from fabelcommon.json.json_files import read_json_data
 import pytest
 from fabelcommon.feed.export.export import FeedExport
 from fabelcommon.feed.api_service import FeedApiService
 
 
-def test_persons_by_name_successful(mocker):
-    test_data = read_json_data('tests/feed/export/data/persons_by_name_two.json')
+def test_persons_by_name_successful(mocker) -> None:
+    test_data: Dict = read_json_data('tests/feed/export/data/persons_by_name_two.json')
 
     mocker.patch.object(
         FeedApiService,
@@ -13,15 +14,15 @@ def test_persons_by_name_successful(mocker):
         side_effect=test_data['response_data']
     )
 
-    feed_api_service = FeedApiService('fake_client_id', 'fake_client_secret')
+    feed_api_service: FeedApiService = FeedApiService('fake_client_id', 'fake_client_secret')
 
     feed_export = FeedExport(feed_api_service)
-    persons_found = feed_export.persons_by_name(['a', 'b'])
+    persons_found: List[Dict] = feed_export.persons_by_name(['a', 'b'])
     assert persons_found == test_data['expected']
 
 
-def test_persons_by_name_duplicate_person(mocker):
-    test_data = read_json_data('tests/feed/export/data/persons_by_name_duplicate.json')
+def test_persons_by_name_duplicate_person(mocker) -> None:
+    test_data: Dict = read_json_data('tests/feed/export/data/persons_by_name_duplicate.json')
 
     mocker.patch.object(
         FeedApiService,
@@ -29,9 +30,9 @@ def test_persons_by_name_duplicate_person(mocker):
         side_effect=test_data['response_data']
     )
 
-    feed_api_service = FeedApiService('fake_client_id', 'fake_client_secret')
+    feed_api_service: FeedApiService = FeedApiService('fake_client_id', 'fake_client_secret')
 
-    feed_export = FeedExport(feed_api_service)
+    feed_export: FeedExport = FeedExport(feed_api_service)
 
     with pytest.raises(Exception) as exception_info:
         feed_export.persons_by_name(['a'])
@@ -39,8 +40,8 @@ def test_persons_by_name_duplicate_person(mocker):
     assert str(exception_info.value) == 'Multiple persons named "a" found in Feed'
 
 
-def test_persons_by_name_not_found(mocker):
-    test_data = read_json_data('tests/feed/export/data/persons_not_found.json')
+def test_persons_by_name_not_found(mocker) -> None:
+    test_data: Dict = read_json_data('tests/feed/export/data/persons_not_found.json')
 
     mocker.patch.object(
         FeedApiService,
@@ -48,8 +49,8 @@ def test_persons_by_name_not_found(mocker):
         side_effect=test_data['response_data']
     )
 
-    feed_api_service = FeedApiService('fake_client_id', 'fake_client_secret')
+    feed_api_service: FeedApiService = FeedApiService('fake_client_id', 'fake_client_secret')
 
     feed_export = FeedExport(feed_api_service)
-    persons_found = feed_export.persons_by_name(['a'])
+    persons_found: List = feed_export.persons_by_name(['a'])
     assert persons_found == test_data['expected']
