@@ -1,0 +1,47 @@
+{
+  "response_data": [
+    [
+      {
+        "identifier": {
+            "importCode": "99991",
+            "productNo": "00001"
+        }
+      }
+    ],
+    [
+      {
+        "identifier": {
+            "importCode": "99992",
+            "productNo": "00002"
+        }
+      },
+      {
+        "identifier": {
+            "importCode": "99993",
+            "productNo": "00003"
+        }
+      }
+    ]
+  ],
+
+  "expected": [
+    {
+      "identifier": {
+          "importCode": "99991",
+          "productNo": "00001"
+      }
+    },
+    {
+      "identifier": {
+          "importCode": "99992",
+          "productNo": "00002"
+      }
+    },
+    {
+      "identifier": {
+          "importCode": "99993",
+          "productNo": "00003"
+      }
+    }
+  ]
+}
