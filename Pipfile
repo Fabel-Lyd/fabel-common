@@ -17,6 +17,7 @@ pytest = "*"
 pytest-django = "*"
 pytest-mock = "*"
 requests-mock = "*"
+xmldiff = "*"
 
 [requires]
 python_version = "3.9"
