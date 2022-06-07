@@ -13,7 +13,9 @@ setup(
         'fabelcommon/beat',
         'fabelcommon/datetime',
         'fabelcommon/json',
-        'fabelcommon/beat/releases'
+        'fabelcommon/beat/releases',
+        'fabelcommon/bokbasen/export',
+        'fabelcommon/feed/export'
     ],
     install_requires=['djangorestframework', 'pytz', 'requests', 'xmltodict'],
 )
