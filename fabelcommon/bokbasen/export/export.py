@@ -12,7 +12,7 @@ class BokbasenExport:
 
         self.bokbasen_api_service = bokbasen_api_service
 
-    def export_product_by_isbn(self, isbn: str) -> etree:
+    def get_product_by_isbn(self, isbn: str) -> etree:
 
         url: str = f'{BokbasenApiService.BASE_URL}/metadata/export/onix/{isbn}'
         xml: str = self.bokbasen_api_service.send_request(HttpVerb.GET, url)

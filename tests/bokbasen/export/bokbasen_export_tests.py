@@ -19,7 +19,7 @@ def test_export_product_by_isbn(mocker) -> None:
     bokbasen_api_service = BokbasenApiService('fake_username', 'fake-password')
     bokbasen_export = BokbasenExport(bokbasen_api_service)
 
-    book = bokbasen_export.export_product_by_isbn('9788234001635')
+    book = bokbasen_export.get_product_by_isbn('9788234001635')
 
     send_request_expected_args = (HttpVerb.GET, 'https://api.boknett.no/metadata/export/onix/9788234001635')
     assert send_request_mock.call_args.args == send_request_expected_args
