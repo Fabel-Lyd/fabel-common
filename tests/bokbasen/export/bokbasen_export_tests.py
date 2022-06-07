@@ -5,10 +5,10 @@ from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.xml.xml import read_xml_str, read_xml_etree
 from xmldiff import main
 
-BOKBASEN_XML_DATA = 'tests/bokbasen/export/data/bokbasen-9788234001635.xml'
+BOKBASEN_XML_DATA: str = 'tests/bokbasen/export/data/bokbasen-9788234001635.xml'
 
 
-def test_export_product_by_isbn(mocker):
+def test_export_product_by_isbn(mocker) -> None:
 
     send_request_mock: MagicMock = mocker.patch.object(
         BokbasenApiService,

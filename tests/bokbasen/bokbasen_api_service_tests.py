@@ -6,7 +6,7 @@ from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
 
 
-def test_send_request_successful(mocker, requests_mock):
+def test_send_request_successful(mocker, requests_mock) -> None:
     mocker.patch.object(BokbasenApiService, attribute='get_ticket', return_value='fake_ticket')
 
     requests_mock.post(
@@ -22,7 +22,7 @@ def test_send_request_successful(mocker, requests_mock):
     assert response == 'fake-ticket'
 
 
-def test_send_request_failed(mocker, requests_mock):
+def test_send_request_failed(mocker, requests_mock) -> None:
     mocker.patch.object(BokbasenApiService, attribute='get_ticket', return_value='fake_ticket')
 
     requests_mock.post(
@@ -36,7 +36,7 @@ def test_send_request_failed(mocker, requests_mock):
         bokbasen_service.send_request(HttpVerb.POST, 'https://login.boknett.no/v1/tickets')
 
 
-def test_get_ticket_successful(requests_mock):
+def test_get_ticket_successful(requests_mock) -> None:
 
     requests_mock.post(
         'https://login.boknett.no/v1/tickets',
@@ -50,7 +50,7 @@ def test_get_ticket_successful(requests_mock):
     assert ticket == 'fake-ticket'
 
 
-def test_get_ticket_unsuccessful(requests_mock):
+def test_get_ticket_unsuccessful(requests_mock) -> None:
     requests_mock.post(
         'https://login.boknett.no/v1/tickets',
         status_code=status.HTTP_400_BAD_REQUEST,
@@ -63,7 +63,7 @@ def test_get_ticket_unsuccessful(requests_mock):
         bokbasen_service.get_ticket()
 
 
-def test_create_headers(mocker):
+def test_create_headers(mocker) -> None:
     mocker.patch.object(
         TimeFormats,
         attribute='get_date_time',

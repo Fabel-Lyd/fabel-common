@@ -7,32 +7,32 @@ from fabelcommon.datetime.time_formats import TimeFormats
 
 
 class BokbasenApiService(ABC):
-    BASE_URL = 'https://api.boknett.no'
+    BASE_URL: str = 'https://api.boknett.no'
 
     def __init__(self, username: str, password: str):
-        self._username = username
-        self._password = password
+        self._username: str = username
+        self._password: str = password
 
     @staticmethod
     def create_headers(ticket: str) -> Dict[str, str]:
 
-        headers = {
+        headers: Dict[str, str] = {
             "Authorization": f"Boknett {ticket}",
             "Date": TimeFormats.get_date_time(),
             "Accept": "application/json"
         }
         return headers
 
-    def get_ticket(self):
+    def get_ticket(self) -> str:
 
-        url = 'https://login.boknett.no/v1/tickets'
+        url: str = 'https://login.boknett.no/v1/tickets'
 
-        params = {
+        params: Dict[str, str] = {
             "username": self._username,
             "password": self._password
         }
 
-        response = requests.post(url, params)
+        response: Response = requests.post(url, params)
         response.raise_for_status()
 
         return response.headers['boknett-TGT']
