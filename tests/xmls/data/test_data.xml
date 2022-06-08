@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" release="3.0" xsi:schemaLocation="https://api.boknett.no/schema/ONIX_BookProduct_3.0_reference.xsd">
+   <Header>
+      <Sender>
+         <SenderIdentifier>
+            <SenderIDType>01</SenderIDType>
+            <IDTypeName>Bokbasen</IDTypeName>
+            <IDValue>902000</IDValue>
+         </SenderIdentifier>
+      </Sender>
+      <ContributorDate>
+         <ContributorDateRole>50</ContributorDateRole>
+         <Date dateformat="05">1959</Date>
+      </ContributorDate>
+      <Subject>
+         <SubjectSchemeIdentifier>93</SubjectSchemeIdentifier>
+         <SubjectCode>FBA</SubjectCode>
+         <SubjectHeadingText language="nob">Moderne litteratur</SubjectHeadingText>
+      </Subject>
+      <Subject>
+         <SubjectSchemeIdentifier>93</SubjectSchemeIdentifier>
+         <SubjectCode>FXM</SubjectCode>
+         <SubjectHeadingText language="nob">Indre liv</SubjectHeadingText>
+      </Subject>
+   </Header>
+</ONIXMessage>

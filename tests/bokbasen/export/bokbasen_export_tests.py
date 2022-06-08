@@ -2,8 +2,8 @@ from unittest.mock import MagicMock
 from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 from fabelcommon.bokbasen.export.export import BokbasenExport
 from fabelcommon.http.verbs import HttpVerb
-from fabelcommon.xml.xml import read_xml_str, read_xml_etree
 from xmldiff import main
+from fabelcommon.xmls.xml import read_xml_etree, read_xml_str
 
 BOKBASEN_XML_DATA: str = 'tests/bokbasen/export/data/bokbasen-9788234001635.xml'
 
