@@ -1,7 +1,7 @@
 from lxml import etree
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
-from fabelcommon.xml.xml import xml_to_etree
+from fabelcommon.xmls.xml import xml_to_etree
 
 
 class BokbasenExport:
