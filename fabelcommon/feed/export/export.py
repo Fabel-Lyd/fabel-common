@@ -2,6 +2,7 @@ from typing import List, Dict
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.feed.export.product_types import ProductType
 from fabelcommon.http.verbs import HttpVerb
+from fabelcommon.feed.products.relations import Relation
 
 
 class FeedExport:
@@ -21,7 +22,6 @@ class FeedExport:
 
         for name in names:
             url: str = FeedApiService.build_url(
-                FeedApiService.BASE_URL,
                 FeedApiService.PRODUCT_EXPORT,
                 f'changesOnly=false&productTypeImportCodes={product_type.value}&name={name}')
 
@@ -36,7 +36,6 @@ class FeedExport:
         concatenated_import_codes: str = ','.join(import_codes)
 
         url: str = FeedApiService.build_url(
-            FeedApiService.BASE_URL,
             FeedApiService.PRODUCT_EXPORT,
             f'changesOnly=false&productTypeImportCodes={product_type.value}&importCodes={concatenated_import_codes}&size=500&page=0')
 

@@ -38,8 +38,13 @@ class FeedApiService:
         return response.json()['access_token']
 
     @staticmethod
-    def build_url(base_url: str, action: str, parameters: str) -> str:
-        return f'{base_url}{action}?{parameters}'
+    def build_url(action: str, parameters: str = '') -> str:
+        url = f'{FeedApiService.BASE_URL}{action}'
+
+        if action == FeedApiService.PRODUCT_EXPORT:
+            url += f'?{parameters}'
+
+        return url
 
     def send_request(self, verb: HttpVerb, url: str, data: Union[Dict, None] = None) -> List[Dict]:
         token: str = self.__get_token()
@@ -48,4 +53,4 @@ class FeedApiService:
         response: Response = requests.request(verb.value, url, headers=headers, data=data)
         response.raise_for_status()
 
-        return response.json()['content']
+        return response
