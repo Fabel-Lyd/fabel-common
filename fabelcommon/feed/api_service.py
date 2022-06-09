@@ -7,6 +7,7 @@ from fabelcommon.http.verbs import HttpVerb
 class FeedApiService:
     BASE_URL: str = 'https://lydbokforlaget-feed.isysnet.no'
     PRODUCT_EXPORT: str = '/export/export'
+    PRODUCT_IMPORT: str = '/import/import'
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         self._client_id: str = client_id
@@ -46,7 +47,7 @@ class FeedApiService:
 
         return url
 
-    def send_request(self, verb: HttpVerb, url: str, data: Union[Dict, None] = None) -> List[Dict]:
+    def send_request(self, verb: HttpVerb, url: str, data: Union[str, None] = None) -> Response:
         token: str = self.__get_token()
         headers: Dict[str, str] = self.__create_headers(token)
 

@@ -29,7 +29,7 @@ def test_send_request_successful(requests_mock) -> None:
 
     assert auth_request_body['grant_type'][0] == 'client_credentials'
     assert 'Basic' in auth_request.headers.get("Authorization")
-    assert response == [1, 2, 3]
+    assert response.json()['content'] == [1, 2, 3]
 
 
 def test_send_request_failed(requests_mock) -> None:
