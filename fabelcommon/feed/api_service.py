@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Dict, Union
 import requests
 from requests import Response
 from fabelcommon.http.verbs import HttpVerb
@@ -6,7 +6,6 @@ from fabelcommon.http.verbs import HttpVerb
 
 class FeedApiService:
     BASE_URL: str = 'https://lydbokforlaget-feed.isysnet.no'
-    PRODUCT_EXPORT: str = '/export/export'
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         self._client_id: str = client_id
@@ -37,15 +36,11 @@ class FeedApiService:
 
         return response.json()['access_token']
 
-    @staticmethod
-    def build_url(base_url: str, action: str, parameters: str) -> str:
-        return f'{base_url}{action}?{parameters}'
-
-    def send_request(self, verb: HttpVerb, url: str, data: Union[Dict, None] = None) -> List[Dict]:
+    def _send_request(self, verb: HttpVerb, url: str, data: Union[str, None] = None) -> Response:
         token: str = self.__get_token()
         headers: Dict[str, str] = self.__create_headers(token)
 
         response: Response = requests.request(verb.value, url, headers=headers, data=data)
         response.raise_for_status()
 
-        return response.json()['content']
+        return response
