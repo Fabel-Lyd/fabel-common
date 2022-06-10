@@ -10,7 +10,7 @@ from fabelcommon.feed.export.export import ProductType
     'product_type, search_parameters, data_file_name',
     [
         (ProductType.PERSON, ['a', 'b'], 'tests/feed/export/data/persons_by_name.json'),
-        (ProductType.PERSON, ['a'], 'tests/feed/export/data/persons_not_found.json'),
+        (ProductType.PERSON, ['a'], 'tests/feed/export/data/product_not_found.json'),
         (ProductType.BOOK, ['a', 'b'], 'tests/feed/export/data/books_by_name_multiple.json'),
     ])
 def test_products_by_name(
