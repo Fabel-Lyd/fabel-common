@@ -27,6 +27,6 @@ def test_products_by_import_code(
     )
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.products_by_import_code(search_parameters, product_type)
+    products_found: List[Dict] = feed_export.get_products_by_import_code(search_parameters, product_type)
 
     assert products_found == test_data['expected']

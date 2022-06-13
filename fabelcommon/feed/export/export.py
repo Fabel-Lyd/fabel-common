@@ -11,7 +11,7 @@ class FeedExport(FeedApiService):
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
-    def products_by_name(
+    def get_products_by_name(
             self,
             # case-insensitive, redundant spaces removed and trimmed, exact match
             names: List[str],
@@ -33,7 +33,7 @@ class FeedExport(FeedApiService):
             result.extend(response)
         return result
 
-    def products_by_import_code(self, import_codes: List[str], product_type: ProductType) -> List[Dict]:
+    def get_products_by_import_code(self, import_codes: List[str], product_type: ProductType) -> List[Dict]:
         concatenated_import_codes: str = ','.join(import_codes)
 
         url: str = self.__build_url(

@@ -28,7 +28,7 @@ def test_products_by_name(
     )
 
     feed_export = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.products_by_name(search_parameters, product_type)
+    products_found: List[Dict] = feed_export.get_products_by_name(search_parameters, product_type)
 
     assert products_found == test_data['expected']
 
@@ -45,6 +45,6 @@ def test_persons_by_name_duplicate_person(mocker) -> None:
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
 
     with pytest.raises(Exception) as exception_info:
-        feed_export.products_by_name(['a'], ProductType.PERSON)
+        feed_export.get_products_by_name(['a'], ProductType.PERSON)
 
     assert str(exception_info.value) == 'Multiple persons named "a" found in Feed'
