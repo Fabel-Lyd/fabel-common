@@ -1,0 +1,19 @@
+{
+  "response_data": [
+    [
+      {
+        "identifier": {
+            "importCode": "99991",
+            "productNo": "00001"
+        }
+      }
+    ]
+  ],
+
+  "expected": {
+    "identifier": {
+        "importCode": "99991",
+        "productNo": "00001"
+    }
+  }
+}

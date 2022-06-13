@@ -42,6 +42,19 @@ class FeedExport(FeedApiService):
 
         return self.__send_request(url)
 
+    def get_book(self, isbn: str) -> Dict:
+        url: str = self.__build_url(
+            f'changesOnly=false&productTypeImportCodes={ProductType.BOOK.value}&productNo={isbn}'
+        )
+        book_list: List[Dict] = self.__send_request(url)
+
+        if len(book_list) == 0:
+            raise Exception(f'Book with ISBN {isbn} not found in Feed')
+        if len(book_list) > 1:
+            raise Exception(f'Multiple books with ISBN {isbn} found in Feed')
+
+        return book_list[0]
+
     def __build_url(self, parameters: str) -> str:
         return f'{self.BASE_URL}{self.PRODUCT_EXPORT}?{parameters}'
 
