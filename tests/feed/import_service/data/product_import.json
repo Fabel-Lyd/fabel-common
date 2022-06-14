@@ -1,0 +1,92 @@
+{
+  "product_import_list": [
+    {
+      "identifier": {
+        "productNo": "P_99998"
+      },
+      "productHead": {
+        "name": {
+          "nb": "TEST PERSON 1"
+        },
+        "productNo": "P_99998",
+        "typeCode": "person"
+      },
+      "texts": [
+        {
+          "importCode": "cv",
+          "value": {
+            "nb": "cv text"
+          }
+        }
+      ]
+    },
+    {
+      "identifier": {
+        "productNo": "P_99999"
+      },
+      "productHead": {
+        "name": {
+          "nb": "TEST PERSON 2"
+        },
+        "productNo": "P_99999",
+        "typeCode": "person"
+      },
+      "texts": [
+        {
+          "importCode": "cv",
+          "value": {
+            "nb": "cv text"
+          }
+        }
+      ]
+    }
+  ],
+
+  "expected_payload": {
+    "importSettings": {
+      "importMode": "CREATE_OR_UPDATE"
+    },
+    "products": [
+      {
+        "identifier": {
+          "productNo": "P_99998"
+        },
+        "productHead": {
+          "name": {
+            "nb": "TEST PERSON 1"
+          },
+          "productNo": "P_99998",
+          "typeCode": "person"
+        },
+        "texts": [
+          {
+            "importCode": "cv",
+            "value": {
+              "nb": "cv text"
+            }
+          }
+        ]
+      },
+      {
+        "identifier": {
+          "productNo": "P_99999"
+        },
+        "productHead": {
+          "name": {
+            "nb": "TEST PERSON 2"
+          },
+          "productNo": "P_99999",
+          "typeCode": "person"
+        },
+        "texts": [
+          {
+            "importCode": "cv",
+            "value": {
+              "nb": "cv text"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
