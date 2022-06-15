@@ -4,7 +4,7 @@ from fabelcommon.feed.export_service.export_service import FeedExport
 from fabelcommon.json.json_files import read_json_data
 
 
-def test_book_successful(mocker) -> None:
+def test_get_book_successful(mocker) -> None:
     test_data: Dict = read_json_data('tests/feed/export_service/data/book_successful.json')
 
     mocker.patch.object(
@@ -25,7 +25,7 @@ def test_book_successful(mocker) -> None:
         ('tests/feed/export_service/data/book_duplicate.json', 'Multiple books with ISBN 00001 found in Feed'),
         ('tests/feed/export_service/data/book_not_found.json', 'Book with ISBN 00001 not found in Feed'),
     ])
-def test_book_failed(data_file_name: str, exception_message: str, mocker) -> None:
+def test_get_book_failed(data_file_name: str, exception_message: str, mocker) -> None:
     test_data: Dict = read_json_data(data_file_name)
 
     mocker.patch.object(

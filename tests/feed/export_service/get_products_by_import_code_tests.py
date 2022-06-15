@@ -11,7 +11,7 @@ from fabelcommon.feed.export_service.product_types import ProductType
         (ProductType.PERSON, ['99991', '99992'], 'tests/feed/export_service/data/persons_by_import_code.json'),
         (ProductType.PERSON, ['99991'], 'tests/feed/export_service/data/product_not_found.json'),
     ])
-def test_products_by_import_code(
+def test_get_products_by_import_code(
         product_type: ProductType,
         search_parameters: List[str],
         data_file_name: str,
