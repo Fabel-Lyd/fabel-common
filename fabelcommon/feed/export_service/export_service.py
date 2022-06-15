@@ -1,7 +1,7 @@
 from typing import List, Dict
 from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
-from fabelcommon.feed.export.product_types import ProductType
+from fabelcommon.feed.export_service.product_types import ProductType
 from fabelcommon.http.verbs import HttpVerb
 
 
