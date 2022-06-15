@@ -1,7 +1,7 @@
 import json
 from typing import Dict, List
 from fabelcommon.json.json_files import read_json_data
-from fabelcommon.feed.import_service.import_service import FeedImport
+from fabelcommon.feed.import_service import FeedImport
 
 
 def test_create_or_update_products(mocker) -> None:
