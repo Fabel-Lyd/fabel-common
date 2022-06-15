@@ -1,8 +1,8 @@
 from typing import Dict, List
 from fabelcommon.json.json_files import read_json_data
 import pytest
-from fabelcommon.feed.export_service.export_service import FeedExport
-from fabelcommon.feed.export_service.product_types import ProductType
+from fabelcommon.feed.export_service import FeedExport
+from fabelcommon.feed.export_service import ProductType
 
 
 @pytest.mark.parametrize(

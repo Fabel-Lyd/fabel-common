@@ -1,6 +1,6 @@
 from typing import Dict
 import pytest
-from fabelcommon.feed.export_service.export_service import FeedExport
+from fabelcommon.feed.export_service import FeedExport
 from fabelcommon.json.json_files import read_json_data
 
 
