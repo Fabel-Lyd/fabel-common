@@ -1,16 +1,16 @@
 from typing import Dict, List
 from fabelcommon.json.json_files import read_json_data
 import pytest
-from fabelcommon.feed.export.export import FeedExport
-from fabelcommon.feed.export.export import ProductType
+from fabelcommon.feed.export_service.export_service import FeedExport
+from fabelcommon.feed.export_service.product_types import ProductType
 
 
 @pytest.mark.parametrize(
     'product_type, search_parameters, data_file_name',
     [
-        (ProductType.PERSON, ['a', 'b'], 'tests/feed/export/data/persons_by_name.json'),
-        (ProductType.PERSON, ['a'], 'tests/feed/export/data/product_not_found.json'),
-        (ProductType.BOOK, ['a', 'b'], 'tests/feed/export/data/books_by_name_multiple.json'),
+        (ProductType.PERSON, ['a', 'b'], 'tests/feed/export_service/data/persons_by_name.json'),
+        (ProductType.PERSON, ['a'], 'tests/feed/export_service/data/product_not_found.json'),
+        (ProductType.BOOK, ['a', 'b'], 'tests/feed/export_service/data/books_by_name_multiple.json'),
     ])
 def test_products_by_name(
         product_type: ProductType,
@@ -34,7 +34,7 @@ def test_products_by_name(
 
 
 def test_persons_by_name_duplicate_person(mocker) -> None:
-    test_data: Dict = read_json_data('tests/feed/export/data/persons_by_name_duplicate.json')
+    test_data: Dict = read_json_data('tests/feed/export_service/data/persons_by_name_duplicate.json')
 
     mocker.patch.object(
         FeedExport,

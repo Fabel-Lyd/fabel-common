@@ -1,15 +1,15 @@
 from typing import Dict, List
 import pytest
-from fabelcommon.feed.export.export import FeedExport
+from fabelcommon.feed.export_service.export_service import FeedExport
 from fabelcommon.json.json_files import read_json_data
-from fabelcommon.feed.export.export import ProductType
+from fabelcommon.feed.export_service.product_types import ProductType
 
 
 @pytest.mark.parametrize(
     'product_type, search_parameters, data_file_name',
     [
-        (ProductType.PERSON, ['99991', '99992'], 'tests/feed/export/data/persons_by_import_code.json'),
-        (ProductType.PERSON, ['99991'], 'tests/feed/export/data/product_not_found.json'),
+        (ProductType.PERSON, ['99991', '99992'], 'tests/feed/export_service/data/persons_by_import_code.json'),
+        (ProductType.PERSON, ['99991'], 'tests/feed/export_service/data/product_not_found.json'),
     ])
 def test_products_by_import_code(
         product_type: ProductType,
