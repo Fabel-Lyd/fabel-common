@@ -12,7 +12,7 @@ from fabelcommon.feed.export_service.product_types import ProductType
         (ProductType.PERSON, ['a'], 'tests/feed/export_service/data/product_not_found.json'),
         (ProductType.BOOK, ['a', 'b'], 'tests/feed/export_service/data/books_by_name_multiple.json'),
     ])
-def test_products_by_name(
+def test_get_products_by_name(
         product_type: ProductType,
         search_parameters: List[str],
         data_file_name: str,
@@ -33,7 +33,7 @@ def test_products_by_name(
     assert products_found == test_data['expected']
 
 
-def test_persons_by_name_duplicate_person(mocker) -> None:
+def test_get_products_by_name_duplicate_person(mocker) -> None:
     test_data: Dict = read_json_data('tests/feed/export_service/data/persons_by_name_duplicate.json')
 
     mocker.patch.object(
