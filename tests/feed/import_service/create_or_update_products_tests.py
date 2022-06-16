@@ -5,7 +5,7 @@ from fabelcommon.feed.import_service import FeedImport
 
 
 def test_create_or_update_products(mocker) -> None:
-    test_data: Dict = read_json_data('tests/feed/import_service/data/product_import.json')
+    test_data: Dict = read_json_data('tests/feed/import_service/data/create_or_update_products/product_import.json')
 
     product_import_list: List[Dict] = test_data['product_import_list']
 

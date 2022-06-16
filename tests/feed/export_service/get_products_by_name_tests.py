@@ -8,9 +8,9 @@ from fabelcommon.feed.export_service import ProductType
 @pytest.mark.parametrize(
     'product_type, search_parameters, data_file_name',
     [
-        (ProductType.PERSON, ['a', 'b'], 'tests/feed/export_service/data/persons_by_name.json'),
-        (ProductType.PERSON, ['a'], 'tests/feed/export_service/data/product_not_found.json'),
-        (ProductType.BOOK, ['a', 'b'], 'tests/feed/export_service/data/books_by_name_multiple.json'),
+        (ProductType.PERSON, ['a', 'b'], 'tests/feed/export_service/data/get_products_by_name/persons_by_name.json'),
+        (ProductType.PERSON, ['a'], 'tests/feed/export_service/data/get_products_by_name/product_not_found.json'),
+        (ProductType.BOOK, ['a', 'b'], 'tests/feed/export_service/data/get_products_by_name/books_by_name_multiple.json'),
     ])
 def test_get_products_by_name(
         product_type: ProductType,
@@ -34,7 +34,7 @@ def test_get_products_by_name(
 
 
 def test_get_products_by_name_duplicate_person(mocker) -> None:
-    test_data: Dict = read_json_data('tests/feed/export_service/data/persons_by_name_duplicate.json')
+    test_data: Dict = read_json_data('tests/feed/export_service/data/get_products_by_name/persons_by_name_duplicate.json')
 
     mocker.patch.object(
         FeedExport,
