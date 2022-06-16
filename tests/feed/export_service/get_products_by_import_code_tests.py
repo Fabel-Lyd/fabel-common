@@ -8,8 +8,8 @@ from fabelcommon.feed.export_service import ProductType
 @pytest.mark.parametrize(
     'product_type, search_parameters, data_file_name',
     [
-        (ProductType.PERSON, ['99991', '99992'], 'tests/feed/export_service/data/persons_by_import_code.json'),
-        (ProductType.PERSON, ['99991'], 'tests/feed/export_service/data/product_not_found.json'),
+        (ProductType.PERSON, ['99991', '99992'], 'tests/feed/export_service/data/get_products_by_import_code/persons_by_import_code.json'),
+        (ProductType.PERSON, ['99991'], 'tests/feed/export_service/data/get_products_by_import_code/product_not_found.json'),
     ])
 def test_get_products_by_import_code(
         product_type: ProductType,
