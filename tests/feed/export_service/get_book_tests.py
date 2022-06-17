@@ -5,7 +5,7 @@ from fabelcommon.json.json_files import read_json_data
 
 
 def test_get_book_successful(mocker) -> None:
-    test_data: Dict = read_json_data('tests/feed/export_service/data/get_book/book_successful.json')
+    test_data: Dict = read_json_data('tests/feed/export_service/data/get_book/successful_found.json')
 
     mocker.patch.object(
         FeedExport,
@@ -22,8 +22,8 @@ def test_get_book_successful(mocker) -> None:
 @pytest.mark.parametrize(
     'data_file_name, exception_message',
     [
-        ('tests/feed/export_service/data/get_book/book_duplicate.json', 'Multiple books with ISBN 00001 found in Feed'),
-        ('tests/feed/export_service/data/get_book/book_not_found.json', 'Book with ISBN 00001 not found in Feed'),
+        ('tests/feed/export_service/data/get_book/failed_duplicate.json', 'Multiple books with ISBN 00001 found in Feed'),
+        ('tests/feed/export_service/data/get_book/failed_not_found.json', 'Book with ISBN 00001 not found in Feed'),
     ])
 def test_get_book_failed(data_file_name: str, exception_message: str, mocker) -> None:
     test_data: Dict = read_json_data(data_file_name)
