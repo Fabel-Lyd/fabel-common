@@ -1,18 +1,16 @@
 {
   "response_data": [
-    [
-      {
-        "identifier": {
-            "importCode": "99991",
-            "productNo": "00001"
-        }
-      },
-      {
-        "identifier": {
-            "importCode": "99992",
-            "productNo": "00001"
-        }
+    {
+      "identifier": {
+          "importCode": "99991",
+          "productNo": "00001"
       }
-    ]
+    },
+    {
+      "identifier": {
+          "importCode": "99992",
+          "productNo": "00001"
+      }
+    }
   ]
 }
