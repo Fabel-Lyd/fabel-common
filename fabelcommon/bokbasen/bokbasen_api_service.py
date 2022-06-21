@@ -19,7 +19,6 @@ class BokbasenApiService(ABC):
         headers: Dict[str, str] = {
             "Authorization": f"Boknett {ticket}",
             "Date": TimeFormats.get_date_time(),
-            "Accept": "application/json"
         }
         return headers
 
