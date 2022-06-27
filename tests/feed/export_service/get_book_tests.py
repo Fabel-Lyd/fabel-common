@@ -31,8 +31,8 @@ def test_get_book_successful(mocker) -> None:
 @pytest.mark.parametrize(
     'data_file_name, exception_message',
     [
-        ('failed_duplicate.json', f'Multiple books with ISBN {TEST_ISBN} found in Feed'),
-        ('failed_not_found.json', f'Book with ISBN {TEST_ISBN} not found in Feed'),
+        ('failed_duplicate.json', f'Multiple books with ISBN "{TEST_ISBN}" found in Feed'),
+        ('failed_not_found.json', f'Book with ISBN "{TEST_ISBN}" not found in Feed'),
     ])
 def test_get_book_failed(data_file_name: str, exception_message: str, mocker) -> None:
     test_data: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/{data_file_name}')
