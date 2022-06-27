@@ -3,6 +3,7 @@ from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType
 from fabelcommon.http.verbs import HttpVerb
+from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException, DuplicatePersonException
 
 
 class FeedExport(FeedApiService):
@@ -28,7 +29,7 @@ class FeedExport(FeedApiService):
             response: List[Dict] = self.__send_request(url)
 
             if product_type == ProductType.PERSON and len(response) > 1:
-                raise Exception(f'Multiple persons named "{name}" found in Feed')
+                raise DuplicatePersonException(name)
 
             result.extend(response)
         return result
@@ -49,9 +50,9 @@ class FeedExport(FeedApiService):
         book_list: List[Dict] = self.__send_request(url)
 
         if len(book_list) == 0:
-            raise Exception(f'Book with ISBN {isbn} not found in Feed')
+            raise BookNotFoundException(isbn)
         if len(book_list) > 1:
-            raise Exception(f'Multiple books with ISBN {isbn} found in Feed')
+            raise DuplicateBookException(isbn)
 
         return book_list[0]
 
