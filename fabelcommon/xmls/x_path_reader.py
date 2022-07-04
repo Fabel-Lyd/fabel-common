@@ -28,7 +28,7 @@ class XPathReader:
             self,
             xpath: str,
             subtree_root: Union[_Element, None] = None
-    ) -> Union[str, _Element]:
+    ) -> Union[str, _Element, None]:
 
         result: Union[List[str], List[_Element]] = self.__get_node_list(xpath, subtree_root)
 
@@ -40,13 +40,13 @@ class XPathReader:
     def get_values(self, xpath: str) -> List[str]:
         return self.__get_node_list(xpath)
 
-    def get_value(self, xpath: str) -> str:
+    def get_value(self, xpath: str) -> Union[str, None]:
         return self.__get_single_node(xpath)
 
     def get_elements(self, xpath: str) -> List[_Element]:
         return self.__get_node_list(xpath)
 
-    def get_element(self, xpath: str) -> _Element:
+    def get_element(self, xpath: str) -> Union[_Element, None]:
         return self.__get_single_node(xpath)
 
     def get_values_from_subtree(
@@ -61,6 +61,6 @@ class XPathReader:
             self,
             relative_xpath: str,  # without leading slash
             subtree_root: _Element
-    ) -> str:
+    ) -> Union[str, None]:
 
         return self.__get_single_node(relative_xpath, subtree_root)
