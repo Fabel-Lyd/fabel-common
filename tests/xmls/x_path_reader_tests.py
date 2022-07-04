@@ -25,7 +25,7 @@ def test_get_values_successful(x_path_reader_fixture: XPathReader) -> None:
         ('/o:ONIXMessage/o:Missing/text()', None)
     ])
 def test_get_value_successful(x_path_reader_fixture: XPathReader, xpath: str, expected_value: Union[str, None]) -> None:
-    value: str = x_path_reader_fixture.get_value(xpath)
+    value: Union[str, None] = x_path_reader_fixture.get_value(xpath)
     assert value == expected_value
 
 
