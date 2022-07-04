@@ -1,17 +1,14 @@
 from typing import Dict, List, Union
-from lxml import etree
 from lxml.etree import _Element
 
 
 class XPathReader:
-    __tree: etree
-    __name_spaces: Dict
     __tree_root: _Element
+    __name_spaces: Dict
 
-    def __init__(self, tree: etree, name_spaces: Dict) -> None:
-        self.__tree = tree
+    def __init__(self, tree_root: _Element, name_spaces: Dict) -> None:
+        self.__tree_root = tree_root
         self.__name_spaces = name_spaces
-        self.__tree_root = self.__tree.getroot()
 
     def __get_node_list(
             self,
