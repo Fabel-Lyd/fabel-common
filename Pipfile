@@ -16,7 +16,7 @@ flake8 = "==4.0.1"
 pyright = "==1.1.257"
 pytest = "==7.1.2"
 pytest-django = "==4.5.2"
-pytest-mock = "*"
+pytest-mock = "==3.8.2"
 requests-mock = "*"
 xmldiff = "*"
 
