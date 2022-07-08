@@ -13,7 +13,7 @@ setuptools = "==63.1.0"
 
 [dev-packages]
 flake8 = "==4.0.1"
-pyright = "*"
+pyright = "==1.1.257"
 pytest = "*"
 pytest-django = "*"
 pytest-mock = "*"
