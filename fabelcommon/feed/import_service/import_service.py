@@ -15,7 +15,21 @@ class FeedImport(FeedApiService):
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
-    def create_or_update_products(self, formatted_products: List[Dict]) -> str:
+    def create_or_update_products(
+            self,
+            formatted_products: List[Dict],
+            query_interval_seconds: int,
+            max_attempts: int
+    ) -> ImportResult:
+
+        status_guid: str = self.send_payload(formatted_products)
+        return self.await_import_finish(
+            guid=status_guid,
+            query_interval_seconds=query_interval_seconds,
+            max_attempts=max_attempts
+        )
+
+    def send_payload(self, formatted_products: List[Dict]) -> str:
         url: str = self.__build_url()
         payload: Dict = {
             "importSettings": {
@@ -60,12 +74,12 @@ class FeedImport(FeedApiService):
             return None
 
         return ImportResult(
-            status=self.__get_import_status(import_report['sumOfStatuses']),
-            created_items=self.__get_created_items(import_report['report']['content'])
+            status=self.__read_import_status(import_report['sumOfStatuses']),
+            created_items=self.__read_created_items(import_report['report']['content'])
         )
 
     @staticmethod
-    def __get_import_status(status_summary: Dict) -> ImportStatus:
+    def __read_import_status(status_summary: Dict) -> ImportStatus:
         if status_summary['ERROR'] != 0:
             return ImportStatus.ERROR
         elif status_summary['WARNING'] != 0:
@@ -74,7 +88,7 @@ class FeedImport(FeedApiService):
         return ImportStatus.OK
 
     @staticmethod
-    def __get_created_items(content: Dict) -> List[ImportResultItem]:
+    def __read_created_items(content: Dict) -> List[ImportResultItem]:
         created_items: List[ImportResultItem] = []
 
         for item in content:
