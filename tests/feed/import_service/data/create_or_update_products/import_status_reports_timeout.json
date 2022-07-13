@@ -21,16 +21,6 @@
     },
     {
         "startedTime": "2022-07-07T14:49:46.249618Z",
-        "finishedTime": null,
-        "progress": "0 / 3  (0.00 %)",
-        "sumOfStatuses": {
-            "OK": 0,
-            "WARNING": 0,
-            "ERROR": 0
-        }
-    },
-    {
-        "startedTime": "2022-07-07T14:49:46.249618Z",
         "finishedTime": "2022-07-07T14:49:51.634374Z",
         "progress": "3 / 3  (100.00 %)",
         "sumOfStatuses": {

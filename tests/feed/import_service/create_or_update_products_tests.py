@@ -12,18 +12,16 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/create_or_update_prod
 
 @pytest.fixture
 def patch_send_payload(mocker):
-    def __factory():
-        mocker.patch.object(
-            FeedImport,
-            attribute=FeedImport.send_payload.__name__,
-            return_value='guid'
-        )
-    return __factory
+    mocker.patch.object(
+        FeedImport,
+        attribute='_FeedImport__send_payload',
+        return_value='guid'
+    )
 
 
 @pytest.fixture
 def patch_get_import_report(mocker):
-    def __factory(status_reports: List[Dict]):
+    def __object_patch(status_reports: List[Dict]):
         mocker.patch.object(
             FeedImport,
             attribute='_FeedImport__get_import_report',
@@ -33,7 +31,7 @@ def patch_get_import_report(mocker):
                 for status_report in status_reports
             ]
         )
-    return __factory
+    return __object_patch
 
 
 def test_create_or_update_products_successful(
@@ -41,10 +39,9 @@ def test_create_or_update_products_successful(
         patch_get_import_report
 ) -> None:
 
-    import_persons: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_persons_ok.json')
-    status_reports: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_status_reports_ok.json')
+    import_persons: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_ok/import_persons_ok.json')
+    status_reports: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_ok/import_status_reports_ok.json')
 
-    patch_send_payload()
     patch_get_import_report(status_reports)
 
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
@@ -70,16 +67,23 @@ def test_create_or_update_products_successful(
     'import_persons_path, status_reports_path, exception_message',
     [
         (
-            TEST_DATA_DIRECTORY + 'import_persons_error.json',
-            TEST_DATA_DIRECTORY + 'import_status_reports_error.json',
-            'Feed product import unsuccessful. Report: ' +
-            json.dumps(read_json_data(TEST_DATA_DIRECTORY + 'import_result_report_error.json'))
+            TEST_DATA_DIRECTORY + 'import_error/import_persons_error.json',
+            TEST_DATA_DIRECTORY + 'import_error/import_status_reports_error.json',
+            'Feed product import unsuccessful. Report: ' + json.dumps(
+                read_json_data(TEST_DATA_DIRECTORY + 'import_error/import_result_report_error.json')
+            )
         ),
         (
-            TEST_DATA_DIRECTORY + 'import_persons_warning.json',
-            TEST_DATA_DIRECTORY + 'import_status_reports_warning.json',
-            'Feed product import unsuccessful. Report: ' +
-            json.dumps(read_json_data(TEST_DATA_DIRECTORY + 'import_result_report_warning.json'))
+            TEST_DATA_DIRECTORY + 'import_warning/import_persons_warning.json',
+            TEST_DATA_DIRECTORY + 'import_warning/import_status_reports_warning.json',
+            'Feed product import unsuccessful. Report: ' + json.dumps(
+                read_json_data(TEST_DATA_DIRECTORY + 'import_warning/import_result_report_warning.json')
+            )
+        ),
+        (
+            TEST_DATA_DIRECTORY + 'import_ok/import_persons_ok.json',
+            TEST_DATA_DIRECTORY + 'import_status_reports_timeout.json',
+            'Feed product import did not return finished status (queried 2 times with 1 s interval)'
         )
     ]
 )
@@ -94,7 +98,6 @@ def test_create_or_update_products_failed(
     import_persons: List[Dict] = read_json_data(import_persons_path)
     status_reports: List[Dict] = read_json_data(status_reports_path)
 
-    patch_send_payload()
     patch_get_import_report(status_reports)
 
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
@@ -107,26 +110,3 @@ def test_create_or_update_products_failed(
         )
 
     assert str(exception.value) == exception_message
-
-
-def test_create_or_update_products_timeout(
-        patch_send_payload,
-        patch_get_import_report
-) -> None:
-
-    import_persons: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_persons_ok.json')
-    status_reports: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_status_reports_timeout.json')
-
-    patch_send_payload()
-    patch_get_import_report(status_reports)
-
-    feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
-
-    with pytest.raises(Exception) as exception:
-        feed_import.create_or_update_products(
-            formatted_products=import_persons,
-            query_interval_seconds=1,
-            max_attempts=2
-        )
-
-    assert str(exception.value) == 'Feed product import did not return finished status (queried 2 times with 1 s interval)'
