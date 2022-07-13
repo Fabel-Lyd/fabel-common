@@ -27,7 +27,11 @@ def patch_get_import_report(mocker):
         mocker.patch.object(
             FeedImport,
             attribute='_FeedImport__get_import_report',
-            side_effect=status_reports
+            side_effect=[
+                ImportResult(status_report) if status_report['finishedTime'] is not None
+                else None
+                for status_report in status_reports
+            ]
         )
     return __factory
 
@@ -43,57 +47,46 @@ def test_create_or_update_products_successful(
     patch_send_payload()
     patch_get_import_report(status_reports)
 
-    expected_import_result: ImportResult = ImportResult(
-        status=ImportStatus.OK,
-        created_items=[
-            ImportResultItem(
-                import_code='33391',
-                product_number='P_9999999',
-                status=ImportStatus.OK,
-                messages=[]
-            ),
-            ImportResultItem(
-                import_code='33390',
-                product_number='P_9999998',
-                status=ImportStatus.OK,
-                messages=[]
-            ),
-            ImportResultItem(
-                import_code='33389',
-                product_number='P_9999997',
-                status=ImportStatus.OK,
-                messages=[]
-            )
-        ]
-    )
-
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
+
     actual_import_result: ImportResult = feed_import.create_or_update_products(
         formatted_products=import_persons,
         query_interval_seconds=1,
         max_attempts=2
     )
 
-    assert actual_import_result == expected_import_result
+    expected_import_status: ImportStatus = ImportStatus.OK
+    expected_import_created_items: List[ImportResultItem] = [
+        ImportResultItem('33391', 'P_9999999'),
+        ImportResultItem('33390', 'P_9999998'),
+        ImportResultItem('33389', 'P_9999997')
+    ]
+
+    assert actual_import_result.status == expected_import_status
+    assert actual_import_result.created_items == expected_import_created_items
 
 
 @pytest.mark.parametrize(
-    'import_persons_path, status_reports_path',
+    'import_persons_path, status_reports_path, exception_message',
     [
         (
             TEST_DATA_DIRECTORY + 'import_persons_error.json',
-            TEST_DATA_DIRECTORY + 'import_status_reports_error.json'
-
+            TEST_DATA_DIRECTORY + 'import_status_reports_error.json',
+            'Feed product import unsuccessful. Report: ' +
+            json.dumps(read_json_data(TEST_DATA_DIRECTORY + 'import_result_report_error.json'))
         ),
         (
             TEST_DATA_DIRECTORY + 'import_persons_warning.json',
-            TEST_DATA_DIRECTORY + 'import_status_reports_warning.json'
+            TEST_DATA_DIRECTORY + 'import_status_reports_warning.json',
+            'Feed product import unsuccessful. Report: ' +
+            json.dumps(read_json_data(TEST_DATA_DIRECTORY + 'import_result_report_warning.json'))
         )
     ]
 )
 def test_create_or_update_products_failed(
         import_persons_path: str,
         status_reports_path: str,
+        exception_message: str,
         patch_send_payload,
         patch_get_import_report
 ) -> None:
@@ -113,7 +106,7 @@ def test_create_or_update_products_failed(
             max_attempts=2
         )
 
-    assert str(exception.value) == 'Feed product import unsuccessful. Report: ' + json.dumps(status_reports[1])
+    assert str(exception.value) == exception_message
 
 
 def test_create_or_update_products_timeout(

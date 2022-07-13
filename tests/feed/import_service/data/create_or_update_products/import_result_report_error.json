@@ -1,0 +1,23 @@
+{
+    "imported": "2/3",
+    "details": [
+        {
+            "importCode": "33390",
+            "productNo": "P_9999999",
+            "action": "CREATE",
+            "status": "OK",
+            "messages": [],
+            "importJSON": null
+        },
+        {
+            "importCode": "33389",
+            "productNo": "P_9999997",
+            "action": "CREATE",
+            "status": "WARNING",
+            "messages": [
+                "No product type with import code incorrect found"
+            ],
+            "importJSON": null
+        }
+    ]
+}

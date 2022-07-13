@@ -5,7 +5,6 @@ from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_result import ImportResult
-from fabelcommon.feed.import_service.import_result_item import ImportResultItem
 from fabelcommon.feed.import_service.import_status import ImportStatus
 
 
@@ -47,15 +46,14 @@ class FeedImport(FeedApiService):
     ) -> ImportResult:
 
         for i in range(0, max_attempts):
-            import_report: Dict = self.__get_import_report(guid)
-            import_result: Union[ImportResult, None] = self.__parse_import_report(import_report)
+            import_result: Union[ImportResult, None] = self.__get_import_report(guid)
 
             if import_result is None:
                 sleep(query_interval_seconds)
                 continue
 
             if import_result.status != ImportStatus.OK:
-                raise Exception('Feed product import unsuccessful. Report: ' + json.dumps(import_report))
+                raise Exception('Feed product import unsuccessful. Report: ' + json.dumps(import_result.report))
             return import_result
 
         raise Exception(
@@ -63,44 +61,15 @@ class FeedImport(FeedApiService):
             f'(queried {max_attempts} times with {query_interval_seconds} s interval)'
         )
 
-    def __get_import_report(self, guid: str) -> Dict:
+    def __get_import_report(self, guid: str) -> Union[ImportResult, None]:
         url: str = self.__build_url() + \
             f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true'
-        response: Response = self._send_request(HttpVerb.GET, url)
-        return response.json()
 
-    def __parse_import_report(self, import_report: Dict) -> Union[ImportResult, None]:
+        import_report: Dict = self._send_request(HttpVerb.GET, url).json()
         if import_report['finishedTime'] is None:
             return None
 
-        return ImportResult(
-            status=self.__read_import_status(import_report['sumOfStatuses']),
-            created_items=self.__read_created_items(import_report['report']['content'])
-        )
-
-    @staticmethod
-    def __read_import_status(status_summary: Dict) -> ImportStatus:
-        if status_summary['ERROR'] != 0:
-            return ImportStatus.ERROR
-        elif status_summary['WARNING'] != 0:
-            return ImportStatus.WARNING
-
-        return ImportStatus.OK
-
-    @staticmethod
-    def __read_created_items(content: Dict) -> List[ImportResultItem]:
-        created_items: List[ImportResultItem] = []
-
-        for item in content:
-            created_items.append(
-                ImportResultItem(
-                    import_code=item['importCode'],
-                    product_number=item['productNo'],
-                    status=ImportStatus[item['status']],
-                    messages=item['messages']
-                )
-            )
-        return created_items
+        return ImportResult(import_report)
 
     def __build_url(self) -> str:
         return f'{self.BASE_URL}{self.PRODUCT_IMPORT}'
