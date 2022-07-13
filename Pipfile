@@ -21,4 +21,4 @@ requests-mock = "==1.9.3"
 xmldiff = "==2.4"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"
