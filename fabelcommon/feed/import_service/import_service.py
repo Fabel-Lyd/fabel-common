@@ -21,14 +21,14 @@ class FeedImport(FeedApiService):
             max_attempts: int
     ) -> ImportResult:
 
-        status_guid: str = self.send_payload(formatted_products)
-        return self.await_import_finish(
+        status_guid: str = self.__send_payload(formatted_products)
+        return self.__await_import_finish(
             guid=status_guid,
             query_interval_seconds=query_interval_seconds,
             max_attempts=max_attempts
         )
 
-    def send_payload(self, formatted_products: List[Dict]) -> str:
+    def __send_payload(self, formatted_products: List[Dict]) -> str:
         url: str = self.__build_url()
         payload: Dict = {
             "importSettings": {
@@ -38,7 +38,7 @@ class FeedImport(FeedApiService):
         }
         return self.__send_request(url, json.dumps(payload))
 
-    def await_import_finish(
+    def __await_import_finish(
             self,
             guid: str,
             query_interval_seconds: int,

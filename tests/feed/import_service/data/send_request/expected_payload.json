@@ -1,0 +1,20 @@
+{
+  "importSettings": {
+    "importMode": "CREATE_OR_UPDATE"
+  },
+  "products": [
+    {
+      "identifier": {
+        "productNo": "P_9999999"
+      },
+      "productHead": {
+        "name": {
+          "nb": "TEST PERSON 1"
+        },
+        "productNo": "P_9999999",
+        "statusCode": "active",
+        "typeCode": "person"
+      }
+    }
+  ]
+}
