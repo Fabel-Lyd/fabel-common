@@ -110,3 +110,16 @@ def test_create_or_update_products_failed(
         )
 
     assert str(exception.value) == exception_message
+
+
+def test_create_or_update_products_empty_list():
+    feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
+
+    with pytest.raises(Exception) as exception:
+        feed_import.create_or_update_products(
+            formatted_products=[],
+            query_interval_seconds=1,
+            max_attempts=2
+        )
+
+    assert str(exception.value) == 'List of products to be imported is empty'

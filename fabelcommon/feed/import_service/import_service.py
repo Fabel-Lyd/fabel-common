@@ -21,6 +21,9 @@ class FeedImport(FeedApiService):
             max_attempts: int
     ) -> ImportResult:
 
+        if len(formatted_products) == 0:
+            raise Exception('List of products to be imported is empty')
+
         status_guid: str = self.__send_payload(formatted_products)
         return self.__await_import_finish(
             guid=status_guid,
