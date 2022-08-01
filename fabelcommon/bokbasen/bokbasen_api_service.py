@@ -1,9 +1,10 @@
 from abc import ABC
-from typing import Dict
+from typing import Dict, Any
 import requests
 from requests import Response
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
+from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 
 
 class BokbasenApiService(ABC):
@@ -36,11 +37,19 @@ class BokbasenApiService(ABC):
 
         return response.headers['boknett-TGT']
 
-    def send_request(self, verb: HttpVerb, url: str, data=None) -> str:
+    def send_request(self, verb: HttpVerb, url: str, data: Any = None) -> str:
+        response: Response = self.__send_request(verb, url, data)
+        return response.text
+
+    def send_export_request(self, url: str) -> BokbasenExportResponse:
+        response: Response = self.__send_request(HttpVerb.GET, url, None)
+        return BokbasenExportResponse(content=response.text, cursor=response.headers['next'])
+
+    def __send_request(self, verb: HttpVerb, url: str, data: Any) -> Response:
         token: str = self.get_ticket()
         headers: Dict[str, str] = self.create_headers(token)
 
         response: Response = requests.request(verb.value, url, headers=headers, data=data)
         response.raise_for_status()
 
-        return response.text
+        return response
