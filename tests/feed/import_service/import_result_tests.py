@@ -37,6 +37,12 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/import_result/'
                 ImportResultItem('33391', 'P_9999999'),
                 ImportResultItem('33389', 'P_9999997')
             ]
+        ),
+        (
+            TEST_DATA_DIRECTORY + 'import_report_missing.json',
+            TEST_DATA_DIRECTORY + 'expected_result_report_missing.json',
+            ImportStatus.ERROR,
+            []
         )
     ]
 )
