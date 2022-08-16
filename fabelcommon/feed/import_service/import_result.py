@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 from fabelcommon.feed.import_service.import_status import ImportStatus
 from fabelcommon.feed.import_service.import_result_item import ImportResultItem
 
@@ -7,7 +7,7 @@ class ImportResult:
 
     def __init__(self, import_report: Dict) -> None:
         self.status: ImportStatus = self.__read_import_status(import_report['sumOfStatuses'])
-        self.created_items: List[ImportResultItem] = self.__read_created_items(import_report['report']['content'])
+        self.created_items: List[ImportResultItem] = self.__read_created_items(import_report.get('report'))
         self.report: Dict = self.__create_report(import_report)
 
     @staticmethod
@@ -20,10 +20,13 @@ class ImportResult:
             return ImportStatus.OK
 
     @staticmethod
-    def __read_created_items(content: Dict) -> List[ImportResultItem]:
+    def __read_created_items(report_details: Optional[Dict]) -> List[ImportResultItem]:
+        if report_details is None:
+            return []
+
         created_items: List[ImportResultItem] = []
 
-        for item in content:
+        for item in report_details['content']:
             created_items.append(
                 ImportResultItem(
                     import_code=item['importCode'],
@@ -39,5 +42,5 @@ class ImportResult:
 
         return {
             'imported': f'{imported_items}/{total_items}',
-            'details': import_report['report']['content']
+            'details': import_report.get('report', {}).get('content')
         }
