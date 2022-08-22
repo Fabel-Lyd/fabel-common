@@ -1,6 +1,5 @@
 from typing import Dict, List
 import pytest
-import json
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.import_service import FeedImport
 from fabelcommon.feed.import_service.import_result import ImportResult
@@ -34,13 +33,63 @@ def patch_get_import_report(mocker):
     return __object_patch
 
 
-def test_create_or_update_products_successful(
+@pytest.mark.parametrize(
+    'import_persons_path, status_reports_path, expected_status, expected_items, expected_report_path',
+    [
+        (
+            TEST_DATA_DIRECTORY + 'import_error/import_persons_error.json',
+            TEST_DATA_DIRECTORY + 'import_error/import_status_reports_error.json',
+            ImportStatus.ERROR,
+            [
+                ImportResultItem('33390', 'P_9999999'),
+                ImportResultItem('33389', 'P_9999997')
+            ],
+            TEST_DATA_DIRECTORY + 'import_error/import_result_details_error.json'
+        ),
+        (
+            TEST_DATA_DIRECTORY + 'import_warning/import_persons_warning.json',
+            TEST_DATA_DIRECTORY + 'import_warning/import_status_reports_warning.json',
+            ImportStatus.WARNING,
+            [
+                ImportResultItem('33391', 'P_9999999'),
+                ImportResultItem('33390', 'P_9999998'),
+                ImportResultItem('33389', 'P_9999997')
+            ],
+            TEST_DATA_DIRECTORY + 'import_warning/import_result_details_warning.json'
+        ),
+        (
+            TEST_DATA_DIRECTORY + 'import_ok/import_persons_ok.json',
+            TEST_DATA_DIRECTORY + 'import_ok/import_status_reports_ok.json',
+            ImportStatus.OK,
+            [
+                ImportResultItem('33391', 'P_9999999'),
+                ImportResultItem('33390', 'P_9999998'),
+                ImportResultItem('33389', 'P_9999997')
+            ],
+            TEST_DATA_DIRECTORY + 'import_ok/import_result_details_ok.json'
+        ),
+        (
+            TEST_DATA_DIRECTORY + 'import_missing/import_persons_missing.json',
+            TEST_DATA_DIRECTORY + 'import_missing/import_status_reports_missing.json',
+            ImportStatus.ERROR,
+            [],
+            TEST_DATA_DIRECTORY + 'import_missing/import_result_details_missing.json'
+        )
+    ]
+)
+def test_import_products_successful(
+        import_persons_path: str,
+        status_reports_path: str,
+        expected_status: ImportStatus,
+        expected_items: List[ImportResultItem],
+        expected_report_path: str,
         patch_send_payload,
         patch_get_import_report
 ) -> None:
 
-    import_persons: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_ok/import_persons_ok.json')
-    status_reports: List[Dict] = read_json_data(TEST_DATA_DIRECTORY + 'import_ok/import_status_reports_ok.json')
+    import_persons: List[Dict] = read_json_data(import_persons_path)
+    status_reports: List[Dict] = read_json_data(status_reports_path)
+    expected_report: Dict = read_json_data(expected_report_path)
 
     patch_get_import_report(status_reports)
 
@@ -52,34 +101,14 @@ def test_create_or_update_products_successful(
         max_attempts=2
     )
 
-    expected_import_status: ImportStatus = ImportStatus.OK
-    expected_import_created_items: List[ImportResultItem] = [
-        ImportResultItem('33391', 'P_9999999'),
-        ImportResultItem('33390', 'P_9999998'),
-        ImportResultItem('33389', 'P_9999997')
-    ]
-
-    assert actual_import_result.status == expected_import_status
-    assert actual_import_result.created_items == expected_import_created_items
+    assert actual_import_result.status == expected_status
+    assert actual_import_result.created_items == expected_items
+    assert actual_import_result.report == expected_report
 
 
 @pytest.mark.parametrize(
     'import_persons_path, status_reports_path, exception_message',
     [
-        (
-            TEST_DATA_DIRECTORY + 'import_error/import_persons_error.json',
-            TEST_DATA_DIRECTORY + 'import_error/import_status_reports_error.json',
-            'Feed product import unsuccessful. Report: ' + json.dumps(
-                read_json_data(TEST_DATA_DIRECTORY + 'import_error/import_result_report_error.json')
-            )
-        ),
-        (
-            TEST_DATA_DIRECTORY + 'import_warning/import_persons_warning.json',
-            TEST_DATA_DIRECTORY + 'import_warning/import_status_reports_warning.json',
-            'Feed product import unsuccessful. Report: ' + json.dumps(
-                read_json_data(TEST_DATA_DIRECTORY + 'import_warning/import_result_report_warning.json')
-            )
-        ),
         (
             TEST_DATA_DIRECTORY + 'import_ok/import_persons_ok.json',
             TEST_DATA_DIRECTORY + 'import_status_reports_timeout.json',
