@@ -2,11 +2,12 @@ from typing import Dict, List
 import pytest
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.import_service import FeedImport
+from fabelcommon.feed.import_service.import_mode import ImportMode
 from fabelcommon.feed.import_service.import_result import ImportResult
 from fabelcommon.feed.import_service.import_result_item import ImportResultItem
 from fabelcommon.feed.import_service.import_status import ImportStatus
 
-TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/create_or_update_products/'
+TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/import_products/'
 
 
 @pytest.fixture
@@ -95,8 +96,9 @@ def test_import_products_successful(
 
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
 
-    actual_import_result: ImportResult = feed_import.create_or_update_products(
+    actual_import_result: ImportResult = feed_import.import_products(
         formatted_products=import_persons,
+        import_mode=ImportMode.CREATE_OR_UPDATE,
         query_interval_seconds=1,
         max_attempts=2
     )
@@ -116,7 +118,7 @@ def test_import_products_successful(
         )
     ]
 )
-def test_create_or_update_products_failed(
+def test_import_products_failed(
         import_persons_path: str,
         status_reports_path: str,
         exception_message: str,
@@ -132,8 +134,9 @@ def test_create_or_update_products_failed(
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
 
     with pytest.raises(Exception) as exception:
-        feed_import.create_or_update_products(
+        feed_import.import_products(
             formatted_products=import_persons,
+            import_mode=ImportMode.CREATE_OR_UPDATE,
             query_interval_seconds=1,
             max_attempts=2
         )
@@ -141,12 +144,13 @@ def test_create_or_update_products_failed(
     assert str(exception.value) == exception_message
 
 
-def test_create_or_update_products_empty_list():
+def test_import_products_empty_list():
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
 
     with pytest.raises(Exception) as exception:
-        feed_import.create_or_update_products(
+        feed_import.import_products(
             formatted_products=[],
+            import_mode=ImportMode.CREATE_OR_UPDATE,
             query_interval_seconds=1,
             max_attempts=2
         )
