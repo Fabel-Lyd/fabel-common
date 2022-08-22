@@ -5,7 +5,6 @@ from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_result import ImportResult
-from fabelcommon.feed.import_service.import_status import ImportStatus
 
 
 class FeedImport(FeedApiService):
@@ -55,8 +54,6 @@ class FeedImport(FeedApiService):
                 sleep(query_interval_seconds)
                 continue
 
-            if import_result.status != ImportStatus.OK:
-                raise Exception('Feed product import unsuccessful. Report: ' + json.dumps(import_result.report))
             return import_result
 
         raise Exception(
