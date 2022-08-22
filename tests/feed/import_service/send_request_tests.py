@@ -3,6 +3,7 @@ import json
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.import_service import FeedImport
 from fabelcommon.feed.import_service.import_result import ImportResult
+from fabelcommon.feed.import_service.import_mode import ImportMode
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/send_request/'
 
@@ -27,8 +28,9 @@ def test_send_request_successful(mocker) -> None:
 
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
 
-    feed_import.create_or_update_products(
+    feed_import.import_products(
         formatted_products=import_persons,
+        import_mode=ImportMode.CREATE_OR_UPDATE,
         query_interval_seconds=1,
         max_attempts=1
     )

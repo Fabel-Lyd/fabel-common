@@ -4,6 +4,7 @@ from time import sleep
 from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
+from fabelcommon.feed.import_service.import_mode import ImportMode
 from fabelcommon.feed.import_service.import_result import ImportResult
 
 
@@ -13,9 +14,10 @@ class FeedImport(FeedApiService):
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
-    def create_or_update_products(
+    def import_products(
             self,
             formatted_products: List[Dict],
+            import_mode: ImportMode,
             query_interval_seconds: int,
             max_attempts: int
     ) -> ImportResult:
@@ -23,18 +25,18 @@ class FeedImport(FeedApiService):
         if len(formatted_products) == 0:
             raise Exception('List of products to be imported is empty')
 
-        status_guid: str = self.__send_payload(formatted_products)
+        status_guid: str = self.__send_payload(formatted_products, import_mode)
         return self.__await_import_finish(
             guid=status_guid,
             query_interval_seconds=query_interval_seconds,
             max_attempts=max_attempts
         )
 
-    def __send_payload(self, formatted_products: List[Dict]) -> str:
+    def __send_payload(self, formatted_products: List[Dict], import_mode: ImportMode) -> str:
         url: str = self.__build_url()
         payload: Dict = {
             "importSettings": {
-                "importMode": "CREATE_OR_UPDATE"
+                "importMode": import_mode.value
             },
             "products": formatted_products
         }
