@@ -37,8 +37,7 @@ jobs:
     - name: Check with pyright
       run: pipenv run pyright
 
-#    - name: Test with pytest
-#      env:
-#      run: |
-#        pipenv run pytest
+    - name: Test with pytest
+      run: |
+        pipenv run pytest
 
