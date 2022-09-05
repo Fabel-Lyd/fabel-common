@@ -1,19 +1,18 @@
 from typing import List, Union
 import pytest
-from fabelcommon.xmls.x_path_reader import XPathReader
-from fabelcommon.xmls.xml import read_xml_etree
 from lxml.etree import _Element
+from fabelcommon.xmls.onix_x_path_reader import OnixXPathReader
+from fabelcommon.xmls.xml import read_xml_etree
 
 
-@pytest.fixture
-def x_path_reader_fixture() -> XPathReader:
-    return XPathReader(
-        read_xml_etree('tests/xmls/data/test_data.xml'),
-        {'o': 'http://ns.editeur.org/onix/3.0/reference'})
+TEST_DATA: _Element = read_xml_etree('tests/xmls/data/test_data.xml')
 
 
-def test_get_values_successful(x_path_reader_fixture: XPathReader) -> None:
-    value: List[str] = x_path_reader_fixture.get_values('/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()')
+def test_get_values_successful() -> None:
+    value: List[str] = OnixXPathReader.get_values(
+        TEST_DATA,
+        'o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()'
+    )
     assert value == ['FBA', 'FXM']
 
 
@@ -24,16 +23,24 @@ def test_get_values_successful(x_path_reader_fixture: XPathReader) -> None:
         ('/o:ONIXMessage/o:Header/o:ContributorDate/o:Date/@dateformat', '05'),
         ('/o:ONIXMessage/o:Missing/text()', None)
     ])
-def test_get_value_successful(x_path_reader_fixture: XPathReader, xpath: str, expected_value: Union[str, None]) -> None:
-    value: Union[str, None] = x_path_reader_fixture.get_value(xpath)
+def test_get_value_successful(xpath: str, expected_value: Union[str, None]) -> None:
+    value: Union[str, None] = OnixXPathReader.get_value(TEST_DATA, xpath)
     assert value == expected_value
 
 
-def test_get_elements_successful(x_path_reader_fixture: XPathReader) -> None:
-    elements: List[_Element] = x_path_reader_fixture.get_elements('/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode')
+def test_get_elements_successful() -> None:
+    elements: List[_Element] = OnixXPathReader.get_elements(TEST_DATA, '/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode')
     values: List[str] = [element.text for element in elements]
 
     assert values == ['FBA', 'FXM']
+
+
+def test_get_element_successful() -> None:
+    element: _Element = OnixXPathReader.get_element(
+        TEST_DATA,
+        '/o:ONIXMessage/o:Header/o:ContributorDate/o:ContributorDateRole'
+    )
+    assert element.text == '50'
 
 
 @pytest.mark.parametrize(
@@ -42,18 +49,18 @@ def test_get_elements_successful(x_path_reader_fixture: XPathReader) -> None:
         ('/o:ONIXMessage/o:Header', 'o:Subject/o:SubjectCode/text()'),
         ('/o:ONIXMessage/o:Header/o:Subject', 'o:SubjectCode/text()')
     ])
-def test_get_values_from_subtree_successful(x_path_reader_fixture: XPathReader, subtree_path: str, value_path: str) -> None:
-    elements: List[_Element] = x_path_reader_fixture.get_elements(subtree_path)
+def test_get_values_from_subtree_successful(subtree_path: str, value_path: str) -> None:
+    elements: List[_Element] = OnixXPathReader.get_elements(TEST_DATA, subtree_path)
 
     values: List[str] = []
     for element in elements:
-        values += x_path_reader_fixture.get_values_from_subtree(value_path, element)
+        values += OnixXPathReader.get_values(element, value_path)
 
     assert values == ['FBA', 'FXM']
 
 
-def test_get_value_failed_multiple(x_path_reader_fixture: XPathReader):
+def test_get_value_failed_multiple() -> None:
     with pytest.raises(Exception) as exception:
-        x_path_reader_fixture.get_value('/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()')
+        OnixXPathReader.get_value(TEST_DATA, '/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()')
 
     assert str(exception.value) == 'Expected single node, found 2'
