@@ -1,8 +1,8 @@
-from typing import Dict, List
+from typing import List
 from datetime import datetime, timedelta
 from lxml.etree import _Element
 from fabelcommon.xmls.xml import xml_to_etree
-from fabelcommon.xmls.x_path_reader import XPathReader
+from fabelcommon.xmls.onix_x_path_reader import OnixXPathReader
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 from fabelcommon.bokbasen.export_type import ExportType
@@ -14,7 +14,6 @@ EXPORT_CUTOFF_DAYS: int = 180
 
 class BokbasenExport:
     bokbasen_api_service: BokbasenApiService
-    XML_NAMESPACES: Dict[str, str] = {'o': 'http://ns.editeur.org/onix/3.0/reference'}
 
     def __init__(self, bokbasen_api_service: BokbasenApiService) -> None:
         self.bokbasen_api_service = bokbasen_api_service
@@ -62,6 +61,4 @@ class BokbasenExport:
     @classmethod
     def __parse_exported_books(cls, export: str) -> List[_Element]:
         tree: _Element = xml_to_etree(export)
-        x_path_reader: XPathReader = XPathReader(tree, cls.XML_NAMESPACES)
-
-        return x_path_reader.get_elements('/o:ONIXMessage/o:Product')
+        return OnixXPathReader.get_elements(tree, '/o:ONIXMessage/o:Product')
