@@ -1,4 +1,4 @@
-from typing import List
+from typing import Optional
 from unittest.mock import MagicMock
 import pytest
 from freezegun import freeze_time
@@ -6,12 +6,16 @@ from xmldiff import main
 from lxml.etree import _Element
 from rest_framework import status
 from fabelcommon.http.verbs import HttpVerb
-from fabelcommon.xmls.xml import read_xml_etree, read_xml_str, xml_to_etree
+from fabelcommon.xmls.xml import read_xml_etree, read_xml_str
 from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 from fabelcommon.bokbasen.export.export import BokbasenExport
 from fabelcommon.bokbasen.export_result import ExportResult
+from fabelcommon.xmls.onix_x_path_reader import OnixXPathReader
 
+TEST_DATA_DIRECTORY: str = 'tests/bokbasen/export/data'
 BOKBASEN_XML_DATA: str = 'tests/bokbasen/export/data/bokbasen-9788234001635.xml'
+
+ISBN_XPATH: str = 'o:ProductIdentifier[o:ProductIDType/text()="15"]/o:IDValue/text()'
 
 
 def test_export_product_by_isbn(mocker) -> None:
@@ -36,9 +40,11 @@ def test_export_product_by_isbn(mocker) -> None:
 
 @freeze_time('2020-01-02')
 def test_get_after_date(requests_mock, mocker) -> None:
-    export_text: str = read_xml_str('tests/bokbasen/export/data/bokbasen_export_two_books.xml')
-    export_tree: _Element = xml_to_etree(export_text)
+    export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
     timestamp: str = '20200101120000'
+
+    expected_tree: _Element = read_xml_etree(f'{TEST_DATA_DIRECTORY}/bokbasen_export_single_book.xml')
+    expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
     mocker.patch.object(
         target=BokbasenApiService,
@@ -49,7 +55,7 @@ def test_get_after_date(requests_mock, mocker) -> None:
         f'https://api.boknett.no/metadata/export/onix?after={timestamp}&subscription=basic&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
-        text=export_text
+        text=export_content
     )
 
     bokbasen_api_service: BokbasenApiService = BokbasenApiService('test_username', 'test_password')
@@ -57,16 +63,20 @@ def test_get_after_date(requests_mock, mocker) -> None:
 
     actual_result: ExportResult = bokbasen_export.get_after_date(timestamp, 2)
 
-    differences: List = main.diff_trees(actual_result.books[0].getroottree(), export_tree)
+    expected_isbn: Optional[str] = OnixXPathReader.get_value(expected_product, ISBN_XPATH)
+    actual_isbn: Optional[str] = OnixXPathReader.get_value(actual_result.books[0], ISBN_XPATH)
 
-    assert len(differences) == 0
+    assert actual_isbn is not None
+    assert actual_isbn == expected_isbn
     assert len(actual_result.books) == 2
     assert actual_result.cursor == 'cursor'
 
 
 def test_get_by_cursor(requests_mock, mocker) -> None:
-    export_text: str = read_xml_str('tests/bokbasen/export/data/bokbasen_export_two_books.xml')
-    export_tree: _Element = xml_to_etree(export_text)
+    export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
+
+    expected_tree: _Element = read_xml_etree(f'{TEST_DATA_DIRECTORY}/bokbasen_export_single_book.xml')
+    expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
     mocker.patch.object(
         target=BokbasenApiService,
@@ -77,7 +87,7 @@ def test_get_by_cursor(requests_mock, mocker) -> None:
         'https://api.boknett.no/metadata/export/onix?next=cursor&subscription=basic&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
-        text=export_text
+        text=export_content
     )
 
     bokbasen_api_service: BokbasenApiService = BokbasenApiService('test_username', 'test_password')
@@ -85,9 +95,11 @@ def test_get_by_cursor(requests_mock, mocker) -> None:
 
     actual_result: ExportResult = bokbasen_export.get_by_cursor('cursor', 2)
 
-    differences: List = main.diff_trees(actual_result.books[0].getroottree(), export_tree)
+    expected_isbn: Optional[str] = OnixXPathReader.get_value(expected_product, ISBN_XPATH)
+    actual_isbn: Optional[str] = OnixXPathReader.get_value(actual_result.books[0], ISBN_XPATH)
 
-    assert len(differences) == 0
+    assert actual_isbn is not None
+    assert actual_isbn == expected_isbn
     assert len(actual_result.books) == 2
     assert actual_result.cursor == 'cursor'
 
