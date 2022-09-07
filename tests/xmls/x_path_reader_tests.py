@@ -11,7 +11,7 @@ TEST_DATA: _Element = read_xml_etree('tests/xmls/data/test_data.xml')
 def test_get_values_successful() -> None:
     value: List[str] = OnixXPathReader.get_values(
         TEST_DATA,
-        'o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()'
+        '/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()'
     )
     assert value == ['FBA', 'FXM']
 
