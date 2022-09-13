@@ -1,13 +1,11 @@
-from abc import ABC
-from typing import Any, Dict
+import json
+from typing import Dict, Optional
 from requests import Response
 import requests
-
 from fabelcommon.http.verbs import HttpVerb
 
 
 class BeatApiService:
-
     BASE_URL = 'https://api.fabel.no'
 
     def __init__(self, client_id, client_secret):
@@ -23,7 +21,6 @@ class BeatApiService:
         return headers
 
     def get_token(self) -> str:
-
         url = f'{BeatApiService.BASE_URL}/v2/oauth2/token'
         data = {
             'grant_type': 'client_credentials',
@@ -37,11 +34,18 @@ class BeatApiService:
         response_data = response.json()
         return response_data['access_token']
 
-    def send_request(self, verb: HttpVerb, url: str, data: Any) -> str:
+    def send_request(
+            self,
+            verb: HttpVerb,
+            url: str,
+            data: Optional[Dict] = None,
+            headers_to_add: Dict[str, str] = {}) -> str:
         token: str = self.get_token()
-        headers: Dict[str, str] = self.create_headers(token)
 
-        response: Response = requests.request(verb.value, url, headers=headers, data=data)
+        headers: Dict[str, str] = self.create_headers(token)
+        headers.update(headers_to_add)
+
+        response: Response = requests.request(verb.value, url, headers=headers, data=json.dumps(data))
         response.raise_for_status()
 
         return response.text
