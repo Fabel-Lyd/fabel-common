@@ -6,7 +6,7 @@ import requests
 from fabelcommon.http.verbs import HttpVerb
 
 
-class BeatService:
+class BeatApiService:
 
     BASE_URL = 'https://api.fabel.no'
 
@@ -24,7 +24,7 @@ class BeatService:
 
     def get_token(self) -> str:
 
-        url = f'{BeatService.BASE_URL}/v2/oauth2/token'
+        url = f'{BeatApiService.BASE_URL}/v2/oauth2/token'
         data = {
             'grant_type': 'client_credentials',
             'client_id': self._client_id,
