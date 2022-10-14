@@ -4,6 +4,8 @@ from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException, DuplicatePersonException
+from fabelcommon.constants.feed.product_export_constants import IMPORT_CODE_EXPORT_BATCH_SIZE
+from fabelcommon.batch.batch import chunk_list
 
 
 class FeedExport(FeedApiService):
@@ -34,14 +36,28 @@ class FeedExport(FeedApiService):
             result.extend(response)
         return result
 
-    def get_products_by_import_code(self, import_codes: List[str], product_type: ProductType) -> List[Dict]:
-        concatenated_import_codes: str = ','.join(import_codes)
+    def get_products_by_import_code(
+            self,
+            import_codes: List[str],
+            product_types: List[ProductType],
+            batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE
+    ) -> List[Dict]:
 
-        url: str = self.__build_url(
-            f'changesOnly=false&productTypeImportCodes={product_type.value}&importCodes={concatenated_import_codes}&size=500&page=0'
-        )
+        unique_product_types: List[str] = [product_type.value for product_type in set(product_types)]
+        concatenated_product_types: str = ','.join(sorted(unique_product_types))
+        batched_import_codes: List[List[str]] = chunk_list(import_codes, batch_size)
 
-        return self.__send_request(url)
+        result_list: List[Dict] = []
+        for batch in batched_import_codes:
+            concatenated_import_codes: str = ','.join(batch)
+
+            url: str = self.__build_url(
+                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&importCodes={concatenated_import_codes}&size={batch_size}'
+            )
+
+            result_list.extend(self.__send_request(url))
+
+        return result_list
 
     def get_book(self, isbn: str) -> Dict:
         url: str = self.__build_url(

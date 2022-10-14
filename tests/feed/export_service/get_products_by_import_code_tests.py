@@ -9,33 +9,46 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
 
 
 @pytest.mark.parametrize(
-    'data_file_name, product_type, search_parameters',
+    'data_file_name, product_types, search_parameters, expected_endpoints',
     [
-        ('successful_found.json', ProductType.PERSON, ['99991', '99992']),
-        ('successful_not_found.json', ProductType.PERSON, ['99991']),
+        (
+            'two_batches.json',
+            [ProductType.PERSON],
+            ['99991', '99992', '99993', '99994'],
+            [
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99991,99992&size=2',
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99993,99994&size=2'
+            ]
+        ),
+        (
+            'not_found.json',
+            [ProductType.PERSON, ProductType.SERIES, ProductType.PERSON],
+            ['99991'],
+            [
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person,serie&importCodes=99991&size=2'
+            ]
+        )
     ])
-def test_get_products_by_import_code_successful(
+def test_get_products_by_import_code(
         data_file_name: str,
-        product_type: ProductType,
+        product_types: List[ProductType],
         search_parameters: List[str],
+        expected_endpoints: List[str],
         mocker
 ) -> None:
 
     test_data: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/{data_file_name}')
-    concatenated_search_parameters: str = ','.join(search_parameters)
 
-    expected_endpoint: str = f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes={product_type.value}&importCodes={concatenated_search_parameters}&size=500&page=0'
-
-    test_request = mocker.patch.object(
+    mocked_send_request_call = mocker.patch.object(
         FeedExport,
         attribute='_FeedExport__send_request',
-        return_value=test_data['response_data']
+        side_effect=test_data['response_data']
     )
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.get_products_by_import_code(search_parameters, product_type)
+    products_found: List[Dict] = feed_export.get_products_by_import_code(search_parameters, product_types, 2)
 
-    actual_endpoint: str = test_request.call_args.args[0]
+    actual_endpoints: List[str] = [call.args[0] for call in mocked_send_request_call.call_args_list]
 
-    assert expected_endpoint == actual_endpoint
+    assert actual_endpoints == expected_endpoints
     assert products_found == test_data['expected']

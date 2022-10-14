@@ -1,0 +1,47 @@
+{
+  "response_data": [
+    [
+      {
+        "identifier": {
+            "importCode": "99991",
+            "productNo": "P_00001"
+        }
+      },
+      {
+        "identifier": {
+            "importCode": "99992",
+            "productNo": "P_00002"
+        }
+      }
+    ],
+    [
+      {
+        "identifier": {
+            "importCode": "99994",
+            "productNo": "P_00004"
+        }
+      }
+    ]
+  ],
+
+  "expected": [
+    {
+      "identifier": {
+          "importCode": "99991",
+          "productNo": "P_00001"
+      }
+    },
+    {
+      "identifier": {
+          "importCode": "99992",
+          "productNo": "P_00002"
+      }
+    },
+    {
+      "identifier": {
+          "importCode": "99994",
+          "productNo": "P_00004"
+      }
+    }
+  ]
+}
