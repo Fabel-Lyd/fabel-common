@@ -4,12 +4,12 @@ from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException, DuplicatePersonException
-from fabelcommon.constants.feed.product_export_constants import IMPORT_CODE_EXPORT_BATCH_SIZE
 from fabelcommon.batch.batch import chunk_list
 
 
 class FeedExport(FeedApiService):
     PRODUCT_EXPORT: str = '/export/export'
+    IMPORT_CODE_EXPORT_BATCH_SIZE: int = 300
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
