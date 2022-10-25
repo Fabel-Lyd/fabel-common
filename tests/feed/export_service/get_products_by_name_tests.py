@@ -29,7 +29,7 @@ def test_get_products_by_name_successful(
 
     test_request = mocker.patch.object(
         FeedExport,
-        attribute='_FeedExport__send_request',
+        attribute='_FeedExport__send_product_export_request',
         side_effect=test_data['response_data']
     )
 
@@ -48,7 +48,7 @@ def test_get_products_by_name_failed(mocker) -> None:
 
     mocker.patch.object(
         FeedExport,
-        attribute="_FeedExport__send_request",
+        attribute="_FeedExport__send_product_export_request",
         side_effect=test_data['response_data']
     )
 

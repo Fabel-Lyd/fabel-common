@@ -15,7 +15,7 @@ def test_get_book_successful(mocker) -> None:
 
     test_request = mocker.patch.object(
         FeedExport,
-        attribute="_FeedExport__send_request",
+        attribute="_FeedExport__send_product_export_request",
         return_value=test_data['response_data']
     )
 
@@ -39,7 +39,7 @@ def test_get_book_failed(data_file_name: str, exception_message: str, mocker) ->
 
     mocker.patch.object(
         FeedExport,
-        attribute="_FeedExport__send_request",
+        attribute="_FeedExport__send_product_export_request",
         return_value=test_data['response_data']
     )
 

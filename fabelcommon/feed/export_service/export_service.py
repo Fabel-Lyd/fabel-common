@@ -1,14 +1,13 @@
 from typing import List, Dict
 from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
-from fabelcommon.feed.export_service import ProductType
+from fabelcommon.feed.export_service import ProductType, ExportEndpoint
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException, DuplicatePersonException
 from fabelcommon.batch.batch import chunk_list
 
 
 class FeedExport(FeedApiService):
-    PRODUCT_EXPORT: str = '/export/export'
     IMPORT_CODE_EXPORT_BATCH_SIZE: int = 300
 
     def __init__(self, client_id: str, client_secret: str) -> None:
@@ -25,10 +24,11 @@ class FeedExport(FeedApiService):
 
         for name in names:
             url: str = self.__build_url(
+                ExportEndpoint.PRODUCT,
                 f'changesOnly=false&productTypeImportCodes={product_type.value}&name={name}'
             )
 
-            response: List[Dict] = self.__send_request(url)
+            response: List[Dict] = self.__send_product_export_request(url)
 
             if product_type == ProductType.PERSON and len(response) > 1:
                 raise DuplicatePersonException(name)
@@ -52,18 +52,20 @@ class FeedExport(FeedApiService):
             concatenated_import_codes: str = ','.join(batch)
 
             url: str = self.__build_url(
+                ExportEndpoint.PRODUCT,
                 f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&importCodes={concatenated_import_codes}&size={batch_size}'
             )
 
-            result_list.extend(self.__send_request(url))
+            result_list.extend(self.__send_product_export_request(url))
 
         return result_list
 
     def get_book(self, isbn: str) -> Dict:
         url: str = self.__build_url(
+            ExportEndpoint.PRODUCT,
             f'changesOnly=false&productTypeImportCodes={ProductType.BOOK.value}&productNo={isbn}'
         )
-        book_list: List[Dict] = self.__send_request(url)
+        book_list: List[Dict] = self.__send_product_export_request(url)
 
         if len(book_list) == 0:
             raise BookNotFoundException(isbn)
@@ -72,9 +74,18 @@ class FeedExport(FeedApiService):
 
         return book_list[0]
 
-    def __build_url(self, parameters: str) -> str:
-        return f'{self.BASE_URL}{self.PRODUCT_EXPORT}?{parameters}'
+    def get_data_register(self, import_code: str) -> Dict:
+        url: str = self.__build_url(ExportEndpoint.DATA_REGISTER, f'importCode={import_code}')
+        data_register_list: List[Dict] = self._send_request(HttpVerb.GET, url).json()
 
-    def __send_request(self, url: str) -> List[Dict]:
+        if len(data_register_list) == 0:
+            raise Exception(f'Data register with import code {import_code} does not exist in Feed')
+
+        return data_register_list[0]
+
+    def __build_url(self, export_endpoint: ExportEndpoint, parameters: str) -> str:
+        return f'{self.BASE_URL}/{export_endpoint.value}?{parameters}'
+
+    def __send_product_export_request(self, url: str) -> List[Dict]:
         response: Response = self._send_request(HttpVerb.POST, url)
         return response.json()['content']
