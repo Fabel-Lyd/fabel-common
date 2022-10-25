@@ -1,0 +1,594 @@
+{
+    "id": 14,
+    "name": {
+        "nb": "Bokforlag"
+    },
+    "description": {},
+    "importCode": "bokforlag",
+    "dataRegisterLines": [
+        {
+            "key": "158752",
+            "value": {
+                "nb": "Pelikanen Forlag"
+            },
+            "sortNo": 55,
+            "deleted": false
+        },
+        {
+            "key": "165409",
+            "value": {
+                "nb": "Liv Forlag"
+            },
+            "sortNo": 43,
+            "deleted": false
+        },
+        {
+            "key": "167687",
+            "value": {
+                "nb": "Solum Forlag AS"
+            },
+            "sortNo": 63,
+            "deleted": false
+        },
+        {
+            "key": "169487",
+            "value": {
+                "nb": "Omnipax"
+            },
+            "sortNo": 47,
+            "deleted": false
+        },
+        {
+            "key": "171960",
+            "value": {
+                "nb": "Barneselskapet"
+            },
+            "sortNo": 5,
+            "deleted": false
+        },
+        {
+            "key": "44331",
+            "value": {
+                "nb": "Ganesa Forlag AS"
+            },
+            "sortNo": 26,
+            "deleted": false
+        },
+        {
+            "key": "49546",
+            "value": {
+                "nb": "Orion Forlag"
+            },
+            "sortNo": 49,
+            "deleted": false
+        },
+        {
+            "key": "61202",
+            "value": {
+                "nb": "Efrem forlag | Forlaget Lengt"
+            },
+            "sortNo": 16,
+            "deleted": false
+        },
+        {
+            "key": "153789",
+            "value": {
+                "nb": "Pilar Forlag"
+            },
+            "sortNo": 57,
+            "deleted": false
+        },
+        {
+            "key": "1000001",
+            "value": {
+                "nb": "Vega forlag"
+            },
+            "sortNo": 69,
+            "deleted": false
+        },
+        {
+            "key": "32500",
+            "value": {
+                "nb": "Cappelen Damm AS"
+            },
+            "sortNo": 11,
+            "deleted": false
+        },
+        {
+            "key": "32530",
+            "value": {
+                "nb": "J. M.  Stenersens  Forlag AS"
+            },
+            "sortNo": 36,
+            "deleted": false
+        },
+        {
+            "key": "38211",
+            "value": {
+                "nb": "Tiden Norsk Forlag"
+            },
+            "sortNo": 66,
+            "deleted": false
+        },
+        {
+            "key": "40255",
+            "value": {
+                "nb": "Pax Forlag AS"
+            },
+            "sortNo": 51,
+            "deleted": false
+        },
+        {
+            "key": "41199",
+            "value": {
+                "nb": "H. Aschehoug & Co (W. Nygaard)"
+            },
+            "sortNo": 33,
+            "deleted": false
+        },
+        {
+            "key": "41215",
+            "value": {
+                "nb": "Gyldendal Norsk Forlag A/S"
+            },
+            "sortNo": 30,
+            "deleted": false
+        },
+        {
+            "key": "44265",
+            "value": {
+                "nb": "Dinamo Forlag"
+            },
+            "sortNo": 15,
+            "deleted": false
+        },
+        {
+            "key": "44460",
+            "value": {
+                "nb": "Kagge Forlag A/S"
+            },
+            "sortNo": 38,
+            "deleted": false
+        },
+        {
+            "key": "51183",
+            "value": {
+                "nb": "Versal Forlag AS"
+            },
+            "sortNo": 70,
+            "deleted": false
+        },
+        {
+            "key": "54671",
+            "value": {
+                "nb": "Vigmostad & Bjørke AS"
+            },
+            "sortNo": 71,
+            "deleted": false
+        },
+        {
+            "key": "56378",
+            "value": {
+                "nb": "Juritzen Forlag AS"
+            },
+            "sortNo": 37,
+            "deleted": false
+        },
+        {
+            "key": "56523",
+            "value": {
+                "nb": "Font Forlag AS"
+            },
+            "sortNo": 21,
+            "deleted": false
+        },
+        {
+            "key": "62912",
+            "value": {
+                "nb": "NRK Aktivum A/S"
+            },
+            "sortNo": 46,
+            "deleted": false
+        },
+        {
+            "key": "62913",
+            "value": {
+                "nb": "Lydbokforlaget AS"
+            },
+            "sortNo": 44,
+            "deleted": false
+        },
+        {
+            "key": "63005",
+            "value": {
+                "nb": "N.W. Damm & Søn AS"
+            },
+            "sortNo": 45,
+            "deleted": false
+        },
+        {
+            "key": "63006",
+            "value": {
+                "nb": "Det Norske Samlaget"
+            },
+            "sortNo": 14,
+            "deleted": false
+        },
+        {
+            "key": "63008",
+            "value": {
+                "nb": "Forlaget Oktober AS"
+            },
+            "sortNo": 23,
+            "deleted": false
+        },
+        {
+            "key": "63009",
+            "value": {
+                "nb": "H. Aschehoug & Co. (W. Nygaard)"
+            },
+            "sortNo": 34,
+            "deleted": false
+        },
+        {
+            "key": "44459",
+            "value": {
+                "nb": "Bazar Forlag AS"
+            },
+            "sortNo": 6,
+            "deleted": false
+        },
+        {
+            "key": "44482",
+            "value": {
+                "nb": "Andreas Gjermstad"
+            },
+            "sortNo": 1,
+            "deleted": false
+        },
+        {
+            "key": "51024",
+            "value": {
+                "nb": "Pegasus Forlag"
+            },
+            "sortNo": 53,
+            "deleted": false
+        },
+        {
+            "key": "54896",
+            "value": {
+                "nb": "SKALD"
+            },
+            "sortNo": 61,
+            "deleted": false
+        },
+        {
+            "key": "63015",
+            "value": {
+                "nb": "Pedagogisk Forum"
+            },
+            "sortNo": 52,
+            "deleted": false
+        },
+        {
+            "key": "44464",
+            "value": {
+                "nb": "Spartacus Forlag AS"
+            },
+            "sortNo": 64,
+            "deleted": false
+        },
+        {
+            "key": "44479",
+            "value": {
+                "nb": "Universitetsforlaget AS"
+            },
+            "sortNo": 67,
+            "deleted": false
+        },
+        {
+            "key": "44480",
+            "value": {
+                "nb": "Gyldendal Norsk Forlag AS - Gyldendal Barn & Ungdom"
+            },
+            "sortNo": 32,
+            "deleted": false
+        },
+        {
+            "key": "46694",
+            "value": {
+                "nb": "Gyldendal Akademisk"
+            },
+            "sortNo": 29,
+            "deleted": false
+        },
+        {
+            "key": "49115",
+            "value": {
+                "nb": "Publicom Forlag"
+            },
+            "sortNo": 59,
+            "deleted": false
+        },
+        {
+            "key": "49840",
+            "value": {
+                "nb": "Forlaget Press AS"
+            },
+            "sortNo": 24,
+            "deleted": false
+        },
+        {
+            "key": "50115",
+            "value": {
+                "nb": "Hegnar Media AS"
+            },
+            "sortNo": 35,
+            "deleted": false
+        },
+        {
+            "key": "63010",
+            "value": {
+                "nb": "Gyldendal Norsk Forlag AS"
+            },
+            "sortNo": 31,
+            "deleted": false
+        },
+        {
+            "key": "63011",
+            "value": {
+                "nb": "Det Norske Bibelselskap"
+            },
+            "sortNo": 13,
+            "deleted": false
+        },
+        {
+            "key": "63012",
+            "value": {
+                "nb": "Karviland Forlag"
+            },
+            "sortNo": 40,
+            "deleted": false
+        },
+        {
+            "key": "63013",
+            "value": {
+                "nb": "Forlaget Press AS"
+            },
+            "sortNo": 25,
+            "deleted": false
+        },
+        {
+            "key": "63014",
+            "value": {
+                "nb": "Eide forlag"
+            },
+            "sortNo": 18,
+            "deleted": false
+        },
+        {
+            "key": "63035",
+            "value": {
+                "nb": "De norske Bokklubbene"
+            },
+            "sortNo": 12,
+            "deleted": false
+        },
+        {
+            "key": "63037",
+            "value": {
+                "nb": "Schibsted Forlag"
+            },
+            "sortNo": 60,
+            "deleted": false
+        },
+        {
+            "key": "63038",
+            "value": {
+                "nb": "Bokklubben Barn"
+            },
+            "sortNo": 7,
+            "deleted": false
+        },
+        {
+            "key": "63039",
+            "value": {
+                "nb": "Kolon Forlag"
+            },
+            "sortNo": 41,
+            "deleted": false
+        },
+        {
+            "key": "63140",
+            "value": {
+                "nb": "Piggsvin Forlag AS"
+            },
+            "sortNo": 56,
+            "deleted": false
+        },
+        {
+            "key": "76210",
+            "value": {
+                "nb": "Vega Forlag"
+            },
+            "sortNo": 68,
+            "deleted": false
+        },
+        {
+            "key": "83402",
+            "value": {
+                "nb": "Kagge Forlag A/S"
+            },
+            "sortNo": 39,
+            "deleted": false
+        },
+        {
+            "key": "147634",
+            "value": {
+                "nb": "Pitch forlag"
+            },
+            "sortNo": 58,
+            "deleted": false
+        },
+        {
+            "key": "153790",
+            "value": {
+                "nb": "Capitana Forlag"
+            },
+            "sortNo": 10,
+            "deleted": false
+        },
+        {
+            "key": "158751",
+            "value": {
+                "nb": "Goliat Forlag"
+            },
+            "sortNo": 27,
+            "deleted": false
+        },
+        {
+            "key": "158753",
+            "value": {
+                "nb": "Pelikanen Forlag"
+            },
+            "sortNo": 54,
+            "deleted": false
+        },
+        {
+            "key": "159967",
+            "value": {
+                "nb": "Canoa Forlag"
+            },
+            "sortNo": 9,
+            "deleted": false
+        },
+        {
+            "key": "161089",
+            "value": {
+                "nb": "Flux Forlag (lisens)"
+            },
+            "sortNo": 20,
+            "deleted": false
+        },
+        {
+            "key": "162340",
+            "value": {
+                "nb": "Lind & Co"
+            },
+            "sortNo": 42,
+            "deleted": false
+        },
+        {
+            "key": "163104",
+            "value": {
+                "nb": "Strawberry Publishing"
+            },
+            "sortNo": 65,
+            "deleted": false
+        },
+        {
+            "key": "163105",
+            "value": {
+                "nb": "Armada Forlag"
+            },
+            "sortNo": 2,
+            "deleted": false
+        },
+        {
+            "key": "163107",
+            "value": {
+                "nb": "Forlaget Lille Måne AS"
+            },
+            "sortNo": 22,
+            "deleted": false
+        },
+        {
+            "key": "165076",
+            "value": {
+                "nb": "Skamløst Forlag AS"
+            },
+            "sortNo": 62,
+            "deleted": false
+        },
+        {
+            "key": "165754",
+            "value": {
+                "nb": "Fabel"
+            },
+            "sortNo": 19,
+            "deleted": false
+        },
+        {
+            "key": "44504",
+            "value": {
+                "nb": "AS Helge Ericksens forlag"
+            },
+            "sortNo": 4,
+            "deleted": false
+        },
+        {
+            "key": "45528",
+            "value": {
+                "nb": "Arneberg Forlag AS"
+            },
+            "sortNo": 3,
+            "deleted": false
+        },
+        {
+            "key": "55902",
+            "value": {
+                "nb": "Omnipax forlag"
+            },
+            "sortNo": 48,
+            "deleted": false
+        },
+        {
+            "key": "3213213",
+            "value": {
+                "nb": "Panta Forlag"
+            },
+            "sortNo": 50,
+            "deleted": false
+        },
+        {
+            "key": "62959",
+            "value": {
+                "nb": "Egmont Serieforlaget AS"
+            },
+            "sortNo": 17,
+            "deleted": false
+        },
+        {
+            "key": "1000000",
+            "value": {
+                "nb": "Bonnier norsk forlag"
+            },
+            "sortNo": 8,
+            "deleted": false
+        },
+        {
+            "key": "1000002",
+            "value": {
+                "nb": "Grappa musikkforlag"
+            },
+            "sortNo": 28,
+            "deleted": false
+        },
+        {
+            "key": "1000003",
+            "value": {
+                "nb": "Papermoon"
+            },
+            "sortNo": 72,
+            "deleted": false
+        },
+        {
+            "key": "1000004",
+            "value": {
+                "nb": "Svarttrost Produksjoner"
+            },
+            "sortNo": 73,
+            "deleted": false
+        }
+    ]
+}

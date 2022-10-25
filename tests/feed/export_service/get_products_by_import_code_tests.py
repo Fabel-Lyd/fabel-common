@@ -4,7 +4,6 @@ from fabelcommon.feed.export_service import FeedExport
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.export_service import ProductType
 
-
 TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_import_code'
 
 
@@ -41,7 +40,7 @@ def test_get_products_by_import_code(
 
     mocked_send_request_call = mocker.patch.object(
         FeedExport,
-        attribute='_FeedExport__send_request',
+        attribute='_FeedExport__send_product_export_request',
         side_effect=test_data['response_data']
     )
 
