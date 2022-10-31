@@ -3,7 +3,6 @@ from fabelcommon.json.json_files import read_json_data
 import pytest
 from fabelcommon.feed.export_service import FeedExport
 from fabelcommon.feed.export_service import ProductType
-from fabelcommon.feed.export_service.exceptions import DuplicatePersonException
 
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_name'
@@ -41,20 +40,3 @@ def test_get_products_by_name_successful(
 
     assert expected_endpoints == actual_endpoints
     assert products_found == test_data['expected']
-
-
-def test_get_products_by_name_failed(mocker) -> None:
-    test_data: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/failed_duplicate_person.json')
-
-    mocker.patch.object(
-        FeedExport,
-        attribute="_FeedExport__send_product_export_request",
-        side_effect=test_data['response_data']
-    )
-
-    feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-
-    with pytest.raises(DuplicatePersonException) as exception_info:
-        feed_export.get_products_by_name(['a'], ProductType.PERSON)
-
-    assert str(exception_info.value) == 'Multiple persons named "a" found in Feed'
