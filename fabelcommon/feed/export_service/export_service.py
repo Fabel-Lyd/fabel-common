@@ -3,7 +3,7 @@ from requests import Response
 from fabelcommon.feed.api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType, ExportEndpoint
 from fabelcommon.http.verbs import HttpVerb
-from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException, DuplicatePersonException
+from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException
 from fabelcommon.batch.batch import chunk_list
 
 
@@ -29,10 +29,6 @@ class FeedExport(FeedApiService):
             )
 
             response: List[Dict] = self.__send_product_export_request(url)
-
-            if product_type == ProductType.PERSON and len(response) > 1:
-                raise DuplicatePersonException(name)
-
             result.extend(response)
         return result
 
