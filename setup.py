@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='fabelcommon',
-    version='5.0.0-rc1',
+    version='6.0.0-kn1',
     description='Common API and functions',
     packages=find_packages(),
     install_requires=['djangorestframework', 'pytz', 'requests', 'xmltodict'],
