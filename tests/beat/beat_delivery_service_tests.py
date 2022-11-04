@@ -22,4 +22,4 @@ def test_beat_create_header():
         'fabel_test_password'
     ).create_header('fake_access_token')
 
-    assert headers == {'Authorization': f'Bearer fake_access_token'}
+    assert headers == {'Authorization': 'Bearer fake_access_token'}
