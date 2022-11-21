@@ -1,6 +1,6 @@
 import json
 from rest_framework import status
-from fabelcommon.beat.beat_delivery_service import BeatDeliveryService
+from fabelcommon.beat.beat_delivery_api_service import BeatDeliveryApiService
 
 
 def test_get_access_token(requests_mock):
@@ -9,7 +9,7 @@ def test_get_access_token(requests_mock):
         status_code=status.HTTP_200_OK,
         text=json.dumps({'access_token': 'fake_access_token'}))
 
-    beat_delivery_service = BeatDeliveryService(
+    beat_delivery_service = BeatDeliveryApiService(
         'fabel_test_username',
         'fabel_test_password',
         'https://ds.test.beat.delivery/',
@@ -23,7 +23,7 @@ def test_get_access_token(requests_mock):
 
 def test_beat_create_header():
 
-    headers = BeatDeliveryService(
+    headers = BeatDeliveryApiService(
         'fabel_test_username',
         'fabel_test_password',
         'https://ds.test.beat.delivery/',
