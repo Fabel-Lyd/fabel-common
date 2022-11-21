@@ -1,5 +1,6 @@
 import json
 from typing import Dict, Optional
+from urllib.parse import urljoin
 import requests
 from requests import Response
 from rest_framework import status
@@ -8,9 +9,11 @@ from fabelcommon.http.verbs import HttpVerb
 
 class BeatDeliveryService:
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, base_url: str, auth_path: str):
         self.__username = username
         self.__password = password
+        self.__base_url = base_url
+        self.__auth_path = auth_path
 
     def get_beat_access_token(self) -> Dict:
         data: Dict[str, str] = {
@@ -19,7 +22,7 @@ class BeatDeliveryService:
         }
 
         response = requests.post(
-            url='https://ds.test.beat.delivery/v1/auth',
+            url=urljoin(self.__base_url, self.__auth_path),
             data=data)
 
         if response.status_code == status.HTTP_200_OK:
