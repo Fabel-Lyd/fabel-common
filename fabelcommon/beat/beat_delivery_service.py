@@ -3,20 +3,19 @@ from typing import Dict, Optional
 import requests
 from requests import Response
 from rest_framework import status
-
 from fabelcommon.http.verbs import HttpVerb
 
 
 class BeatDeliveryService:
 
     def __init__(self, username, password):
-        self.username = username
-        self.password = password
+        self.__username = username
+        self.__password = password
 
     def get_beat_access_token(self) -> Dict:
         data: Dict[str, str] = {
-            'username': self.username,
-            'password': self.password
+            '__username': self.__username,
+            '__password': self.__password
         }
 
         response = requests.post(
