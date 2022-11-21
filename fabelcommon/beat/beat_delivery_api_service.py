@@ -7,7 +7,7 @@ from rest_framework import status
 from fabelcommon.http.verbs import HttpVerb
 
 
-class BeatDeliveryService:
+class BeatDeliveryApiService:
 
     def __init__(self, username, password, base_url: str, auth_path: str):
         self.__username = username
@@ -42,7 +42,7 @@ class BeatDeliveryService:
     def send_request(
             self,
             verb: HttpVerb,
-            url: str,
+            path: str,
             files=None,
             data: Optional[Dict] = None, ):
         access_token = self.get_beat_access_token()
@@ -50,7 +50,7 @@ class BeatDeliveryService:
 
         response: Response = requests.request(
             verb.value,
-            url=url,
+            url=urljoin(self.__base_url, path),
             headers=headers,
             data=data,
             files=files)
