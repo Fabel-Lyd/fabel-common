@@ -1,51 +1,48 @@
 import json
 from typing import Dict, Optional
 from requests import Response
-import requests
+from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
 
+HARDCODED_BASE_URL = 'https://api.fabel.no'
 
-class BeatApiService:
-    BASE_URL = 'https://api.fabel.no'
 
-    def __init__(self, client_id, client_secret):
-        self._client_id = client_id
-        self._client_secret = client_secret
+class BeatApiService(ApiService):
 
-    @staticmethod
-    def create_headers(access_token):
-        headers = {
-            'Authorization': f'Bearer {access_token}',
-            'Content-Type': 'application/json'
-        }
-        return headers
+    BASE_URL = HARDCODED_BASE_URL
 
-    def get_token(self) -> str:
-        url = f'{BeatApiService.BASE_URL}/v2/oauth2/token'
-        data = {
-            'grant_type': 'client_credentials',
-            'client_id': self._client_id,
-            'client_secret': self._client_secret,
-        }
+    def __init__(
+            self,
+            client_id,
+            client_secret,
+            base_url=HARDCODED_BASE_URL,
+            auth_path='/v2/oauth2/token'
+    ):
+        super().__init__(
+            client_id,
+            client_secret,
+            base_url,
+            auth_path
 
-        response = requests.post(url, data=data, verify=True, allow_redirects=False)
-        response.raise_for_status()
-
-        response_data = response.json()
-        return response_data['access_token']
+        )
 
     def send_request(
             self,
             verb: HttpVerb,
             url: str,
             data: Optional[Dict] = None,
-            headers_to_add: Dict[str, str] = {}) -> str:
-        token: str = self.get_token()
+            headers_to_add: Optional[Dict[str, str]] = None
+    ) -> str:
+        headers = {} if headers_to_add is None else headers_to_add
+        headers.update({'Content-Type': 'application/json'})
 
-        headers: Dict[str, str] = self.create_headers(token)
-        headers.update(headers_to_add)
+        response: Response = self._send_request(
+            verb,
+            path=url,
+            headers_to_add=headers,
+            data=json.dumps(data)
+        )
 
-        response: Response = requests.request(verb.value, url, headers=headers, data=json.dumps(data))
         response.raise_for_status()
 
         return response.text
