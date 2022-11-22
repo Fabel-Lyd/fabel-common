@@ -1,33 +1,40 @@
 import json
-from rest_framework import status
+import io
+from typing import Dict, Tuple
 from fabelcommon.beat.beat_delivery_api_service import BeatDeliveryApiService
+from fabelcommon.http.verbs import HttpVerb
 
 
-def test_get_access_token(requests_mock):
+def test_send_request_success(requests_mock):
+
     requests_mock.post(
-        url='https://ds.test.beat.delivery/v1/auth',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps({'access_token': 'fake_access_token'}))
-
-    beat_delivery_service = BeatDeliveryApiService(
-        'fabel_test_username',
-        'fabel_test_password',
-        'https://ds.test.beat.delivery/',
-        '/v1/auth'
+        'https://beat-delivery/oauth',
+        text=json.dumps({'access_token': 'test_token'})
     )
 
-    user_token = beat_delivery_service.get_beat_access_token()
+    expected_delivery_data = {"delivery_id": 12345}
 
-    assert user_token == 'fake_access_token'
+    mocked_beat_request = requests_mock.post(
+        'https://beat-delivery',
+        text=json.dumps(expected_delivery_data)
+    )
 
+    beat_delivery_api_service = BeatDeliveryApiService(
+        'test_client_id',
+        'test_client_secret',
+        'https://beat-delivery',
+        '/oauth'
+    )
 
-def test_beat_create_header():
+    buffer = io.BytesIO(b'<root/>')
+    files: Dict[str, Tuple[str, io.BytesIO, str]] = {'onixProducts': ('isbn.xml', buffer, 'text/xml')}
 
-    headers = BeatDeliveryApiService(
-        'fabel_test_username',
-        'fabel_test_password',
-        'https://ds.test.beat.delivery/',
-        '/v1/auth'
-    ).create_header('fake_access_token')
+    response_data = beat_delivery_api_service.send_request(
+        verb=HttpVerb.POST,
+        path='/',
+        data={'test_data': 'test_value'},
+        files=files
+    )
 
-    assert headers == {'Authorization': 'Bearer fake_access_token'}
+    assert 'multipart/form-data' in mocked_beat_request.last_request.headers['Content-Type']
+    assert json.loads(response_data) == expected_delivery_data
