@@ -23,16 +23,16 @@ class ApiService(ABC):
         self._auth_path: str = auth_path
 
     @property
-    def access_token_key(self) -> AccessTokenKey:
+    def _access_token_key(self) -> AccessTokenKey:
         raise NotImplementedError('Implement by which key to retrieve access token.')
 
     @property
-    def token_request_data(self) -> Dict:
+    def _token_request_data(self) -> Dict:
         raise NotImplementedError(
             'Implement generation of the parameter "data" for requests.post() used to get access token.')
 
     @property
-    def token_request_auth(self) -> Optional[Any]:
+    def _token_request_auth(self) -> Optional[Any]:
         raise NotImplementedError(
             'Implement generation of the parameter "auth" for requests.post() to get access token.')
 
@@ -43,15 +43,15 @@ class ApiService(ABC):
 
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
-            data=self.token_request_data,
+            data=self._token_request_data,
             verify=True,
             allow_redirects=False,
-            auth=self.token_request_auth
+            auth=self._token_request_auth
         )
 
         response.raise_for_status()
 
-        return response.json()[self.access_token_key.value]
+        return response.json()[self._access_token_key.value]
 
     def _send_request(
             self,
