@@ -2,7 +2,7 @@ from typing import Dict, List, Union
 import json
 from time import sleep
 from requests import Response
-from fabelcommon.feed.api_service import FeedApiService
+from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_mode import ImportMode
 from fabelcommon.feed.import_service.import_result import ImportResult
