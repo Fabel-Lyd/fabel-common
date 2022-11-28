@@ -4,7 +4,7 @@ from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
 
-HARDCODED_DELIVERY_BASE_URL = 'https://beat-delivery'
+HARDCODED_DELIVERY_BASE_URL = 'https://ds.test.beat.delivery'
 
 
 class BeatDeliveryApiService(ApiService):
@@ -14,7 +14,7 @@ class BeatDeliveryApiService(ApiService):
             username: str,
             password: str,
             base_url: str = HARDCODED_DELIVERY_BASE_URL,
-            auth_path: str = '/oauth'
+            auth_path: str = '/v1/auth'
     ):
         super().__init__(
             client_id=username,

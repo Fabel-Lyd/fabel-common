@@ -8,22 +8,22 @@ from fabelcommon.http.verbs import HttpVerb
 def test_send_request_success(requests_mock):
 
     requests_mock.post(
-        'https://beat-delivery/oauth',
+        'https://ds.test.beat.delivery/v1/auth',
         text=json.dumps({'access_token': 'test_token'})
     )
 
     expected_delivery_data = {"delivery_id": 12345}
 
     mocked_beat_request = requests_mock.post(
-        'https://beat-delivery',
+        'https://ds.test.beat.delivery',
         text=json.dumps(expected_delivery_data)
     )
 
     beat_delivery_api_service = BeatDeliveryApiService(
         'test_client_id',
         'test_client_secret',
-        'https://beat-delivery',
-        '/oauth'
+        'https://ds.test.beat.delivery',
+        '/v1/auth'
     )
 
     buffer = io.BytesIO(b'<root/>')
