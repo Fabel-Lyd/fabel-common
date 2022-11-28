@@ -38,3 +38,30 @@ def test_send_request_success(requests_mock):
 
     assert 'multipart/form-data' in mocked_beat_request.last_request.headers['Content-Type']
     assert json.loads(response_data) == expected_delivery_data
+
+
+def test_beat_delivery_token_request_data():
+    token_request_data = BeatDeliveryApiService(
+        'test_client_id',
+        'test_client_secret'
+    )._token_request_data
+    assert token_request_data == {}
+
+
+def test_beat_delivery_create_header():
+
+    header = BeatDeliveryApiService(
+        'test_client_id',
+        'test_client_secret'
+    ).create_header('test_token')
+
+    assert header == {'Authorization': 'Bearer test_token'}
+
+
+def test_beat_delivery_access_token_key():
+    access_token_key = BeatDeliveryApiService(
+        'test_client_id',
+        'test_client_secret'
+    )._access_token_key
+
+    assert access_token_key.value == 'access_token'
