@@ -1,6 +1,7 @@
 import json
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 from requests import Response
+from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
 
@@ -11,6 +12,22 @@ class BeatApiService(ApiService):
 
     BASE_URL = HARDCODED_BASE_URL
 
+    @property
+    def _access_token_key(self) -> AccessTokenKey:
+        return AccessTokenKey.ACCESS_TOKEN
+
+    @property
+    def _token_request_auth(self) -> Optional[Tuple]:
+        return None
+
+    @property
+    def _token_request_data(self) -> Dict:
+        return {
+            'grant_type': 'client_credentials',
+            'client_id': self._client_id,
+            'client_secret': self._client_secret,
+        }
+
     def __init__(
             self,
             client_id,
@@ -19,12 +36,14 @@ class BeatApiService(ApiService):
             auth_path='/v2/oauth2/token'
     ):
         super().__init__(
-            client_id,
-            client_secret,
-            base_url,
-            auth_path
-
+            client_id=client_id,
+            client_secret=client_secret,
+            base_url=base_url,
+            auth_path=auth_path,
         )
+
+    def create_header(self, access_token: str):
+        return {'Authorization': f'Bearer {access_token}'}
 
     def send_request(
             self,
