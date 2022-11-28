@@ -1,16 +1,46 @@
 import json
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from urllib.parse import parse_qs
 import pytest
 from requests import HTTPError, Response
 from rest_framework import status
+from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
 
 
 class ApiTestService(ApiService):
+
+    @property
+    def _access_token_key(self) -> AccessTokenKey:
+        return AccessTokenKey.ACCESS_TOKEN
+
+    @property
+    def _token_request_data(self) -> Dict:
+        return {
+            'grant_type': 'client_credentials',
+            'client_id': self._client_id,
+            'client_secret': self._client_secret,
+        }
+
+    @property
+    def _token_request_auth(self) -> Optional[Any]:
+        return None
+
+    def __get_token(self) -> str:
+        return 'fake_access_token'
+
+    def create_header(self, access_token: str) -> Dict[str, str]:
+        return {
+            'Authorization': f'Bearer {access_token}'
+        }
+
     def __init__(self) -> None:
-        super().__init__('fake_client_id', 'fake_client_secret', 'http://localhost/', '/auth')
+        super().__init__(
+            client_id='fake_client_id',
+            client_secret='fake_client_secret',
+            base_url='http://localhost/',
+            auth_path='/auth')
 
     def send_request(
             self,
@@ -75,7 +105,6 @@ def test_send_request_successful(
     auth_request_body: Dict = parse_qs(auth_request.text)
 
     assert auth_request_body['grant_type'][0] == 'client_credentials'
-    assert 'Basic' in auth_request.headers.get("Authorization")
     assert response_content == test_data
 
 
