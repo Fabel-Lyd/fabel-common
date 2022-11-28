@@ -29,7 +29,10 @@ class BeatDeliveryApiService(ApiService):
 
     @property
     def _token_request_data(self) -> Dict:
-        return {}
+        return {
+            'username': self._client_id,
+            'password': self._client_secret
+        }
 
     @property
     def _token_request_auth(self) -> Optional[Any]:
