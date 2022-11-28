@@ -45,7 +45,10 @@ def test_beat_delivery_token_request_data():
         'test_client_id',
         'test_client_secret'
     )._token_request_data
-    assert token_request_data == {}
+    assert token_request_data == {
+        'username': 'test_client_id',
+        'password': 'test_client_secret'
+    }
 
 
 def test_beat_delivery_create_header():
