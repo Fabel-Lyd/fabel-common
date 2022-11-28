@@ -2,7 +2,7 @@
     {
         "startedTime": "2022-07-07T14:49:46.249618Z",
         "finishedTime": null,
-        "progress": "0 / 3  (0.00 %)",
+        "progress": "0 / 1  (0.00 %)",
         "sumOfStatuses": {
             "OK": 0,
             "WARNING": 0,
@@ -12,38 +12,20 @@
     {
         "startedTime": "2022-07-07T14:49:46.249618Z",
         "finishedTime": "2022-07-07T14:49:51.634374Z",
-        "progress": "3 / 3  (100.00 %)",
+        "progress": "1 / 1  (100.00 %)",
         "sumOfStatuses": {
-            "OK": 2,
-            "WARNING": 1,
+            "OK": 1,
+            "WARNING": 0,
             "ERROR": 0
         },
         "report": {
             "content": [
                 {
-                    "importCode": "33391",
+                    "importCode": "99999",
                     "productNo": "P_9999999",
                     "action": "CREATE",
                     "status": "OK",
                     "messages": [],
-                    "importJSON": null
-                },
-                {
-                    "importCode": "33390",
-                    "productNo": "P_9999998",
-                    "action": "CREATE",
-                    "status": "OK",
-                    "messages": [],
-                    "importJSON": null
-                },
-                {
-                    "importCode": "33389",
-                    "productNo": "P_9999997",
-                    "action": "CREATE",
-                    "status": "WARNING",
-                    "messages": [
-                        "No product type with import code incorrect found"
-                    ],
                     "importJSON": null
                 }
             ],
@@ -59,7 +41,7 @@
                 "paged": true,
                 "unpaged": false
             },
-            "totalElements": 3,
+            "totalElements": 1,
             "totalPages": 1,
             "last": true,
             "size": 20,
@@ -69,7 +51,7 @@
                 "unsorted": true,
                 "sorted": false
             },
-            "numberOfElements": 3,
+            "numberOfElements": 1,
             "first": true,
             "empty": false
         }

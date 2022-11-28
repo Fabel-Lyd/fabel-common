@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Optional
 import json
 from time import sleep
 from requests import Response
@@ -17,22 +17,12 @@ class FeedImport(FeedApiService):
     def import_products(
             self,
             formatted_products: List[Dict],
-            import_mode: ImportMode,
-            query_interval_seconds: int,
-            max_attempts: int
-    ) -> ImportResult:
+            import_mode: ImportMode
+    ) -> str:
 
         if len(formatted_products) == 0:
             raise Exception('List of products to be imported is empty')
 
-        status_guid: str = self.__send_payload(formatted_products, import_mode)
-        return self.__await_import_finish(
-            guid=status_guid,
-            query_interval_seconds=query_interval_seconds,
-            max_attempts=max_attempts
-        )
-
-    def __send_payload(self, formatted_products: List[Dict], import_mode: ImportMode) -> str:
         url: str = self.__build_url()
         payload: Dict = {
             "importSettings": {
@@ -42,7 +32,17 @@ class FeedImport(FeedApiService):
         }
         return self.__send_request(url, json.dumps(payload))
 
-    def __await_import_finish(
+    def get_import_result(self, guid: str) -> Optional[ImportResult]:
+        url: str = self.__build_url() + \
+            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true'
+
+        import_report: Dict = self._send_request(HttpVerb.GET, url).json()
+
+        if import_report['finishedTime'] is None:
+            return None
+        return ImportResult(import_report)
+
+    def await_import_finish(
             self,
             guid: str,
             query_interval_seconds: int,
@@ -50,7 +50,7 @@ class FeedImport(FeedApiService):
     ) -> ImportResult:
 
         for i in range(0, max_attempts):
-            import_result: Union[ImportResult, None] = self.__get_import_report(guid)
+            import_result: Union[ImportResult, None] = self.get_import_result(guid)
 
             if import_result is None:
                 sleep(query_interval_seconds)
@@ -62,16 +62,6 @@ class FeedImport(FeedApiService):
             f'Feed product import did not return finished status '
             f'(queried {max_attempts} times with {query_interval_seconds} s interval)'
         )
-
-    def __get_import_report(self, guid: str) -> Union[ImportResult, None]:
-        url: str = self.__build_url() + \
-            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true'
-
-        import_report: Dict = self._send_request(HttpVerb.GET, url).json()
-        if import_report['finishedTime'] is None:
-            return None
-
-        return ImportResult(import_report)
 
     def __build_url(self) -> str:
         return f'{self.BASE_URL}{self.PRODUCT_IMPORT}'
