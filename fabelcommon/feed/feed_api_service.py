@@ -7,15 +7,15 @@ from requests import Response
 
 class FeedApiService(ApiService):
     @property
-    def access_token_key(self) -> AccessTokenKey:
+    def _access_token_key(self) -> AccessTokenKey:
         return AccessTokenKey.ACCESS_TOKEN
 
     @property
-    def token_request_data(self) -> Dict:
+    def _token_request_data(self) -> Dict:
         return {'grant_type': 'client_credentials'}
 
     @property
-    def token_request_auth(self) -> Optional[Any]:
+    def _token_request_auth(self) -> Optional[Any]:
         return self._client_id, self._client_secret
 
     def create_header(self, access_token: str) -> Dict:
@@ -41,7 +41,7 @@ class FeedApiService(ApiService):
             data: Optional[Dict] = None):
 
         response: Response = self._send_request(
-            verb,
+            verb=verb,
             path=path,
             data=data)
 
