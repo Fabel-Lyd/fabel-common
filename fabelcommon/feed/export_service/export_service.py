@@ -1,6 +1,6 @@
 from typing import List, Dict
 from requests import Response
-from fabelcommon.feed.api_service import FeedApiService
+from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType, ExportEndpoint
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException
