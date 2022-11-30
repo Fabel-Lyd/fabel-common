@@ -24,7 +24,8 @@ class ApiService(ABC):
 
     @property
     def _access_token_key(self) -> AccessTokenKey:
-        raise NotImplementedError('Implement by which key to retrieve access token.')
+        raise NotImplementedError(
+            'Implement which key to use to retrieve the access token from authentication requests.')
 
     @property
     def _token_request_data(self) -> Dict:
