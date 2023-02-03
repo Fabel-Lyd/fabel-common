@@ -1,0 +1,3 @@
+https://github.com/microsoft/pyright/blob/main/docs/typed-libraries.md#inlined-type-annotations-and-type-stubs
+
+PEP 561 indicates that a “py.typed” marker file must be included in the package if the author wishes to support type checking of their code.
