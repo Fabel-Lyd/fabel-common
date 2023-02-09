@@ -5,12 +5,8 @@ from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
 
-HARDCODED_BASE_URL = 'https://api.fabel.no'
-
 
 class BeatApiService(ApiService):
-
-    BASE_URL = HARDCODED_BASE_URL
 
     @property
     def _access_token_key(self) -> AccessTokenKey:
@@ -32,7 +28,7 @@ class BeatApiService(ApiService):
             self,
             client_id,
             client_secret,
-            base_url=HARDCODED_BASE_URL,
+            base_url,
             auth_path='/v2/oauth2/token'
     ):
         super().__init__(
