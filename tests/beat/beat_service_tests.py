@@ -15,7 +15,11 @@ def test_send_request_success(requests_mock):
         text='{"releases":[]}',
     )
 
-    beat_api_service = BeatApiService('test_client_id', 'test_client_secret')
+    beat_api_service = BeatApiService(
+        'test_client_id',
+        'test_client_secret',
+        'https://api.fabel.no'
+    )
 
     response_data = beat_api_service.send_request(
         verb=HttpVerb.POST,
@@ -32,7 +36,8 @@ def test_beat_service_headers():
 
     headers = BeatApiService(
         'test_client_id',
-        'test_client_secret'
+        'test_client_secret',
+        'https://api.fabel.no'
     ).create_header('test_token')
 
     assert headers == {'Authorization': 'Bearer test_token'}
@@ -42,7 +47,8 @@ def test_beat_service_token_request_data():
 
     token_request_data = BeatApiService(
         'test_client_id',
-        'test_client_secret'
+        'test_client_secret',
+        'https://api.fabel.no'
     )._token_request_data
 
     assert token_request_data == {
@@ -55,7 +61,8 @@ def test_beat_service_token_request_data():
 def test_beat_service_token_request_auth():
     token_request_auth = BeatApiService(
         'test_client_id',
-        'test_client_secret'
+        'test_client_secret',
+        'https://api.fabel.no'
     )._token_request_auth
 
     assert token_request_auth is None
@@ -64,7 +71,8 @@ def test_beat_service_token_request_auth():
 def test_beat_service_token_access_token_key():
     access_token_key = BeatApiService(
         'test_client_id',
-        'test_client_secret'
+        'test_client_secret',
+        'https://api.fabel.no'
     )._access_token_key
 
     assert access_token_key.value == 'access_token'
