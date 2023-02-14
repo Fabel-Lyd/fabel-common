@@ -9,7 +9,7 @@ class AccessToken:
         self.__expires_at = current_time + timedelta(seconds=expires_in)
 
     @property
-    def access_token_(self) -> str:
+    def access_token_value(self) -> str:
         return self.__access_token_value
 
     @property

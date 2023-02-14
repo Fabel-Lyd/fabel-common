@@ -3,6 +3,7 @@ from typing import Dict, Union, Optional, Any
 from urllib.parse import urljoin
 import requests
 from requests import Response
+from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.http.verbs import HttpVerb
 
@@ -40,7 +41,7 @@ class ApiService(ABC):
     def create_header(self, access_token: str) -> Dict:
         raise NotImplementedError('Implement creation of header.')
 
-    def __get_token(self) -> str:
+    def __get_token(self) -> AccessToken:
 
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
@@ -49,10 +50,14 @@ class ApiService(ABC):
             allow_redirects=False,
             auth=self._token_request_auth
         )
-
         response.raise_for_status()
 
-        return response.json()[self._access_token_key.value]
+        token_data = response.json()
+
+        return AccessToken(
+            access_token_value=token_data[self._access_token_key.value],
+            expires_in=token_data.get('expires_in', 600)
+        )
 
     def _send_request(
             self,
@@ -64,9 +69,9 @@ class ApiService(ABC):
             headers_to_add: Optional[Dict[str, str]] = None
     ) -> Response:
 
-        token: str = self.__get_token()
+        token: AccessToken = self.__get_token()
 
-        headers: Dict[str, str] = self.create_header(token)
+        headers: Dict[str, str] = self.create_header(token.access_token_value)
         if headers_to_add is not None:
             headers.update(headers_to_add)
 
