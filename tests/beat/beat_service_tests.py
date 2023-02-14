@@ -98,3 +98,25 @@ def test_get_password_flow_token(requests_mock):
 
     assert access_token.is_valid is True
     assert access_token.access_token_value == 'test_token'
+
+
+def test_sent_request_with_token(requests_mock):
+
+    data = '{"releases":[]}'
+
+    requests_mock.get(
+        'http://beat-endpoint/data',
+        text='{"releases":[]}',
+    )
+
+    beat_api_service = BeatApiService(
+        'test_client_id',
+        'test_client_secret',
+        'https://api.fabel.no'
+    )
+    response_data = beat_api_service.sent_request_with_token(
+        verb=HttpVerb.GET,
+        url='http://beat-endpoint/data',
+        token_value='test_token')
+
+    assert response_data == data

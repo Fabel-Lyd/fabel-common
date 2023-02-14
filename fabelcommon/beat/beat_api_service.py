@@ -63,6 +63,23 @@ class BeatApiService(ApiService):
 
         return response.text
 
+    def sent_request_with_token(
+            self,
+            verb: HttpVerb,
+            url: str,
+            token_value: str,
+            data: Optional[Dict] = None
+    ) -> str:
+        response: Response = self._send_request(
+            verb,
+            path=url,
+            headers_to_add=None,
+            data=json.dumps(data),
+            token_value=token_value
+        )
+
+        return response.text
+
     def get_password_flow_token(self, user_name: str, password: str) -> AccessToken:
         token_request_data = {
             'grant_type': 'password',
