@@ -76,3 +76,25 @@ def test_beat_service_token_access_token_key():
     )._access_token_key
 
     assert access_token_key.value == 'access_token'
+
+
+def test_get_password_flow_token(requests_mock):
+    requests_mock.post(
+        'https://api.fabel.no/v2/oauth2/token',
+        text=json.dumps(
+            {
+                'access_token': 'test_token',
+                'expires_in': 300
+            }
+        )
+    )
+
+    beat_api_service = BeatApiService(
+        'test_client_id',
+        'test_client_secret',
+        'https://api.fabel.no'
+    )
+    access_token = beat_api_service.get_password_flow_token('user', 'password')
+
+    assert access_token.is_valid is True
+    assert access_token.access_token_value == 'test_token'

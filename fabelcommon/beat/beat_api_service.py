@@ -1,6 +1,7 @@
 import json
 from typing import Dict, Optional, Tuple
 from requests import Response
+from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.http.verbs import HttpVerb
@@ -61,3 +62,13 @@ class BeatApiService(ApiService):
         response.raise_for_status()
 
         return response.text
+
+    def get_password_flow_token(self, user_name: str, password: str) -> AccessToken:
+        token_request_data = {
+            'grant_type': 'password',
+            'username': user_name,
+            'password': password,
+            'client_id': self._client_id,
+            'client_secret': self._client_secret
+        }
+        return self._get_token(token_request_data)
