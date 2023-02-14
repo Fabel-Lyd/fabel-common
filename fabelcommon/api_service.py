@@ -22,7 +22,7 @@ class ApiService(ABC):
         self._client_secret: str = client_secret
         self._base_url: str = base_url
         self._auth_path: str = auth_path
-        self._access_token: Optional[AccessToken] = None
+        self.__access_token: Optional[AccessToken] = None
 
     @property
     def _access_token_key(self) -> AccessTokenKey:
@@ -44,8 +44,8 @@ class ApiService(ABC):
 
     def __get_token(self) -> AccessToken:
 
-        if self._access_token is not None:
-            return self._access_token
+        if self.__access_token is not None and self.__access_token.is_valid:
+            return self.__access_token
 
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
@@ -58,11 +58,11 @@ class ApiService(ABC):
 
         token_data = response.json()
 
-        self._access_token = AccessToken(
+        self.__access_token = AccessToken(
             access_token_value=token_data[self._access_token_key.value],
             expires_in=token_data.get('expires_in', 600)
         )
-        return self._access_token
+        return self.__access_token
 
     def _send_request(
             self,
