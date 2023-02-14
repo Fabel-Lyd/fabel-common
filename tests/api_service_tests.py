@@ -2,6 +2,7 @@ import json
 from typing import List, Dict, Optional, Any
 from urllib.parse import parse_qs
 import pytest
+from freezegun import freeze_time
 from requests import HTTPError, Response
 from rest_framework import status
 from fabelcommon.access_token_key import AccessTokenKey
@@ -130,6 +131,36 @@ def test_send_multiple_requests_using_cached_token(requests_mock):
         headers_to_add=None
     )
     assert auth_request_mock.call_count == 1, 'Token should be cached and there should be only one call to fetch access token'
+
+
+def test_send_multiple_requests_refreshing_token(
+        requests_mock,
+        mocker
+):
+    auth_request_mock = requests_mock.post(
+        'http://localhost/auth',
+        text=json.dumps({'access_token': 'fake_access_token'})
+    )
+
+    requests_mock.post(
+        'http://localhost/post1',
+        text=json.dumps({'content': None}))
+
+    feed_api_test: ApiTestService = ApiTestService()
+
+    with freeze_time("2012-01-14 12:00:00"):
+        feed_api_test.send_request(
+            path='http://localhost/post1',
+            headers_to_add=None
+        )
+
+    with freeze_time("2012-01-14 13:00:00"):
+        feed_api_test.send_request(
+            path='http://localhost/post1',
+            headers_to_add=None
+        )
+
+    assert auth_request_mock.call_count == 2, 'There should be two call to fetch token because token should be refreshed'
 
 
 def test_send_request_failed(requests_mock) -> None:
