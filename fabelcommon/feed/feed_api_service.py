@@ -18,7 +18,7 @@ class FeedApiService(ApiService):
     def _token_request_auth(self) -> Optional[Any]:
         return self._client_id, self._client_secret
 
-    def create_header(self, access_token: str) -> Dict:
+    def _create_authorization_header(self, access_token: str) -> Dict:
         return {
             'Authorization': f'Bearer {access_token}',
             'Content-Type': 'application/json'

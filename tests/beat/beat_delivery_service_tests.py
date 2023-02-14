@@ -56,7 +56,7 @@ def test_beat_delivery_create_header():
     header = BeatDeliveryApiService(
         'test_client_id',
         'test_client_secret'
-    ).create_header('test_token')
+    )._create_authorization_header('test_token')
 
     assert header == {'Authorization': 'Bearer test_token'}
 
