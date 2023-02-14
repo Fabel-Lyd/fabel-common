@@ -73,12 +73,14 @@ class ApiService(ABC):
             # when data passed as Dict only top level properties are serialized
             data: Union[Dict, str, None] = None,
             files=None,
-            headers_to_add: Optional[Dict[str, str]] = None
+            headers_to_add: Optional[Dict[str, str]] = None,
+            token_value: Optional[str] = None
     ) -> Response:
 
-        token: AccessToken = self._get_token()
+        if token_value is None:
+            token_value = self._get_token().access_token_value
 
-        headers: Dict[str, str] = self.create_header(token.access_token_value)
+        headers: Dict[str, str] = self.create_header(token_value)
         if headers_to_add is not None:
             headers.update(headers_to_add)
 
