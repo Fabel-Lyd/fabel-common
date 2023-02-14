@@ -42,14 +42,16 @@ class ApiService(ABC):
     def create_header(self, access_token: str) -> Dict:
         raise NotImplementedError('Implement creation of header.')
 
-    def __get_token(self) -> AccessToken:
+    def _get_token(self, token_request_data: Optional[Dict] = None) -> AccessToken:
+        if token_request_data is None:
+            token_request_data = self._token_request_data
 
         if self.__access_token is not None and self.__access_token.is_valid:
             return self.__access_token
 
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
-            data=self._token_request_data,
+            data=token_request_data,
             verify=True,
             allow_redirects=False,
             auth=self._token_request_auth
@@ -74,7 +76,7 @@ class ApiService(ABC):
             headers_to_add: Optional[Dict[str, str]] = None
     ) -> Response:
 
-        token: AccessToken = self.__get_token()
+        token: AccessToken = self._get_token()
 
         headers: Dict[str, str] = self.create_header(token.access_token_value)
         if headers_to_add is not None:

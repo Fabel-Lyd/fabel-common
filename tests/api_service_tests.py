@@ -28,9 +28,6 @@ class ApiTestService(ApiService):
     def _token_request_auth(self) -> Optional[Any]:
         return None
 
-    def __get_token(self) -> str:
-        return 'fake_access_token'
-
     def create_header(self, access_token: str) -> Dict[str, str]:
         return {
             'Authorization': f'Bearer {access_token}'
