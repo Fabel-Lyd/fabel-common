@@ -29,7 +29,7 @@ def test_feed_request_auth():
 def test_feed_create_header():
     feed_header = FeedApiService(
         'test_client_id',
-        'test_client_secret').create_header('test_token')
+        'test_client_secret')._create_authorization_header('test_token')
 
     assert feed_header == {
         'Authorization': 'Bearer test_token',

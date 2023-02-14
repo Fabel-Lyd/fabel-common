@@ -39,7 +39,7 @@ class BeatApiService(ApiService):
             auth_path=auth_path,
         )
 
-    def create_header(self, access_token: str):
+    def _create_authorization_header(self, access_token: str):
         return {'Authorization': f'Bearer {access_token}'}
 
     def send_request(

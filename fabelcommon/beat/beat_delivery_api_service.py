@@ -38,7 +38,7 @@ class BeatDeliveryApiService(ApiService):
     def _token_request_auth(self) -> Optional[Any]:
         return None
 
-    def create_header(self, access_token: str) -> Dict:
+    def _create_authorization_header(self, access_token: str) -> Dict:
         return {'Authorization': f'Bearer {access_token}'}
 
     def send_request(

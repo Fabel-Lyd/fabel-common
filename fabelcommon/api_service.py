@@ -39,7 +39,7 @@ class ApiService(ABC):
         raise NotImplementedError(
             'Implement generation of the parameter "auth" for requests.post() to get access token.')
 
-    def create_header(self, access_token: str) -> Dict:
+    def _create_authorization_header(self, access_token: str) -> Dict:
         raise NotImplementedError('Implement creation of header.')
 
     def _get_token(self, token_request_data: Optional[Dict] = None) -> AccessToken:
@@ -80,7 +80,7 @@ class ApiService(ABC):
         if token_value is None:
             token_value = self._get_token().access_token_value
 
-        headers: Dict[str, str] = self.create_header(token_value)
+        headers: Dict[str, str] = self._create_authorization_header(token_value)
         if headers_to_add is not None:
             headers.update(headers_to_add)
 
