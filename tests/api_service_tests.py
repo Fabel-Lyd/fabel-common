@@ -28,7 +28,7 @@ class ApiTestService(ApiService):
     def _token_request_auth(self) -> Optional[Any]:
         return None
 
-    def create_header(self, access_token: str) -> Dict[str, str]:
+    def _create_authorization_header(self, access_token: str) -> Dict[str, str]:
         return {
             'Authorization': f'Bearer {access_token}'
         }

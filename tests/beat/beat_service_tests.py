@@ -38,7 +38,7 @@ def test_beat_service_headers():
         'test_client_id',
         'test_client_secret',
         'https://api.fabel.no'
-    ).create_header('test_token')
+    )._create_authorization_header('test_token')
 
     assert headers == {'Authorization': 'Bearer test_token'}
 
