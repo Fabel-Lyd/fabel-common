@@ -108,6 +108,30 @@ def test_send_request_successful(
     assert response_content == test_data
 
 
+def test_send_multiple_requests_using_cached_token(requests_mock):
+
+    auth_request_mock = requests_mock.post(
+        'http://localhost/auth',
+        text=json.dumps({'access_token': 'fake_access_token'})
+    )
+
+    requests_mock.post(
+        'http://localhost/post1',
+        text=json.dumps({'content': None}))
+
+    feed_api_test: ApiTestService = ApiTestService()
+
+    feed_api_test.send_request(
+        path='http://localhost/post1',
+        headers_to_add=None
+    )
+    feed_api_test.send_request(
+        path='http://localhost/post1',
+        headers_to_add=None
+    )
+    assert auth_request_mock.call_count == 1, 'Token should be cached and there should be only one call to fetch access token'
+
+
 def test_send_request_failed(requests_mock) -> None:
     requests_mock.post(
         'http://localhost/auth',
