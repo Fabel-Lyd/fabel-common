@@ -8,5 +8,6 @@ setup(
     version='11.0.0-rc1',
     description='Common API and functions',
     packages=find_packages(),
+    package_data={'': ['py.typed']},
     install_requires=['djangorestframework', 'pytz', 'requests', 'xmltodict'],
 )
