@@ -1,4 +1,5 @@
 from typing import List, Dict
+from urllib.parse import urlencode
 from requests import Response
 from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
 from fabelcommon.feed.feed_api_service import FeedApiService
@@ -50,8 +51,13 @@ class FeedExport(FeedApiService):
             concatenated_attribute_values: str = ','.join(batch)
 
             url: str = self.__build_url(
-                ExportEndpoint.PRODUCT,
-                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&{export_by_attribute.value}={concatenated_attribute_values}&size={batch_size}'
+                export_endpoint=ExportEndpoint.PRODUCT,
+                parameters=urlencode({
+                    'changesOnly': str(False).lower(),
+                    'productTypeImportCodes': concatenated_product_types,
+                    export_by_attribute.value: concatenated_attribute_values,
+                    'size': batch_size
+                })
             )
 
             result_list.extend(self.__send_product_export_request(url))
