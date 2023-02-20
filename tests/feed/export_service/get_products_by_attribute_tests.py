@@ -5,7 +5,7 @@ from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.export_service import ProductType
 
-TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_import_code'
+TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attribute'
 
 
 @pytest.mark.parametrize(
@@ -46,7 +46,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
             ]
         )
     ])
-def test_get_products_by_import_code(
+def test_get_products_by_attribute(
         data_file_name: str,
         product_types: List[ProductType],
         export_by_attribute: ExportAttribute,
