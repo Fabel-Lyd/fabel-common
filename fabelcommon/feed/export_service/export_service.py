@@ -33,25 +33,25 @@ class FeedExport(FeedApiService):
             result.extend(response)
         return result
 
-    def get_products_by_import_code(
+    def get_products_by_attribute(
             self,
             export_by_attribute: ExportAttribute,
-            import_codes: List[str],
+            attribute_values: List[str],
             product_types: List[ProductType],
             batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE
     ) -> List[Dict]:
 
         unique_product_types: List[str] = [product_type.value for product_type in set(product_types)]
         concatenated_product_types: str = ','.join(sorted(unique_product_types))
-        batched_import_codes: List[List[str]] = chunk_list(import_codes, batch_size)
+        batched_attribute_values: List[List[str]] = chunk_list(attribute_values, batch_size)
 
         result_list: List[Dict] = []
-        for batch in batched_import_codes:
-            concatenated_import_codes: str = ','.join(batch)
+        for batch in batched_attribute_values:
+            concatenated_attribute_values: str = ','.join(batch)
 
             url: str = self.__build_url(
                 ExportEndpoint.PRODUCT,
-                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&{export_by_attribute.value}={concatenated_import_codes}&size={batch_size}'
+                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&{export_by_attribute.value}={concatenated_attribute_values}&size={batch_size}'
             )
 
             result_list.extend(self.__send_product_export_request(url))
