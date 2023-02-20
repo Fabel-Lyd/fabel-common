@@ -16,8 +16,8 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
             [ProductType.PERSON],
             ['99991', '99992', '99993', '99994'],
             [
-                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99991%2C99992&size=2',
-                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99993%2C99994&size=2'
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99991%2C99992&size=2&productHeadOnly=false',
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99993%2C99994&size=2&productHeadOnly=false'
             ]
         ),
         (
@@ -25,7 +25,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
             [ProductType.PERSON, ProductType.SERIES, ProductType.PERSON],
             ['99991'],
             [
-                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person%2Cserie&importCodes=99991&size=2'
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person%2Cserie&importCodes=99991&size=2&productHeadOnly=false'
             ]
         )
     ])
