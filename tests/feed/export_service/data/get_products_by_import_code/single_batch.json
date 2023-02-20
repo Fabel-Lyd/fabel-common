@@ -1,0 +1,141 @@
+{
+  "response_data": [
+    [
+		{
+			"identifier": {
+				"importCode": "32781",
+				"productNo": "9788234001635"
+			},
+			"productHead": {
+				"name": {
+					"nb": "Det andre namnet"
+				},
+				"alternativeName": {},
+				"productNo": "9788234001635",
+				"altProductNo": null,
+				"status": {
+					"code": "active",
+					"name": {
+						"nb": "Aktivt"
+					}
+				},
+				"type": {
+					"code": "ERP",
+					"name": {
+						"nb": "Lydfil"
+					}
+				},
+				"owner": null,
+				"group": null,
+				"supplier": null,
+				"base": false,
+				"baseProduct": null,
+				"productType": "PRODUCT",
+				"deleted": false
+			}
+		},
+		{
+			"identifier": {
+				"importCode": "32794",
+				"productNo": "9788202420826"
+			},
+			"productHead": {
+				"name": {
+					"nb": "Tvekampen"
+				},
+				"alternativeName": {},
+				"productNo": "9788202420826",
+				"altProductNo": null,
+				"status": {
+					"code": "active",
+					"name": {
+						"nb": "Aktivt"
+					}
+				},
+				"type": {
+					"code": "ERP",
+					"name": {
+						"nb": "Lydfil"
+					}
+				},
+				"owner": null,
+				"group": null,
+				"supplier": null,
+				"base": false,
+				"baseProduct": null,
+				"productType": "PRODUCT",
+				"deleted": false
+			}
+		}
+    ]
+  ],
+
+  "expected": [
+		{
+			"identifier": {
+				"importCode": "32781",
+				"productNo": "9788234001635"
+			},
+			"productHead": {
+				"name": {
+					"nb": "Det andre namnet"
+				},
+				"alternativeName": {},
+				"productNo": "9788234001635",
+				"altProductNo": null,
+				"status": {
+					"code": "active",
+					"name": {
+						"nb": "Aktivt"
+					}
+				},
+				"type": {
+					"code": "ERP",
+					"name": {
+						"nb": "Lydfil"
+					}
+				},
+				"owner": null,
+				"group": null,
+				"supplier": null,
+				"base": false,
+				"baseProduct": null,
+				"productType": "PRODUCT",
+				"deleted": false
+			}
+		},
+		{
+			"identifier": {
+				"importCode": "32794",
+				"productNo": "9788202420826"
+			},
+			"productHead": {
+				"name": {
+					"nb": "Tvekampen"
+				},
+				"alternativeName": {},
+				"productNo": "9788202420826",
+				"altProductNo": null,
+				"status": {
+					"code": "active",
+					"name": {
+						"nb": "Aktivt"
+					}
+				},
+				"type": {
+					"code": "ERP",
+					"name": {
+						"nb": "Lydfil"
+					}
+				},
+				"owner": null,
+				"group": null,
+				"supplier": null,
+				"base": false,
+				"baseProduct": null,
+				"productType": "PRODUCT",
+				"deleted": false
+			}
+		}
+  ]
+}

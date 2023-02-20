@@ -9,12 +9,15 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
 
 
 @pytest.mark.parametrize(
-    'data_file_name, product_types, search_parameters, expected_endpoints',
+    'data_file_name, product_types, export_by_attribute, search_parameters, batch_size, product_head_only, expected_endpoints',
     [
         (
             'two_batches.json',
             [ProductType.PERSON],
+            ExportAttribute.IMPORT_CODES,
             ['99991', '99992', '99993', '99994'],
+            2,
+            False,
             [
                 'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99991%2C99992&size=2&productHeadOnly=false',
                 'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&importCodes=99993%2C99994&size=2&productHeadOnly=false'
@@ -23,16 +26,33 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_impor
         (
             'not_found.json',
             [ProductType.PERSON, ProductType.SERIES, ProductType.PERSON],
+            ExportAttribute.IMPORT_CODES,
             ['99991'],
+            2,
+            False,
             [
                 'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person%2Cserie&importCodes=99991&size=2&productHeadOnly=false'
+            ]
+        ),
+        (
+            'single_batch.json',
+            [ProductType.BOOK],
+            ExportAttribute.PRODUCT_NUMBERS,
+            ['9788202420826,9788234001635'],
+            10,
+            True,
+            [
+                'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=ERP&productNo=9788202420826%2C9788234001635&size=10&productHeadOnly=true'
             ]
         )
     ])
 def test_get_products_by_import_code(
         data_file_name: str,
         product_types: List[ProductType],
+        export_by_attribute: ExportAttribute,
         search_parameters: List[str],
+        product_head_only: bool,
+        batch_size: int,
         expected_endpoints: List[str],
         mocker
 ) -> None:
@@ -47,10 +67,12 @@ def test_get_products_by_import_code(
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
     products_found: List[Dict] = feed_export.get_products_by_attribute(
-        export_by_attribute=ExportAttribute.IMPORT_CODES,
+        export_by_attribute=export_by_attribute,
         attribute_values=search_parameters,
         product_types=product_types,
-        batch_size=2)
+        batch_size=batch_size,
+        product_head_only=product_head_only
+    )
 
     actual_endpoints: List[str] = [call.args[0] for call in mocked_send_request_call.call_args_list]
 
