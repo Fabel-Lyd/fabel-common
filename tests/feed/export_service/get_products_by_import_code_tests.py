@@ -1,6 +1,7 @@
 from typing import Dict, List
 import pytest
 from fabelcommon.feed.export_service import FeedExport
+from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.export_service import ProductType
 
@@ -45,7 +46,11 @@ def test_get_products_by_import_code(
     )
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.get_products_by_import_code(search_parameters, product_types, 2)
+    products_found: List[Dict] = feed_export.get_products_by_import_code(
+        export_by_attribute=ExportAttribute.IMPORT_CODES,
+        import_codes=search_parameters,
+        product_types=product_types,
+        batch_size=2)
 
     actual_endpoints: List[str] = [call.args[0] for call in mocked_send_request_call.call_args_list]
 

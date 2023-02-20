@@ -1,5 +1,6 @@
 from typing import List, Dict
 from requests import Response
+from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType, ExportEndpoint
 from fabelcommon.http.verbs import HttpVerb
@@ -34,6 +35,7 @@ class FeedExport(FeedApiService):
 
     def get_products_by_import_code(
             self,
+            export_by_attribute: ExportAttribute,
             import_codes: List[str],
             product_types: List[ProductType],
             batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE
@@ -49,7 +51,7 @@ class FeedExport(FeedApiService):
 
             url: str = self.__build_url(
                 ExportEndpoint.PRODUCT,
-                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&importCodes={concatenated_import_codes}&size={batch_size}'
+                f'changesOnly=false&productTypeImportCodes={concatenated_product_types}&{export_by_attribute.value}={concatenated_import_codes}&size={batch_size}'
             )
 
             result_list.extend(self.__send_product_export_request(url))
