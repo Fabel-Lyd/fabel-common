@@ -39,7 +39,8 @@ class FeedExport(FeedApiService):
             export_by_attribute: ExportAttribute,
             attribute_values: List[str],
             product_types: List[ProductType],
-            batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE
+            batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE,
+            product_head_only: bool = False
     ) -> List[Dict]:
 
         unique_product_types: List[str] = [product_type.value for product_type in set(product_types)]
@@ -56,7 +57,8 @@ class FeedExport(FeedApiService):
                     'changesOnly': str(False).lower(),
                     'productTypeImportCodes': concatenated_product_types,
                     export_by_attribute.value: concatenated_attribute_values,
-                    'size': batch_size
+                    'size': batch_size,
+                    'productHeadOnly': str(product_head_only).lower()
                 })
             )
 
