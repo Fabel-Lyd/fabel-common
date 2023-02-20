@@ -46,9 +46,9 @@ def test_get_products_by_import_code(
     )
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.get_products_by_import_code(
+    products_found: List[Dict] = feed_export.get_products_by_attribute(
         export_by_attribute=ExportAttribute.IMPORT_CODES,
-        import_codes=search_parameters,
+        attribute_values=search_parameters,
         product_types=product_types,
         batch_size=2)
 
