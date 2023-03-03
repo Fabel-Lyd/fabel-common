@@ -41,4 +41,7 @@ class OnixXPathReader:
 
         result: Union[List[str], List[_Element]] = OnixXPathReader.__get_node_list(element, xpath)
 
+        if len(result) > 1:
+            raise Exception(f'Expected single node, found {len(result)}')
+
         return result[0] if result else None

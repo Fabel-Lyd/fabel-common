@@ -57,3 +57,10 @@ def test_get_values_from_subtree_successful(subtree_path: str, value_path: str) 
         values += OnixXPathReader.get_values(element, value_path)
 
     assert values == ['FBA', 'FXM']
+
+
+def test_get_value_failed_multiple() -> None:
+    with pytest.raises(Exception) as exception:
+        OnixXPathReader.get_value(TEST_DATA, '/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()')
+
+    assert str(exception.value) == 'Expected single node, found 2'
