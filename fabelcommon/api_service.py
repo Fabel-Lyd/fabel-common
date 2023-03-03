@@ -42,13 +42,16 @@ class ApiService(ABC):
     def _create_authorization_header(self, access_token: str) -> Dict:
         raise NotImplementedError('Implement creation of header.')
 
-    def _get_token(self, token_request_data: Optional[Dict] = None) -> AccessToken:
-        if token_request_data is None:
-            token_request_data = self._token_request_data
-
+    def _get_token(self) -> AccessToken:
         if self.__access_token is not None and self.__access_token.is_valid:
             return self.__access_token
 
+        return self.__get_token(self._token_request_data)
+
+    def _get_token_non_cached(self, token_request_data: Dict) -> AccessToken:
+        return self.__get_token(token_request_data)
+
+    def __get_token(self, token_request_data: Dict) -> AccessToken:
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
             data=token_request_data,

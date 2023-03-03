@@ -1,10 +1,11 @@
 import json
+from urllib.parse import parse_qs
+
 from fabelcommon.beat.beat_api_service import BeatApiService
 from fabelcommon.http.verbs import HttpVerb
 
 
 def test_send_request_success(requests_mock):
-
     requests_mock.post(
         'https://api.fabel.no/v2/oauth2/token',
         text=json.dumps({'access_token': 'test_token'})
@@ -33,7 +34,6 @@ def test_send_request_success(requests_mock):
 
 
 def test_beat_service_headers():
-
     headers = BeatApiService(
         'test_client_id',
         'test_client_secret',
@@ -44,7 +44,6 @@ def test_beat_service_headers():
 
 
 def test_beat_service_token_request_data():
-
     token_request_data = BeatApiService(
         'test_client_id',
         'test_client_secret',
@@ -78,14 +77,35 @@ def test_beat_service_token_access_token_key():
     assert access_token_key.value == 'access_token'
 
 
+def mock_response(request_object, b):
+    data = {
+        'client_credentials': {
+            'access_token': 'client_secret_token',
+            'expires_in': 300
+        },
+        'password': {
+            'access_token': 'password_token',
+            'expires_in': 300,
+            'user_id': '117'
+        }
+    }
+    grant_type = parse_qs(request_object.text)['grant_type'][0]
+    xxx = data[grant_type]
+    result = json.dumps(xxx)
+    return result
+
+
 def test_get_password_flow_token(requests_mock):
+
     requests_mock.post(
         'https://api.fabel.no/v2/oauth2/token',
+        text=mock_response
+    )
+
+    requests_mock.get(
+        'https://api.fabel.no/v2/client-credential-end-point',
         text=json.dumps(
-            {
-                'access_token': 'test_token',
-                'expires_in': 300
-            }
+            {}
         )
     )
 
@@ -94,14 +114,18 @@ def test_get_password_flow_token(requests_mock):
         'test_client_secret',
         'https://api.fabel.no'
     )
+
+    # make request to cache token
+    beat_api_service.send_request(HttpVerb.GET, '/v2/client-credential-end-point')
+
     access_token = beat_api_service.get_password_flow_token('user', 'password')
 
     assert access_token.is_valid is True
-    assert access_token.access_token_value == 'test_token'
+    assert access_token.access_token_value == 'password_token'
+    assert access_token.user_id == '117'
 
 
 def test_send_request_with_token(requests_mock):
-
     data = '{"releases":[]}'
 
     requests_mock.get(
