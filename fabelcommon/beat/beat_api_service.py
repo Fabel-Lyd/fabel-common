@@ -88,4 +88,4 @@ class BeatApiService(ApiService):
             'client_id': self._client_id,
             'client_secret': self._client_secret
         }
-        return self._get_token(token_request_data)
+        return self._get_token_non_cached(token_request_data)
