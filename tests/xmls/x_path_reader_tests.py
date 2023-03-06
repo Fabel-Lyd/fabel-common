@@ -63,4 +63,5 @@ def test_get_value_failed_multiple() -> None:
     with pytest.raises(Exception) as exception:
         OnixXPathReader.get_value(TEST_DATA, '/o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()')
 
-    assert str(exception.value) == 'Expected single node, found 2'
+    assert str(exception.value) == 'Expected single node, found 2 in ONIX XML at' \
+                                   ' /o:ONIXMessage/o:Header/o:Subject/o:SubjectCode/text()'
