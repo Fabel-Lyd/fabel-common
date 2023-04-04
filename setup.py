@@ -9,5 +9,5 @@ setup(
     description='Common API and functions',
     packages=find_packages(),
     package_data={'': ['py.typed']},
-    install_requires=['djangorestframework', 'pytz', 'requests', 'xmltodict'],
+    install_requires=['djangorestframework', 'pytz', 'requests', 'xmltodict', 'lxml'],
 )
