@@ -46,12 +46,13 @@ class ApiService(ABC):
         if self.__access_token is not None and self.__access_token.is_valid:
             return self.__access_token
 
-        return self.__get_token(self._token_request_data)
+        self.__access_token = self.__create_token(self._token_request_data)
+        return self.__access_token
 
     def _get_token_non_cached(self, token_request_data: Dict) -> AccessToken:
-        return self.__get_token(token_request_data)
+        return self.__create_token(token_request_data)
 
-    def __get_token(self, token_request_data: Dict) -> AccessToken:
+    def __create_token(self, token_request_data: Dict) -> AccessToken:
         response = requests.post(
             url=urljoin(self._base_url, self._auth_path),
             data=token_request_data,
@@ -63,12 +64,12 @@ class ApiService(ABC):
 
         token_data = response.json()
 
-        self.__access_token = AccessToken(
+        access_token: AccessToken = AccessToken(
             access_token_value=token_data[self._access_token_key.value],
             expires_in=token_data.get('expires_in', 600),
             user_id=token_data.get('user_id')
         )
-        return self.__access_token
+        return access_token
 
     def _send_request(
             self,
