@@ -1,6 +1,7 @@
 import pytest
 from requests import HTTPError
 from rest_framework import status
+from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
@@ -91,6 +92,32 @@ def test_create_headers(mocker) -> None:
     headers_expected = {
         'Authorization': 'Boknett fake_ticket',
         'Date': 'Thu, 02 Jun 2022 08:18:12 GMT',
+        "Accept": "application/json",
     }
 
     assert headers == headers_expected
+
+
+def test_send_download_url_request(requests_mock, mocker):
+    mocker.patch.object(
+        BokbasenApiService,
+        attribute='get_ticket',
+        return_value='fake_ticket')
+
+    requests_mock.get(
+        'https://api.dds.boknett.no/content/c4029e6e-a237-4c20-a109-804d398122ab?type=audio%2Fvnd.bokbasen.complete-public&bitrate=64',
+        headers={'Location': 'https://api.dds.boknett.no/download/adf39c11-a7dc-42b0-b6a2-0313937fb914/status'},
+        status_code=status.HTTP_302_FOUND,
+    )
+
+    requests_mock.get(
+        'https://api.dds.boknett.no/download/adf39c11-a7dc-42b0-b6a2-0313937fb914/status',
+        status_code=status.HTTP_200_OK
+    )
+
+    expected_response = DownloadResponse(location='https://api.dds.boknett.no/download/adf39c11-a7dc-42b0-b6a2-0313937fb914/status')
+
+    bokbasen_service = BokbasenApiService('fake_username', 'fake-password')
+    response = bokbasen_service.send_download_url_request('https://api.dds.boknett.no/content/c4029e6e-a237-4c20-a109-804d398122ab')
+
+    assert response.location == expected_response.location
