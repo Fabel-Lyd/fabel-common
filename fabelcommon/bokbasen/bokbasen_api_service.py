@@ -2,6 +2,7 @@ from abc import ABC
 from typing import Dict, Any
 import requests
 from requests import Response
+from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
@@ -20,6 +21,7 @@ class BokbasenApiService(ABC):
         headers: Dict[str, str] = {
             "Authorization": f"Boknett {ticket}",
             "Date": TimeFormats.get_date_time(),
+            "Accept": "application/json",
         }
         return headers
 
@@ -41,15 +43,33 @@ class BokbasenApiService(ABC):
         response: Response = self.__send_request(verb, url, data)
         return response.text
 
+    def send_download_url_request(self, url: str) -> DownloadResponse:
+        response: Response = self.__send_download_url_request(HttpVerb.GET, url)
+        return DownloadResponse(response.history[0].headers['Location'])
+
+    def __send_download_url_request(self, verb: HttpVerb, url: str,):
+        token: str = self.get_ticket()
+        headers: Dict[str, str] = self.create_headers(token)
+
+        params: Dict[str, str] = {
+            "type": "audio/vnd.bokbasen.complete-public",
+            "bitrate": "64"
+        }
+
+        response: Response = requests.request(verb.value, url, headers=headers, params=params)
+        response.raise_for_status()
+
+        return response
+
     def send_export_request(self, url: str) -> BokbasenExportResponse:
         response: Response = self.__send_request(HttpVerb.GET, url, None)
         return BokbasenExportResponse(content=response.text, cursor=response.headers['next'])
 
-    def __send_request(self, verb: HttpVerb, url: str, data: Any) -> Response:
+    def __send_request(self, verb: HttpVerb, url: str, data: Any, params: Any = None) -> Response:
         token: str = self.get_ticket()
         headers: Dict[str, str] = self.create_headers(token)
 
-        response: Response = requests.request(verb.value, url, headers=headers, data=data)
+        response: Response = requests.request(verb.value, url, headers=headers, data=data, params=params)
         response.raise_for_status()
 
         return response
