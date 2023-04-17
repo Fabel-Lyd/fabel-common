@@ -19,7 +19,9 @@ class FeedExport(FeedApiService):
             self,
             # case-insensitive, redundant spaces removed and trimmed, exact match
             names: List[str],
-            product_type: ProductType
+            product_type: ProductType,
+            page_size: int = 20,
+            page_count: int = 0
     ) -> List[Dict]:
 
         result: List[Dict] = []
@@ -27,7 +29,11 @@ class FeedExport(FeedApiService):
         for name in names:
             url: str = self.__build_url(
                 ExportEndpoint.PRODUCT,
-                f'changesOnly=false&productTypeImportCodes={product_type.value}&name={name}'
+                'changesOnly=false&'
+                f'size={page_size}&'
+                f'page={page_count}&'
+                f'productTypeImportCodes={product_type.value}&'
+                f'name={name}'
             )
 
             response: List[Dict] = self.__send_product_export_request(url)
