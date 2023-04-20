@@ -91,8 +91,7 @@ def test_create_headers(mocker) -> None:
 
     headers_expected = {
         'Authorization': 'Boknett fake_ticket',
-        'Date': 'Thu, 02 Jun 2022 08:18:12 GMT',
-        "Accept": "application/json",
+        'Date': 'Thu, 02 Jun 2022 08:18:12 GMT'
     }
 
     assert headers == headers_expected
