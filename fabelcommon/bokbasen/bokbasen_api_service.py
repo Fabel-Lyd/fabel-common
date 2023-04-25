@@ -53,7 +53,8 @@ class BokbasenApiService(ABC):
             verb=HttpVerb.GET,
             url=url,
             data=None,
-            params=params
+            params=params,
+            headers_to_add={"Accept": "application/json"}
         )
 
         return DownloadResponse(response.history[0].headers['Location'])
@@ -66,10 +67,14 @@ class BokbasenApiService(ABC):
             self,
             verb: HttpVerb, url: str,
             data: Any,
-            params: Optional[Dict] = None
+            params: Optional[Dict] = None,
+            headers_to_add: Optional[Dict[str, str]] = None,
     ) -> Response:
         token: str = self.get_ticket()
         headers: Dict[str, str] = self.create_headers(token)
+
+        if headers_to_add is not None:
+            headers.update(headers_to_add)
 
         response: Response = requests.request(
             method=verb.value,
