@@ -34,13 +34,21 @@ class FeedImport(FeedApiService):
 
     def get_import_result(self, guid: str) -> Optional[ImportResult]:
         url: str = self.__build_url() + \
-            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true'
+            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&page='
 
-        import_report: Dict = self._send_request(HttpVerb.GET, url).json()
+        import_report: Dict = self._send_request(HttpVerb.GET, url + '0').json()
 
         if import_report['finishedTime'] is None:
             return None
-        return ImportResult(import_report)
+
+        page_count: int = import_report['report']['totalPages']
+        import_reports: List[Dict] = [import_report]
+
+        for page in range(1, page_count):
+            import_report = self._send_request(HttpVerb.GET, url + str(page)).json()
+            import_reports.append(import_report)
+
+        return ImportResult(import_reports)
 
     def await_import_finish(
             self,
