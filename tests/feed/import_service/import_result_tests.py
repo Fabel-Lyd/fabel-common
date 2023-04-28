@@ -56,8 +56,29 @@ def test_import_result(
     import_report: Dict = read_json_data(import_report_path)
     expected_report: Dict = read_json_data(expected_result_report_path)
 
-    import_result: ImportResult = ImportResult(import_report)
+    import_result: ImportResult = ImportResult([import_report])
 
     assert import_result.status == expected_status
+    assert import_result.created_items == expected_created_items
+    assert import_result.report == expected_report
+
+
+def test_import_result_multiple_pages() -> None:
+    import_report: List[Dict] = [
+        read_json_data(f"{TEST_DATA_DIRECTORY}/import_report_paged_0.json"),
+        read_json_data(f"{TEST_DATA_DIRECTORY}/import_report_paged_1.json")
+    ]
+
+    expected_created_items: List[ImportResultItem] = [
+        ImportResultItem("27117", "9788242130914"),
+        ImportResultItem("26507", "9788242127631"),
+        ImportResultItem("28659", "9788242127945"),
+        ImportResultItem("35328", "9788202611842"),
+        ImportResultItem("35327", "9788202611859")
+    ]
+    expected_report: Dict = read_json_data(f"{TEST_DATA_DIRECTORY}/expected_result_report_paged.json")
+
+    import_result: ImportResult = ImportResult(import_report)
+
     assert import_result.created_items == expected_created_items
     assert import_result.report == expected_report
