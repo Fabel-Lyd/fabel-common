@@ -1,59 +1,134 @@
 [
-    {
-        "startedTime": "2022-07-07T14:49:46.249618Z",
-        "finishedTime": null,
-        "progress": "0 / 1  (0.00 %)",
-        "sumOfStatuses": {
-            "OK": 0,
-            "WARNING": 0,
-            "ERROR": 0
+    [
+        {
+            "startedTime": "2023-04-28T08:52:38.005344Z",
+            "finishedTime": null,
+            "progress": "0 / 5  (0.00 %)",
+            "sumOfStatuses": {
+                "OK": 0,
+                "WARNING": 0,
+                "ERROR": 0
+            }
         }
-    },
-    {
-        "startedTime": "2022-07-07T14:49:46.249618Z",
-        "finishedTime": "2022-07-07T14:49:51.634374Z",
-        "progress": "1 / 1  (100.00 %)",
-        "sumOfStatuses": {
-            "OK": 1,
-            "WARNING": 0,
-            "ERROR": 0
-        },
-        "report": {
-            "content": [
-                {
-                    "importCode": "99999",
-                    "productNo": "P_9999999",
-                    "action": "CREATE",
-                    "status": "OK",
-                    "messages": [],
-                    "importJSON": null
-                }
-            ],
-            "pageable": {
+    ],
+    [
+        {
+            "startedTime": "2023-04-28T08:52:38.005344Z",
+            "finishedTime": "2023-04-28T08:52:44.044469Z",
+            "progress": "5 / 5  (100.00 %)",
+            "sumOfStatuses": {
+                "OK": 5,
+                "WARNING": 0,
+                "ERROR": 0
+            },
+            "report": {
+                "content": [
+                    {
+                        "importCode": "27117",
+                        "productNo": "9788242130914",
+                        "action": "UPDATE",
+                        "status": "OK",
+                        "messages": [],
+                        "importJSON": null
+                    },
+                    {
+                        "importCode": "26507",
+                        "productNo": "9788242127631",
+                        "action": "UPDATE",
+                        "status": "OK",
+                        "messages": [],
+                        "importJSON": null
+                    },
+                    {
+                        "importCode": "28659",
+                        "productNo": "9788242127945",
+                        "action": "UPDATE",
+                        "status": "OK",
+                        "messages": [],
+                        "importJSON": null
+                    }
+                ],
+                "pageable": {
+                    "sort": {
+                        "empty": true,
+                        "sorted": false,
+                        "unsorted": true
+                    },
+                    "offset": 0,
+                    "pageNumber": 0,
+                    "pageSize": 3,
+                    "paged": true,
+                    "unpaged": false
+                },
+                "totalPages": 2,
+                "totalElements": 5,
+                "last": false,
+                "size": 3,
+                "number": 0,
                 "sort": {
                     "empty": true,
-                    "unsorted": true,
-                    "sorted": false
+                    "sorted": false,
+                    "unsorted": true
                 },
-                "offset": 0,
-                "pageNumber": 0,
-                "pageSize": 20,
-                "paged": true,
-                "unpaged": false
+                "numberOfElements": 3,
+                "first": true,
+                "empty": false
+            }
+        },
+        {
+            "startedTime": "2023-04-28T08:52:38.005344Z",
+            "finishedTime": "2023-04-28T08:52:44.044469Z",
+            "progress": "5 / 5  (100.00 %)",
+            "sumOfStatuses": {
+                "OK": 5,
+                "WARNING": 0,
+                "ERROR": 0
             },
-            "totalElements": 1,
-            "totalPages": 1,
-            "last": true,
-            "size": 20,
-            "number": 0,
-            "sort": {
-                "empty": true,
-                "unsorted": true,
-                "sorted": false
-            },
-            "numberOfElements": 1,
-            "first": true,
-            "empty": false
+            "report": {
+                "content": [
+                    {
+                        "importCode": "35328",
+                        "productNo": "9788202611842",
+                        "action": "UPDATE",
+                        "status": "OK",
+                        "messages": [],
+                        "importJSON": null
+                    },
+                    {
+                        "importCode": "35327",
+                        "productNo": "9788202611859",
+                        "action": "UPDATE",
+                        "status": "OK",
+                        "messages": [],
+                        "importJSON": null
+                    }
+                ],
+                "pageable": {
+                    "sort": {
+                        "empty": true,
+                        "sorted": false,
+                        "unsorted": true
+                    },
+                    "offset": 3,
+                    "pageNumber": 1,
+                    "pageSize": 3,
+                    "paged": true,
+                    "unpaged": false
+                },
+                "totalPages": 2,
+                "totalElements": 5,
+                "last": true,
+                "size": 3,
+                "number": 1,
+                "sort": {
+                    "empty": true,
+                    "sorted": false,
+                    "unsorted": true
+                },
+                "numberOfElements": 2,
+                "first": false,
+                "empty": false
+            }
         }
-    }
+    ]
 ]

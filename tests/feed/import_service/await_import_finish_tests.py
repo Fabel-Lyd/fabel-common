@@ -9,12 +9,12 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/await_import_finish/'
 
 @pytest.fixture
 def patch_get_import_report(mocker):
-    def __object_patch(status_reports: List[Dict]):
+    def __object_patch(status_reports: List[List[Dict]]):
         mocker.patch.object(
             FeedImport,
             attribute=FeedImport.get_import_result.__name__,
             side_effect=[
-                ImportResult(status_report) if status_report['finishedTime'] is not None
+                ImportResult(status_report) if status_report[0]['finishedTime'] is not None
                 else None
                 for status_report in status_reports
             ]
@@ -30,7 +30,7 @@ def patch_get_import_report(mocker):
     ]
 )
 def test_await_import_finish_successful(
-        import_status_reports: List[Dict],
+        import_status_reports: List[List[Dict]],
         patch_get_import_report: Callable
 ) -> None:
 
