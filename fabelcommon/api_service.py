@@ -2,7 +2,7 @@ from abc import ABC
 from typing import Dict, Union, Optional, Any
 from urllib.parse import urljoin
 import requests
-from requests import Response
+from requests import Response, Request, Session
 from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.http.verbs import HttpVerb
@@ -89,13 +89,23 @@ class ApiService(ABC):
         if headers_to_add is not None:
             headers.update(headers_to_add)
 
-        response: Response = requests.request(
+        # add hints
+        request = Request(
             verb.value,
             url=urljoin(self._base_url, path),
             headers=headers,
             data=data,
             files=files)
+        prepared = request.prepare()
+        response = Session().send(prepared)
+
+        if response.status_code == 403:
+            # if we got forbidden (i.e. access denied) we try force to refresh token
+            token_value = self.__create_token(self._token_request_data).access_token_value
+            authorization_header: Dict[str, str] = self._create_authorization_header(token_value)
+            headers.update(authorization_header)
+            prepared = request.prepare()
+            response = Session().send(prepared)
 
         response.raise_for_status()
-
         return response

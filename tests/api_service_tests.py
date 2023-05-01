@@ -171,3 +171,40 @@ def test_send_request_failed(requests_mock) -> None:
 
     with pytest.raises(HTTPError):
         feed_api_test.send_request(path='http://localhost/post')
+
+
+def request_matcher(request, context):
+    auth = request._request.headers['Authorization']
+    if 'fake_access_token_1' in auth:
+        context.status_code = 403
+    return json.dumps({'content': None})
+
+
+counter = 0
+
+
+def request_matcher_token(r, q):
+    global counter
+    counter = counter + 1
+    return json.dumps({
+        'access_token': f'fake_access_token_{counter}',
+        'expires_in': 60
+    })
+
+
+def test_send_request_refreshes_token_on_first_access_denied(
+        requests_mock
+):
+
+    requests_mock.post(
+        url='http://localhost/auth',
+        text=request_matcher_token
+    )
+
+    requests_mock.post(
+        url='http://localhost/post',
+        text=request_matcher
+    )
+
+    feed_api_test: ApiTestService = ApiTestService()
+    feed_api_test.send_request(path='http://localhost/post')
