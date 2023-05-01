@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='fabelcommon',
-    version='15.0.7',
+    version='15.0.8',
     description='Common API and functions',
     packages=find_packages(),
     package_data={'': ['py.typed']},
