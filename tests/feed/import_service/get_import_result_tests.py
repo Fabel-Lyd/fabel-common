@@ -5,6 +5,7 @@ from fabelcommon.feed.import_service import FeedImport
 from fabelcommon.feed.import_service.import_result import ImportResult
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/get_import_result'
+PAGE_SIZE: int = 100
 
 
 def test_get_import_report_finished(requests_mock) -> None:
@@ -16,17 +17,17 @@ def test_get_import_report_finished(requests_mock) -> None:
     )
     requests_mock.get(
         'https://lydbokforlaget-feed.isysnet.no/import/import/'
-        'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&page=0',
+        f'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={PAGE_SIZE}&page=0',
         text=json.dumps(status_report[0])
     )
     requests_mock.get(
         'https://lydbokforlaget-feed.isysnet.no/import/import/'
-        'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&page=1',
+        f'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={PAGE_SIZE}&page=1',
         text=json.dumps(status_report[1])
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid')
+    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
     assert isinstance(import_result, ImportResult)
     assert len(import_result.created_items) == 5
@@ -40,11 +41,11 @@ def test_get_import_report_in_progress(requests_mock) -> None:
     )
     requests_mock.get(
         'https://lydbokforlaget-feed.isysnet.no/import/import/'
-        'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&page=0',
+        f'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={PAGE_SIZE}&page=0',
         text=json.dumps(status_report)
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid')
+    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
     assert import_result is None
