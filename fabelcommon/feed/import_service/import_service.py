@@ -32,9 +32,9 @@ class FeedImport(FeedApiService):
         }
         return self.__send_request(url, json.dumps(payload))
 
-    def get_import_result(self, guid: str) -> Optional[ImportResult]:
+    def get_import_result(self, guid: str, page_size: int) -> Optional[ImportResult]:
         url: str = self.__build_url() + \
-            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&page='
+            f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={page_size}&page='
 
         import_report: Dict = self._send_request(HttpVerb.GET, url + '0').json()
 
@@ -54,11 +54,12 @@ class FeedImport(FeedApiService):
             self,
             guid: str,
             query_interval_seconds: int,
-            max_attempts: int
+            max_attempts: int,
+            report_page_size: int
     ) -> ImportResult:
 
         for i in range(0, max_attempts):
-            import_result: Union[ImportResult, None] = self.get_import_result(guid)
+            import_result: Union[ImportResult, None] = self.get_import_result(guid, report_page_size)
 
             if import_result is None:
                 sleep(query_interval_seconds)

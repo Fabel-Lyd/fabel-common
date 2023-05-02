@@ -37,7 +37,7 @@ def test_await_import_finish_successful(
     patch_get_import_report(import_status_reports)
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.await_import_finish('test_guid', 1, 2)
+    import_result: Optional[ImportResult] = feed_import.await_import_finish('test_guid', 1, 2, 20)
 
     assert type(import_result) == ImportResult
 
@@ -52,6 +52,6 @@ def test_await_import_finish_failed(mocker) -> None:
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
 
     with pytest.raises(Exception) as exception:
-        feed_import.await_import_finish('test_guid', 1, 2)
+        feed_import.await_import_finish('test_guid', 1, 2, 20)
 
     assert str(exception.value) == 'Feed product import did not return finished status (queried 2 times with 1 s interval)'
