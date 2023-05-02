@@ -2,10 +2,12 @@
 
 from distutils.core import setup
 from setuptools import find_packages
+from version import PACKAGE_VERSION
+
 
 setup(
     name='fabelcommon',
-    version='16.0.0',
+    version=PACKAGE_VERSION,
     description='Common API and functions',
     packages=find_packages(),
     package_data={'': ['py.typed']},
