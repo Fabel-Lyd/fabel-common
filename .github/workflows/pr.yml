@@ -20,8 +20,39 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Get package version
+      run: echo "PACKAGE_VERSION=$(python version.py)" >> $GITHUB_ENV
+
+    - name: Verify that package is not a release candidate
+      run: ${{ !contains(env.PACKAGE_VERSION, 'rc') }}
+
+    - name: Check for existing release
+      uses: actions/github-script@v6
+      with:
+        script: |
+          try {
+              const response = await github.rest.repos.getReleaseByTag({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag: process.env.PACKAGE_VERSION
+              });
+          
+              core.exportVariable('RELEASE_EXISTS', true);
+            } catch (error) {
+              if (error.message == 'Not Found') {
+                core.exportVariable('RELEASE_EXISTS', false);
+                return;
+              }
+              core.setFailed(error.message);
+            }
+
+    - name: Verify that release with tag ${{ env.PACKAGE_VERSION }} does not exist
+      run: ${{ env.RELEASE_EXISTS == 'false' }}
+
     - name: Install pipenv
       run: pipx install pipenv
+
     - uses: actions/setup-python@v4
       with:
         python-version: '3.8'
