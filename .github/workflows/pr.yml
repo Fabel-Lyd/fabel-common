@@ -32,23 +32,22 @@ jobs:
       with:
         script: |
           try {
-              const response = await github.rest.repos.getReleaseByTag({
+              const response = await github.rest.repos.getLatestRelease({
                 owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag: process.env.PACKAGE_VERSION
+                repo: context.repo.repo
               });
-          
-              core.exportVariable('RELEASE_EXISTS', true);
-            } catch (error) {
-              if (error.message == 'Not Found') {
-                core.exportVariable('RELEASE_EXISTS', false);
-                return;
-              }
-              core.setFailed(error.message);
+              core.exportVariable('LATEST_RELEASE_TAG', response.data.tag_name);
+          } catch (error) {
+            if (error.message == 'Not Found') {
+              core.exportVariable('NO_RELEASES_EXIST', true);
+              return;
             }
+            core.setFailed(error.message);
+          }
 
-    - name: Verify that release with tag ${{ env.PACKAGE_VERSION }} does not exist
-      run: ${{ env.RELEASE_EXISTS == 'false' }}
+    - name: Verify that release tag does not match latest release
+      if: ${{ env.NO_RELEASES_EXIST != 'true' }}
+      run: ${{ env.PACKAGE_VERSION != env.LATEST_RELEASE_TAG }}
 
     - name: Install pipenv
       run: pipx install pipenv
@@ -61,7 +60,7 @@ jobs:
     # caching only works with install (not sync)
     - run: pipenv install --dev
     - uses: actions/setup-node@v2
-        
+
     - name: Lint with flake8
       run: pipenv run flake8
 
@@ -71,4 +70,3 @@ jobs:
     - name: Test with pytest
       run: |
         pipenv run pytest
-
