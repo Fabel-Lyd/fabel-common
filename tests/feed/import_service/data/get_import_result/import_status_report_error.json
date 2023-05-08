@@ -1,0 +1,10 @@
+{
+    "finishedTime": "2023-05-08T08:35:04.404839Z",
+    "progress": "1 / 1  (100.00 %)",
+    "startedTime": "2023-05-08T08:35:03.674509Z",
+    "sumOfStatuses": {
+        "ERROR": 1,
+        "OK": 0,
+        "WARNING": 0
+    }
+}

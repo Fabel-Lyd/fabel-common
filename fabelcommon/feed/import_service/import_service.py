@@ -41,7 +41,11 @@ class FeedImport(FeedApiService):
         if import_report['finishedTime'] is None:
             return None
 
-        page_count: int = import_report['report']['totalPages']
+        report_details: Optional[Dict] = import_report.get('report')
+        if report_details is None:
+            return ImportResult([import_report])
+
+        page_count: int = report_details['totalPages']
         import_reports: List[Dict] = [import_report]
 
         for page in range(1, page_count):

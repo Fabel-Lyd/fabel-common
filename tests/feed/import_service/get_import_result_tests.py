@@ -2,6 +2,7 @@ from typing import Dict, Optional
 import json
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.import_service import FeedImport
+from fabelcommon.feed.import_service.import_status import ImportStatus
 from fabelcommon.feed.import_service.import_result import ImportResult
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/get_import_result'
@@ -49,3 +50,25 @@ def test_get_import_report_in_progress(requests_mock) -> None:
     import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
     assert import_result is None
+
+
+def test_get_import_report_error(requests_mock) -> None:
+    status_report: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/import_status_report_error.json')
+
+    requests_mock.post(
+        'https://lydbokforlaget-feed.isysnet.no/token-server/oauth/token',
+        text=json.dumps({'access_token': 'test_token'})
+    )
+
+    requests_mock.get(
+        'https://lydbokforlaget-feed.isysnet.no/import/import/'
+        f'test_guid/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={PAGE_SIZE}&page=0',
+        text=json.dumps(status_report)
+    )
+
+    feed_import: FeedImport = FeedImport('test_username', 'test_password')
+    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
+
+    assert import_result is not None
+    assert import_result.status == ImportStatus.ERROR
+    assert len(import_result.created_items) == 0
