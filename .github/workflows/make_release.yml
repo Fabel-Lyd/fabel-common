@@ -1,6 +1,7 @@
 name: Make release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -24,7 +25,7 @@ jobs:
               const response = await github.rest.repos.createRelease({
                 name: process.env.PACKAGE_VERSION,
                 owner: context.repo.owner,
-                repo: context.repo.repo,
+                repo: 'fabel-common-releases',
                 tag_name: process.env.PACKAGE_VERSION,
                 generate_release_notes: true,
               });

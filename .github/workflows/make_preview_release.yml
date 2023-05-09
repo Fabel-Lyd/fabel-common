@@ -5,6 +5,8 @@ on:
 
 jobs:
   make_preview_release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -14,22 +16,16 @@ jobs:
     - name: Get package version
       run: echo "PACKAGE_VERSION=$(python version.py)" >> $GITHUB_ENV
 
+    - name: Get latest commit
+      run: echo "LATEST_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
     - name: Make preview release
-      uses: actions/github-script@v6
+      uses: ncipollo/release-action@v1
       with:
-        script: |
-          try {
-              const response = await github.rest.repos.createRelease({
-                name: process.env.PACKAGE_VERSION,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                tag_name: process.env.PACKAGE_VERSION,
-                generate_release_notes: true,
-                prerelease: true,
-              });
-  
-              core.exportVariable('RELEASE_ID', response.data.id);
-              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
-            } catch (error) {
-              core.setFailed(error.message);
-            }
+        token: ${{ secrets.CREATE_RELEASES_COMMON }}
+        name: ${{ env.PACKAGE_VERSION }}
+        repo: "fabel-common-releases"
+        tag: ${{ env.PACKAGE_VERSION }}
+        commit: "6e07d798948432bd69b66132aa6d5eccf4e3a71d"
+        generateReleaseNotes: true
+        prerelease: true
