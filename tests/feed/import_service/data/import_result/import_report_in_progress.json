@@ -1,0 +1,47 @@
+{
+	"startedTime": "2023-05-11T13:29:45.910760Z",
+	"finishedTime": null,
+	"progress": "1 / 2  (50 %)",
+	"sumOfStatuses": {
+		"OK": 1,
+		"WARNING": 0,
+		"ERROR": 0
+	},
+	"report": {
+		"content": [
+			{
+				"importCode": "35436",
+				"productNo": "9788202657536",
+				"action": "UPDATE",
+				"status": "OK",
+				"messages": [],
+				"importJSON": null
+			}
+		],
+		"pageable": {
+			"sort": {
+				"empty": true,
+				"sorted": false,
+				"unsorted": true
+			},
+			"offset": 0,
+			"pageNumber": 0,
+			"pageSize": 20,
+			"paged": true,
+			"unpaged": false
+		},
+		"totalPages": 1,
+		"totalElements": 1,
+		"last": true,
+		"size": 20,
+		"number": 0,
+		"sort": {
+			"empty": true,
+			"sorted": false,
+			"unsorted": true
+		},
+		"numberOfElements": 1,
+		"first": true,
+		"empty": false
+	}
+}
