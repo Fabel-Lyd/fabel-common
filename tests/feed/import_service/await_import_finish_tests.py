@@ -13,11 +13,7 @@ def patch_get_import_report(mocker):
         mocker.patch.object(
             FeedImport,
             attribute=FeedImport.get_import_result.__name__,
-            side_effect=[
-                ImportResult(status_report) if status_report[0]['finishedTime'] is not None
-                else None
-                for status_report in status_reports
-            ]
+            side_effect=[ImportResult(status_report) for status_report in status_reports]
         )
     return __object_patch
 
@@ -43,10 +39,11 @@ def test_await_import_finish_successful(
 
 
 def test_await_import_finish_failed(mocker) -> None:
+    status_report: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/in_progress.json')
     mocker.patch.object(
         FeedImport,
         attribute=FeedImport.get_import_result.__name__,
-        return_value=None
+        return_value=ImportResult([status_report])
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')

@@ -28,7 +28,7 @@ def test_get_import_report_finished(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
     assert isinstance(import_result, ImportResult)
     assert len(import_result.created_items) == 5
@@ -47,9 +47,10 @@ def test_get_import_report_in_progress(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
-    assert import_result is None
+    assert isinstance(import_result, ImportResult)
+    assert len(import_result.created_items) == 0
 
 
 def test_get_import_report_error(requests_mock) -> None:
@@ -67,7 +68,7 @@ def test_get_import_report_error(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: Optional[ImportResult] = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
 
     assert import_result is not None
     assert import_result.status == ImportStatus.ERROR
