@@ -52,5 +52,6 @@ class ImportResult:
 
         return {
             'imported': f'{imported_items}/{total_items}',
+            'finished': import_report[0]['finishedTime'] is not None,
             'details': import_report_details if len(import_report_details) > 0 else None
         }
