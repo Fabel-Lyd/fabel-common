@@ -98,6 +98,11 @@ class FeedExport(FeedApiService):
     def __build_url(self, export_endpoint: ExportEndpoint, parameters: str) -> str:
         return f'{self.BASE_URL}/{export_endpoint.value}?{parameters}'
 
-    def __send_product_export_request(self, url: str) -> List[Dict]:
-        response: Response = self._send_request(HttpVerb.POST, url)
+    def __send_product_export_request(
+            self,
+            url: str,
+            data: Union[Dict, str, None] = None
+    ) -> List[Dict]:
+
+        response: Response = self._send_request(HttpVerb.POST, url, data)
         return response.json()['content']
