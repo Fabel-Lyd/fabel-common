@@ -1,4 +1,5 @@
-from typing import List, Dict
+import json
+from typing import List, Dict, Union
 from urllib.parse import urlencode
 from requests import Response
 from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
@@ -71,6 +72,19 @@ class FeedExport(FeedApiService):
             result_list.extend(self.__send_product_export_request(url))
 
         return result_list
+
+    def get_books_by_custom_attributes(
+            self,
+            attribute_filter: Dict,
+            page_size: int,
+            page: int
+    ) -> List[Dict]:
+
+        url: str = self.__build_url(
+            ExportEndpoint.PRODUCT,
+            f'changesOnly=false&productTypeImportCodes=ERP&size={page_size}&page={page}'
+        )
+        return self.__send_product_export_request(url, json.dumps(attribute_filter))
 
     def get_book(self, isbn: str) -> Dict:
         url: str = self.__build_url(
