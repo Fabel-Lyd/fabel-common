@@ -19,6 +19,16 @@
                 "No product type with import code incorrect found"
             ],
             "importJSON": null
+        },
+        {
+            "importCode": "33390",
+            "productNo": "P_9999998",
+            "action": "CREATE",
+            "status": "ERROR",
+            "messages": [
+                "Error message"
+            ],
+            "importJSON": null
         }
     ]
 }

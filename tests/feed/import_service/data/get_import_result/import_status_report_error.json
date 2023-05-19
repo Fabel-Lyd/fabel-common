@@ -1,10 +1,47 @@
 {
-    "finishedTime": "2023-05-08T08:35:04.404839Z",
+    "startedTime": "2022-07-07T14:49:46.249618Z",
+    "finishedTime": "2022-07-07T14:49:51.634374Z",
     "progress": "1 / 1  (100.00 %)",
-    "startedTime": "2023-05-08T08:35:03.674509Z",
     "sumOfStatuses": {
-        "ERROR": 1,
         "OK": 0,
-        "WARNING": 0
+        "WARNING": 0,
+        "ERROR": 1
+    },
+    "report": {
+        "content": [
+            {
+                "importCode": "33390",
+                "productNo": "P_9999998",
+                "action": "CREATE",
+                "status": "ERROR",
+                "messages": ["Error message"],
+                "importJSON": null
+            }
+        ],
+        "pageable": {
+            "sort": {
+                "empty": true,
+                "unsorted": true,
+                "sorted": false
+            },
+            "offset": 0,
+            "pageNumber": 0,
+            "pageSize": 20,
+            "paged": true,
+            "unpaged": false
+        },
+        "totalElements": 1,
+        "totalPages": 1,
+        "last": true,
+        "size": 20,
+        "number": 0,
+        "sort": {
+            "empty": true,
+            "unsorted": true,
+            "sorted": false
+        },
+        "numberOfElements": 1,
+        "first": true,
+        "empty": false
     }
 }
