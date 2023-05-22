@@ -30,6 +30,9 @@ class ImportResult:
                 continue
 
             for item in report_page_details['content']:
+                if item['status'] == 'ERROR':
+                    continue
+
                 created_items.append(
                     ImportResultItem(
                         import_code=item['importCode'],
