@@ -13,12 +13,12 @@ from fabelcommon.batch.batch import chunk_list
 
 class FeedExport(FeedApiService):
     IMPORT_CODE_EXPORT_BATCH_SIZE: int = 300
-    NAME_EXPORT_BATCH_SIZE: int = 100
+    DEFAULT_EXPORT_BATCH_SIZE: int = 100
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
-    def get_all_products(self, page_size: int = 100) -> List[Dict]:
+    def get_all_products(self, page_size: int = DEFAULT_EXPORT_BATCH_SIZE) -> List[Dict]:
         partial_url: str = self.__build_url(
             ExportEndpoint.PRODUCT,
             f'changesOnly=false&size={page_size}&page='
@@ -50,7 +50,7 @@ class FeedExport(FeedApiService):
             url: str = self.__build_url(
                 ExportEndpoint.PRODUCT,
                 'changesOnly=false&'
-                f'size={FeedExport.NAME_EXPORT_BATCH_SIZE}&'
+                f'size={FeedExport.DEFAULT_EXPORT_BATCH_SIZE}&'
                 f'productTypeImportCodes={product_type.value}&'
                 f'name={name}'
             )
@@ -94,13 +94,12 @@ class FeedExport(FeedApiService):
     def get_books_by_attributes(
             self,
             attributes: List[FeedAttribute],
-            page_size: int,
-            page: int
+            page_size: int
     ) -> List[Dict]:
 
-        url: str = self.__build_url(
+        partial_url: str = self.__build_url(
             ExportEndpoint.PRODUCT,
-            f'changesOnly=false&productTypeImportCodes=ERP&size={page_size}&page={page}'
+            f'changesOnly=false&productTypeImportCodes=ERP&size={page_size}&page='
         )
 
         payload_attributes: List[Dict] = [
@@ -113,7 +112,17 @@ class FeedExport(FeedApiService):
         ]
         payload: Dict = {'attributes': payload_attributes}
 
-        return self.__send_product_export_request(url, json.dumps(payload))
+        result: List[Dict] = []
+        page_count: int = 0
+        while True:
+            book_batch: List[Dict] = self.__send_product_export_request(f'{partial_url}{page_count}', json.dumps(payload))
+            if len(book_batch) == 0:
+                break
+
+            result.extend(book_batch)
+            page_count += 1
+
+        return result
 
     def get_book(self, isbn: str) -> Dict:
         url: str = self.__build_url(
