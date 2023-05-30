@@ -5,12 +5,12 @@ from fabelcommon.feed.export_service import FeedExport
 from fabelcommon.feed.export_service.feed_attribute import FeedAttribute
 
 
-TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_books_by_custom_attributes'
+TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_books_by_attributes'
 TEST_PAGE_SIZE: int = 1
 TEST_PAGE: int = 0
 
 
-def test_get_books_by_custom_attributes(requests_mock) -> None:
+def test_get_books_by_attributes(requests_mock) -> None:
     expected_payload: str = json.dumps({
         "attributes": [
             {
@@ -39,7 +39,7 @@ def test_get_books_by_custom_attributes(requests_mock) -> None:
     )
 
     feed_export: FeedExport = FeedExport('test_username', 'test_password')
-    actual_result: List[Dict] = feed_export.get_books_by_custom_attributes(
+    actual_result: List[Dict] = feed_export.get_books_by_attributes(
         [
             FeedAttribute('lydfil-salgsstatus', 'Utgått'),
             FeedAttribute('lydfil-salgsstatus', 'I salg'),
