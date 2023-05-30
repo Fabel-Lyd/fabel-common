@@ -5,7 +5,7 @@ from fabelcommon.feed.export_service.identifier_type import IdentifierType
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.export_service import ProductType
 
-TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attribute'
+TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_identifier'
 
 
 @pytest.mark.parametrize(
@@ -46,7 +46,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attri
             ]
         )
     ])
-def test_get_products_by_attribute(
+def test_get_products_by_identifier(
         data_file_name: str,
         product_types: List[ProductType],
         identifier_type: IdentifierType,
@@ -66,9 +66,9 @@ def test_get_products_by_attribute(
     )
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
-    products_found: List[Dict] = feed_export.get_products_by_attribute(
+    products_found: List[Dict] = feed_export.get_products_by_identifier(
         identifier_type=identifier_type,
-        attribute_values=search_parameters,
+        identifier_values=search_parameters,
         product_types=product_types,
         batch_size=batch_size,
         product_head_only=product_head_only

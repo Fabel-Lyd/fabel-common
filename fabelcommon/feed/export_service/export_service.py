@@ -59,10 +59,10 @@ class FeedExport(FeedApiService):
             result.extend(response)
         return result
 
-    def get_products_by_attribute(
+    def get_products_by_identifier(
             self,
             identifier_type: IdentifierType,
-            attribute_values: List[str],
+            identifier_values: List[str],
             product_types: List[ProductType],
             batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE,
             product_head_only: bool = False
@@ -70,18 +70,18 @@ class FeedExport(FeedApiService):
 
         unique_product_types: List[str] = [product_type.value for product_type in set(product_types)]
         concatenated_product_types: str = ','.join(sorted(unique_product_types))
-        batched_attribute_values: List[List[str]] = chunk_list(attribute_values, batch_size)
+        batched_identifier_values: List[List[str]] = chunk_list(identifier_values, batch_size)
 
         result_list: List[Dict] = []
-        for batch in batched_attribute_values:
-            concatenated_attribute_values: str = ','.join(batch)
+        for batch in batched_identifier_values:
+            concatenated_identifier_values: str = ','.join(batch)
 
             url: str = self.__build_url(
                 export_endpoint=ExportEndpoint.PRODUCT,
                 parameters=urlencode({
                     'changesOnly': str(False).lower(),
                     'productTypeImportCodes': concatenated_product_types,
-                    identifier_type.value: concatenated_attribute_values,
+                    identifier_type.value: concatenated_identifier_values,
                     'size': batch_size,
                     'productHeadOnly': str(product_head_only).lower()
                 })
