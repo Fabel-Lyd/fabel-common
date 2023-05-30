@@ -1,0 +1,1234 @@
+[
+    {
+        "identifier": {
+            "importCode": "23903",
+            "productNo": "P_41390"
+        },
+        "productHead": {
+            "name": {
+                "nb": "Nils Nordberg"
+            },
+            "alternativeName": {},
+            "productNo": "P_41390",
+            "altProductNo": null,
+            "status": {
+                "code": "active",
+                "name": {
+                    "nb": "Aktivt"
+                }
+            },
+            "type": {
+                "code": "person",
+                "name": {
+                    "nb": "Person"
+                }
+            },
+            "owner": null,
+            "group": null,
+            "supplier": null,
+            "base": false,
+            "baseProduct": null,
+            "productType": "PRODUCT",
+            "deleted": false
+        },
+        "attributes": [
+            {
+                "name": {
+                    "nb": "Rolle"
+                },
+                "importCode": "person-rolle",
+                "dataType": "DATA_REGISTER_MULTI",
+                "range": false,
+                "options": {
+                    "Forfatter": {
+                        "nb": "Forfatter"
+                    },
+                    "Innleser": {
+                        "nb": "Innleser"
+                    },
+                    "Oversetter": {
+                        "nb": "Oversetter"
+                    }
+                },
+                "value": [
+                    "Forfatter",
+                    "Innleser",
+                    "Oversetter"
+                ],
+                "sortNo": 1,
+                "attributeGroupName": {
+                    "nb": "Person attributter"
+                },
+                "attributeGroupSortNo": 6
+            },
+            {
+                "name": {
+                    "nb": "Intern Kommentar"
+                },
+                "dataType": "TEXT",
+                "range": false,
+                "value": {},
+                "sortNo": 1,
+                "attributeGroupImportCode": "internkommentar",
+                "attributeGroupName": {
+                    "nb": "Intern kommentar"
+                },
+                "attributeGroupSortNo": 13
+            },
+            {
+                "name": {
+                    "nb": "personid"
+                },
+                "dataType": "LONG",
+                "range": false,
+                "sortNo": 1,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            },
+            {
+                "name": {
+                    "nb": "personname"
+                },
+                "dataType": "TEXT",
+                "range": false,
+                "value": {},
+                "sortNo": 2,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            },
+            {
+                "name": {
+                    "nb": "personrole"
+                },
+                "dataType": "DATA_REGISTER",
+                "range": false,
+                "options": {
+                    "Forfatter": {
+                        "nb": "Forfatter"
+                    },
+                    "Innleser": {
+                        "nb": "Innleser"
+                    },
+                    "Oversetter": {
+                        "nb": "Oversetter"
+                    }
+                },
+                "sortNo": 3,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            }
+        ],
+        "texts": [
+            {
+                "name": {
+                    "nb": "Person beskrivelse"
+                },
+                "importCode": "cv",
+                "sortNo": 4,
+                "value": {
+                    "nb": "Nils Nordberg (født 1942) er cand. mag. i engelsk, litteraturvitenskap og folkeminnevitenskap, har arbeidet i NRK siden 1966 og fra 1973 i Radioteatret, hvor han har satt opp 130 hørespill i alle genrer, fra Ibsen til  krim og science fiction. Nordberg har vunnet TV-showet Kvitt eller dobbelt innen emnet Sherlock Holmes. Han har også virket som dramatiker, faglitterær forfatter, oversetter, anmelder og konsulent for forlag og film."
+                },
+                "maxLength": null
+            }
+        ],
+        "relations": [],
+        "linkedTo": [
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27736",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31518",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31365",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29694",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31366",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31367",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27048",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28599",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28607",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31839",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27350",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27508",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31368",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31519",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28079",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27273",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28636",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30625",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29244",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30961",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30896",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30959",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30966",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30980",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29121",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "26715",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "26706",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28227",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29045",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32021",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31363",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "26470",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29207",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32719",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27114",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31364",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31035",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Forfatter_relasjon",
+                "relationName": {
+                    "nb": "Forfatter"
+                },
+                "productImportCode": "27048",
+                "productRelationSortNo": 1,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Forfatter_relasjon",
+                "relationName": {
+                    "nb": "Forfatter"
+                },
+                "productImportCode": "27273",
+                "productRelationSortNo": 1,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Oversetter_relasjon",
+                "relationName": {
+                    "nb": "Oversetter"
+                },
+                "productImportCode": "29244",
+                "productRelationSortNo": 4,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Oversetter_relasjon",
+                "relationName": {
+                    "nb": "Oversetter"
+                },
+                "productImportCode": "28621",
+                "productRelationSortNo": 4,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Oversetter_relasjon",
+                "relationName": {
+                    "nb": "Oversetter"
+                },
+                "productImportCode": "29187",
+                "productRelationSortNo": 4,
+                "action": "CREATE"
+            }
+        ],
+        "structures": [],
+        "packaging": [],
+        "media": [],
+        "variants": []
+    },
+    {
+        "identifier": {
+            "importCode": "23946",
+            "productNo": "P_41768"
+        },
+        "productHead": {
+            "name": {
+                "nb": "Anderz Eide"
+            },
+            "alternativeName": {},
+            "productNo": "P_41768",
+            "altProductNo": null,
+            "status": {
+                "code": "active",
+                "name": {
+                    "nb": "Aktivt"
+                }
+            },
+            "type": {
+                "code": "person",
+                "name": {
+                    "nb": "Person"
+                }
+            },
+            "owner": null,
+            "group": null,
+            "supplier": null,
+            "base": false,
+            "baseProduct": null,
+            "productType": "PRODUCT",
+            "deleted": false
+        },
+        "attributes": [
+            {
+                "name": {
+                    "nb": "Rolle"
+                },
+                "importCode": "person-rolle",
+                "dataType": "DATA_REGISTER_MULTI",
+                "range": false,
+                "options": {
+                    "Forfatter": {
+                        "nb": "Forfatter"
+                    },
+                    "Innleser": {
+                        "nb": "Innleser"
+                    },
+                    "Oversetter": {
+                        "nb": "Oversetter"
+                    }
+                },
+                "value": [
+                    "Innleser"
+                ],
+                "sortNo": 1,
+                "attributeGroupName": {
+                    "nb": "Person attributter"
+                },
+                "attributeGroupSortNo": 6
+            },
+            {
+                "name": {
+                    "nb": "Intern Kommentar"
+                },
+                "dataType": "TEXT",
+                "range": false,
+                "value": {},
+                "sortNo": 1,
+                "attributeGroupImportCode": "internkommentar",
+                "attributeGroupName": {
+                    "nb": "Intern kommentar"
+                },
+                "attributeGroupSortNo": 13
+            },
+            {
+                "name": {
+                    "nb": "personid"
+                },
+                "dataType": "LONG",
+                "range": false,
+                "sortNo": 1,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            },
+            {
+                "name": {
+                    "nb": "personname"
+                },
+                "dataType": "TEXT",
+                "range": false,
+                "value": {},
+                "sortNo": 2,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            },
+            {
+                "name": {
+                    "nb": "personrole"
+                },
+                "dataType": "DATA_REGISTER",
+                "range": false,
+                "options": {
+                    "Forfatter": {
+                        "nb": "Forfatter"
+                    },
+                    "Innleser": {
+                        "nb": "Innleser"
+                    },
+                    "Oversetter": {
+                        "nb": "Oversetter"
+                    }
+                },
+                "sortNo": 3,
+                "attributeGroupImportCode": "bokbasen-person-attributes",
+                "attributeGroupName": {
+                    "nb": "bokbasen person attributes"
+                },
+                "attributeGroupSortNo": 17
+            }
+        ],
+        "texts": [
+            {
+                "name": {
+                    "nb": "Person beskrivelse"
+                },
+                "importCode": "cv",
+                "sortNo": 4,
+                "value": {
+                    "nb": "Anderz Eide (f.1975),har jobba ved fleire av landets scenar bl.a Den Nationale Scene, Trøndelag Teater, Riksteatret og Oslo Nye Teater. På Det Norske Teatret har han medvirka i suksessforestillinga «Bikubesong», «Svart Mjølk», «Trollprinsen» og «Henrik IV». Han har og medvirka i ei rekkje tv-produksjonar m.a  «Drømmefangeren», «Kodenavn: Hunter 2» og «Godnatt elskede»."
+                },
+                "maxLength": null
+            }
+        ],
+        "relations": [],
+        "linkedTo": [
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29771",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29243",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28102",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "33492",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30662",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "33584",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28114",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27101",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29078",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27733",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28117",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31307",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30888",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30886",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29696",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28497",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30613",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29764",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31135",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29141",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30949",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30889",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31866",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29833",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "26806",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "28476",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "31019",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30832",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "26862",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30315",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29003",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29012",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30833",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30648",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "29730",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30885",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32030",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32059",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32231",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32035",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32134",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32031",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27705",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32230",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32258",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32327",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32437",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32391",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32418",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "27047",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32781",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32783",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32784",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32229",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32135",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32911",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32931",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32941",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30160",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "32942",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "30609",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            },
+            {
+                "relationImportCode": "Innleser_relasjon",
+                "relationName": {
+                    "nb": "Innleser"
+                },
+                "productImportCode": "33065",
+                "productRelationSortNo": 2,
+                "action": "CREATE"
+            }
+        ],
+        "structures": [],
+        "packaging": [],
+        "media": [],
+        "variants": []
+    }
+]

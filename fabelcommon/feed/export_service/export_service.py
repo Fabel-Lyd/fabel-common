@@ -17,6 +17,26 @@ class FeedExport(FeedApiService):
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
+    def get_all_products(self, page_size: int = 100) -> List[Dict]:
+        partial_url: str = self.__build_url(
+            ExportEndpoint.PRODUCT,
+            f'changesOnly=false&size={page_size}&page='
+        )
+
+        all_products: List[Dict] = []
+        page_count: int = 0
+
+        while True:
+            product_batch: List[Dict] = self.__send_product_export_request(f'{partial_url}{page_count}')
+            if len(product_batch) == 0:
+                break
+
+            all_products.extend(product_batch)
+            page_count += 1
+
+        return all_products
+
+
     def get_products_by_name(
             self,
             # case-insensitive, redundant spaces removed and trimmed, exact match
