@@ -13,6 +13,7 @@ from fabelcommon.batch.batch import chunk_list
 
 class FeedExport(FeedApiService):
     IMPORT_CODE_EXPORT_BATCH_SIZE: int = 300
+    NAME_EXPORT_BATCH_SIZE: int = 100
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
@@ -36,14 +37,11 @@ class FeedExport(FeedApiService):
 
         return all_products
 
-
     def get_products_by_name(
             self,
             # case-insensitive, redundant spaces removed and trimmed, exact match
             names: List[str],
-            product_type: ProductType,
-            page_size: int = 20,
-            page_count: int = 0
+            product_type: ProductType
     ) -> List[Dict]:
 
         result: List[Dict] = []
@@ -52,8 +50,7 @@ class FeedExport(FeedApiService):
             url: str = self.__build_url(
                 ExportEndpoint.PRODUCT,
                 'changesOnly=false&'
-                f'size={page_size}&'
-                f'page={page_count}&'
+                f'size={FeedExport.NAME_EXPORT_BATCH_SIZE}&'
                 f'productTypeImportCodes={product_type.value}&'
                 f'name={name}'
             )

@@ -24,7 +24,7 @@ def test_get_products_by_name_successful(
 
     test_data: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/{data_file_name}')
 
-    expected_endpoint_partial: str = f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&size=20&page=0&productTypeImportCodes={product_type.value}&name='
+    expected_endpoint_partial: str = f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&size=100&productTypeImportCodes={product_type.value}&name='
 
     test_request = mocker.patch.object(
         FeedExport,
