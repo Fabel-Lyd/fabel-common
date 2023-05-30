@@ -7,7 +7,6 @@ from fabelcommon.feed.export_service.feed_attribute import FeedAttribute
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_books_by_attributes'
 TEST_PAGE_SIZE: int = 1
-TEST_PAGE: int = 0
 
 
 def test_get_books_by_attributes(requests_mock) -> None:
@@ -33,10 +32,16 @@ def test_get_books_by_attributes(requests_mock) -> None:
         'https://lydbokforlaget-feed.isysnet.no/token-server/oauth/token',
         text=json.dumps({'access_token': 'test_access_token'})
     )
+
     test_request = requests_mock.post(
-        f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=ERP&size={TEST_PAGE_SIZE}&page={TEST_PAGE}',
-        text=read_json_as_text(f'{TEST_DATA_DIRECTORY}/feed_response.json')
+        f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=ERP&size={TEST_PAGE_SIZE}&page=0',
+        text=read_json_as_text(f'{TEST_DATA_DIRECTORY}/feed_response_1.json')
     )
+    for page in range(1, 3):
+        requests_mock.post(
+            f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=ERP&size={TEST_PAGE_SIZE}&page={page}',
+            text=read_json_as_text(f'{TEST_DATA_DIRECTORY}/feed_response_{page + 1}.json')
+        )
 
     feed_export: FeedExport = FeedExport('test_username', 'test_password')
     actual_result: List[Dict] = feed_export.get_books_by_attributes(
@@ -45,8 +50,7 @@ def test_get_books_by_attributes(requests_mock) -> None:
             FeedAttribute('lydfil-salgsstatus', 'I salg'),
             FeedAttribute('lydfil-salgsstatus', 'Kommer')
         ],
-        TEST_PAGE_SIZE,
-        TEST_PAGE
+        TEST_PAGE_SIZE
     )
 
     actual_payload: str = test_request.last_request.text

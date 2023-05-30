@@ -1,0 +1,1568 @@
+{
+    "content": [
+        {
+            "identifier": {
+                "importCode": "32783",
+                "productNo": "9788234004728"
+            },
+            "productHead": {
+                "name": {
+                    "nb": "Eg er ein annan"
+                },
+                "alternativeName": {},
+                "productNo": "9788234004728",
+                "altProductNo": null,
+                "status": {
+                    "code": "active",
+                    "name": {
+                        "nb": "Aktivt"
+                    }
+                },
+                "type": {
+                    "code": "ERP",
+                    "name": {
+                        "nb": "Lydfil"
+                    }
+                },
+                "owner": null,
+                "group": null,
+                "supplier": null,
+                "base": false,
+                "baseProduct": null,
+                "productType": "PRODUCT",
+                "deleted": false
+            },
+            "attributes": [
+                {
+                    "name": {
+                        "nb": "ISBN"
+                    },
+                    "importCode": "lydfil-isbn",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {
+                        "nb": "9788234004728"
+                    },
+                    "sortNo": 1,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Orginal tittel"
+                    },
+                    "importCode": "lydfil-orginaltittel",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 2,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Salgsstatus"
+                    },
+                    "importCode": "lydfil-salgsstatus",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "Kommer": {
+                            "nb": "Kommer"
+                        },
+                        "I salg": {
+                            "nb": "I salg"
+                        },
+                        "Utgått": {
+                            "nb": "Utgått"
+                        }
+                    },
+                    "value": "Utgått",
+                    "sortNo": 3,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Abb. status"
+                    },
+                    "importCode": "lydfil-abbstatus",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "ikke-aktiv": {
+                            "nb": "Ikke Aktiv"
+                        },
+                        "Slipp": {
+                            "nb": "Kommer for Strømming"
+                        },
+                        "Aktiv": {
+                            "nb": "Aktiv"
+                        },
+                        "Utgått": {
+                            "nb": "Utgått"
+                        }
+                    },
+                    "value": "Aktiv",
+                    "sortNo": 4,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Alder"
+                    },
+                    "importCode": "lydfil-alder",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "6": {
+                            "nb": "Fra 6 år"
+                        },
+                        "8": {
+                            "nb": "Fra 8 år"
+                        },
+                        "10": {
+                            "nb": "Fra 10 år"
+                        },
+                        "12": {
+                            "nb": "Fra 12 år"
+                        },
+                        "14": {
+                            "nb": "Fra 14 år"
+                        },
+                        "2": {
+                            "nb": "Fra 2 år"
+                        },
+                        "4": {
+                            "nb": "Fra 4 år"
+                        }
+                    },
+                    "sortNo": 5,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Alder Bokbasen"
+                    },
+                    "importCode": "lydfil-alder-bokbasen",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "005": {
+                            "nb": "12-16"
+                        },
+                        "001": {
+                            "nb": "0-3"
+                        },
+                        "002": {
+                            "nb": "3-6"
+                        },
+                        "003": {
+                            "nb": "6-9"
+                        },
+                        "004": {
+                            "nb": "9-12"
+                        }
+                    },
+                    "sortNo": 6,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Spilletid"
+                    },
+                    "importCode": "lydfil-spilletid",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {
+                        "nb": "08:00:51"
+                    },
+                    "sortNo": 7,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Målform"
+                    },
+                    "importCode": "lydfil-maalform",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "No-nb": {
+                            "nb": "Bokmål"
+                        },
+                        "No-nn": {
+                            "nb": "Nynorsk"
+                        },
+                        "sme": {
+                            "nb": "Samisk"
+                        },
+                        "eng": {
+                            "nb": "Engelsk"
+                        }
+                    },
+                    "value": "No-nn",
+                    "sortNo": 8,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Pris"
+                    },
+                    "importCode": "lydfil-pris",
+                    "dataType": "LONG",
+                    "range": false,
+                    "sortNo": 9,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Kampanjepris"
+                    },
+                    "importCode": "lydfil-kampanjepris",
+                    "dataType": "LONG",
+                    "range": false,
+                    "sortNo": 10,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Kampanjeprisdato"
+                    },
+                    "importCode": "lydfil_kampanjeprisdato",
+                    "dataType": "DATE",
+                    "range": true,
+                    "sortNo": 11,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Lettlest"
+                    },
+                    "importCode": "lydfil-lettlest",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 12,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Produsert av"
+                    },
+                    "importCode": "lydfil-produsertav",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "Juritzen forlag AS": {
+                            "nb": "Juritzen forlag AS"
+                        },
+                        "Cappelen Damm": {
+                            "nb": "Cappelen Damm AS"
+                        },
+                        "Lind & Co": {
+                            "nb": "Lind & Co"
+                        },
+                        "Lille Måne": {
+                            "nb": "Lille Måne"
+                        },
+                        "Forlaget Oktober AS": {
+                            "nb": "Forlaget Oktober AS"
+                        },
+                        "Kagge Forlag": {
+                            "nb": "Kagge Forlag"
+                        },
+                        "Strawberry Publishing": {
+                            "nb": "Strawberry Publishing"
+                        },
+                        "Antiforlaget ( Skoglund )": {
+                            "nb": "Antiforlaget ( Skoglund )"
+                        },
+                        "Vigmostad & Bjørke": {
+                            "nb": "Forlaget Vigmostad & Bjørke AS"
+                        },
+                        "Forlaget Oktober": {
+                            "nb": "Forlaget Oktober"
+                        },
+                        "Samlaget": {
+                            "nb": "Det Norske Samlaget"
+                        },
+                        "Universitetsforlaget": {
+                            "nb": "Universitetsforlaget AS"
+                        },
+                        "NRK": {
+                            "nb": "NRK"
+                        },
+                        "LBF": {
+                            "nb": "Fabel Lyd AS"
+                        },
+                        "eBokNorden AS": {
+                            "nb": "Eboknorden AS"
+                        },
+                        "Bonnier Norsk Forlag AS": {
+                            "nb": "Bonnier Norsk Forlag AS"
+                        },
+                        "Vega Forlag AS": {
+                            "nb": "Vega Forlag AS"
+                        },
+                        "Grappa musikkforlag AS": {
+                            "nb": "Grappa musikkforlag AS"
+                        },
+                        "12345": {
+                            "nb": "12345"
+                        },
+                        "Svarttrost Produksjoner": {
+                            "nb": "Svarttrost Produksjoner"
+                        },
+                        "Vigmostad & Bjørke AS": {
+                            "nb": "Vigmostad & Bjørke AS"
+                        },
+                        "VIATONE V/AKSEL BECH CHRISTENSEN": {
+                            "nb": "VIATONE V/AKSEL BECH CHRISTENSEN"
+                        },
+                        "Gyldendal": {
+                            "nb": "Gyldendal Norsk Forlag AS"
+                        },
+                        "Aschehoug": {
+                            "nb": "Aschehoug & Co"
+                        },
+                        "Egmont Kids Media Nordic": {
+                            "nb": "Egmont Kids Media Nordic AS"
+                        }
+                    },
+                    "value": "Samlaget",
+                    "sortNo": 13,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Pocketpris"
+                    },
+                    "importCode": "lydfil-pocketpris",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 14,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Serienummer"
+                    },
+                    "importCode": "lydfil-serienummer",
+                    "dataType": "LONG",
+                    "range": false,
+                    "value": 2,
+                    "sortNo": 15,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Utgivelsesdato"
+                    },
+                    "importCode": "lydfil-utgivelsesdato",
+                    "dataType": "DATE",
+                    "range": false,
+                    "sortNo": 16,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "UtgivelsedatoAb"
+                    },
+                    "importCode": "lydfil-utgivelsesdatoab",
+                    "dataType": "DATE",
+                    "range": false,
+                    "value": "2022-04-27T00:00:00.000+00:00",
+                    "sortNo": 17,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Bokforlag"
+                    },
+                    "importCode": "lydfil-bokforlag",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "165409": {
+                            "nb": "Liv Forlag"
+                        },
+                        "169487": {
+                            "nb": "Omnipax"
+                        },
+                        "171960": {
+                            "nb": "Barneselskapet"
+                        },
+                        "44331": {
+                            "nb": "Ganesa Forlag AS"
+                        },
+                        "49546": {
+                            "nb": "Orion Forlag"
+                        },
+                        "51024": {
+                            "nb": "Pegasus Forlag"
+                        },
+                        "63015": {
+                            "nb": "Pedagogisk Forum"
+                        },
+                        "3213213": {
+                            "nb": "Panta"
+                        },
+                        "62959": {
+                            "nb": "Egmont Serieforlaget AS"
+                        },
+                        "1000000": {
+                            "nb": "Bonnier norsk forlag"
+                        },
+                        "1000002": {
+                            "nb": "Grappa musikkforlag"
+                        },
+                        "1000003": {
+                            "nb": "Papermoon"
+                        },
+                        "1000004": {
+                            "nb": "Svarttrost Produksjoner"
+                        },
+                        "1000005": {
+                            "nb": "Bladkompaniet"
+                        },
+                        "1000006": {
+                            "nb": "Ena"
+                        },
+                        "1000007": {
+                            "nb": "Bastion"
+                        },
+                        "1000008": {
+                            "nb": "Viatone"
+                        },
+                        "1000009": {
+                            "nb": "Flamme"
+                        },
+                        "1000010": {
+                            "nb": "Korall forlag"
+                        },
+                        "1000011": {
+                            "nb": "Larsforlaget"
+                        },
+                        "1000012": {
+                            "nb": "Arneberg"
+                        },
+                        "1000013": {
+                            "nb": "Egmont Kids Media Nordic"
+                        },
+                        "1000014": {
+                            "nb": "Portal"
+                        },
+                        "1000015": {
+                            "nb": "Hobi forlag"
+                        },
+                        "1000016": {
+                            "nb": "Pioner"
+                        },
+                        "1000017": {
+                            "nb": "Fontini forlag"
+                        },
+                        "1000018": {
+                            "nb": "Gammafon"
+                        },
+                        "1000019": {
+                            "nb": "Antiforlaget"
+                        },
+                        "32500": {
+                            "nb": "Cappelen Damm"
+                        },
+                        "32530": {
+                            "nb": "J.M. Stenersens forlag"
+                        },
+                        "38211": {
+                            "nb": "Tiden"
+                        },
+                        "40255": {
+                            "nb": "Pax Forlag AS"
+                        },
+                        "44460": {
+                            "nb": "Kagge forlag"
+                        },
+                        "50115": {
+                            "nb": "Hegnar Media AS"
+                        },
+                        "54671": {
+                            "nb": "Vigmostad Bjørke"
+                        },
+                        "56378": {
+                            "nb": "Juritzen Forlag"
+                        },
+                        "56523": {
+                            "nb": "Font"
+                        },
+                        "62912": {
+                            "nb": "NRK Aktivum A/S"
+                        },
+                        "62913": {
+                            "nb": "Lydbokforlaget"
+                        },
+                        "63005": {
+                            "nb": "N.W. Damm & Søn AS"
+                        },
+                        "63006": {
+                            "nb": "Samlaget"
+                        },
+                        "63008": {
+                            "nb": "Oktober"
+                        },
+                        "63009": {
+                            "nb": "Aschehoug"
+                        },
+                        "63010": {
+                            "nb": "Gyldendal"
+                        },
+                        "63012": {
+                            "nb": "Karviland Forlag"
+                        },
+                        "63013": {
+                            "nb": "Forlaget Press AS"
+                        },
+                        "63037": {
+                            "nb": "Schibsted Forlag"
+                        },
+                        "63039": {
+                            "nb": "Kolon"
+                        },
+                        "76210": {
+                            "nb": "Vega Forlag"
+                        },
+                        "83402": {
+                            "nb": "Kagge"
+                        },
+                        "147634": {
+                            "nb": "Pitch forlag"
+                        },
+                        "153789": {
+                            "nb": "Pilar Forlag"
+                        },
+                        "153790": {
+                            "nb": "Capitana"
+                        },
+                        "158751": {
+                            "nb": "Goliat Forlag"
+                        },
+                        "159967": {
+                            "nb": "Canoa"
+                        },
+                        "162340": {
+                            "nb": "Lind & Co"
+                        },
+                        "163104": {
+                            "nb": "Strawberry Publishing"
+                        },
+                        "163105": {
+                            "nb": "Armada Forlag"
+                        },
+                        "163107": {
+                            "nb": "Forlaget Lille Måne AS"
+                        },
+                        "165754": {
+                            "nb": "Fabel"
+                        }
+                    },
+                    "value": "63006",
+                    "sortNo": 18,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Avtalevilkår %"
+                    },
+                    "dataType": "FLOAT",
+                    "range": false,
+                    "sortNo": 19,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Minstesum"
+                    },
+                    "dataType": "FLOAT",
+                    "range": false,
+                    "sortNo": 20,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Prøvelytt"
+                    },
+                    "dataType": "FLOAT",
+                    "range": false,
+                    "sortNo": 21,
+                    "attributeGroupName": {
+                        "nb": "Lydfil attributter"
+                    },
+                    "attributeGroupSortNo": 4
+                },
+                {
+                    "name": {
+                        "nb": "Forfatter"
+                    },
+                    "importCode": "Forfatter-sok",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {
+                        "nb": "Jon Fosse"
+                    },
+                    "sortNo": 1,
+                    "attributeGroupName": {
+                        "nb": "Søkeattributter"
+                    },
+                    "attributeGroupSortNo": 5
+                },
+                {
+                    "name": {
+                        "nb": "Innleser"
+                    },
+                    "importCode": "Innleser-sok",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {
+                        "nb": "Anderz Eide"
+                    },
+                    "sortNo": 2,
+                    "attributeGroupName": {
+                        "nb": "Søkeattributter"
+                    },
+                    "attributeGroupSortNo": 5
+                },
+                {
+                    "name": {
+                        "nb": "Oversetter"
+                    },
+                    "importCode": "Oversetter-sok",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 3,
+                    "attributeGroupName": {
+                        "nb": "Søkeattributter"
+                    },
+                    "attributeGroupSortNo": 5
+                },
+                {
+                    "name": {
+                        "nb": "Serietittel"
+                    },
+                    "importCode": "Serietittel-sok",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {
+                        "nb": "Septologien"
+                    },
+                    "sortNo": 4,
+                    "attributeGroupName": {
+                        "nb": "Søkeattributter"
+                    },
+                    "attributeGroupSortNo": 5
+                },
+                {
+                    "name": {
+                        "nb": "Sjanger"
+                    },
+                    "importCode": "sjanger",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {},
+                    "sortNo": 5,
+                    "attributeGroupName": {
+                        "nb": "Søkeattributter"
+                    },
+                    "attributeGroupSortNo": 5
+                },
+                {
+                    "name": {
+                        "nb": "Hovedsjanger"
+                    },
+                    "importCode": "hovedsjanger",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "Skjønnlitteratur": {
+                            "nb": "Skjønnlitteratur"
+                        },
+                        "Fakta og dokumentar": {
+                            "nb": "Fakta og dokumentar"
+                        },
+                        "Barn": {
+                            "nb": "Barn"
+                        },
+                        "Ungdom": {
+                            "nb": "Ungdom"
+                        }
+                    },
+                    "value": "Skjønnlitteratur",
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "hovedsjanger",
+                    "attributeGroupName": {
+                        "nb": "Hovedsjanger"
+                    },
+                    "attributeGroupSortNo": 7
+                },
+                {
+                    "name": {
+                        "nb": "Barn"
+                    },
+                    "importCode": "barn",
+                    "dataType": "DATA_REGISTER_MULTI",
+                    "range": false,
+                    "options": {
+                        "eventyr": {
+                            "nb": "Eventyr"
+                        },
+                        "fakta": {
+                            "nb": "Fakta"
+                        },
+                        "fantasy": {
+                            "nb": "Fantasy"
+                        },
+                        "hørespill": {
+                            "nb": "Hørespill"
+                        },
+                        "krimogspenning": {
+                            "nb": "Krim og spenning"
+                        },
+                        "rimogregler": {
+                            "nb": "Rim og regler"
+                        },
+                        "romanerogfortellinger": {
+                            "nb": "Romaner og fortellinger"
+                        }
+                    },
+                    "value": [],
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "kat-att",
+                    "attributeGroupName": {
+                        "nb": "Kategoriattributt"
+                    },
+                    "attributeGroupSortNo": 8
+                },
+                {
+                    "name": {
+                        "nb": "Ungdom"
+                    },
+                    "importCode": "ungdom",
+                    "dataType": "DATA_REGISTER_MULTI",
+                    "range": false,
+                    "options": {
+                        "romanerogfortellinger": {
+                            "nb": "Romaner og fortellinger"
+                        },
+                        "fantasy": {
+                            "nb": "Fantasy"
+                        },
+                        "fakta": {
+                            "nb": "Fakta"
+                        },
+                        "hørespill": {
+                            "nb": "Hørespill"
+                        },
+                        "krimogspenning": {
+                            "nb": "Krim og spenning"
+                        }
+                    },
+                    "value": [],
+                    "sortNo": 2,
+                    "attributeGroupImportCode": "kat-att",
+                    "attributeGroupName": {
+                        "nb": "Kategoriattributt"
+                    },
+                    "attributeGroupSortNo": 8
+                },
+                {
+                    "name": {
+                        "nb": "Fakta og dokumentar"
+                    },
+                    "importCode": "faktaogdokumentar",
+                    "dataType": "DATA_REGISTER_MULTI",
+                    "range": false,
+                    "options": {
+                        "alternativlitteratur": {
+                            "nb": "Alternativ litteratur"
+                        },
+                        "arbeidslivogorganisasjon": {
+                            "nb": "Arbeidsliv og organisasjon"
+                        },
+                        "biografierogmemoarer": {
+                            "nb": "Biografier og memoarer"
+                        },
+                        "filosofi": {
+                            "nb": "Filosofi"
+                        },
+                        "foreldreogbarn": {
+                            "nb": "Foreldre og barn"
+                        },
+                        "helse": {
+                            "nb": "Helse"
+                        },
+                        "humorogsatire": {
+                            "nb": "Humor og satire"
+                        },
+                        "kunstogkultur": {
+                            "nb": "Kunst og kultur"
+                        },
+                        "psykologiogselvutvikling": {
+                            "nb": "Psykologi og selvutvikling"
+                        },
+                        "religionoglivssyn": {
+                            "nb": "Religion og livssyn"
+                        },
+                        "samfunnoghistorie": {
+                            "nb": "Samfunn og historie"
+                        },
+                        "språkogreiselitteratur": {
+                            "nb": "Språk og reiselitteratur"
+                        }
+                    },
+                    "value": [],
+                    "sortNo": 3,
+                    "attributeGroupImportCode": "kat-att",
+                    "attributeGroupName": {
+                        "nb": "Kategoriattributt"
+                    },
+                    "attributeGroupSortNo": 8
+                },
+                {
+                    "name": {
+                        "nb": "Skjønnliteratur"
+                    },
+                    "importCode": "skjonnliteratur",
+                    "dataType": "DATA_REGISTER_MULTI",
+                    "range": false,
+                    "options": {
+                        "romaner": {
+                            "nb": "Romaner"
+                        },
+                        "krimogspenning": {
+                            "nb": "Krim og spenning"
+                        },
+                        "hørespill": {
+                            "nb": "Hørespill"
+                        },
+                        "lyrikk": {
+                            "nb": "Lyrikk"
+                        },
+                        "noveller": {
+                            "nb": "Noveller"
+                        }
+                    },
+                    "value": [
+                        "romaner"
+                    ],
+                    "sortNo": 4,
+                    "attributeGroupImportCode": "kat-att",
+                    "attributeGroupName": {
+                        "nb": "Kategoriattributt"
+                    },
+                    "attributeGroupSortNo": 8
+                },
+                {
+                    "name": {
+                        "nb": "Fabel ID"
+                    },
+                    "importCode": "fabel-id",
+                    "dataType": "LONG",
+                    "range": false,
+                    "value": 19521,
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "beat-attributter",
+                    "attributeGroupName": {
+                        "nb": "BEAT attributter"
+                    },
+                    "attributeGroupSortNo": 10
+                },
+                {
+                    "name": {
+                        "nb": "SEO-tittel"
+                    },
+                    "importCode": "seo-tittel",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "seo",
+                    "attributeGroupName": {
+                        "nb": "SEO"
+                    },
+                    "attributeGroupSortNo": 11
+                },
+                {
+                    "name": {
+                        "nb": "Metabeskrivelse"
+                    },
+                    "importCode": "metabeskrivelse",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 2,
+                    "attributeGroupImportCode": "seo",
+                    "attributeGroupName": {
+                        "nb": "SEO"
+                    },
+                    "attributeGroupSortNo": 11
+                },
+                {
+                    "name": {
+                        "nb": "stikkord-web"
+                    },
+                    "importCode": "stikkord-web",
+                    "dataType": "DATA_REGISTER_MULTI",
+                    "range": false,
+                    "options": {
+                        "abo-mest-hørt": {
+                            "nb": "abo-mest-hørt"
+                        },
+                        "abo-nyheter": {
+                            "nb": "abo-nyheter"
+                        },
+                        "liste-1-bestselgere": {
+                            "nb": "liste-1-bestselgere"
+                        },
+                        "liste-2-nyheter": {
+                            "nb": "liste-2-nyheter"
+                        },
+                        "liste-3-krim": {
+                            "nb": "liste-3-krim"
+                        },
+                        "liste-4-roman": {
+                            "nb": "liste-4-roman"
+                        },
+                        "liste-5-fakta-dokumentar": {
+                            "nb": "liste-5-fakta-dokumentar"
+                        },
+                        "liste-6-barn-ungdom": {
+                            "nb": "liste-6-barn-ungdom"
+                        }
+                    },
+                    "value": [],
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "redaksjonelt",
+                    "attributeGroupName": {
+                        "nb": "Redaksjonelt"
+                    },
+                    "attributeGroupSortNo": 12
+                },
+                {
+                    "name": {
+                        "nb": "Nyhet"
+                    },
+                    "importCode": "nyhet",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 18,
+                    "attributeGroupImportCode": "redaksjonelt",
+                    "attributeGroupName": {
+                        "nb": "Redaksjonelt"
+                    },
+                    "attributeGroupSortNo": 12
+                },
+                {
+                    "name": {
+                        "nb": "Tilbud"
+                    },
+                    "importCode": "tilbud",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 19,
+                    "attributeGroupImportCode": "redaksjonelt",
+                    "attributeGroupName": {
+                        "nb": "Redaksjonelt"
+                    },
+                    "attributeGroupSortNo": 12
+                },
+                {
+                    "name": {
+                        "nb": "Intern Kommentar"
+                    },
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "internkommentar",
+                    "attributeGroupName": {
+                        "nb": "Intern kommentar"
+                    },
+                    "attributeGroupSortNo": 13
+                },
+                {
+                    "name": {
+                        "nb": "Bokbasen ID"
+                    },
+                    "importCode": "bokbasen-id",
+                    "dataType": "LONG",
+                    "range": false,
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Seriedel"
+                    },
+                    "importCode": "bokbasen-seriedel",
+                    "dataType": "LONG",
+                    "range": false,
+                    "sortNo": 2,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Utgave"
+                    },
+                    "importCode": "bokbasen-utgave",
+                    "dataType": "LONG",
+                    "range": false,
+                    "sortNo": 3,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Bokgruppe"
+                    },
+                    "importCode": "bokbasen-bokgruppe",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 4,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Varegruppe"
+                    },
+                    "importCode": "bokbasen-varegruppe",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 5,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Thema-klassifikasjon"
+                    },
+                    "importCode": "bokbasen-thema",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 6,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Bokbasen sjanger"
+                    },
+                    "importCode": "bokbasen-sjanger",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 7,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Geografisk sted"
+                    },
+                    "importCode": "bokbasen-geo",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 8,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Informasjonstype"
+                    },
+                    "importCode": "bokbasen-notification-type",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 9,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Litteraturtype"
+                    },
+                    "importCode": "bokbasen-litteraturtype",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 10,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Målgruppe"
+                    },
+                    "importCode": "bokbasen-malgruppe",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 11,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "serietittel"
+                    },
+                    "importCode": "bokbasen-serietittel",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 12,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "tittel"
+                    },
+                    "importCode": "bokbasen-tittel",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 13,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Forfatter"
+                    },
+                    "importCode": "bokbasen-forfatter",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 14,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "innleser"
+                    },
+                    "importCode": "bokbasen-innleser",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 15,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "oversetter"
+                    },
+                    "importCode": "bokbasen-oversetter",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 16,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "målform"
+                    },
+                    "importCode": "bokbasen-målform",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 17,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "varighet"
+                    },
+                    "importCode": "bokbasen-varighet",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 18,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "produsent"
+                    },
+                    "importCode": "bokbasen-produsent",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 19,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "forlag"
+                    },
+                    "importCode": "bokbasen-forlag",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 20,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "utgivelsesdato"
+                    },
+                    "importCode": "bokbasen-utgivelsesdato",
+                    "dataType": "DATE",
+                    "range": false,
+                    "sortNo": 21,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "abonnementsstatus"
+                    },
+                    "importCode": "bokbasen-abonnementstatus",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "ikke-aktiv": {
+                            "nb": "Ikke Aktiv"
+                        },
+                        "Slipp": {
+                            "nb": "Kommer for Strømming"
+                        },
+                        "Aktiv": {
+                            "nb": "Aktiv"
+                        },
+                        "Utgått": {
+                            "nb": "Utgått"
+                        }
+                    },
+                    "sortNo": 22,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "salgsstatus"
+                    },
+                    "importCode": "bokbasen-salgsstatus",
+                    "dataType": "DATA_REGISTER",
+                    "range": false,
+                    "options": {
+                        "Kommer": {
+                            "nb": "Kommer"
+                        },
+                        "I salg": {
+                            "nb": "I salg"
+                        },
+                        "Utgått": {
+                            "nb": "Utgått"
+                        }
+                    },
+                    "sortNo": 23,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Pris"
+                    },
+                    "importCode": "bokbasen-pris",
+                    "dataType": "TEXT",
+                    "range": false,
+                    "value": {},
+                    "sortNo": 24,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "bokbasen salgsinformasjon"
+                    },
+                    "importCode": "bokbasen-salgsinformasjon",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 25,
+                    "attributeGroupImportCode": "bokbasen-attributter",
+                    "attributeGroupName": {
+                        "nb": "bokbasen-attributter"
+                    },
+                    "attributeGroupSortNo": 14
+                },
+                {
+                    "name": {
+                        "nb": "Ny fra bokbasen"
+                    },
+                    "importCode": "bokbasen-ny",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 1,
+                    "attributeGroupImportCode": "workflow-export",
+                    "attributeGroupName": {
+                        "nb": "arbeidsflyt eksport"
+                    },
+                    "attributeGroupSortNo": 15
+                },
+                {
+                    "name": {
+                        "nb": "Klar for nettside"
+                    },
+                    "importCode": "ready-ecommerce",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 2,
+                    "attributeGroupImportCode": "workflow-export",
+                    "attributeGroupName": {
+                        "nb": "arbeidsflyt eksport"
+                    },
+                    "attributeGroupSortNo": 15
+                },
+                {
+                    "name": {
+                        "nb": "Klar for BEAT"
+                    },
+                    "importCode": "BEAT-ready",
+                    "dataType": "BOOLEAN",
+                    "range": false,
+                    "sortNo": 3,
+                    "attributeGroupImportCode": "workflow-export",
+                    "attributeGroupName": {
+                        "nb": "arbeidsflyt eksport"
+                    },
+                    "attributeGroupSortNo": 15
+                },
+                {
+                    "name": {
+                        "nb": "bokbasen import dato"
+                    },
+                    "importCode": "bokbasen-importdato",
+                    "dataType": "DATE",
+                    "range": false,
+                    "sortNo": 4,
+                    "attributeGroupImportCode": "workflow-export",
+                    "attributeGroupName": {
+                        "nb": "arbeidsflyt eksport"
+                    },
+                    "attributeGroupSortNo": 15
+                }
+            ],
+            "texts": [
+                {
+                    "name": {
+                        "nb": "Salgstekst kort"
+                    },
+                    "importCode": "salgstekst_kort",
+                    "sortNo": 1,
+                    "value": {},
+                    "maxLength": null
+                },
+                {
+                    "name": {
+                        "nb": "Salgstekst lang"
+                    },
+                    "importCode": "salgstekst_lang",
+                    "sortNo": 2,
+                    "value": {
+                        "nb": "Andre bok i «Septologien»\n\nKunstmålaren Asle bur åleine på Dylgja nord for Bjørgvin. Han har stort sett berre kontakt med grannen Åsleik, ungkar og fiskarbonde. I Bjørgvin bur ein annan Asle, også han er kunstmålar. Dei to Aslane er venner og på eit vis dobbeltgjengarar, to versjonar av det same livet.\n\nMedan eg-forteljaren førebur juleutstilling på Galleri Beyer i Bjørgvin, finn han vennen Asle liggjande i snøen. Han har kollapsa av alkoholmisbruk og blir lagd inn på sjukehus. Asle uroar seg for vennen, tek seg av hunden hans og køyrer fram og tilbake til Bjørgvin på snølagde vegar.\n\nI andre bandet av «Septologien» får vi glimt inn i den unge Asles liv. Det er famlande kyss, røyking og drikking, band og slåstkampar, ei masande mor og ein tolig far, hybel- og gymnasliv. Galleristen Beyer oppdagar den unge målaren då han stiller ut i heimbygda på Ungdomshuset. I gymnastida møter dei to Aslane kvarandre for første gong, begge byrjar på Kunsthøgskulen i Bjørgvin. I Bjørgvin møter Asle kjærleiken i Ales.\n\n«Septologien» er Jon Fosses storverk i sju delar. Første boka, Det andre namnet, kom ut i 2019 og vart seld til 14 land, vart nominert til den internasjonale Booker-prisen og hausta glitrande kritikkar både nasjonalt og internasjonalt. I år kjem den andre boka, Eg er ein annan. Den tredje og siste boka, Eit nytt namn, kjem ut i 2021."
+                    },
+                    "maxLength": null
+                }
+            ],
+            "relations": [
+                {
+                    "relationImportCode": "Forfatter_relasjon",
+                    "relationName": {
+                        "nb": "Forfatter"
+                    },
+                    "productImportCode": "23959",
+                    "productNo": "P_41847",
+                    "count": null,
+                    "relationTypeSortNo": 1,
+                    "productRelationSortNo": 1,
+                    "action": "CREATE",
+                    "inherited": false
+                },
+                {
+                    "relationImportCode": "Innleser_relasjon",
+                    "relationName": {
+                        "nb": "Innleser"
+                    },
+                    "productImportCode": "23946",
+                    "productNo": "P_41768",
+                    "count": null,
+                    "relationTypeSortNo": 2,
+                    "productRelationSortNo": 1,
+                    "action": "CREATE",
+                    "inherited": false
+                },
+                {
+                    "relationImportCode": "serie",
+                    "relationName": {
+                        "nb": "Serie"
+                    },
+                    "productImportCode": "32782",
+                    "productNo": "Serie: septologien",
+                    "count": null,
+                    "relationTypeSortNo": 3,
+                    "productRelationSortNo": 1,
+                    "action": "CREATE",
+                    "inherited": false
+                }
+            ],
+            "linkedTo": [],
+            "structures": [],
+            "packaging": [],
+            "media": [],
+            "variants": []
+        }
+    ]
+}
