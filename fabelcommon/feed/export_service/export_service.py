@@ -91,9 +91,9 @@ class FeedExport(FeedApiService):
 
         return result_list
 
-    def get_books_by_custom_attributes(
+    def get_books_by_attributes(
             self,
-            attribute_filter: List[FeedAttribute],
+            attributes: List[FeedAttribute],
             page_size: int,
             page: int
     ) -> List[Dict]:
@@ -109,7 +109,7 @@ class FeedExport(FeedApiService):
                 "value": attribute.value
             }
             for attribute
-            in attribute_filter
+            in attributes
         ]
         payload: Dict = {'attributes': payload_attributes}
 
