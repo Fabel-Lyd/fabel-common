@@ -2,7 +2,7 @@ import json
 from typing import List, Dict, Union
 from urllib.parse import urlencode
 from requests import Response
-from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
+from fabelcommon.feed.export_service.identifier_type import IdentifierType
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.feed.export_service import ProductType, ExportEndpoint
 from fabelcommon.feed.export_service.feed_attribute import FeedAttribute
@@ -61,7 +61,7 @@ class FeedExport(FeedApiService):
 
     def get_products_by_attribute(
             self,
-            export_by_attribute: ExportAttribute,
+            identifier_type: IdentifierType,
             attribute_values: List[str],
             product_types: List[ProductType],
             batch_size: int = IMPORT_CODE_EXPORT_BATCH_SIZE,
@@ -81,7 +81,7 @@ class FeedExport(FeedApiService):
                 parameters=urlencode({
                     'changesOnly': str(False).lower(),
                     'productTypeImportCodes': concatenated_product_types,
-                    export_by_attribute.value: concatenated_attribute_values,
+                    identifier_type.value: concatenated_attribute_values,
                     'size': batch_size,
                     'productHeadOnly': str(product_head_only).lower()
                 })

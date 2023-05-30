@@ -1,7 +1,7 @@
 from typing import Dict, List
 import pytest
 from fabelcommon.feed.export_service import FeedExport
-from fabelcommon.feed.export_service.expot_attribute import ExportAttribute
+from fabelcommon.feed.export_service.identifier_type import IdentifierType
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.export_service import ProductType
 
@@ -9,12 +9,12 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attri
 
 
 @pytest.mark.parametrize(
-    'data_file_name, product_types, export_by_attribute, search_parameters, batch_size, product_head_only, expected_endpoints',
+    'data_file_name, product_types, identifier_type, search_parameters, batch_size, product_head_only, expected_endpoints',
     [
         (
             'two_batches.json',
             [ProductType.PERSON],
-            ExportAttribute.IMPORT_CODES,
+            IdentifierType.IMPORT_CODE,
             ['99991', '99992', '99993', '99994'],
             2,
             False,
@@ -26,7 +26,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attri
         (
             'not_found.json',
             [ProductType.PERSON, ProductType.SERIES, ProductType.PERSON],
-            ExportAttribute.IMPORT_CODES,
+            IdentifierType.IMPORT_CODE,
             ['99991'],
             2,
             False,
@@ -37,7 +37,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attri
         (
             'single_batch.json',
             [ProductType.BOOK],
-            ExportAttribute.PRODUCT_NUMBERS,
+            IdentifierType.PRODUCT_NUMBER,
             ['9788202420826,9788234001635'],
             10,
             True,
@@ -49,7 +49,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_attri
 def test_get_products_by_attribute(
         data_file_name: str,
         product_types: List[ProductType],
-        export_by_attribute: ExportAttribute,
+        identifier_type: IdentifierType,
         search_parameters: List[str],
         product_head_only: bool,
         batch_size: int,
@@ -67,7 +67,7 @@ def test_get_products_by_attribute(
 
     feed_export: FeedExport = FeedExport('fake_client_id', 'fake_client_secret')
     products_found: List[Dict] = feed_export.get_products_by_attribute(
-        export_by_attribute=export_by_attribute,
+        identifier_type=identifier_type,
         attribute_values=search_parameters,
         product_types=product_types,
         batch_size=batch_size,
