@@ -1,4 +1,4 @@
-PACKAGE_VERSION: str = '17.0.0'
+PACKAGE_VERSION: str = '18.0.0'
 
 
 if __name__ == "__main__":
