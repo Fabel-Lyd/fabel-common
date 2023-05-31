@@ -1,8 +1,7 @@
 from typing import Dict, List
 import json
 from fabelcommon.json.json_files import read_json_data, read_json_as_text
-from fabelcommon.feed.export_service import FeedExport
-
+from fabelcommon.feed.export_service import FeedExport, ProductType
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_all_products'
 
@@ -19,11 +18,11 @@ def test_get_all_products(requests_mock) -> None:
 
     for page in range(3):
         requests_mock.post(
-            f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&size={PAGE_SIZE}&page={page}',
+            f'https://lydbokforlaget-feed.isysnet.no/export/export?changesOnly=false&productTypeImportCodes=person&size={PAGE_SIZE}&page={page}',
             text=read_json_as_text(f'{TEST_DATA_DIRECTORY}/exported_product_{page + 1}.json')
         )
 
     feed_export: FeedExport = FeedExport('test_username', 'test_password')
-    actual_result: List[Dict] = feed_export.get_all_products()
+    actual_result: List[Dict] = feed_export.get_all_products(ProductType.PERSON)
 
     assert expected_result == actual_result

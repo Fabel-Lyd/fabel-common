@@ -18,10 +18,15 @@ class FeedExport(FeedApiService):
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
 
-    def get_all_products(self, page_size: int = DEFAULT_EXPORT_BATCH_SIZE) -> List[Dict]:
+    def get_all_products(
+            self,
+            product_type: ProductType,
+            page_size: int = DEFAULT_EXPORT_BATCH_SIZE
+    ) -> List[Dict]:
+
         partial_url: str = self.__build_url(
             ExportEndpoint.PRODUCT,
-            f'changesOnly=false&size={page_size}&page='
+            f'changesOnly=false&productTypeImportCodes={product_type.value}&size={page_size}&page='
         )
 
         all_products: List[Dict] = []
