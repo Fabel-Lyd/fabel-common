@@ -9,6 +9,7 @@ from fabelcommon.feed.export_service.feed_attribute import FeedAttribute
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException
 from fabelcommon.batch.batch import chunk_list
+from fabelcommon.feed.export_service.get_all_pages import get_all_pages
 
 
 class FeedExport(FeedApiService):
@@ -29,18 +30,10 @@ class FeedExport(FeedApiService):
             f'changesOnly=false&productTypeImportCodes={product_type.value}&size={page_size}&page='
         )
 
-        all_products: List[Dict] = []
-        page_count: int = 0
+        def callback(page_count: int) -> List[Dict]:
+            return self.__send_product_export_request(f'{partial_url}{page_count}')
 
-        while True:
-            product_batch: List[Dict] = self.__send_product_export_request(f'{partial_url}{page_count}')
-            if len(product_batch) == 0:
-                break
-
-            all_products.extend(product_batch)
-            page_count += 1
-
-        return all_products
+        return get_all_pages(callback)
 
     def get_products_by_name(
             self,
@@ -117,17 +110,10 @@ class FeedExport(FeedApiService):
         ]
         payload: Dict = {'attributes': payload_attributes}
 
-        result: List[Dict] = []
-        page_count: int = 0
-        while True:
-            book_batch: List[Dict] = self.__send_product_export_request(f'{partial_url}{page_count}', json.dumps(payload))
-            if len(book_batch) == 0:
-                break
+        def callback(page_count: int):
+            return self.__send_product_export_request(f'{partial_url}{page_count}', json.dumps(payload))
 
-            result.extend(book_batch)
-            page_count += 1
-
-        return result
+        return get_all_pages(callback)
 
     def get_book(self, isbn: str) -> Dict:
         url: str = self.__build_url(
