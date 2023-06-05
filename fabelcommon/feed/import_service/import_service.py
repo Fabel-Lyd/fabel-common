@@ -32,6 +32,18 @@ class FeedImport(FeedApiService):
         }
         return self.__send_request(url, json.dumps(payload))
 
+    def import_data_register_items(self, data_register_value, data: Dict) -> Optional[str]:
+
+        url: str = f'{self.BASE_URL}/import/basedata/dataRegisters/{data_register_value}'
+
+        import_items = self._send_request(HttpVerb.PATCH, url, data)
+        response: List = json.loads(import_items.text)
+
+        if len(response) >= 1:
+            raise Exception(response[0])
+
+        return None
+
     def get_import_result(self, guid: str, page_size: int) -> ImportResult:
         url: str = self.__build_url() + \
             f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={page_size}&page='
