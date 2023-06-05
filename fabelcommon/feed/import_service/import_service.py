@@ -32,11 +32,11 @@ class FeedImport(FeedApiService):
         }
         return self.__send_request(url, json.dumps(payload))
 
-    def import_data_register_items(self, data_register_value, data: Dict) -> Optional[str]:
+    def import_data_register_items(self, data_register_value: str, data: Dict) -> None:
 
         url: str = f'{self.BASE_URL}/import/basedata/dataRegisters/{data_register_value}'
 
-        import_items = self._send_request(HttpVerb.PATCH, url, data)
+        import_items: Response = self._send_request(HttpVerb.PATCH, url, data)
         response: List = json.loads(import_items.text)
 
         if len(response) >= 1:
