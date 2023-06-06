@@ -59,8 +59,6 @@ class BeatApiService(ApiService):
             data=json.dumps(data)
         )
 
-        response.raise_for_status()
-
         return response.text
 
     def send_request_with_token(
