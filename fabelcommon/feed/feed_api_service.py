@@ -1,8 +1,6 @@
 from typing import Dict, Optional, Any
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
-from fabelcommon.http.verbs import HttpVerb
-from requests import Response
 
 
 class FeedApiService(ApiService):
@@ -33,17 +31,3 @@ class FeedApiService(ApiService):
             base_url=self.BASE_URL,
             auth_path='/token-server/oauth/token'
         )
-
-    def send_request(
-            self,
-            verb: HttpVerb,
-            path: str,
-            data: Optional[Dict] = None):
-
-        response: Response = self._send_request(
-            verb=verb,
-            path=path,
-            data=data)
-
-        response.raise_for_status()
-        return Response
