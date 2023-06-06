@@ -2,7 +2,7 @@ from abc import ABC
 from typing import Dict, Union, Optional, Any
 from urllib.parse import urljoin
 import requests
-from requests import Response
+from requests import Response, HTTPError
 from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.http.verbs import HttpVerb
@@ -60,7 +60,7 @@ class ApiService(ABC):
             allow_redirects=False,
             auth=self._token_request_auth
         )
-        response.raise_for_status()
+        ApiService.__raise_for_error(response)
 
         token_data = response.json()
 
@@ -96,6 +96,14 @@ class ApiService(ABC):
             data=data,
             files=files)
 
-        response.raise_for_status()
+        ApiService.__raise_for_error(response)
 
         return response
+
+    @staticmethod
+    def __raise_for_error(response: Response):
+        if 400 <= response.status_code < 600:
+            raise HTTPError(
+                f'Error {response.status_code} calling {response.request.url}, details: {response.text}',
+                response=response
+            )
