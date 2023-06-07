@@ -3,6 +3,8 @@ name: Make preview release
 on:
   workflow_dispatch:
 
+run-name: Create pre-release from ${{ github.ref }}
+
 jobs:
   make_preview_release:
     runs-on: ubuntu-latest
