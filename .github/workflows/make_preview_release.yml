@@ -1,4 +1,4 @@
-name: Make preview release
+name: Make pre-release
 
 on:
   workflow_dispatch:
