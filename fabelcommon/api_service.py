@@ -103,4 +103,7 @@ class ApiService(ABC):
     @staticmethod
     def __raise_for_error(response: Response):
         if 400 <= response.status_code < 600:
-            raise HTTPError(f'Error {response.status_code} calling {response.request.url}, details: {response.text}')
+            raise HTTPError(
+                f'Error {response.status_code} calling {response.request.url}, details: {response.text}',
+                response=response
+            )

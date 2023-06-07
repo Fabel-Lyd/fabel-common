@@ -182,16 +182,17 @@ def test_raise_for_status_create_token(requests_mock):
 
     api_test_service: ApiTestService = ApiTestService()
 
-    with pytest.raises(HTTPError) as exception:
+    with pytest.raises(HTTPError) as exception_info:
         api_test_service.send_request('/adsf')
 
-    exception_text = str(exception.value)
+    exception: HTTPError = exception_info.value
 
     expected_text = \
         'Error 401 calling http://localhost/auth, ' \
         'details: {"error":"invalid_grant","error_description":"Invalid username and password combination"}'
 
-    assert expected_text == exception_text
+    assert str(exception) == expected_text
+    assert type(exception.response) == Response
 
 
 def test_raise_for_status(requests_mock):
@@ -209,11 +210,13 @@ def test_raise_for_status(requests_mock):
 
     api_test_service: ApiTestService = ApiTestService()
 
-    with pytest.raises(HTTPError) as exception:
+    with pytest.raises(HTTPError) as exception_info:
         api_test_service.send_request('/adsf')
 
-    exception_text = str(exception.value)
+    exception: HTTPError = exception_info.value
+
     expected_text = \
         'Error 403 calling http://localhost/adsf, ' \
         'details: {"error":"exception","error_description":"Unable to add payment method"}'
-    assert expected_text == exception_text
+    assert str(exception) == expected_text
+    assert type(exception.response) == Response
