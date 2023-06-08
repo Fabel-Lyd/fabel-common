@@ -9,7 +9,7 @@ requests = "==2.31.0"
 xmltodict = "==0.13.0"
 djangorestframework = "==3.14.0"
 lxml = "==4.9.2"
-setuptools = "==63.1.0"
+setuptools = "==67.8.0"
 
 [dev-packages]
 flake8 = "==4.0.1"
