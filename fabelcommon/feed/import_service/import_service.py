@@ -44,9 +44,11 @@ class FeedImport(FeedApiService):
 
         return None
 
-    def import_media(self, data: Dict) -> Response:
+    def import_media(self, data: Dict) -> str:
         url: str = f'{self.BASE_URL}/media/import/upload/url'
-        return self._send_request(HttpVerb.POST, url, data)
+        response: Response = self._send_request(HttpVerb.POST, url, data)
+
+        return response.text
 
     def get_import_result(self, guid: str, page_size: int) -> ImportResult:
         url: str = self.__build_url() + \
