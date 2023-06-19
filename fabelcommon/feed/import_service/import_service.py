@@ -44,6 +44,10 @@ class FeedImport(FeedApiService):
 
         return None
 
+    def import_media(self, data: Dict) -> Response:
+        url: str = f'{self.BASE_URL}/media/import/upload/url'
+        return self._send_request(HttpVerb.POST, url, data)
+
     def get_import_result(self, guid: str, page_size: int) -> ImportResult:
         url: str = self.__build_url() + \
             f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={page_size}&page='
