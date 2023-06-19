@@ -54,8 +54,7 @@ def test_import_feed_media_success(requests_mock) -> None:
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
     response = feed_import.import_media(data)
 
-    assert response.status_code == status.HTTP_200_OK
-    assert response.text == 'guid'
+    assert response == 'guid'
 
 
 def test_import_feed_media_missing_url(requests_mock) -> None:
