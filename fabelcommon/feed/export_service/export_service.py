@@ -1,5 +1,5 @@
 import json
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Optional
 from urllib.parse import urlencode
 from requests import Response
 from fabelcommon.feed.export_service.identifier_type import IdentifierType
@@ -137,6 +137,23 @@ class FeedExport(FeedApiService):
             raise Exception(f'Data register with import code {import_code} does not exist in Feed')
 
         return data_register_list[0]
+
+    def get_import_code_by_product_number(self, product_type: ProductType, product_number: str) -> Optional[str]:
+        found_products: List[Dict] = self.get_products_by_identifier(
+            IdentifierType.PRODUCT_NUMBER,
+            [product_number],
+            [product_type],
+            2,
+            True
+        )
+
+        if len(found_products) == 0:
+            return None
+
+        if len(found_products) > 1:
+            raise Exception('Provided product number belongs to more than one product')
+
+        return found_products[0]['identifier']['importCode']
 
     def __build_url(self, export_endpoint: ExportEndpoint, parameters: str) -> str:
         return f'{self.BASE_URL}/{export_endpoint.value}?{parameters}'

@@ -1,0 +1,62 @@
+{
+	"content": [
+		{
+			"identifier": {
+				"importCode": "32781",
+				"productNo": "9788234001635"
+			},
+			"productHead": {
+				"name": {
+					"nb": "Det andre namnet"
+				},
+				"alternativeName": {},
+				"productNo": "9788234001635",
+				"altProductNo": null,
+				"status": {
+					"code": "active",
+					"name": {
+						"nb": "Aktivt"
+					}
+				},
+				"type": {
+					"code": "ERP",
+					"name": {
+						"nb": "Lydfil"
+					}
+				},
+				"owner": null,
+				"group": null,
+				"supplier": null,
+				"base": false,
+				"baseProduct": null,
+				"productType": "PRODUCT",
+				"deleted": false
+			}
+		}
+	],
+	"pageable": {
+		"sort": {
+			"empty": true,
+			"unsorted": true,
+			"sorted": false
+		},
+		"offset": 0,
+		"pageNumber": 0,
+		"pageSize": 2,
+		"paged": true,
+		"unpaged": false
+	},
+	"totalElements": 1,
+	"totalPages": 1,
+	"last": true,
+	"size": 2,
+	"number": 0,
+	"sort": {
+		"empty": true,
+		"unsorted": true,
+		"sorted": false
+	},
+	"numberOfElements": 1,
+	"first": true,
+	"empty": false
+}
