@@ -5,7 +5,7 @@ from fabelcommon.feed.import_service import FeedImport
 from fabelcommon.feed.import_service.import_status import ImportStatus
 from fabelcommon.feed.import_service.import_result import ImportResult
 
-TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/get_import_result'
+TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/get_product_import_result'
 PAGE_SIZE: int = 100
 
 
@@ -28,7 +28,7 @@ def test_get_import_report_finished(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_product_import_result('test_guid', PAGE_SIZE)
 
     assert isinstance(import_result, ImportResult)
     assert len(import_result.created_items) == 5
@@ -47,7 +47,7 @@ def test_get_import_report_in_progress(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_product_import_result('test_guid', PAGE_SIZE)
 
     assert isinstance(import_result, ImportResult)
     assert len(import_result.created_items) == 0
@@ -68,7 +68,7 @@ def test_get_import_report_error(requests_mock) -> None:
     )
 
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
-    import_result: ImportResult = feed_import.get_import_result('test_guid', PAGE_SIZE)
+    import_result: ImportResult = feed_import.get_product_import_result('test_guid', PAGE_SIZE)
 
     assert import_result is not None
     assert import_result.status == ImportStatus.ERROR
