@@ -50,7 +50,7 @@ class FeedImport(FeedApiService):
 
         return response.text
 
-    def get_import_result(self, guid: str, page_size: int) -> ImportResult:
+    def get_product_import_result(self, guid: str, page_size: int) -> ImportResult:
         url: str = self.__build_url() + \
             f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={page_size}&page='
 
@@ -78,7 +78,7 @@ class FeedImport(FeedApiService):
     ) -> ImportResult:
 
         for i in range(0, max_attempts):
-            import_result: ImportResult = self.get_import_result(guid, report_page_size)
+            import_result: ImportResult = self.get_product_import_result(guid, report_page_size)
 
             if not import_result.report['finished']:
                 sleep(query_interval_seconds)

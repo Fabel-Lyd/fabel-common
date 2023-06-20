@@ -12,7 +12,7 @@ def patch_get_import_report(mocker):
     def __object_patch(status_reports: List[List[Dict]]):
         mocker.patch.object(
             FeedImport,
-            attribute=FeedImport.get_import_result.__name__,
+            attribute=FeedImport.get_product_import_result.__name__,
             side_effect=[ImportResult(status_report) for status_report in status_reports]
         )
     return __object_patch
@@ -42,7 +42,7 @@ def test_await_import_finish_failed(mocker) -> None:
     status_report: Dict = read_json_data(f'{TEST_DATA_DIRECTORY}/in_progress.json')
     mocker.patch.object(
         FeedImport,
-        attribute=FeedImport.get_import_result.__name__,
+        attribute=FeedImport.get_product_import_result.__name__,
         return_value=ImportResult([status_report])
     )
 
