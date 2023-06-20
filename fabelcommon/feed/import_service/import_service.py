@@ -7,6 +7,7 @@ from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_mode import ImportMode
 from fabelcommon.feed.import_service.import_type import ImportType
 from fabelcommon.feed.import_service.import_result import ImportResult
+from fabelcommon.feed.import_service.media_import_result import MediaImportResult
 
 
 class FeedImport(FeedApiService):
@@ -90,6 +91,15 @@ class FeedImport(FeedApiService):
             f'Feed product import did not return finished status '
             f'(queried {max_attempts} times with {query_interval_seconds} s interval)'
         )
+
+    def get_media_import_result(self, guid: str) -> MediaImportResult:
+        url: str = self.__build_url(ImportType.MEDIA) + f'/status?guid={guid}'
+        import_result: Dict = self._send_request(HttpVerb.GET, url).json()
+
+        finished: bool = import_result.get('dateFinished') is not None
+        errors: List[str] = import_result['messages']
+
+        return MediaImportResult(finished, errors)
 
     def __build_url(self, import_type: ImportType) -> str:
         return f'{self.BASE_URL}{import_type.value}'
