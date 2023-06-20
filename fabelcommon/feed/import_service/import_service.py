@@ -5,11 +5,11 @@ from requests import Response
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_mode import ImportMode
+from fabelcommon.feed.import_service.import_type import ImportType
 from fabelcommon.feed.import_service.import_result import ImportResult
 
 
 class FeedImport(FeedApiService):
-    PRODUCT_IMPORT: str = '/import/import'
 
     def __init__(self, client_id: str, client_secret: str) -> None:
         super().__init__(client_id, client_secret)
@@ -23,7 +23,7 @@ class FeedImport(FeedApiService):
         if len(formatted_products) == 0:
             raise Exception('List of products to be imported is empty')
 
-        url: str = self.__build_url()
+        url: str = self.__build_url(ImportType.PRODUCT)
         payload: Dict = {
             "importSettings": {
                 "importMode": import_mode.value
@@ -51,7 +51,7 @@ class FeedImport(FeedApiService):
         return response.text
 
     def get_product_import_result(self, guid: str, page_size: int) -> ImportResult:
-        url: str = self.__build_url() + \
+        url: str = self.__build_url(ImportType.PRODUCT) + \
             f'/{guid}/status?includeNewProducts=true&includeUpdatedAndDeletedProducts=true&size={page_size}&page='
 
         import_report: Dict = self._send_request(HttpVerb.GET, url + '0').json()
@@ -91,8 +91,8 @@ class FeedImport(FeedApiService):
             f'(queried {max_attempts} times with {query_interval_seconds} s interval)'
         )
 
-    def __build_url(self) -> str:
-        return f'{self.BASE_URL}{self.PRODUCT_IMPORT}'
+    def __build_url(self, import_type: ImportType) -> str:
+        return f'{self.BASE_URL}{import_type.value}'
 
     def __send_request(self, url: str, data: str) -> str:
         response: Response = self._send_request(HttpVerb.POST, url, data)
