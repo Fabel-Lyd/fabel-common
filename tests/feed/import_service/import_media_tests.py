@@ -43,7 +43,7 @@ def test_import_feed_media_success(requests_mock) -> None:
         'https://lydbokforlaget-feed.isysnet.no/token-server/oauth/token',
         text=json.dumps({'access_token': 'test_token'})
     )
-    requests_mock.post(
+    media_import_call = requests_mock.post(
         'https://lydbokforlaget-feed.isysnet.no/media/import/upload/url',
         status_code=status.HTTP_200_OK,
         text='guid'
@@ -55,6 +55,7 @@ def test_import_feed_media_success(requests_mock) -> None:
     response = feed_import.import_media(data)
 
     assert response == 'guid'
+    assert media_import_call.last_request.text == json.dumps(PAYLOAD_DATA_SUCCESS)
 
 
 def test_import_feed_media_missing_url(requests_mock) -> None:
