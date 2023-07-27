@@ -38,6 +38,61 @@ def test_send_request_failed(mocker, requests_mock) -> None:
         bokbasen_service.send_request(HttpVerb.POST, 'https://login.boknett.no/v1/tickets')
 
 
+def test_send_order_request(mocker, requests_mock) -> None:
+    mocker.patch.object(
+        target=BokbasenApiService,
+        attribute='get_ticket',
+        return_value='fake_ticket'
+    )
+
+    requests_mock.post(
+        url='https://api.dds.boknett.no/order',
+        headers={'Location': 'https://api.dds.boknett.no/content/0b1c4e50-bb00-46ea-bc24-27d1b32fb2a3'},
+        status_code=status.HTTP_201_CREATED
+    )
+
+    bokbasen_api_service = BokbasenApiService('fake_username', 'fake-password')
+    response = bokbasen_api_service.send_order_request(
+        verb=HttpVerb.POST,
+        url='https://api.dds.boknett.no/order',
+        data={"order_id": "222092-1-1",
+              "isbn": "1234567890",
+              "price": "26200",
+              "firstname": "John",
+              "lastname": "Smith",
+              "email": "john.smith@fabel.no"}
+    )
+    assert response.location == 'https://api.dds.boknett.no/content/0b1c4e50-bb00-46ea-bc24-27d1b32fb2a3'
+
+
+def test_send_order_request_unsuccessful(mocker, requests_mock):
+    mocker.patch.object(
+        target=BokbasenApiService,
+        attribute='get_ticket',
+        return_value='fake_ticket'
+    )
+
+    requests_mock.post(
+        url='https://api.dds.boknett.no/order',
+        headers={'Location': 'https://api.dds.boknett.no/content/0b1c4e50-bb00-46ea-bc24-27d1b32fb2a3'},
+        status_code=status.HTTP_400_BAD_REQUEST
+    )
+
+    bokbasen_api_service = BokbasenApiService('fake_username', 'fake-password')
+
+    with pytest.raises(HTTPError):
+        bokbasen_api_service.send_order_request(
+            verb=HttpVerb.POST,
+            url='https://api.dds.boknett.no/order',
+            data={"order_id": "222092-1-1",
+                  "isbn": "1234567890",
+                  "price": "26200",
+                  "firstname": "John",
+                  "lastname": "Smith",
+                  "email": "john.smith@fabel.no"}
+        )
+
+
 def test_send_export_request(mocker, requests_mock):
     mocker.patch.object(BokbasenApiService, attribute='get_ticket', return_value='fake_ticket')
     requests_mock.get(
