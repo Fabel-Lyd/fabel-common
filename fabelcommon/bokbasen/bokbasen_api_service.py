@@ -3,6 +3,7 @@ from typing import Dict, Any, Optional
 import requests
 from requests import Response
 from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
+from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
@@ -41,6 +42,10 @@ class BokbasenApiService(ABC):
     def send_request(self, verb: HttpVerb, url: str, data: Any = None) -> str:
         response: Response = self.__send_request(verb, url, data)
         return response.text
+
+    def send_order_request(self, verb: HttpVerb, url: str, data: Any = None) -> OrderResponse:
+        response: Response = self.__send_request(verb, url, data)
+        return OrderResponse(location=response.headers['Location'])
 
     def send_download_url_request(self, url: str) -> DownloadResponse:
 
