@@ -44,7 +44,12 @@ class BokbasenApiService(ABC):
         return response.text
 
     def send_order_request(self, verb: HttpVerb, url: str, data: Any = None) -> OrderResponse:
-        response: Response = self.__send_request(verb, url, data)
+        response: Response = self.__send_request(
+            verb=verb,
+            url=url,
+            data=data,
+            headers_to_add={"Accept": "application/json"}
+        )
         return OrderResponse(location=response.headers['Location'])
 
     def send_download_url_request(self, url: str) -> DownloadResponse:
