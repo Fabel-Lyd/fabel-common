@@ -64,10 +64,11 @@ class BokbasenApiService(ABC):
             url=url,
             data=None,
             params=params,
-            headers_to_add={"Accept": "application/json"}
+            headers_to_add={"Accept": "application/json"},
+            allow_redirect=False
         )
 
-        return DownloadResponse(response.history[0].headers['Location'])
+        return DownloadResponse(response.headers['Location'])
 
     def send_export_request(self, url: str) -> BokbasenExportResponse:
         response: Response = self.__send_request(HttpVerb.GET, url, None)
@@ -79,6 +80,7 @@ class BokbasenApiService(ABC):
             data: Any,
             params: Optional[Dict] = None,
             headers_to_add: Optional[Dict[str, str]] = None,
+            allow_redirect: bool = True
     ) -> Response:
         token: str = self.get_ticket()
         headers: Dict[str, str] = self.create_headers(token)
@@ -91,7 +93,8 @@ class BokbasenApiService(ABC):
             url=url,
             headers=headers,
             data=data,
-            params=params
+            params=params,
+            allow_redirects=allow_redirect
         )
         response.raise_for_status()
 
