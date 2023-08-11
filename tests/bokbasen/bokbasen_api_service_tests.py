@@ -164,11 +164,6 @@ def test_send_download_url_request(requests_mock, mocker):
         status_code=status.HTTP_302_FOUND,
     )
 
-    requests_mock.get(
-        'https://api.dds.boknett.no/download/adf39c11-a7dc-42b0-b6a2-0313937fb914/status',
-        status_code=status.HTTP_200_OK
-    )
-
     expected_response = DownloadResponse(location='https://api.dds.boknett.no/download/adf39c11-a7dc-42b0-b6a2-0313937fb914/status')
 
     bokbasen_service = BokbasenApiService('fake_username', 'fake-password')
