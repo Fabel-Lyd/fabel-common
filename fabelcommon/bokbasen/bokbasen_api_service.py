@@ -39,8 +39,14 @@ class BokbasenApiService(ABC):
 
         return response.headers['boknett-TGT']
 
-    def send_request(self, verb: HttpVerb, url: str, data: Any = None) -> str:
-        response: Response = self.__send_request(verb, url, data)
+    def send_request(self, verb: HttpVerb, url: str, data: Any = None, headers_to_add: Optional[Dict[str, str]] = None) -> str:
+        response: Response = self.__send_request(
+            verb=verb,
+            url=url,
+            data=data,
+            headers_to_add=headers_to_add
+        )
+
         return response.text
 
     def send_order_request(self, verb: HttpVerb, url: str, data: Any = None) -> OrderResponse:
