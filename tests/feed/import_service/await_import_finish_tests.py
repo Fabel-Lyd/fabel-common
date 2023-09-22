@@ -35,7 +35,7 @@ def test_await_import_finish_successful(
     feed_import: FeedImport = FeedImport('test_username', 'test_password')
     import_result: Optional[ImportResult] = feed_import.await_import_finish('test_guid', 1, 2, 20)
 
-    assert type(import_result) == ImportResult
+    assert isinstance(import_result, ImportResult)
 
 
 def test_await_import_finish_failed(mocker) -> None:

@@ -23,4 +23,4 @@ def test_response_extension(requests_mock):
         'Error 403 calling http://localhost/some-endpoint, ' \
         'details: {"error":"exception","error_description":"Unable to add payment method"}'
     assert str(exception) == expected_text
-    assert type(exception.response) == Response
+    assert isinstance(exception.response, Response)
