@@ -17,7 +17,7 @@ def create_download_url(url_with_id):
     return url
 
 
-class Auth():
+class Auth:
     def __init__(self, username, password):
         self.url = "https://login.boknett.no/v1/tickets"
         self.username = username
@@ -43,7 +43,7 @@ class Auth():
         raise Exception('Not implemented. Username and password must be implemented.')
 
 
-class Inventory():
+class Inventory:
     def __init__(self):
         self.url = "https://api.dds.boknett.no/v2/inventory/"
 
@@ -142,7 +142,7 @@ class Inventory():
             return response.status_code, response.text
 
 
-class Order():
+class Order:
     def __init__(self):
         self.url = "https://api.dds.boknett.no/order/"
         self.head = {
@@ -162,7 +162,7 @@ class Order():
             return {"Error": "Could not perform order", "message": response.text, "status": response.status_code}
 
 
-class Bokskya():
+class Bokskya:
     def __init__(self):
         self.url = "https://idp.dds.boknett.no/"
 
@@ -199,7 +199,7 @@ class Bokskya():
         return response_data
 
 
-class Bookshelf():
+class Bookshelf:
     def __init__(self):
         self.url = "https://api.dds.boknett.no/catalog/personal/"
         self.head = {
@@ -277,7 +277,7 @@ class Bookshelf():
             time.sleep(0.5)
 
 
-class Export():
+class Export:
     def __init__(self):
         self.url = "https://api.boknett.no/metadata/export/onix"
 
