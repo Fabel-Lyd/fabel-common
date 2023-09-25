@@ -13,8 +13,14 @@ TICKET: dict = {'boknett-TGT': 'fake-token'}
 @pytest.mark.parametrize(
     'response_text, expected_result',
     [
-        (json.dumps(BOKBASEN_RESPONSE), BOKBASEN_RESPONSE),
-        ('{"data": "USER_NOT_FOUND"}', None)
+        (
+            json.dumps(BOKBASEN_RESPONSE),
+            BOKBASEN_RESPONSE
+        ),
+        (
+            '{"data": "USER_NOT_FOUND"}',
+            None
+        )
     ]
 )
 def test_get_user_by_email(
