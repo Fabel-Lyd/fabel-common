@@ -1,9 +1,9 @@
 import json
 import xml.etree.ElementTree as ET
+from typing import Optional
 import requests
 import xmltodict
 from urllib.parse import urlparse
-from rest_framework import status
 import time
 from fabelcommon.datetime.time_formats import TimeFormats
 
@@ -200,16 +200,18 @@ class Bokskya():
         else:
             return {"Error": response.text, "Error-code": response.status_code}
 
-    def get_user_by_email(self, email, tgt):
+    def get_user_by_email(self, email, tgt) -> Optional[dict]:
         self.url = self.url + "validate/" + email
         self.head["Authorization"] = "Boknett {}".format(tgt['boknett-TGT'])
         response = requests.get(self.url, headers=self.head)
 
-        # need to introduce global error handling
-        if status.is_server_error(response.status_code):
-            raise Exception('Error validating user', response.text)
+        response_data: dict = json.loads(response.text)
 
-        return json.loads(response.text or 'null')
+        if response.status_code == 200 and response_data == {"data": "USER_NOT_FOUND"}:
+            return None
+        if response.status_code != 200:
+            raise Exception('Error validating user', response_data['data'])
+        return response_data
 
 
 class Bookshelf():
