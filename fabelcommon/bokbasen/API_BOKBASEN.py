@@ -41,21 +41,6 @@ class Auth():
 
     def get_ticket_streaming(self):
         raise Exception('Not implemented. Username and password must be implemented.')
-        params = {
-            "username": "",
-            "password": ""
-        }
-
-        response = requests.post("https://login.boknett.webbe.no/v1/tickets/", params)
-        print(response)
-        if response.status_code == 201:
-            response = response.headers
-            tgt = {
-                "boknett-TGT": response.get('Boknett-TGT')
-            }
-            return tgt
-        else:
-            return {'Error getting ticket': response.text}
 
 
 class Inventory():
