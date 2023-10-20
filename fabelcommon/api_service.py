@@ -95,7 +95,8 @@ class ApiService(ABC):
             url=urljoin(self._base_url, path),
             headers=headers,
             data=data,
-            files=files)
+            files=files
+        )
 
         ResponseExtension.raise_for_error(response)
 
