@@ -30,7 +30,7 @@ def test_export_product_by_isbn(mocker) -> None:
 
     book = bokbasen_export.get_product_by_isbn('9788234001635')
 
-    send_request_expected_args = (HttpVerb.GET, 'https://api.boknett.no/metadata/export/onix/9788234001635')
+    send_request_expected_args = (HttpVerb.GET, '/metadata/export/onix/9788234001635')
     assert send_request_mock.call_args.args == send_request_expected_args
 
     expected_book = read_xml_etree(BOKBASEN_XML_DATA)

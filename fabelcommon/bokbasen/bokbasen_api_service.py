@@ -1,5 +1,6 @@
 from abc import ABC
 from typing import Dict, Any, Optional
+from urllib.parse import urljoin
 import requests
 from requests import Response
 from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
@@ -10,11 +11,19 @@ from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 
 
 class BokbasenApiService(ABC):
-    BASE_URL: str = 'https://api.boknett.no'
 
-    def __init__(self, username: str, password: str):
+    def __init__(
+            self,
+            username: str,
+            password: str,
+            base_url: str = 'https://api.boknett.no',
+            auth_url: str = 'https://login.boknett.no/v1/tickets'
+    ) -> None:
+
         self._username: str = username
         self._password: str = password
+        self._base_url: str = base_url
+        self._auth_url: str = auth_url
 
     @staticmethod
     def create_headers(ticket: str) -> Dict[str, str]:
@@ -27,14 +36,12 @@ class BokbasenApiService(ABC):
 
     def get_ticket(self) -> str:
 
-        url: str = 'https://login.boknett.no/v1/tickets'
-
         params: Dict[str, str] = {
             "username": self._username,
             "password": self._password
         }
 
-        response: Response = requests.post(url, params)
+        response: Response = requests.post(self._auth_url, params)
         response.raise_for_status()
 
         return response.headers['boknett-TGT']
@@ -82,7 +89,8 @@ class BokbasenApiService(ABC):
 
     def __send_request(
             self,
-            verb: HttpVerb, url: str,
+            verb: HttpVerb,
+            url: str,
             data: Any,
             params: Optional[Dict] = None,
             headers_to_add: Optional[Dict[str, str]] = None,
@@ -96,7 +104,7 @@ class BokbasenApiService(ABC):
 
         response: Response = requests.request(
             method=verb.value,
-            url=url,
+            url=urljoin(self._base_url, url),
             headers=headers,
             data=data,
             params=params,
