@@ -52,7 +52,7 @@ def test_get_after_date(requests_mock, mocker) -> None:
         return_value='ticket'
     )
     requests_mock.get(
-        f'https://api.boknett.no/metadata/export/onix?after={timestamp}&subscription=basic&pagesize=2',
+        f'https://api.boknett.no/metadata/export/onix?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text=export_content
@@ -84,7 +84,7 @@ def test_get_by_cursor(requests_mock, mocker) -> None:
         return_value='ticket'
     )
     requests_mock.get(
-        'https://api.boknett.no/metadata/export/onix?next=cursor&subscription=basic&pagesize=2',
+        'https://api.boknett.no/metadata/export/onix?next=cursor&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text=export_content
@@ -114,7 +114,7 @@ def test_validate_timestamp_successful(requests_mock, mocker):
         return_value='ticket'
     )
     requests_mock.get(
-        f'https://api.boknett.no/metadata/export/onix?after={timestamp}&subscription=basic&pagesize=2',
+        f'https://api.boknett.no/metadata/export/onix?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text='<ONIXMessage/>'
