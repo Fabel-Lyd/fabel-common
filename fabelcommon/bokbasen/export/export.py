@@ -56,7 +56,7 @@ class BokbasenExport:
 
     @staticmethod
     def __build_url(export_type: ExportType, parameter: str, batch_size: int) -> str:
-        return f'/metadata/export/onix?{export_type.value}={parameter}&subscription=basic&pagesize={batch_size}'
+        return f'/metadata/export/onix?{export_type.value}={parameter}&subscription=extended&pagesize={batch_size}'
 
     @classmethod
     def __parse_exported_books(cls, export: str) -> List[_Element]:
