@@ -1,7 +1,25 @@
+#[[source]]
+#url = "https://pypi.org/simple"
+#verify_ssl = true
+#name = "pypi"#
+
+# pip install keyring artifacts-keyring
+# pip install twine keyring artifacts-keyring
+# pip install fabelcommon --index="https://pkgs.dev.azure.com/fabel-lyd/Fabel/_packaging/pip/pypi/simple/"
 [[source]]
-url = "https://pypi.org/simple"
+url = "https://pkgs.dev.azure.com/fabel-lyd/Fabel/_packaging/pip/pypi/simple/"
 verify_ssl = true
-name = "pypi"
+name = "pip"
+
+# pipenv install twine
+# twine upload -r pip dist/*
+#.pypirc
+#[distutils]
+#index-servers =
+#  pipx
+#
+#[pipx]
+#repository = https://pkgs.dev.azure.com/fabel-lyd/Fabel/_packaging/pip/pypi/upload/
 
 [packages]
 pytz = "==2023.3"
@@ -20,6 +38,7 @@ pytest-mock = "==3.10.0"
 requests-mock = "==1.10.0"
 xmldiff = "==2.6.3"
 freezegun = "==1.2.2"
+twine = "==4.0.2"
 
 [requires]
 python_version = "3.8"
