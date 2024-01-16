@@ -33,7 +33,7 @@ def test_send_request_failed(mocker, requests_mock) -> None:
         text='Http error message'
     )
 
-    bokbasen_service = BokbasenApiService('fake_username', 'fake-password')
+    bokbasen_service: BokbasenApiService = BokbasenApiService('fake_username', 'fake-password')
 
     with pytest.raises(HTTPError) as http_error:
         bokbasen_service.send_request(HttpVerb.POST, 'https://login.boknett.no/v1/tickets')
