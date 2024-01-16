@@ -29,13 +29,16 @@ def test_send_request_failed(mocker, requests_mock) -> None:
 
     requests_mock.post(
         'https://login.boknett.no/v1/tickets',
-        status_code=status.HTTP_400_BAD_REQUEST
+        status_code=status.HTTP_400_BAD_REQUEST,
+        text='Http error message'
     )
 
     bokbasen_service = BokbasenApiService('fake_username', 'fake-password')
 
-    with pytest.raises(HTTPError):
+    with pytest.raises(HTTPError) as http_error:
         bokbasen_service.send_request(HttpVerb.POST, 'https://login.boknett.no/v1/tickets')
+
+    assert str(http_error.value) == 'Error 400 calling https://login.boknett.no/v1/tickets, details: Http error message'
 
 
 def test_send_order_request(mocker, requests_mock) -> None:

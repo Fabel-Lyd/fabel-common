@@ -8,6 +8,7 @@ from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
+from fabelcommon.utilities.response_extension import ResponseExtension
 
 
 class BokbasenApiService(ABC):
@@ -110,6 +111,6 @@ class BokbasenApiService(ABC):
             params=params,
             allow_redirects=allow_redirect
         )
-        response.raise_for_status()
+        ResponseExtension.raise_for_error(response)
 
         return response
