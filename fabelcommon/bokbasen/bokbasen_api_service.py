@@ -62,7 +62,10 @@ class BokbasenApiService(ABC):
             verb=verb,
             url=url,
             data=data,
-            headers_to_add={"Accept": "application/json"}
+            headers_to_add={
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            }
         )
         return OrderResponse(location=response.headers['Location'])
 
