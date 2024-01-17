@@ -61,7 +61,7 @@ class ApiService(ABC):
             allow_redirects=False,
             auth=self._token_request_auth
         )
-        ResponseExtension.raise_for_error(response)
+        ResponseExtension.raise_for_error(response=response)
 
         token_data = response.json()
 
