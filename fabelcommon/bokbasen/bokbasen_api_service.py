@@ -111,6 +111,6 @@ class BokbasenApiService(ABC):
             params=params,
             allow_redirects=allow_redirect
         )
-        ResponseExtension.raise_for_error(response)
+        ResponseExtension.raise_for_error(response=response)
 
         return response
