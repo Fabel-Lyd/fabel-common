@@ -33,14 +33,14 @@ class BokbasenMetadataApiService(ApiService):
             self,
             client_id: str,
             client_secret: str,
-            base_url: str = 'https://api.bokbasen.io',
-            auth_path: str = 'https://login.bokbasen.io/oauth/token',
+            base_url: str,
+            auth_path: str
     ):
         super().__init__(
             client_id=client_id,
             client_secret=client_secret,
             base_url=base_url,
-            auth_path=auth_path,
+            auth_path=auth_path
         )
 
     def _create_authorization_header(self, access_token: str) -> Dict:
