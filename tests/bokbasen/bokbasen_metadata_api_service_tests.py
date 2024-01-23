@@ -12,8 +12,10 @@ from fabelcommon.http.verbs import HttpVerb
 
 def test_token_request_data() -> None:
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_client_id',
+        client_secret='test_client_secret',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
     result: Dict = bokbasen_metadata_api_service._token_request_data
 
@@ -26,8 +28,10 @@ def test_token_request_data() -> None:
 @freeze_time('2012-01-14 12:00:00')
 def test_create_authorization_header() -> None:
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
 
     header = bokbasen_metadata_api_service._create_authorization_header(access_token='test_access_token')
@@ -39,19 +43,23 @@ def test_create_authorization_header() -> None:
 
 def test_get_token_success(requests_mock) -> None:
     requests_mock.post(
-        "https://login.bokbasen.io/oauth/token",
+        url="https://login.bokbasen.io/oauth/token",
         status_code=status.HTTP_200_OK,
-        text=json.dumps({
-            "access_token": "fake-access-token",
-            "scope": "export:onix",
-            "expires_in": 86400,
-            "token_type": "Bearer"
-        })
+        text=json.dumps(
+            {
+                "access_token": "fake-access-token",
+                "scope": "export:onix",
+                "expires_in": 86400,
+                "token_type": "Bearer"
+            }
+        )
     )
 
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
 
     token: AccessToken = bokbasen_metadata_api_service._get_token()
@@ -91,14 +99,16 @@ def test_create_access_token_invalid(
         requests_mock
 ) -> None:
     requests_mock.post(
-        "https://login.bokbasen.io/oauth/token",
+        url="https://login.bokbasen.io/oauth/token",
         status_code=expected_status_code,
         text=json.dumps(response_text)
     )
 
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
 
     with pytest.raises(HTTPError) as exception:
@@ -108,9 +118,8 @@ def test_create_access_token_invalid(
 
 
 def test_send_request_with_token_expired(requests_mock) -> None:
-
     access_token_call = requests_mock.post(
-        "https://login.bokbasen.io/oauth/token",
+        url="https://login.bokbasen.io/oauth/token",
         status_code=status.HTTP_200_OK,
         text=json.dumps({
             "access_token": "fake-access-token",
@@ -127,8 +136,10 @@ def test_send_request_with_token_expired(requests_mock) -> None:
     )
 
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
 
     with freeze_time('2012-01-14 12:00:00'):
@@ -146,9 +157,8 @@ def test_send_request_with_token_expired(requests_mock) -> None:
 
 
 def test_send_request_token_not_expired(requests_mock) -> None:
-
     get_new_access_token = requests_mock.post(
-        "https://login.bokbasen.io/oauth/token",
+        url="https://login.bokbasen.io/oauth/token",
         status_code=status.HTTP_200_OK,
         text=json.dumps({
             "access_token": "fake-access-token",
@@ -165,8 +175,10 @@ def test_send_request_token_not_expired(requests_mock) -> None:
     )
 
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
     with freeze_time('2012-01-14 12:00:00'):
         bokbasen_metadata_api_service.send_request(
@@ -183,7 +195,7 @@ def test_send_request_token_not_expired(requests_mock) -> None:
 
 def test_send_export_request(requests_mock):
     requests_mock.post(
-        "https://login.bokbasen.io/oauth/token",
+        url="https://login.bokbasen.io/oauth/token",
         status_code=status.HTTP_200_OK,
         text=json.dumps(
             {
@@ -204,8 +216,10 @@ def test_send_export_request(requests_mock):
     expected_response: BokbasenExportResponse = BokbasenExportResponse('exported_text', 'cursor')
 
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id="test_client_id",
-        client_secret="test_client_secret"
+        client_id='test_username',
+        client_secret='test_password',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
     )
     actual_response: BokbasenExportResponse = bokbasen_metadata_api_service.send_export_request('https://api.bokbasen.io/metadata/export/onix/v1')
 
