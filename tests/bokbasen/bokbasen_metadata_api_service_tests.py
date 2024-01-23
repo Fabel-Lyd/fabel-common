@@ -6,6 +6,7 @@ from requests import HTTPError
 from rest_framework import status
 from fabelcommon.access_token import AccessToken
 from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
+from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.http.verbs import HttpVerb
 
 
@@ -178,3 +179,34 @@ def test_send_request_token_not_expired(requests_mock) -> None:
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
     assert get_new_access_token.call_count == 1
     assert response == 'some_test_data'
+
+
+def test_send_export_request(requests_mock):
+    requests_mock.post(
+        "https://login.bokbasen.io/oauth/token",
+        status_code=status.HTTP_200_OK,
+        text=json.dumps(
+            {
+                "access_token": "fake-access-token",
+                "scope": "export:onix",
+                "expires_in": 86400,
+                "token_type": "Bearer"
+            }
+        )
+    )
+    requests_mock.get(
+        url='https://api.bokbasen.io/metadata/export/onix/v1',
+        headers={'next': 'cursor'},
+        status_code=status.HTTP_200_OK,
+        text='exported_text'
+    )
+
+    expected_response: BokbasenExportResponse = BokbasenExportResponse('exported_text', 'cursor')
+
+    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
+        client_id="test_client_id",
+        client_secret="test_client_secret"
+    )
+    actual_response: BokbasenExportResponse = bokbasen_metadata_api_service.send_export_request('https://api.bokbasen.io/metadata/export/onix/v1')
+
+    assert actual_response == expected_response
