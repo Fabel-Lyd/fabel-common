@@ -4,6 +4,7 @@ from requests import Response
 from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
+from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.utilities.response_extension import ResponseExtension
@@ -32,7 +33,7 @@ class BokbasenMetadataApiService(ApiService):
             self,
             client_id: str,
             client_secret: str,
-            base_url: str = 'https://api.bokbasen.io/metadata/export/onix/v1',
+            base_url: str = 'https://api.bokbasen.io',
             auth_path: str = 'https://login.bokbasen.io/oauth/token',
     ):
         super().__init__(
@@ -80,3 +81,7 @@ class BokbasenMetadataApiService(ApiService):
             user_id=None
         )
         return access_token
+
+    def send_export_request(self, url: str) -> BokbasenExportResponse:
+        response: Response = self._send_request(HttpVerb.GET, url, None)
+        return BokbasenExportResponse(content=response.text, cursor=response.headers['next'])

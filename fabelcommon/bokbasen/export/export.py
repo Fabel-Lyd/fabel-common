@@ -1,10 +1,10 @@
 from typing import List
 from datetime import datetime, timedelta
 from lxml.etree import _Element
+from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 from fabelcommon.xmls.xml import xml_to_etree
 from fabelcommon.xmls.onix_x_path_reader import OnixXPathReader
 from fabelcommon.http.verbs import HttpVerb
-from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 from fabelcommon.bokbasen.export_type import ExportType
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.bokbasen.export_result import ExportResult
@@ -13,14 +13,14 @@ EXPORT_CUTOFF_DAYS: int = 180
 
 
 class BokbasenExport:
-    bokbasen_api_service: BokbasenApiService
+    bokbasen_metadata_api_service: BokbasenMetadataApiService
 
-    def __init__(self, bokbasen_api_service: BokbasenApiService) -> None:
-        self.bokbasen_api_service = bokbasen_api_service
+    def __init__(self, bokbasen_metadata_api_service: BokbasenMetadataApiService) -> None:
+        self.bokbasen_metadata_api_service = bokbasen_metadata_api_service
 
     def get_product_by_isbn(self, isbn: str) -> _Element:
-        url: str = f'/metadata/export/onix/{isbn}'
-        xml: str = self.bokbasen_api_service.send_request(HttpVerb.GET, url)
+        url: str = f'/metadata/export/onix/v1/{isbn}'
+        xml: str = self.bokbasen_metadata_api_service.send_request(HttpVerb.GET, url)
         return xml_to_etree(xml)
 
     def get_by_cursor(self, cursor: str, batch_size: int) -> ExportResult:
@@ -33,7 +33,7 @@ class BokbasenExport:
         return self.__get(url)
 
     def __get(self, url: str) -> ExportResult:
-        response: BokbasenExportResponse = self.bokbasen_api_service.send_export_request(url)
+        response: BokbasenExportResponse = self.bokbasen_metadata_api_service.send_export_request(url)
         return ExportResult(
             books=self.__parse_exported_books(response.content),
             cursor=response.cursor
@@ -56,7 +56,7 @@ class BokbasenExport:
 
     @staticmethod
     def __build_url(export_type: ExportType, parameter: str, batch_size: int) -> str:
-        return f'/metadata/export/onix?{export_type.value}={parameter}&subscription=extended&pagesize={batch_size}'
+        return f'/metadata/export/onix/v1?{export_type.value}={parameter}&subscription=extended&pagesize={batch_size}'
 
     @classmethod
     def __parse_exported_books(cls, export: str) -> List[_Element]:
