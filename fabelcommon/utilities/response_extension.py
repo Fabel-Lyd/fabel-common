@@ -7,7 +7,7 @@ class ResponseExtension:
     def raise_for_error(
             response: Response,
             additional_info_mapping: Dict[int, str] = {}
-    ):
+    ) -> None:
         if 400 <= response.status_code < 600:
             error_message: str = f'Error {response.status_code} calling {response.request.url}, details: {response.text}'
 
