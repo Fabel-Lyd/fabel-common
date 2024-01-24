@@ -65,7 +65,7 @@ class BokbasenMetadataApiService(ApiService):
         return response.text
 
     def __create_token(self, token_request_data: Dict) -> AccessToken:
-        response = requests.post(
+        response: Response = requests.post(
             url=self._auth_path,
             data=token_request_data,
             verify=True,
@@ -73,7 +73,7 @@ class BokbasenMetadataApiService(ApiService):
         )
         ResponseExtension.raise_for_error(response=response)
 
-        token_data = response.json()
+        token_data: Dict = response.json()
 
         access_token: AccessToken = AccessToken(
             access_token_value=token_data[self._access_token_key.value],
