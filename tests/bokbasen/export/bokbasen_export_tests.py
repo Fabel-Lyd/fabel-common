@@ -145,18 +145,8 @@ def test_validate_timestamp_successful(requests_mock, patch_bokbasen_token) -> N
 )
 def test_validate_timestamp_failed(
         timestamp: str,
-        exception_message: str,
-        requests_mock,
-        patch_bokbasen_token
+        exception_message: str
 ) -> None:
-
-    requests_mock.get(
-        url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
-        headers={'next': 'cursor'},
-        status_code=status.HTTP_200_OK,
-        text="<ONIXMessage/>"
-    )
-
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
         client_id='test_username',
         client_secret='test_password',

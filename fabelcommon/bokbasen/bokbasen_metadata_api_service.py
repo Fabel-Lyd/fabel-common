@@ -35,7 +35,7 @@ class BokbasenMetadataApiService(ApiService):
             client_secret: str,
             base_url: str,
             auth_path: str
-    ):
+    ) -> None:
         super().__init__(
             client_id=client_id,
             client_secret=client_secret,
