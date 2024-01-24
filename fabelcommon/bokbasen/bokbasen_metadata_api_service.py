@@ -23,10 +23,10 @@ class BokbasenMetadataApiService(ApiService):
     @property
     def _token_request_data(self) -> Dict:
         return {
-            "client_id": self._client_id,
-            "client_secret": self._client_secret,
-            "audience": "https://api.bokbasen.io/metadata/",
-            "grant_type": "client_credentials"
+            'client_id': self._client_id,
+            'client_secret': self._client_secret,
+            'audience': 'https://api.bokbasen.io/metadata/',
+            'grant_type': 'client_credentials'
         }
 
     def __init__(
@@ -54,7 +54,6 @@ class BokbasenMetadataApiService(ApiService):
             verb: HttpVerb,
             url: str
     ) -> str:
-
         access_token: AccessToken = self._get_token()
 
         response: Response = self._send_request(
