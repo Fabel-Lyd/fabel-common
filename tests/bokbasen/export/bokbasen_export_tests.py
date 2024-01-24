@@ -1,4 +1,3 @@
-import json
 from typing import Optional
 from unittest.mock import MagicMock
 import pytest
@@ -45,25 +44,13 @@ def test_export_product_by_isbn(mocker) -> None:
 
 
 @freeze_time('2020-01-02')
-def test_get_after_date(requests_mock) -> None:
+def test_get_after_date(requests_mock, patch_bokbasen_token) -> None:
     export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
     timestamp: str = '20200101120000'
 
     expected_tree: _Element = read_xml_etree(f'{TEST_DATA_DIRECTORY}/bokbasen_export_single_book.xml')
     expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
-    requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                'access_token': 'fake-access-token',
-                'scope': 'export:onix',
-                'expires_in': 86400,
-                'token_type': 'Bearer'
-            }
-        )
-    )
     requests_mock.get(
         url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
@@ -90,24 +77,12 @@ def test_get_after_date(requests_mock) -> None:
     assert actual_result.cursor == 'cursor'
 
 
-def test_get_by_cursor(requests_mock) -> None:
+def test_get_by_cursor(requests_mock, patch_bokbasen_token) -> None:
     export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
 
     expected_tree: _Element = read_xml_etree(f'{TEST_DATA_DIRECTORY}/bokbasen_export_single_book.xml')
     expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
-    requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                'access_token': 'fake-access-token',
-                'scope': 'export:onix',
-                'expires_in': 86400,
-                'token_type': 'Bearer'
-            }
-        )
-    )
     requests_mock.get(
         url='https://api.bokbasen.io/metadata/export/onix/v1?next=cursor&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
@@ -135,21 +110,9 @@ def test_get_by_cursor(requests_mock) -> None:
 
 
 @freeze_time('2020-01-02')
-def test_validate_timestamp_successful(requests_mock) -> None:
+def test_validate_timestamp_successful(requests_mock, patch_bokbasen_token) -> None:
     timestamp: str = '20200101120000'
 
-    requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                'access_token': 'fake-access-token',
-                'scope': 'export:onix',
-                'expires_in': 86400,
-                'token_type': 'Bearer'
-            }
-        )
-    )
     requests_mock.get(
         url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
@@ -183,20 +146,10 @@ def test_validate_timestamp_successful(requests_mock) -> None:
 def test_validate_timestamp_failed(
         timestamp: str,
         exception_message: str,
-        requests_mock
+        requests_mock,
+        patch_bokbasen_token
 ) -> None:
-    requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                'access_token': 'fake-access-token',
-                'scope': 'export:onix',
-                'expires_in': 86400,
-                'token_type': 'Bearer'
-            }
-        )
-    )
+
     requests_mock.get(
         url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
