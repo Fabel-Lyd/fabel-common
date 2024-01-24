@@ -7,7 +7,6 @@ from fabelcommon.bokbasen.export_response.download_response import DownloadRespo
 from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.datetime.time_formats import TimeFormats
-from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.utilities.response_extension import ResponseExtension
 
 
@@ -86,10 +85,6 @@ class BokbasenApiService(ABC):
         )
 
         return DownloadResponse(response.headers['Location'])
-
-    def send_export_request(self, url: str) -> BokbasenExportResponse:
-        response: Response = self.__send_request(HttpVerb.GET, url, None)
-        return BokbasenExportResponse(content=response.text, cursor=response.headers['next'])
 
     def __send_request(
             self,
