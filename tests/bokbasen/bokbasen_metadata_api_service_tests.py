@@ -41,20 +41,7 @@ def test_create_authorization_header() -> None:
     }
 
 
-def test_get_token_success(requests_mock) -> None:
-    requests_mock.post(
-        url="https://login.bokbasen.io/oauth/token",
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                "access_token": "fake-access-token",
-                "scope": "export:onix",
-                "expires_in": 86400,
-                "token_type": "Bearer"
-            }
-        )
-    )
-
+def test_get_token_success(patch_bokbasen_token) -> None:
     bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
         client_id='test_username',
         client_secret='test_password',
@@ -197,19 +184,7 @@ def test_send_request_token_not_expired(requests_mock) -> None:
     assert response == 'some_test_data'
 
 
-def test_send_export_request(requests_mock):
-    requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
-        status_code=status.HTTP_200_OK,
-        text=json.dumps(
-            {
-                'access_token': 'fake-access-token',
-                'scope': 'export:onix',
-                'expires_in': 86400,
-                'token_type': 'Bearer'
-            }
-        )
-    )
+def test_send_export_request(requests_mock, patch_bokbasen_token):
     requests_mock.get(
         url='https://api.bokbasen.io/metadata/export/onix/v1',
         headers={'next': 'cursor'},
