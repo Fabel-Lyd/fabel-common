@@ -19,10 +19,10 @@ def test_token_request_data() -> None:
     )
     result: Dict = bokbasen_metadata_api_service._token_request_data
 
-    assert result['client_id'] == "test_client_id"
-    assert result['client_secret'] == "test_client_secret"
-    assert result['audience'] == "https://api.bokbasen.io/metadata/"
-    assert result['grant_type'] == "client_credentials"
+    assert result['client_id'] == 'test_client_id'
+    assert result['client_secret'] == 'test_client_secret'
+    assert result['audience'] == 'https://api.bokbasen.io/metadata/'
+    assert result['grant_type'] == 'client_credentials'
 
 
 @freeze_time('2012-01-14 12:00:00')
@@ -63,7 +63,7 @@ def test_get_token_success(requests_mock) -> None:
     )
 
     token: AccessToken = bokbasen_metadata_api_service._get_token()
-    assert token.access_token_value == "fake-access-token"
+    assert token.access_token_value == 'fake-access-token'
     assert token.is_valid is True
     assert token.user_id is None
 
@@ -99,7 +99,7 @@ def test_create_access_token_invalid(
         requests_mock
 ) -> None:
     requests_mock.post(
-        url="https://login.bokbasen.io/oauth/token",
+        url='https://login.bokbasen.io/oauth/token',
         status_code=expected_status_code,
         text=json.dumps(response_text)
     )
@@ -119,14 +119,16 @@ def test_create_access_token_invalid(
 
 def test_send_request_with_token_expired(requests_mock) -> None:
     access_token_call = requests_mock.post(
-        url="https://login.bokbasen.io/oauth/token",
+        url='https://login.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
-        text=json.dumps({
-            "access_token": "fake-access-token",
-            "scope": "export:onix",
-            "expires_in": 86400,
-            "token_type": "Bearer"
-        })
+        text=json.dumps(
+            {
+                'access_token': 'fake-access-token',
+                'scope': 'export:onix',
+                'expires_in': 86400,
+                'token_type': 'Bearer'
+            }
+        )
     )
 
     requests_mock.get(
@@ -158,14 +160,16 @@ def test_send_request_with_token_expired(requests_mock) -> None:
 
 def test_send_request_token_not_expired(requests_mock) -> None:
     get_new_access_token = requests_mock.post(
-        url="https://login.bokbasen.io/oauth/token",
+        url='https://login.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
-        text=json.dumps({
-            "access_token": "fake-access-token",
-            "scope": "export:onix",
-            "expires_in": 86400,
-            "token_type": "Bearer"
-        })
+        text=json.dumps(
+            {
+                'access_token': 'fake-access-token',
+                'scope': 'export:onix',
+                'expires_in': 86400,
+                'token_type': 'Bearer'
+            }
+        )
     )
 
     requests_mock.get(
@@ -195,14 +199,14 @@ def test_send_request_token_not_expired(requests_mock) -> None:
 
 def test_send_export_request(requests_mock):
     requests_mock.post(
-        url="https://login.bokbasen.io/oauth/token",
+        url='https://login.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
         text=json.dumps(
             {
-                "access_token": "fake-access-token",
-                "scope": "export:onix",
-                "expires_in": 86400,
-                "token_type": "Bearer"
+                'access_token': 'fake-access-token',
+                'scope': 'export:onix',
+                'expires_in': 86400,
+                'token_type': 'Bearer'
             }
         )
     )
