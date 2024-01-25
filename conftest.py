@@ -2,6 +2,7 @@
 import json
 import pytest
 from rest_framework import status
+from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 
 
 @pytest.fixture
@@ -18,3 +19,14 @@ def patch_bokbasen_token(requests_mock):
             }
         )
     )
+
+
+@pytest.fixture
+def mock_bokbasen_metadata_api_service():
+    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
+        client_id='test_client_id',
+        client_secret='test_client_secret',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://login.bokbasen.io/oauth/token'
+    )
+    return bokbasen_metadata_api_service

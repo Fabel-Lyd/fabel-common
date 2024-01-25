@@ -5,19 +5,12 @@ from freezegun import freeze_time
 from requests import HTTPError
 from rest_framework import status
 from fabelcommon.access_token import AccessToken
-from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.http.verbs import HttpVerb
 
 
-def test_token_request_data() -> None:
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_client_id',
-        client_secret='test_client_secret',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    result: Dict = bokbasen_metadata_api_service._token_request_data
+def test_token_request_data(mock_bokbasen_metadata_api_service) -> None:
+    result: Dict = mock_bokbasen_metadata_api_service._token_request_data
 
     assert result['client_id'] == 'test_client_id'
     assert result['client_secret'] == 'test_client_secret'
@@ -26,30 +19,20 @@ def test_token_request_data() -> None:
 
 
 @freeze_time('2012-01-14 12:00:00')
-def test_create_authorization_header() -> None:
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
+def test_create_authorization_header(mock_bokbasen_metadata_api_service) -> None:
 
-    header = bokbasen_metadata_api_service._create_authorization_header(access_token='test_access_token')
+    header = mock_bokbasen_metadata_api_service._create_authorization_header(access_token='test_access_token')
     assert header == {
         'Authorization': 'Bearer test_access_token',
         'Date': 'Sat, 14 Jan 2012 12:00:00 GMT'
     }
 
 
-def test_get_token_success(patch_bokbasen_token) -> None:
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-
-    token: AccessToken = bokbasen_metadata_api_service._get_token()
+def test_get_token_success(
+        patch_bokbasen_token,
+        mock_bokbasen_metadata_api_service
+) -> None:
+    token: AccessToken = mock_bokbasen_metadata_api_service._get_token()
     assert token.access_token_value == 'fake-access-token'
     assert token.is_valid is True
     assert token.user_id is None
@@ -83,7 +66,8 @@ def test_create_access_token_invalid(
         expected_status_code,
         response_text,
         expected_error,
-        requests_mock
+        requests_mock,
+        mock_bokbasen_metadata_api_service
 ) -> None:
     requests_mock.post(
         url='https://login.bokbasen.io/oauth/token',
@@ -91,20 +75,16 @@ def test_create_access_token_invalid(
         text=json.dumps(response_text)
     )
 
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-
     with pytest.raises(HTTPError) as exception:
-        bokbasen_metadata_api_service._get_token()
+        mock_bokbasen_metadata_api_service._get_token()
 
     assert str(exception.value) == expected_error
 
 
-def test_send_request_with_token_expired(requests_mock) -> None:
+def test_send_request_with_token_expired(
+        requests_mock,
+        mock_bokbasen_metadata_api_service
+) -> None:
     access_token_call = requests_mock.post(
         url='https://login.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
@@ -123,21 +103,13 @@ def test_send_request_with_token_expired(requests_mock) -> None:
         status_code=status.HTTP_200_OK,
         text='fake_response_data'
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-
     with freeze_time('2012-01-14 12:00:00'):
-        bokbasen_metadata_api_service.send_request(
+        mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
     with freeze_time('2012-01-15 12:00:00'):
-        response = bokbasen_metadata_api_service.send_request(
+        response = mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
@@ -145,7 +117,10 @@ def test_send_request_with_token_expired(requests_mock) -> None:
     assert response == 'fake_response_data'
 
 
-def test_send_request_token_not_expired(requests_mock) -> None:
+def test_send_request_token_not_expired(
+        requests_mock,
+        mock_bokbasen_metadata_api_service
+) -> None:
     get_new_access_token = requests_mock.post(
         url='https://login.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
@@ -164,27 +139,24 @@ def test_send_request_token_not_expired(requests_mock) -> None:
         status_code=status.HTTP_200_OK,
         text='some_test_data'
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
     with freeze_time('2012-01-14 12:00:00'):
-        bokbasen_metadata_api_service.send_request(
+        mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
     with freeze_time('2012-01-14 15:00:00'):
-        response = bokbasen_metadata_api_service.send_request(
+        response = mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
     assert get_new_access_token.call_count == 1
     assert response == 'some_test_data'
 
 
-def test_send_export_request(requests_mock, patch_bokbasen_token):
+def test_send_export_request(
+        requests_mock,
+        patch_bokbasen_token,
+        mock_bokbasen_metadata_api_service
+):
     requests_mock.get(
         url='https://api.bokbasen.io/metadata/export/onix/v1',
         headers={'next': 'cursor'},
@@ -194,12 +166,6 @@ def test_send_export_request(requests_mock, patch_bokbasen_token):
 
     expected_response: BokbasenExportResponse = BokbasenExportResponse('exported_text', 'cursor')
 
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    actual_response: BokbasenExportResponse = bokbasen_metadata_api_service.send_export_request('https://api.bokbasen.io/metadata/export/onix/v1')
+    actual_response: BokbasenExportResponse = mock_bokbasen_metadata_api_service.send_export_request('https://api.bokbasen.io/metadata/export/onix/v1')
 
     assert actual_response == expected_response

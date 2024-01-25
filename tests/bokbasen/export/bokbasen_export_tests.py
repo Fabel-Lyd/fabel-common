@@ -18,20 +18,16 @@ BOKBASEN_XML_DATA: str = 'tests/bokbasen/export/data/bokbasen-9788234001635.xml'
 ISBN_XPATH: str = 'o:ProductIdentifier[o:ProductIDType/text()="15"]/o:IDValue/text()'
 
 
-def test_export_product_by_isbn(mocker) -> None:
+def test_export_product_by_isbn(
+        mocker,
+        mock_bokbasen_metadata_api_service
+) -> None:
     send_request_mock: MagicMock = mocker.patch.object(
         BokbasenMetadataApiService,
         attribute='send_request',
         return_value=read_xml_str(BOKBASEN_XML_DATA)
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
+    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
 
     book = bokbasen_export.get_product_by_isbn('9788234001635')
 
@@ -44,7 +40,11 @@ def test_export_product_by_isbn(mocker) -> None:
 
 
 @freeze_time('2020-01-02')
-def test_get_after_date(requests_mock, patch_bokbasen_token) -> None:
+def test_get_after_date(
+        requests_mock,
+        patch_bokbasen_token,
+        mock_bokbasen_metadata_api_service
+) -> None:
     export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
     timestamp: str = '20200101120000'
 
@@ -57,14 +57,7 @@ def test_get_after_date(requests_mock, patch_bokbasen_token) -> None:
         status_code=status.HTTP_200_OK,
         text=export_content
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
+    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
 
     actual_result: ExportResult = bokbasen_export.get_after_date(timestamp, 2)
 
@@ -77,7 +70,11 @@ def test_get_after_date(requests_mock, patch_bokbasen_token) -> None:
     assert actual_result.cursor == 'cursor'
 
 
-def test_get_by_cursor(requests_mock, patch_bokbasen_token) -> None:
+def test_get_by_cursor(
+        requests_mock,
+        patch_bokbasen_token,
+        mock_bokbasen_metadata_api_service
+) -> None:
     export_content: str = read_xml_str(f'{TEST_DATA_DIRECTORY}/bokbasen_export_two_books.xml')
 
     expected_tree: _Element = read_xml_etree(f'{TEST_DATA_DIRECTORY}/bokbasen_export_single_book.xml')
@@ -89,14 +86,7 @@ def test_get_by_cursor(requests_mock, patch_bokbasen_token) -> None:
         status_code=status.HTTP_200_OK,
         text=export_content
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
+    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
 
     actual_result: ExportResult = bokbasen_export.get_by_cursor('cursor', 2)
 
@@ -110,7 +100,11 @@ def test_get_by_cursor(requests_mock, patch_bokbasen_token) -> None:
 
 
 @freeze_time('2020-01-02')
-def test_validate_timestamp_successful(requests_mock, patch_bokbasen_token) -> None:
+def test_validate_timestamp_successful(
+        requests_mock,
+        patch_bokbasen_token,
+        mock_bokbasen_metadata_api_service
+) -> None:
     timestamp: str = '20200101120000'
 
     requests_mock.get(
@@ -119,14 +113,7 @@ def test_validate_timestamp_successful(requests_mock, patch_bokbasen_token) -> N
         status_code=status.HTTP_200_OK,
         text='<ONIXMessage/>'
     )
-
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
+    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
 
     bokbasen_export.get_after_date(timestamp, 2)
 
@@ -145,15 +132,10 @@ def test_validate_timestamp_successful(requests_mock, patch_bokbasen_token) -> N
 )
 def test_validate_timestamp_failed(
         timestamp: str,
-        exception_message: str
+        exception_message: str,
+        mock_bokbasen_metadata_api_service
 ) -> None:
-    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
-        client_id='test_username',
-        client_secret='test_password',
-        base_url='https://api.bokbasen.io',
-        auth_path='https://login.bokbasen.io/oauth/token'
-    )
-    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
+    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
 
     with pytest.raises(Exception) as exception_info:
         bokbasen_export.get_after_date(timestamp, 2)
