@@ -21,7 +21,7 @@ def test_token_request_data(mock_bokbasen_metadata_api_service) -> None:
 @freeze_time('2012-01-14 12:00:00')
 def test_create_authorization_header(mock_bokbasen_metadata_api_service) -> None:
 
-    header = mock_bokbasen_metadata_api_service._create_authorization_header(access_token='test_access_token')
+    header: Dict = mock_bokbasen_metadata_api_service._create_authorization_header(access_token='test_access_token')
     assert header == {
         'Authorization': 'Bearer test_access_token',
         'Date': 'Sat, 14 Jan 2012 12:00:00 GMT'
@@ -109,7 +109,7 @@ def test_send_request_with_token_expired(
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
     with freeze_time('2012-01-15 12:00:00'):
-        response = mock_bokbasen_metadata_api_service.send_request(
+        response: str = mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
@@ -145,7 +145,7 @@ def test_send_request_token_not_expired(
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
 
     with freeze_time('2012-01-14 15:00:00'):
-        response = mock_bokbasen_metadata_api_service.send_request(
+        response: str = mock_bokbasen_metadata_api_service.send_request(
             verb=HttpVerb.GET,
             url='https://api.bokbasen.io/metadata/export/onix/v1/9788248933533')
     assert get_new_access_token.call_count == 1
