@@ -1386,6 +1386,7 @@ Varegrupper = {
     "39040": "Kosthold / diett",
     "39041": "Kosthold / diett ebøker",
     "39042": "Kosthold / diett lydbøker",
+    "39062": "Mental helse lydbøker",
     "39090": "Familie og helse, tilbud",
     "39091": "Familie og helse, tilbud ebøker",
     "39092": "Familie og helse, tilbud lydbøker",
