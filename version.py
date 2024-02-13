@@ -3,7 +3,7 @@
 # PATCH version when you make backward compatible bug fixes
 # add suffix for release candidates, for example, 21.3.0-rc2
 
-PACKAGE_VERSION: str = '22.0.1'
+PACKAGE_VERSION: str = '22.1.0'
 
 
 if __name__ == "__main__":
