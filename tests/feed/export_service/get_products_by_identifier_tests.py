@@ -15,7 +15,7 @@ TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_products_by_ident
             'two_batches.json',
             [ProductType.PERSON],
             IdentifierType.IMPORT_CODE,
-            ['99991', '99992', '99993', '99994'],
+            ['99993', '99992', '99992', '99991', '99994'],
             2,
             False,
             [

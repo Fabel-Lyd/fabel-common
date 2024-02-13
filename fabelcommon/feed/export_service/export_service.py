@@ -1,15 +1,17 @@
 import json
-from typing import List, Dict, Union, Optional
-from urllib.parse import urlencode
+from typing import Dict, List, Union, Optional
 from requests import Response
-from fabelcommon.feed.export_service.identifier_type import IdentifierType
+from urllib.parse import urlencode
 from fabelcommon.feed.feed_api_service import FeedApiService
-from fabelcommon.feed.export_service import ProductType, ExportEndpoint
+from fabelcommon.feed.export_service import ExportEndpoint
+from fabelcommon.feed.export_service.product_types import ProductType
+from fabelcommon.feed.export_service.identifier_type import IdentifierType
 from fabelcommon.feed.export_service.feed_attribute import FeedAttribute
-from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.export_service.exceptions import BookNotFoundException, DuplicateBookException
-from fabelcommon.batch.batch import chunk_list
 from fabelcommon.feed.export_service.get_all_pages import get_all_pages
+from fabelcommon.http.verbs import HttpVerb
+from fabelcommon.list.list import get_distinct_list
+from fabelcommon.batch.batch import chunk_list
 
 
 class FeedExport(FeedApiService):
@@ -68,7 +70,8 @@ class FeedExport(FeedApiService):
 
         unique_product_types: List[str] = [product_type.value for product_type in set(product_types)]
         concatenated_product_types: str = ','.join(sorted(unique_product_types))
-        batched_identifier_values: List[List[str]] = chunk_list(identifier_values, batch_size)
+        unique_identifier_values: List[str] = get_distinct_list(identifier_values)
+        batched_identifier_values: List[List[str]] = chunk_list(unique_identifier_values, batch_size)
 
         result_list: List[Dict] = []
         for batch in batched_identifier_values:
