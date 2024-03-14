@@ -15,7 +15,7 @@ from fabelcommon.batch.batch import chunk_list
 
 
 class FeedExport(FeedApiService):
-    IMPORT_CODE_EXPORT_BATCH_SIZE: int = 300
+    IMPORT_CODE_EXPORT_BATCH_SIZE: int = 100
     DEFAULT_EXPORT_BATCH_SIZE: int = 100
 
     def __init__(self, client_id: str, client_secret: str) -> None:
