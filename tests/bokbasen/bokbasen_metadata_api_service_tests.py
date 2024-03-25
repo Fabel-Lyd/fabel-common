@@ -10,12 +10,35 @@ from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.http.verbs import HttpVerb
 
 
-def test_token_request_data(mock_bokbasen_metadata_api_service) -> None:
-    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+@pytest.mark.parametrize(
+    'bokbasen_audience, expected_audience_path',
+    [
+        (
+            BokbasenAudience.METADATA,
+            'https://api.bokbasen.io/metadata/'
+        ),
+        (
+            BokbasenAudience.BOKSKYA,
+            'https://api.bokbasen.io/bokskya/'
+        ),
+        (
+            BokbasenAudience.DDS,
+            'https://api.bokbasen.io/dds/'
+        ),
+        (
+            BokbasenAudience.ORDERS,
+            'https://api.bokbasen.io/orders/'
+        )
+    ])
+def test_token_request_data(
+        mock_bokbasen_metadata_api_service,
+        bokbasen_audience,
+        expected_audience_path) -> None:
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(bokbasen_audience)
     result: Dict = bokbasen_metadata_api_service._token_request_data
     assert result['client_id'] == 'test_client_id'
     assert result['client_secret'] == 'test_client_secret'
-    assert result['audience'] == 'https://api.bokbasen.io/metadata/'
+    assert result['audience'] == expected_audience_path
     assert result['grant_type'] == 'client_credentials'
 
 
