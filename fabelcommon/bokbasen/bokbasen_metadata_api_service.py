@@ -1,10 +1,12 @@
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, Any
 import requests
 from requests import Response
 from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
+from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
 from fabelcommon.bokbasen.export_response import BokbasenExportResponse
+from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.utilities.response_extension import ResponseExtension
@@ -25,7 +27,7 @@ class BokbasenMetadataApiService(ApiService):
         return {
             'client_id': self._client_id,
             'client_secret': self._client_secret,
-            'audience': 'https://api.bokbasen.io/metadata/',
+            'audience': f'https://api.bokbasen.io/{self._audience}/',
             'grant_type': 'client_credentials'
         }
 
@@ -34,13 +36,15 @@ class BokbasenMetadataApiService(ApiService):
             client_id: str,
             client_secret: str,
             base_url: str,
-            auth_path: str
+            auth_path: str,
+            audience: BokbasenAudience
     ) -> None:
         super().__init__(
             client_id=client_id,
             client_secret=client_secret,
             base_url=base_url,
-            auth_path=auth_path
+            auth_path=auth_path,
+            audience=audience.value
         )
 
     def _create_authorization_header(self, access_token: str) -> Dict:
@@ -62,6 +66,18 @@ class BokbasenMetadataApiService(ApiService):
             token_value=access_token.access_token_value,
         )
         return response.text
+
+    def send_order_request(self, verb: HttpVerb, url: str, data: Any = None) -> OrderResponse:
+        response: Response = self._send_request(
+            verb=verb,
+            path=url,
+            data=data,
+            headers_to_add={
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            }
+        )
+        return OrderResponse(location=response.headers['Location'])
 
     def __create_token(self, token_request_data: Dict) -> AccessToken:
         response: Response = requests.post(
