@@ -27,7 +27,7 @@ class BokbasenMetadataApiService(ApiService):
         return {
             'client_id': self._client_id,
             'client_secret': self._client_secret,
-            'audience': f'https://api.bokbasen.io/{self._audience}/',
+            'audience': f'{self._base_url}/{self._audience}/',
             'grant_type': 'client_credentials'
         }
 
