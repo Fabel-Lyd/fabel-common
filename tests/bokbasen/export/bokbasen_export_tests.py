@@ -5,6 +5,7 @@ from freezegun import freeze_time
 from xmldiff import main
 from lxml.etree import _Element
 from rest_framework import status
+from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
 from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.xmls.xml import read_xml_etree, read_xml_str
@@ -24,10 +25,11 @@ def test_export_product_by_isbn(
 ) -> None:
     send_request_mock: MagicMock = mocker.patch.object(
         BokbasenMetadataApiService,
-        attribute='send_request',
+        attribute=BokbasenMetadataApiService.send_request.__name__,
         return_value=read_xml_str(BOKBASEN_XML_DATA)
     )
-    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
 
     book = bokbasen_export.get_product_by_isbn('9788234001635')
 
@@ -57,7 +59,9 @@ def test_get_after_date(
         status_code=status.HTTP_200_OK,
         text=export_content
     )
-    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
+
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
 
     actual_result: ExportResult = bokbasen_export.get_after_date(timestamp, 2)
 
@@ -86,7 +90,8 @@ def test_get_by_cursor(
         status_code=status.HTTP_200_OK,
         text=export_content
     )
-    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
 
     actual_result: ExportResult = bokbasen_export.get_by_cursor('cursor', 2)
 
@@ -113,7 +118,8 @@ def test_validate_timestamp_successful(
         status_code=status.HTTP_200_OK,
         text='<ONIXMessage/>'
     )
-    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
 
     bokbasen_export.get_after_date(timestamp, 2)
 
@@ -135,7 +141,8 @@ def test_validate_timestamp_failed(
         exception_message: str,
         mock_bokbasen_metadata_api_service
 ) -> None:
-    bokbasen_export: BokbasenExport = BokbasenExport(mock_bokbasen_metadata_api_service)
+    bokbasen_metadata_api_service = mock_bokbasen_metadata_api_service(BokbasenAudience.METADATA)
+    bokbasen_export: BokbasenExport = BokbasenExport(bokbasen_metadata_api_service)
 
     with pytest.raises(Exception) as exception_info:
         bokbasen_export.get_after_date(timestamp, 2)
