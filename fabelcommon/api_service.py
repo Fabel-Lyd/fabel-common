@@ -17,6 +17,7 @@ class ApiService(ABC):
             client_secret: str,
             base_url: str,
             auth_path: str,
+            audience: Optional[str] = None
 
     ) -> None:
         self._client_id: str = client_id
@@ -24,6 +25,7 @@ class ApiService(ABC):
         self._base_url: str = base_url
         self._auth_path: str = auth_path
         self.__access_token: Optional[AccessToken] = None
+        self._audience: Optional[str] = audience
 
     @property
     def _access_token_key(self) -> AccessTokenKey:
