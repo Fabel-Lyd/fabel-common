@@ -1,7 +1,7 @@
 from typing import List
 from datetime import datetime, timedelta
 from lxml.etree import _Element
-from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
+from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 from fabelcommon.xmls.xml import xml_to_etree
 from fabelcommon.xmls.onix_x_path_reader import OnixXPathReader
 from fabelcommon.http.verbs import HttpVerb
@@ -13,14 +13,14 @@ EXPORT_CUTOFF_DAYS: int = 180
 
 
 class BokbasenExport:
-    bokbasen_metadata_api_service: BokbasenMetadataApiService
+    bokbasen_metadata_api_service: BokbasenApiService
 
-    def __init__(self, bokbasen_metadata_api_service: BokbasenMetadataApiService) -> None:
-        self.bokbasen_metadata_api_service = bokbasen_metadata_api_service
+    def __init__(self, bokbasen_api_service: BokbasenApiService) -> None:
+        self.bokbasen_api_service = bokbasen_api_service
 
     def get_product_by_isbn(self, isbn: str) -> _Element:
         url: str = f'/metadata/export/onix/v1/{isbn}'
-        xml: str = self.bokbasen_metadata_api_service.send_request(HttpVerb.GET, url)
+        xml: str = self.bokbasen_api_service.send_request(HttpVerb.GET, url)
         return xml_to_etree(xml)
 
     def get_by_cursor(self, cursor: str, batch_size: int) -> ExportResult:
@@ -33,7 +33,7 @@ class BokbasenExport:
         return self.__get(url)
 
     def __get(self, url: str) -> ExportResult:
-        response: BokbasenExportResponse = self.bokbasen_metadata_api_service.send_export_request(url)
+        response: BokbasenExportResponse = self.bokbasen_api_service.send_export_request(url)
         return ExportResult(
             books=self.__parse_exported_books(response.content),
             cursor=response.cursor
