@@ -80,9 +80,11 @@ class ApiService(ABC):
             path: str,
             # when data passed as Dict only top level properties are serialized
             data: Union[Dict, str, None] = None,
+            params: Optional[Dict] = None,
             files=None,
             headers_to_add: Optional[Dict[str, str]] = None,
-            token_value: Optional[str] = None
+            token_value: Optional[str] = None,
+            allow_redirects: bool = True
     ) -> Response:
 
         if token_value is None:
@@ -97,7 +99,9 @@ class ApiService(ABC):
             url=urljoin(self._base_url, path),
             headers=headers,
             data=data,
-            files=files
+            params=params,
+            files=files,
+            allow_redirects=allow_redirects
         )
 
         ResponseExtension.raise_for_error(response)
