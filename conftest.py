@@ -3,13 +3,13 @@ import json
 import pytest
 from rest_framework import status
 from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
-from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
+from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
 
 
 @pytest.fixture
 def patch_bokbasen_token(requests_mock):
     return requests_mock.post(
-        url='https://login.bokbasen.io/oauth/token',
+        url='https://auth.bokbasen.io/oauth/token',
         status_code=status.HTTP_200_OK,
         text=json.dumps(
             {
@@ -23,14 +23,14 @@ def patch_bokbasen_token(requests_mock):
 
 
 @pytest.fixture
-def mock_bokbasen_metadata_api_service():
+def mock_bokbasen_api_service():
     def _factory(bokbasen_audience: BokbasenAudience):
-        bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
+        bokbasen_api_service: BokbasenApiService = BokbasenApiService(
             client_id='test_client_id',
             client_secret='test_client_secret',
             base_url='https://api.bokbasen.io',
-            auth_path='https://login.bokbasen.io/oauth/token',
+            auth_path='https://auth.bokbasen.io/oauth/token',
             audience=bokbasen_audience
         )
-        return bokbasen_metadata_api_service
+        return bokbasen_api_service
     return _factory
