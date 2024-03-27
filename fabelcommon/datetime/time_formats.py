@@ -13,6 +13,14 @@ class TimeFormats:
         return mytime.strftime("%a, %d %b %Y %H:%M:%S %Z")
 
     @staticmethod
+    def get_date_time_string_utc(date_time: datetime) -> str:
+        if not date_time.tzinfo:
+            raise ValueError('Provided datetime object contains no time zone info')
+
+        date_time_utc: datetime = date_time.astimezone(pytz.UTC)
+        return date_time_utc.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+
+    @staticmethod
     def get_time_delta_hours(delta_hours):
         yesterday = datetime.now() - timedelta(hours=delta_hours)
         yesterday_formatted = yesterday.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
