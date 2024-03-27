@@ -1,7 +1,8 @@
-import json
 from typing import Dict, List, Union, Optional
+import json
 from requests import Response
 from urllib.parse import urlencode
+from datetime import datetime
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.feed.export_service import ExportEndpoint
 from fabelcommon.feed.export_service.product_types import ProductType
@@ -12,6 +13,7 @@ from fabelcommon.feed.export_service.get_all_pages import get_all_pages
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.list.list import get_distinct_list
 from fabelcommon.batch.batch import chunk_list
+from fabelcommon.datetime.time_formats import TimeFormats
 
 
 class FeedExport(FeedApiService):
@@ -24,12 +26,17 @@ class FeedExport(FeedApiService):
     def get_all_products(
             self,
             product_type: ProductType,
+            export_from: Optional[datetime] = None,
             page_size: int = DEFAULT_EXPORT_BATCH_SIZE
     ) -> List[Dict]:
 
         partial_url: str = self.__build_url(
             ExportEndpoint.PRODUCT,
-            f'changesOnly=false&productTypeImportCodes={product_type.value}&size={page_size}&page='
+            f'changesOnly=false'
+            f'&productTypeImportCodes={product_type.value}'
+            f'&size={page_size}'
+            f'{"&exportFrom=" + TimeFormats.get_date_time_string_utc(export_from) if export_from else ""}'
+            f'&page='
         )
 
         def callback(page_count: int) -> List[Dict]:
