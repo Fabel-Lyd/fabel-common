@@ -2,7 +2,7 @@
 import json
 import pytest
 from rest_framework import status
-
+from fabelcommon.bokbasen.bokbasen_bokskya_api_service import BokbasenBokskyaApiService
 from fabelcommon.bokbasen.bokbasen_dds_api_service import BokbasenDdsApiService
 from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 
@@ -56,3 +56,14 @@ def mock_bokbasen_dds_api_service():
         auth_path='https://auth.bokbasen.io/oauth/token',
     )
     return bokbasen_dds_api_service
+
+
+@pytest.fixture
+def mock_bokbasen_bokskya_api_service():
+    bokbasen_bokskya_api_service: BokbasenBokskyaApiService = BokbasenBokskyaApiService(
+        client_id='test_client_id',
+        client_secret='test_client_secret',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://auth.bokbasen.io/oauth/token',
+    )
+    return bokbasen_bokskya_api_service
