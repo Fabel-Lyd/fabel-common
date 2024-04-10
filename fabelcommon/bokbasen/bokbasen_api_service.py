@@ -6,8 +6,6 @@ from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
-from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
-from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.datetime.time_formats import TimeFormats
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.utilities.response_extension import ResponseExtension
@@ -74,33 +72,6 @@ class BokbasenApiService(ApiService):
             headers_to_add=headers_to_add
         )
         return response.text
-
-    def send_order_request(self, verb: HttpVerb, url: str, data: Any = None) -> OrderResponse:
-        response: Response = self._send_request(
-            verb=verb,
-            path=url,
-            data=data,
-            headers_to_add={
-                "Accept": "application/json",
-                "Content-type": "application/json"
-            }
-        )
-        return OrderResponse(location=response.headers['Location'])
-
-    def send_download_url_request(self, url: str) -> DownloadResponse:
-        params: Dict[str, str] = {
-            "type": "audio/vnd.bokbasen.complete-public",
-            "bitrate": "64"
-        }
-        response: Response = self._send_request(
-            verb=HttpVerb.GET,
-            path=url,
-            data=None,
-            params=params,
-            headers_to_add={"Accept": "application/json"},
-            allow_redirects=False)
-
-        return DownloadResponse(response.headers['Location'])
 
     def __create_token(self, token_request_data: Dict) -> AccessToken:
         response: Response = requests.post(
