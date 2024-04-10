@@ -2,8 +2,7 @@
 import json
 import pytest
 from rest_framework import status
-from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
-from fabelcommon.bokbasen.bokbasen_api_service import BokbasenApiService
+from fabelcommon.bokbasen.bokbasen_metadata_api_service import BokbasenMetadataApiService
 
 
 @pytest.fixture
@@ -22,15 +21,25 @@ def patch_bokbasen_token(requests_mock):
     )
 
 
+# @pytest.fixture
+# def mock_bokbasen_api_service():
+#     def _factory(bokbasen_audience: BokbasenAudience):
+#         bokbasen_api_service: BokbasenApiService = BokbasenApiService(
+#             client_id='test_client_id',
+#             client_secret='test_client_secret',
+#             base_url='https://api.bokbasen.io',
+#             auth_path='https://auth.bokbasen.io/oauth/token',
+#         )
+#         return bokbasen_api_service
+#     return _factory
+
+
 @pytest.fixture
-def mock_bokbasen_api_service():
-    def _factory(bokbasen_audience: BokbasenAudience):
-        bokbasen_api_service: BokbasenApiService = BokbasenApiService(
-            client_id='test_client_id',
-            client_secret='test_client_secret',
-            base_url='https://api.bokbasen.io',
-            auth_path='https://auth.bokbasen.io/oauth/token',
-            audience=bokbasen_audience
-        )
-        return bokbasen_api_service
-    return _factory
+def mock_bokbasen_metadata_api_service():
+    bokbasen_metadata_api_service: BokbasenMetadataApiService = BokbasenMetadataApiService(
+        client_id='test_client_id',
+        client_secret='test_client_secret',
+        base_url='https://api.bokbasen.io',
+        auth_path='https://auth.bokbasen.io/oauth/token',
+    )
+    return bokbasen_metadata_api_service

@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from typing import Dict, Optional, Tuple, Any
 import requests
 from requests import Response
@@ -5,7 +6,6 @@ from fabelcommon.access_token import AccessToken
 from fabelcommon.access_token_key import AccessTokenKey
 from fabelcommon.api_service import ApiService
 from fabelcommon.bokbasen.audiences.audience import BokbasenAudience
-from fabelcommon.bokbasen.export_response import BokbasenExportResponse
 from fabelcommon.bokbasen.export_response.download_response import DownloadResponse
 from fabelcommon.bokbasen.export_response.order_response import OrderResponse
 from fabelcommon.datetime.time_formats import TimeFormats
@@ -24,11 +24,15 @@ class BokbasenApiService(ApiService):
         return None
 
     @property
+    @abstractmethod
     def _token_request_data(self) -> Dict:
+        pass
+
+    def _create_token_request_data(self, audience: BokbasenAudience):
         return {
             'client_id': self._client_id,
             'client_secret': self._client_secret,
-            'audience': f'{self._base_url}/{self._audience}/',
+            'audience': f'{self._base_url}/{audience.value}/',
             'grant_type': 'client_credentials'
         }
 
@@ -38,14 +42,13 @@ class BokbasenApiService(ApiService):
             client_secret: str,
             base_url: str,
             auth_path: str,
-            audience: BokbasenAudience
+
     ) -> None:
         super().__init__(
             client_id=client_id,
             client_secret=client_secret,
             base_url=base_url,
-            auth_path=auth_path,
-            audience=audience.value
+            auth_path=auth_path
         )
 
     def _create_authorization_header(self, access_token: str) -> Dict:
@@ -116,7 +119,3 @@ class BokbasenApiService(ApiService):
             user_id=None
         )
         return access_token
-
-    def send_export_request(self, url: str) -> BokbasenExportResponse:
-        response: Response = self._send_request(HttpVerb.GET, url, None)
-        return BokbasenExportResponse(content=response.text, cursor=response.headers['next'])
