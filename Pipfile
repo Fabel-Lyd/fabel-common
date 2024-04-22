@@ -19,7 +19,7 @@ pytest-django = "==4.8.0"
 pytest-mock = "==3.14.0"
 requests-mock = "==1.12.1"
 xmldiff = "==2.6.3"
-freezegun = "==1.2.2"
+freezegun = "==1.4.0"
 
 [requires]
 python_version = "3.8"
