@@ -17,7 +17,7 @@ pyright = "==1.1.304"
 pytest = "==8.1.1"
 pytest-django = "==4.8.0"
 pytest-mock = "==3.14.0"
-requests-mock = "==1.10.0"
+requests-mock = "==1.12.1"
 xmldiff = "==2.6.3"
 freezegun = "==1.2.2"
 
