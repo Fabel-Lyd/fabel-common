@@ -1,6 +1,7 @@
 import json
 from urllib.parse import parse_qs
 import pytest
+from fabelcommon.access_token import AccessToken
 from fabelcommon.beat.beat_api_service import BeatApiService
 from fabelcommon.http.verbs import HttpVerb
 
@@ -89,6 +90,10 @@ def mock_token_requests(requests_mock):
                 'access_token': 'password_token',
                 'expires_in': 300,
                 'user_id': '117'
+            },
+            'refresh_token': {
+                "access_token": "new_access_token",
+                "expires_in": 600,
             }
         }
         grant_type = parse_qs(request.text)['grant_type'][0]
@@ -124,6 +129,26 @@ def test_get_password_flow_token(
     assert access_token.is_valid is True
     assert access_token.access_token_value == 'password_token'
     assert access_token.user_id == '117'
+
+
+def test_get_refresh_flow_token(mock_token_requests) -> None:
+    beat_api_service: BeatApiService = BeatApiService(
+        'test_client_id',
+        'test_client_secret',
+        'https://api.fabel.no'
+    )
+    access_token: AccessToken = AccessToken(
+        access_token_value='test_access_token',
+        expires_in=600,
+        user_id='17',
+        refresh_token_value='test_refresh_token'
+    )
+
+    token: AccessToken = beat_api_service.get_refresh_token_flow(access_token)
+
+    assert token.access_token_value == 'new_access_token'
+    assert token.is_valid is True
+    assert token.user_id is None
 
 
 def test_send_request_with_token(requests_mock):

@@ -87,3 +87,13 @@ class BeatApiService(ApiService):
             'client_secret': self._client_secret
         }
         return self._get_token_non_cached(token_request_data)
+
+    def get_refresh_token_flow(self, access_token: AccessToken) -> AccessToken:
+        refresh_token_request_data = {
+            'grant_type': 'refresh_token',
+            'client_id': self._client_id,
+            'client_secret': self._client_secret,
+            'refresh_token': access_token.refresh_token_value
+        }
+
+        return self._get_token_non_cached(refresh_token_request_data)
