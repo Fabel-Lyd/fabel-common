@@ -87,6 +87,7 @@ class BokbasenApiService(ApiService):
         access_token: AccessToken = AccessToken(
             access_token_value=token_data[self._access_token_key.value],
             expires_in=token_data.get('expires_in', token_data['expires_in']),
-            user_id=None
+            user_id=None,
+            refresh_token_value=None
         )
         return access_token

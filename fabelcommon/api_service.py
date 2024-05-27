@@ -70,7 +70,8 @@ class ApiService(ABC):
         access_token: AccessToken = AccessToken(
             access_token_value=token_data[self._access_token_key.value],
             expires_in=token_data.get('expires_in', 600),
-            user_id=token_data.get('user_id')
+            user_id=token_data.get('user_id'),
+            refresh_token_value=token_data.get('refresh_token', None)
         )
         return access_token
 

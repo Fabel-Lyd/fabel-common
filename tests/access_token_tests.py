@@ -6,7 +6,8 @@ freeze_time("2012-01-14 12:00:00").start()
 access_token = AccessToken(
     access_token_value='fake-token',
     expires_in=300,
-    user_id=None
+    user_id=None,
+    refresh_token_value='fake-refresh-token'
 )
 
 
