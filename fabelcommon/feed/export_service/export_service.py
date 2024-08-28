@@ -148,6 +148,11 @@ class FeedExport(FeedApiService):
 
         return data_register_list[0]
 
+    def get_structure(self, import_code: str) -> List[Dict]:
+        url: str = f'{self.BASE_URL}/{ExportEndpoint.STRUCTURE.value}/{import_code}'
+        structure_list: List[Dict] = self._send_request(HttpVerb.GET, url).json()
+        return structure_list
+
     def get_import_code_by_product_number(self, product_type: ProductType, product_number: str) -> Optional[str]:
         found_products: List[Dict] = self.get_products_by_identifier(
             IdentifierType.PRODUCT_NUMBER,
