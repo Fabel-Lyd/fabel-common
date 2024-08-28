@@ -1,0 +1,937 @@
+[
+  {
+    "nodeId": 29,
+    "name": {
+      "nb": "Skjønnlitteratur"
+    },
+    "nodeType": "NODE",
+    "children": [
+      {
+        "nodeId": 55,
+        "name": {
+          "nb": "Krim og spenning"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 64,
+            "name": {
+              "nb": "Thrillere"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 117,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/49",
+                "queryId": 49,
+                "attributes": []
+              }
+            ],
+            "sortNo": 1,
+            "media": []
+          },
+          {
+            "nodeId": 65,
+            "name": {
+              "nb": "Grøssere"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 118,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/50",
+                "queryId": 50,
+                "attributes": []
+              }
+            ],
+            "sortNo": 2,
+            "media": []
+          },
+          {
+            "nodeId": 66,
+            "name": {
+              "nb": "Politikrim"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 119,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/51",
+                "queryId": 51,
+                "attributes": []
+              }
+            ],
+            "sortNo": 3,
+            "media": []
+          },
+          {
+            "nodeId": 67,
+            "name": {
+              "nb": "Klassisk krim"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 68,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/8",
+                "queryId": 8,
+                "attributes": []
+              }
+            ],
+            "sortNo": 4,
+            "media": []
+          },
+          {
+            "nodeId": 70,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 5,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/10",
+            "queryId": 10,
+            "attributes": []
+          }
+        ],
+        "sortNo": 1,
+        "media": []
+      },
+      {
+        "nodeId": 56,
+        "name": {
+          "nb": "Romaner"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 71,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/11",
+            "queryId": 11,
+            "attributes": []
+          },
+          {
+            "nodeId": 101,
+            "name": {
+              "nb": "Underholdningsromaner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 109,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/41",
+                "queryId": 41,
+                "attributes": []
+              }
+            ],
+            "sortNo": 2,
+            "media": []
+          },
+          {
+            "nodeId": 102,
+            "name": {
+              "nb": "Biografiske romaner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 110,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/42",
+                "queryId": 42,
+                "attributes": []
+              }
+            ],
+            "sortNo": 3,
+            "media": []
+          },
+          {
+            "nodeId": 103,
+            "name": {
+              "nb": "Slektsromaner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 111,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/43",
+                "queryId": 43,
+                "attributes": []
+              }
+            ],
+            "sortNo": 4,
+            "media": []
+          },
+          {
+            "nodeId": 104,
+            "name": {
+              "nb": "Historiske romaner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 112,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/44",
+                "queryId": 44,
+                "attributes": []
+              }
+            ],
+            "sortNo": 5,
+            "media": []
+          },
+          {
+            "nodeId": 105,
+            "name": {
+              "nb": "Kjærlighet og relasjoner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 113,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/45",
+                "queryId": 45,
+                "attributes": []
+              }
+            ],
+            "sortNo": 6,
+            "media": []
+          },
+          {
+            "nodeId": 106,
+            "name": {
+              "nb": "Klassikere"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 114,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/46",
+                "queryId": 46,
+                "attributes": []
+              }
+            ],
+            "sortNo": 7,
+            "media": []
+          },
+          {
+            "nodeId": 107,
+            "name": {
+              "nb": "Erotikk og romantikk"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 115,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/47",
+                "queryId": 47,
+                "attributes": []
+              }
+            ],
+            "sortNo": 8,
+            "media": []
+          },
+          {
+            "nodeId": 108,
+            "name": {
+              "nb": "Serieromaner"
+            },
+            "nodeType": "NODE",
+            "children": [
+              {
+                "nodeId": 116,
+                "nodeType": "QUERY",
+                "children": [],
+                "sortNo": 1,
+                "media": [],
+                "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/48",
+                "queryId": 48,
+                "attributes": []
+              }
+            ],
+            "sortNo": 9,
+            "media": []
+          }
+        ],
+        "sortNo": 2,
+        "media": []
+      },
+      {
+        "nodeId": 57,
+        "name": {
+          "nb": "Serieromaner"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 72,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/12",
+            "queryId": 12,
+            "attributes": []
+          }
+        ],
+        "sortNo": 3,
+        "media": []
+      },
+      {
+        "nodeId": 58,
+        "name": {
+          "nb": "Fantasy"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 73,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/13",
+            "queryId": 13,
+            "attributes": []
+          }
+        ],
+        "sortNo": 4,
+        "media": []
+      },
+      {
+        "nodeId": 59,
+        "name": {
+          "nb": "Noveller"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 74,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/14",
+            "queryId": 14,
+            "attributes": []
+          }
+        ],
+        "sortNo": 5,
+        "media": []
+      },
+      {
+        "nodeId": 60,
+        "name": {
+          "nb": "Lyrikk"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 75,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/15",
+            "queryId": 15,
+            "attributes": []
+          }
+        ],
+        "sortNo": 6,
+        "media": []
+      },
+      {
+        "nodeId": 61,
+        "name": {
+          "nb": "Humor"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 76,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/16",
+            "queryId": 16,
+            "attributes": []
+          }
+        ],
+        "sortNo": 7,
+        "media": []
+      }
+    ],
+    "sortNo": 1,
+    "media": []
+  },
+  {
+    "nodeId": 30,
+    "name": {
+      "nb": "Fakta og dokumentar"
+    },
+    "nodeType": "NODE",
+    "children": [
+      {
+        "nodeId": 43,
+        "name": {
+          "nb": "Biografier og memoarer"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 69,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/9",
+            "queryId": 9,
+            "attributes": []
+          }
+        ],
+        "sortNo": 1,
+        "media": []
+      },
+      {
+        "nodeId": 44,
+        "name": {
+          "nb": "Familie og helse"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 80,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/20",
+            "queryId": 20,
+            "attributes": []
+          }
+        ],
+        "sortNo": 2,
+        "media": []
+      },
+      {
+        "nodeId": 45,
+        "name": {
+          "nb": "Filosofi"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 81,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/21",
+            "queryId": 21,
+            "attributes": []
+          }
+        ],
+        "sortNo": 3,
+        "media": []
+      },
+      {
+        "nodeId": 46,
+        "name": {
+          "nb": "Historie"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 82,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/22",
+            "queryId": 22,
+            "attributes": []
+          }
+        ],
+        "sortNo": 4,
+        "media": []
+      },
+      {
+        "nodeId": 47,
+        "name": {
+          "nb": "Kunst og kultur"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 83,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/23",
+            "queryId": 23,
+            "attributes": []
+          }
+        ],
+        "sortNo": 5,
+        "media": []
+      },
+      {
+        "nodeId": 48,
+        "name": {
+          "nb": "Mat og drikke"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 84,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/24",
+            "queryId": 24,
+            "attributes": []
+          }
+        ],
+        "sortNo": 6,
+        "media": []
+      },
+      {
+        "nodeId": 49,
+        "name": {
+          "nb": "Psykologi og selvutvikling"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 85,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/25",
+            "queryId": 25,
+            "attributes": []
+          }
+        ],
+        "sortNo": 7,
+        "media": []
+      },
+      {
+        "nodeId": 50,
+        "name": {
+          "nb": "Religion og livssyn"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 86,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/26",
+            "queryId": 26,
+            "attributes": []
+          }
+        ],
+        "sortNo": 8,
+        "media": []
+      },
+      {
+        "nodeId": 51,
+        "name": {
+          "nb": "Samfunn og debatt"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 87,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/27",
+            "queryId": 27,
+            "attributes": []
+          }
+        ],
+        "sortNo": 9,
+        "media": []
+      },
+      {
+        "nodeId": 52,
+        "name": {
+          "nb": "Sport og fritid"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 88,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/28",
+            "queryId": 28,
+            "attributes": []
+          }
+        ],
+        "sortNo": 10,
+        "media": []
+      },
+      {
+        "nodeId": 53,
+        "name": {
+          "nb": "Språk og reiselitteratur"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 89,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/29",
+            "queryId": 29,
+            "attributes": []
+          }
+        ],
+        "sortNo": 11,
+        "media": []
+      },
+      {
+        "nodeId": 54,
+        "name": {
+          "nb": "Økonomi og arbeidsliv"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 90,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/30",
+            "queryId": 30,
+            "attributes": []
+          }
+        ],
+        "sortNo": 12,
+        "media": []
+      },
+      {
+        "nodeId": 79,
+        "nodeType": "QUERY",
+        "children": [],
+        "sortNo": 13,
+        "media": [],
+        "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/19",
+        "queryId": 19,
+        "attributes": []
+      }
+    ],
+    "sortNo": 2,
+    "media": []
+  },
+  {
+    "nodeId": 31,
+    "name": {
+      "nb": "Barn"
+    },
+    "nodeType": "NODE",
+    "children": [
+      {
+        "nodeId": 33,
+        "name": {
+          "nb": "Romaner og fortellinger"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 91,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/31",
+            "queryId": 31,
+            "attributes": []
+          }
+        ],
+        "sortNo": 1,
+        "media": []
+      },
+      {
+        "nodeId": 34,
+        "name": {
+          "nb": "Krim og spenning"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 124,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/56",
+            "queryId": 56,
+            "attributes": []
+          }
+        ],
+        "sortNo": 2,
+        "media": []
+      },
+      {
+        "nodeId": 35,
+        "name": {
+          "nb": "Fakta"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 93,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/33",
+            "queryId": 33,
+            "attributes": []
+          }
+        ],
+        "sortNo": 3,
+        "media": []
+      },
+      {
+        "nodeId": 36,
+        "name": {
+          "nb": "Fantasy"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 123,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/55",
+            "queryId": 55,
+            "attributes": []
+          }
+        ],
+        "sortNo": 4,
+        "media": []
+      },
+      {
+        "nodeId": 37,
+        "name": {
+          "nb": "Eventyr"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 95,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/35",
+            "queryId": 35,
+            "attributes": []
+          }
+        ],
+        "sortNo": 5,
+        "media": []
+      },
+      {
+        "nodeId": 38,
+        "name": {
+          "nb": "Rim og regler"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 96,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/36",
+            "queryId": 36,
+            "attributes": []
+          }
+        ],
+        "sortNo": 6,
+        "media": []
+      },
+      {
+        "nodeId": 77,
+        "nodeType": "QUERY",
+        "children": [],
+        "sortNo": 7,
+        "media": [],
+        "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/17",
+        "queryId": 17,
+        "attributes": []
+      }
+    ],
+    "sortNo": 3,
+    "media": []
+  },
+  {
+    "nodeId": 32,
+    "name": {
+      "nb": "Ungdom"
+    },
+    "nodeType": "NODE",
+    "children": [
+      {
+        "nodeId": 39,
+        "name": {
+          "nb": "Romaner og fortellinger"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 97,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/37",
+            "queryId": 37,
+            "attributes": []
+          }
+        ],
+        "sortNo": 1,
+        "media": []
+      },
+      {
+        "nodeId": 40,
+        "name": {
+          "nb": "Krim og spenning"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 121,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/53",
+            "queryId": 53,
+            "attributes": []
+          }
+        ],
+        "sortNo": 2,
+        "media": []
+      },
+      {
+        "nodeId": 41,
+        "name": {
+          "nb": "Fakta"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 122,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/54",
+            "queryId": 54,
+            "attributes": []
+          }
+        ],
+        "sortNo": 3,
+        "media": []
+      },
+      {
+        "nodeId": 42,
+        "name": {
+          "nb": "Fantasy"
+        },
+        "nodeType": "NODE",
+        "children": [
+          {
+            "nodeId": 120,
+            "nodeType": "QUERY",
+            "children": [],
+            "sortNo": 1,
+            "media": [],
+            "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/52",
+            "queryId": 52,
+            "attributes": []
+          }
+        ],
+        "sortNo": 4,
+        "media": []
+      },
+      {
+        "nodeId": 78,
+        "nodeType": "QUERY",
+        "children": [],
+        "sortNo": 5,
+        "media": [],
+        "queryURL": "https://lydbokforlaget-feed.isysnet.no/export/structure/query/18",
+        "queryId": 18,
+        "attributes": []
+      }
+    ],
+    "sortNo": 4,
+    "media": []
+  }
+]
