@@ -1,0 +1,2270 @@
+{
+  "content": [
+    {
+      "identifier": {
+        "importCode": "26856",
+        "productNo": "9788203367939"
+      },
+      "productHead": {
+        "name": {
+          "nb": "Lang lysende elv"
+        },
+        "alternativeName": null,
+        "productNo": "9788203367939",
+        "altProductNo": null,
+        "status": {
+          "code": "active",
+          "name": {
+            "nb": "Aktivt"
+          }
+        },
+        "type": {
+          "code": "ERP",
+          "name": {
+            "nb": "Lydfil"
+          }
+        },
+        "owner": null,
+        "group": null,
+        "supplier": null,
+        "base": false,
+        "baseProduct": null,
+        "productType": "PRODUCT",
+        "deleted": false,
+        "modifiedTime": "2024-08-27T06:13:16.859Z",
+        "basedataModifiedTime": "2024-04-15T08:49:17.176Z"
+      },
+      "attributes": [
+        {
+          "name": {
+            "nb": "ISBN"
+          },
+          "importCode": "lydfil-isbn",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "9788203367939"
+          },
+          "sortNo": 1,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.855Z"
+        },
+        {
+          "name": {
+            "nb": "Orginal tittel"
+          },
+          "importCode": "lydfil-orginaltittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Long bright river"
+          },
+          "sortNo": 2,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2023-10-06T07:01:46.726Z"
+        },
+        {
+          "name": {
+            "nb": "Salgsstatus"
+          },
+          "importCode": "lydfil-salgsstatus",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "Kommer": {
+              "nb": "Kommer"
+            },
+            "I salg": {
+              "nb": "I salg"
+            },
+            "Utgått": {
+              "nb": "Utgått"
+            }
+          },
+          "value": "I salg",
+          "sortNo": 3,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.861Z"
+        },
+        {
+          "name": {
+            "nb": "Abb. status"
+          },
+          "importCode": "lydfil-abbstatus",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "ikke-aktiv": {
+              "nb": "Ikke Aktiv"
+            },
+            "Slipp": {
+              "nb": "Kommer for Strømming"
+            },
+            "Aktiv": {
+              "nb": "Aktiv"
+            },
+            "Utgått": {
+              "nb": "Utgått"
+            }
+          },
+          "value": "Aktiv",
+          "sortNo": 4,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-09-26T08:42:34.377Z"
+        },
+        {
+          "name": {
+            "nb": "Alder"
+          },
+          "importCode": "lydfil-alder",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "6": {
+              "nb": "Fra 6 år"
+            },
+            "8": {
+              "nb": "Fra 8 år"
+            },
+            "10": {
+              "nb": "Fra 10 år"
+            },
+            "12": {
+              "nb": "Fra 12 år"
+            },
+            "14": {
+              "nb": "Fra 14 år"
+            },
+            "2": {
+              "nb": "Fra 2 år"
+            },
+            "4": {
+              "nb": "Fra 4 år"
+            }
+          },
+          "sortNo": 5,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4
+        },
+        {
+          "name": {
+            "nb": "Nivå"
+          },
+          "importCode": "lydfil-niva",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "001": {
+              "nb": "0-3"
+            },
+            "002": {
+              "nb": "3-6"
+            },
+            "003": {
+              "nb": "6-9"
+            },
+            "004": {
+              "nb": "9-12"
+            },
+            "005": {
+              "nb": "12-16"
+            }
+          },
+          "value": [],
+          "sortNo": 6,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4
+        },
+        {
+          "name": {
+            "nb": "Spilletid"
+          },
+          "importCode": "lydfil-spilletid",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "12:52:00"
+          },
+          "sortNo": 7,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2023-10-06T07:01:46.737Z"
+        },
+        {
+          "name": {
+            "nb": "Målform"
+          },
+          "importCode": "lydfil-maalform",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "No-nb": {
+              "nb": "Bokmål"
+            },
+            "No-nn": {
+              "nb": "Nynorsk"
+            },
+            "sme": {
+              "nb": "Samisk"
+            },
+            "eng": {
+              "nb": "Engelsk"
+            }
+          },
+          "value": "No-nb",
+          "sortNo": 8,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.864Z"
+        },
+        {
+          "name": {
+            "nb": "Pris"
+          },
+          "importCode": "lydfil-pris",
+          "dataType": "LONG",
+          "range": false,
+          "value": 189,
+          "sortNo": 9,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-05-03T06:46:57.097Z"
+        },
+        {
+          "name": {
+            "nb": "Kampanjepris"
+          },
+          "importCode": "lydfil-kampanjepris",
+          "dataType": "LONG",
+          "range": false,
+          "sortNo": 10,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-09-26T08:42:30.464Z"
+        },
+        {
+          "name": {
+            "nb": "Kampanjeprisdato"
+          },
+          "importCode": "lydfil_kampanjeprisdato",
+          "dataType": "DATE",
+          "range": true,
+          "value": [
+            null,
+            null
+          ],
+          "sortNo": 11,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-09-26T08:42:31.774Z"
+        },
+        {
+          "name": {
+            "nb": "Lettlest"
+          },
+          "importCode": "lydfil-lettlest-deleted",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "value": false,
+          "sortNo": 12,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.875Z"
+        },
+        {
+          "name": {
+            "nb": "Vareeier"
+          },
+          "importCode": "lydfil-vareeier",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "Publizm": {
+              "nb": "Publizm"
+            },
+            "Pottermore Publishing": {
+              "nb": "Pottermore Publishing"
+            },
+            "Forlaget Oktober": {
+              "nb": "Forlaget Oktober"
+            },
+            "Samlaget": {
+              "nb": "Det Norske Samlaget"
+            },
+            "Universitetsforlaget": {
+              "nb": "Universitetsforlaget AS"
+            },
+            "NRK": {
+              "nb": "NRK"
+            },
+            "Forfatter M. A Augestad Sandstad": {
+              "nb": "Forfatter M. A Augestad Sandstad"
+            },
+            "LBF": {
+              "nb": "Fabel Lyd AS"
+            },
+            "Forente forlag AS": {
+              "nb": "Forente forlag AS"
+            },
+            "eBokNorden AS": {
+              "nb": "Eboknorden AS"
+            },
+            "Salsa AS": {
+              "nb": "Salsa AS"
+            },
+            "Bonnier Norsk Forlag AS": {
+              "nb": "Bonnier Norsk Forlag AS"
+            },
+            "Vega Forlag": {
+              "nb": "Vega Forlag"
+            },
+            "Grappa musikkforlag AS": {
+              "nb": "Grappa musikkforlag AS"
+            },
+            "12345": {
+              "nb": "12345"
+            },
+            "Svarttrost Produksjoner": {
+              "nb": "Svarttrost Produksjoner"
+            },
+            "Piggsvin Forlag AS": {
+              "nb": "Piggsvin Forlag AS"
+            },
+            "Kagge Forlag AS": {
+              "nb": "Kagge Forlag AS"
+            },
+            "Forente forlag AS - Spartacus forlag": {
+              "nb": "Forente forlag AS - Spartacus forlag"
+            },
+            "Forlaget Lille Måne AS": {
+              "nb": "Forlaget Lille Måne AS"
+            },
+            "Forente forlag AS - Dreyers forlag Oslo": {
+              "nb": "Forente forlag AS - Dreyers forlag Oslo"
+            },
+            "Vigmostad & Bjørke AS": {
+              "nb": "Vigmostad & Bjørke AS"
+            },
+            "Juni Musikk": {
+              "nb": "Juni Musikk"
+            },
+            "VIATONE V/AKSEL BECH CHRISTENSEN": {
+              "nb": "VIATONE V/AKSEL BECH CHRISTENSEN"
+            },
+            "Nor Agency AS": {
+              "nb": "Nor Agency AS"
+            },
+            "Forlagshuset Vest AS": {
+              "nb": "Forlagshuset Vest AS"
+            },
+            "Juritzen forlag AS": {
+              "nb": "Juritzen forlag AS"
+            },
+            "Cappelen Damm": {
+              "nb": "Cappelen Damm AS"
+            },
+            "Lind & Co": {
+              "nb": "Lind & Co"
+            },
+            "Forlaget Oktober AS": {
+              "nb": "Forlaget Oktober AS"
+            },
+            "Forlaget Lille Måne": {
+              "nb": "Forlaget Lille Måne"
+            },
+            "Kagge Forlag": {
+              "nb": "Kagge Forlag"
+            },
+            "Strawberry Publishing": {
+              "nb": "Strawberry Publishing"
+            },
+            "Vigmostad & Bjørke": {
+              "nb": "Forlaget Vigmostad & Bjørke AS"
+            },
+            "Antiforlaget ( Skoglund )": {
+              "nb": "Antiforlaget ( Skoglund )"
+            },
+            "Frisk forlag AS": {
+              "nb": "Frisk forlag AS"
+            },
+            "Gyldendal Norsk Forlag": {
+              "nb": "Gyldendal Norsk Forlag"
+            },
+            "Forlaget Press": {
+              "nb": "Forlaget Press"
+            },
+            "Figenschou Forlag AS": {
+              "nb": "Figenschou Forlag AS"
+            },
+            "Spartacus forlag": {
+              "nb": "Spartacus forlag"
+            },
+            "Dreyers Forlag Oslo AS": {
+              "nb": "Dreyers Forlag Oslo AS"
+            },
+            "Skamløst forlag AS": {
+              "nb": "Skamløst forlag AS"
+            },
+            "Kontur forlag AS": {
+              "nb": "Kontur forlag AS"
+            },
+            "Bibelselskapet": {
+              "nb": "Bibelselskapet"
+            },
+            "Nadja Ben-Shams": {
+              "nb": "Nadja Ben-Shams"
+            },
+            "Spetakkel AS - Harper Collins": {
+              "nb": "Spetakkel AS - Harper Collins"
+            },
+            "Talent musikk AS": {
+              "nb": "Talent musikk AS"
+            },
+            "Dan": {
+              "nb": "Dan"
+            },
+            "Eboknorden": {
+              "nb": "Eboknorden"
+            },
+            "Gyldendal": {
+              "nb": "Gyldendal Norsk Forlag AS"
+            },
+            "Aschehoug": {
+              "nb": "Aschehoug & Co"
+            },
+            "Egmont Kids Media Nordic": {
+              "nb": "Egmont Kids Media Nordic AS"
+            },
+            "Norsk Fakta Forlag AS": {
+              "nb": "Norsk Fakta Forlag AS"
+            }
+          },
+          "value": "Aschehoug",
+          "sortNo": 13,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.866Z"
+        },
+        {
+          "name": {
+            "nb": "Serienummer"
+          },
+          "importCode": "lydfil-serienummer",
+          "dataType": "LONG",
+          "range": false,
+          "sortNo": 14,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2023-10-06T07:01:46.764Z"
+        },
+        {
+          "name": {
+            "nb": "Utgivelsesdato"
+          },
+          "importCode": "lydfil-utgivelsesdato",
+          "dataType": "DATE",
+          "range": false,
+          "value": "2021-02-12T00:00:00.000+00:00",
+          "sortNo": 15,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2023-10-06T07:01:46.754Z"
+        },
+        {
+          "name": {
+            "nb": "UtgivelsedatoAb"
+          },
+          "importCode": "lydfil-utgivelsesdatoab",
+          "dataType": "DATE",
+          "range": false,
+          "value": "2022-10-14T00:00:00.000+00:00",
+          "sortNo": 16,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-09-26T08:42:44.036Z"
+        },
+        {
+          "name": {
+            "nb": "Bokforlag"
+          },
+          "importCode": "lydfil-bokforlag",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "1000052": {
+              "nb": "Norsk Fakta Forlag AS"
+            },
+            "1000053": {
+              "nb": "Publizm"
+            },
+            "1000054": {
+              "nb": "Universitetsforlaget"
+            },
+            "1000055": {
+              "nb": "Pottermore Publishing"
+            },
+            "100056": {
+              "nb": "An imprint of HarperCollinsPublishers"
+            },
+            "100057": {
+              "nb": "Spetakkel"
+            },
+            "100058": {
+              "nb": "HarperCollins Nordic : Harlequin"
+            },
+            "100059": {
+              "nb": "Gloria forlag"
+            },
+            "100060": {
+              "nb": "Perssons Gruvkall"
+            },
+            "100061": {
+              "nb": "Anders Somby"
+            },
+            "100062": {
+              "nb": "Kolofon"
+            },
+            "100063": {
+              "nb": "Fabula"
+            },
+            "100064": {
+              "nb": "Salsa"
+            },
+            "100065": {
+              "nb": "Vivo Innovation"
+            },
+            "100066": {
+              "nb": "Somby"
+            },
+            "100067": {
+              "nb": "Descite"
+            },
+            "100068": {
+              "nb": "Aurora forlag"
+            },
+            "100069": {
+              "nb": "Thuis forlag"
+            },
+            "100070": {
+              "nb": "Époque forlag"
+            },
+            "100071": {
+              "nb": "Epiktet"
+            },
+            "100072": {
+              "nb": "EbnPublish"
+            },
+            "100073": {
+              "nb": "Ord fra Nord"
+            },
+            "100074": {
+              "nb": "Hurra forlag"
+            },
+            "100075": {
+              "nb": "Cappelen Damm akademisk"
+            },
+            "100076": {
+              "nb": "Giutbok.no"
+            },
+            "100077": {
+              "nb": "Avon, An imprint of Harpercollinspublishers"
+            },
+            "100078": {
+              "nb": "Juni forlag"
+            },
+            "100079": {
+              "nb": "Juni Musikk"
+            },
+            "100080": {
+              "nb": "Nor"
+            },
+            "100081": {
+              "nb": "Tine Brager Hynne"
+            },
+            "100082": {
+              "nb": "Pax"
+            },
+            "100083": {
+              "nb": "Publica"
+            },
+            "100084": {
+              "nb": "Nadja Ben-Shams"
+            },
+            "100085": {
+              "nb": "Teie Forlag AS"
+            },
+            "100086": {
+              "nb": "Forlagshuset"
+            },
+            "32500": {
+              "nb": "Cappelen Damm"
+            },
+            "32530": {
+              "nb": "J.M. Stenersens forlag"
+            },
+            "38211": {
+              "nb": "Tiden"
+            },
+            "40255": {
+              "nb": "Pax Forlag AS"
+            },
+            "44460": {
+              "nb": "Kagge forlag"
+            },
+            "50115": {
+              "nb": "Hegnar Media AS"
+            },
+            "54671": {
+              "nb": "Vigmostad Bjørke"
+            },
+            "56378": {
+              "nb": "Juritzen Forlag"
+            },
+            "56523": {
+              "nb": "Font"
+            },
+            "62912": {
+              "nb": "NRK Aktivum A/S"
+            },
+            "62913": {
+              "nb": "Lydbokforlaget"
+            },
+            "63005": {
+              "nb": "N.W. Damm & Søn AS"
+            },
+            "63006": {
+              "nb": "Samlaget"
+            },
+            "63008": {
+              "nb": "Oktober"
+            },
+            "63009": {
+              "nb": "Aschehoug"
+            },
+            "63010": {
+              "nb": "Gyldendal"
+            },
+            "63012": {
+              "nb": "Karviland Forlag"
+            },
+            "63013": {
+              "nb": "Forlaget Press"
+            },
+            "63037": {
+              "nb": "Schibsted"
+            },
+            "63039": {
+              "nb": "Kolon"
+            },
+            "76210": {
+              "nb": "Vega forlag"
+            },
+            "83402": {
+              "nb": "Kagge"
+            },
+            "147634": {
+              "nb": "Pitch forlag"
+            },
+            "153789": {
+              "nb": "Pilar Forlag"
+            },
+            "153790": {
+              "nb": "Capitana"
+            },
+            "158751": {
+              "nb": "Goliat Forlag"
+            },
+            "159967": {
+              "nb": "Canoa"
+            },
+            "162340": {
+              "nb": "Lind & Co"
+            },
+            "163104": {
+              "nb": "Strawberry Publishing"
+            },
+            "163105": {
+              "nb": "Armada Forlag"
+            },
+            "163107": {
+              "nb": "Lille Måne"
+            },
+            "165754": {
+              "nb": "Fabel"
+            },
+            "165409": {
+              "nb": "Liv Forlag"
+            },
+            "169487": {
+              "nb": "Omnipax"
+            },
+            "171960": {
+              "nb": "Barneselskapet"
+            },
+            "44331": {
+              "nb": "Ganesa Forlag AS"
+            },
+            "49546": {
+              "nb": "Orion Forlag"
+            },
+            "51024": {
+              "nb": "Pegasus Forlag"
+            },
+            "63015": {
+              "nb": "Pedagogisk Forum"
+            },
+            "3213213": {
+              "nb": "Panta"
+            },
+            "62959": {
+              "nb": "Egmont Serieforlaget AS"
+            },
+            "1000000": {
+              "nb": "Bonnier norsk forlag"
+            },
+            "1000002": {
+              "nb": "Grappa musikkforlag"
+            },
+            "1000003": {
+              "nb": "Papermoon"
+            },
+            "1000004": {
+              "nb": "Svarttrost Produksjoner"
+            },
+            "1000005": {
+              "nb": "Bladkompaniet"
+            },
+            "1000006": {
+              "nb": "Ena"
+            },
+            "1000007": {
+              "nb": "Bastion"
+            },
+            "1000008": {
+              "nb": "Viatone"
+            },
+            "1000009": {
+              "nb": "Flamme"
+            },
+            "1000010": {
+              "nb": "Korall forlag"
+            },
+            "1000011": {
+              "nb": "Larsforlaget"
+            },
+            "1000012": {
+              "nb": "Arneberg"
+            },
+            "1000013": {
+              "nb": "Egmont Kids Media Nordic"
+            },
+            "1000014": {
+              "nb": "Portal"
+            },
+            "1000015": {
+              "nb": "Hobi forlag"
+            },
+            "1000016": {
+              "nb": "Pioner"
+            },
+            "1000017": {
+              "nb": "Fontini forlag"
+            },
+            "1000018": {
+              "nb": "Gammafon"
+            },
+            "1000019": {
+              "nb": "Antiforlaget"
+            },
+            "1000020": {
+              "nb": "Frisk"
+            },
+            "1000021": {
+              "nb": "Frisk forlag"
+            },
+            "1000022": {
+              "nb": "Manifest"
+            },
+            "1000023": {
+              "nb": "Egmont"
+            },
+            "1000024": {
+              "nb": "Egmont Kids Media"
+            },
+            "1000025": {
+              "nb": "Egmont People"
+            },
+            "1000026": {
+              "nb": "Figenschou"
+            },
+            "1000027": {
+              "nb": "Vigmostad & Bjørke"
+            },
+            "100028": {
+              "nb": "Cappelen"
+            },
+            "1000029": {
+              "nb": "Bazar"
+            },
+            "1000030": {
+              "nb": "Spartacus"
+            },
+            "1000031": {
+              "nb": "Dreyers forlag"
+            },
+            "1000032": {
+              "nb": "Bok i nord"
+            },
+            "1000033": {
+              "nb": "Skrik forlag"
+            },
+            "1000034": {
+              "nb": "Skamløst forlag AS"
+            },
+            "1000035": {
+              "nb": "Story House Egmont"
+            },
+            "1000036": {
+              "nb": "A1 fakta"
+            },
+            "1000037": {
+              "nb": "Gursli Berg"
+            },
+            "1000038": {
+              "nb": "Vestland"
+            },
+            "1000039": {
+              "nb": "Nitro"
+            },
+            "1000040": {
+              "nb": "Kontur"
+            },
+            "1000041": {
+              "nb": "Pilar"
+            },
+            "1000042": {
+              "nb": "Armada"
+            },
+            "1000043": {
+              "nb": "LagForl."
+            },
+            "1000044": {
+              "nb": "HarperCollins Nordic"
+            },
+            "1000045": {
+              "nb": "HarperCollins"
+            },
+            "1000046": {
+              "nb": "Fontini"
+            },
+            "1000047": {
+              "nb": "NRK Lydbokforl."
+            },
+            "1000048": {
+              "nb": "Talent musikk"
+            },
+            "10000049": {
+              "nb": "Moonlight forlag"
+            },
+            "1000050": {
+              "nb": "Egmont Publishing"
+            },
+            "1000051": {
+              "nb": "People Egmont"
+            }
+          },
+          "value": "63009",
+          "sortNo": 17,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2021-03-15T10:25:03.870Z"
+        },
+        {
+          "name": {
+            "nb": "Avtalevilkår %"
+          },
+          "importCode": "lydfil-avtalevilkar",
+          "dataType": "FLOAT",
+          "range": false,
+          "value": 0.65,
+          "sortNo": 18,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-11-17T12:13:08.413Z"
+        },
+        {
+          "name": {
+            "nb": "Minstesum"
+          },
+          "importCode": "lydfil-minstesum",
+          "dataType": "FLOAT",
+          "range": false,
+          "value": 35.0,
+          "sortNo": 19,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-11-17T12:13:21.432Z"
+        },
+        {
+          "name": {
+            "nb": "Prøvelytt"
+          },
+          "importCode": "lydfil-provelytt",
+          "dataType": "FLOAT",
+          "range": false,
+          "value": 15.0,
+          "sortNo": 20,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4,
+          "modifiedTime": "2022-11-17T12:13:25.341Z"
+        },
+        {
+          "name": {
+            "nb": "Liste tags"
+          },
+          "importCode": "lydfil-tags",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "Fabel original": {
+              "nb": "Fabel original"
+            },
+            "Ny Fabel-lytter": {
+              "nb": "Ny Fabel-lytter"
+            },
+            "Abo nyheter": {
+              "nb": "Abo nyheter"
+            },
+            "Nyheter salg": {
+              "nb": "Nyheter salg"
+            },
+            "Abo mest hørt": {
+              "nb": "Abo mest hørt"
+            },
+            "Anbefalt barn": {
+              "nb": "Anbefalt barn"
+            },
+            "Anbefalt fakta": {
+              "nb": "Anbefalt fakta"
+            },
+            "Anbefalt krim": {
+              "nb": "Anbefalt krim"
+            },
+            "Anbefalt romaner": {
+              "nb": "Anbefalt romaner"
+            },
+            "Anbefalt ungdom": {
+              "nb": "Anbefalt ungdom"
+            }
+          },
+          "value": [],
+          "sortNo": 22,
+          "attributeGroupName": {
+            "nb": "Lydfil attributter"
+          },
+          "attributeGroupSortNo": 4
+        },
+        {
+          "name": {
+            "nb": "Forfatter"
+          },
+          "importCode": "Forfatter-sok",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Liz Moore"
+          },
+          "sortNo": 1,
+          "attributeGroupName": {
+            "nb": "Søkeattributter"
+          },
+          "attributeGroupSortNo": 5,
+          "modifiedTime": "2021-03-15T10:25:03.934Z"
+        },
+        {
+          "name": {
+            "nb": "Innleser"
+          },
+          "importCode": "Innleser-sok",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Anne Ryg"
+          },
+          "sortNo": 2,
+          "attributeGroupName": {
+            "nb": "Søkeattributter"
+          },
+          "attributeGroupSortNo": 5,
+          "modifiedTime": "2021-03-15T10:25:03.938Z"
+        },
+        {
+          "name": {
+            "nb": "Oversetter"
+          },
+          "importCode": "Oversetter-sok",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Knut Ofstad"
+          },
+          "sortNo": 3,
+          "attributeGroupName": {
+            "nb": "Søkeattributter"
+          },
+          "attributeGroupSortNo": 5,
+          "modifiedTime": "2021-03-18T14:05:59.003Z"
+        },
+        {
+          "name": {
+            "nb": "Serietittel"
+          },
+          "importCode": "Serietittel-sok",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": ""
+          },
+          "sortNo": 4,
+          "attributeGroupName": {
+            "nb": "Søkeattributter"
+          },
+          "attributeGroupSortNo": 5,
+          "modifiedTime": "2021-03-15T10:25:03.949Z"
+        },
+        {
+          "name": {
+            "nb": "Sjanger"
+          },
+          "importCode": "sjanger",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {},
+          "sortNo": 5,
+          "attributeGroupName": {
+            "nb": "Søkeattributter"
+          },
+          "attributeGroupSortNo": 5
+        },
+        {
+          "name": {
+            "nb": "Hovedsjanger"
+          },
+          "importCode": "hovedsjanger",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "Skjønnlitteratur": {
+              "nb": "Skjønnlitteratur"
+            },
+            "Fakta og dokumentar": {
+              "nb": "Fakta og dokumentar"
+            },
+            "Barn": {
+              "nb": "Barn"
+            },
+            "Ungdom": {
+              "nb": "Ungdom"
+            }
+          },
+          "value": "Skjønnlitteratur",
+          "sortNo": 1,
+          "attributeGroupImportCode": "hovedsjanger",
+          "attributeGroupName": {
+            "nb": "Hovedsjanger"
+          },
+          "attributeGroupSortNo": 7,
+          "modifiedTime": "2021-03-15T10:25:03.882Z"
+        },
+        {
+          "name": {
+            "nb": "Barn"
+          },
+          "importCode": "barn",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "eventyr": {
+              "nb": "Eventyr"
+            },
+            "fakta": {
+              "nb": "Fakta"
+            },
+            "hørespill": {
+              "nb": "Hørespill"
+            },
+            "rimogregler": {
+              "nb": "Rim og regler"
+            },
+            "romanerogfortellinger": {
+              "nb": "Romaner og fortellinger"
+            }
+          },
+          "value": [],
+          "sortNo": 1,
+          "attributeGroupImportCode": "kat-att",
+          "attributeGroupName": {
+            "nb": "Kategoriattributt"
+          },
+          "attributeGroupSortNo": 8
+        },
+        {
+          "name": {
+            "nb": "Ungdom"
+          },
+          "importCode": "ungdom",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "romanerogfortellinger": {
+              "nb": "Romaner og fortellinger"
+            },
+            "hørespill": {
+              "nb": "Hørespill"
+            }
+          },
+          "value": [],
+          "sortNo": 2,
+          "attributeGroupImportCode": "kat-att",
+          "attributeGroupName": {
+            "nb": "Kategoriattributt"
+          },
+          "attributeGroupSortNo": 8
+        },
+        {
+          "name": {
+            "nb": "Fakta og dokumentar"
+          },
+          "importCode": "faktaogdokumentar",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "økonomiogarbeidsliv": {
+              "nb": "Økonomi og arbeidsliv"
+            },
+            "biografierogmemoarer": {
+              "nb": "Biografier og memoarer"
+            },
+            "filosofi": {
+              "nb": "Filosofi"
+            },
+            "familieoghelse": {
+              "nb": "Familie og helse"
+            },
+            "humorogsatire": {
+              "nb": "Humor og satire"
+            },
+            "kunstogkultur": {
+              "nb": "Kunst og kultur"
+            },
+            "psykologiogselvutvikling": {
+              "nb": "Psykologi og selvutvikling"
+            },
+            "religionoglivssyn": {
+              "nb": "Religion og livssyn"
+            },
+            "samfunnogdebatt": {
+              "nb": "Samfunn og debatt"
+            },
+            "språkogreiselitteratur": {
+              "nb": "Språk og reiselitteratur"
+            },
+            "historie": {
+              "nb": "Historie"
+            },
+            "sportogfritid": {
+              "nb": "Sport og fritid"
+            },
+            "matogdrikke": {
+              "nb": "Mat og drikke"
+            }
+          },
+          "value": [],
+          "sortNo": 3,
+          "attributeGroupImportCode": "kat-att",
+          "attributeGroupName": {
+            "nb": "Kategoriattributt"
+          },
+          "attributeGroupSortNo": 8
+        },
+        {
+          "name": {
+            "nb": "Skjønnliteratur"
+          },
+          "importCode": "skjonnliteratur",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "romaner": {
+              "nb": "Romaner"
+            },
+            "krimogspenning": {
+              "nb": "Krim og spenning"
+            },
+            "humor": {
+              "nb": "Humor"
+            },
+            "serieromaner": {
+              "nb": "Serieromaner"
+            },
+            "fantasy": {
+              "nb": "Fantasy"
+            },
+            "hørespill": {
+              "nb": "Hørespill"
+            },
+            "lyrikk": {
+              "nb": "Lyrikk"
+            },
+            "noveller": {
+              "nb": "Noveller"
+            }
+          },
+          "value": [
+            "krimogspenning"
+          ],
+          "sortNo": 4,
+          "attributeGroupImportCode": "kat-att",
+          "attributeGroupName": {
+            "nb": "Kategoriattributt"
+          },
+          "attributeGroupSortNo": 8,
+          "modifiedTime": "2021-03-15T10:25:03.925Z"
+        },
+        {
+          "name": {
+            "nb": "Fabel ID"
+          },
+          "importCode": "fabel-id",
+          "dataType": "LONG",
+          "range": false,
+          "value": 7770,
+          "sortNo": 1,
+          "attributeGroupImportCode": "beat-attributter",
+          "attributeGroupName": {
+            "nb": "BEAT attributter"
+          },
+          "attributeGroupSortNo": 10,
+          "modifiedTime": "2023-02-08T12:43:42.001Z"
+        },
+        {
+          "name": {
+            "nb": "SEO-tittel"
+          },
+          "importCode": "seo-tittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Lang lysende elv - Liz Moore - Krim - Lydbok | Fabel"
+          },
+          "sortNo": 1,
+          "attributeGroupImportCode": "seo",
+          "attributeGroupName": {
+            "nb": "SEO"
+          },
+          "attributeGroupSortNo": 11,
+          "modifiedTime": "2021-11-21T10:37:29.512Z"
+        },
+        {
+          "name": {
+            "nb": "Metabeskrivelse"
+          },
+          "importCode": "metabeskrivelse",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Mickey Fitzpatrick har patruljert 24. distrikt i Philadelphia i flere år, og er på fornavn med de prostituerte og narkomane i The Ave. "
+          },
+          "sortNo": 2,
+          "attributeGroupImportCode": "seo",
+          "attributeGroupName": {
+            "nb": "SEO"
+          },
+          "attributeGroupSortNo": 11,
+          "modifiedTime": "2021-11-21T10:37:24.400Z"
+        },
+        {
+          "name": {
+            "nb": "stikkord-web"
+          },
+          "importCode": "stikkord-web",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "abo-mest-hørt": {
+              "nb": "abo-mest-hørt"
+            },
+            "abo-nyheter": {
+              "nb": "abo-nyheter"
+            },
+            "liste-1-bestselgere": {
+              "nb": "liste-1-bestselgere"
+            },
+            "liste-2-nyheter": {
+              "nb": "liste-2-nyheter"
+            },
+            "liste-3-krim": {
+              "nb": "liste-3-krim"
+            },
+            "liste-4-roman": {
+              "nb": "liste-4-roman"
+            },
+            "liste-5-fakta-dokumentar": {
+              "nb": "liste-5-fakta-dokumentar"
+            },
+            "liste-6-barn-ungdom": {
+              "nb": "liste-6-barn-ungdom"
+            }
+          },
+          "value": [],
+          "sortNo": 1,
+          "attributeGroupImportCode": "redaksjonelt",
+          "attributeGroupName": {
+            "nb": "Redaksjonelt"
+          },
+          "attributeGroupSortNo": 12
+        },
+        {
+          "name": {
+            "nb": "Nyhet"
+          },
+          "importCode": "nyhet",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "value": false,
+          "sortNo": 18,
+          "attributeGroupImportCode": "redaksjonelt",
+          "attributeGroupName": {
+            "nb": "Redaksjonelt"
+          },
+          "attributeGroupSortNo": 12,
+          "modifiedTime": "2021-07-05T07:44:47.416Z"
+        },
+        {
+          "name": {
+            "nb": "Tilbud"
+          },
+          "importCode": "tilbud",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "value": true,
+          "sortNo": 19,
+          "attributeGroupImportCode": "redaksjonelt",
+          "attributeGroupName": {
+            "nb": "Redaksjonelt"
+          },
+          "attributeGroupSortNo": 12,
+          "modifiedTime": "2021-07-05T08:18:14.453Z"
+        },
+        {
+          "name": {
+            "nb": "Intern Kommentar"
+          },
+          "dataType": "TEXT",
+          "range": false,
+          "sortNo": 1,
+          "attributeGroupImportCode": "internkommentar",
+          "attributeGroupName": {
+            "nb": "Intern kommentar"
+          },
+          "attributeGroupSortNo": 13
+        },
+        {
+          "name": {
+            "nb": "Bokbasen ID"
+          },
+          "importCode": "bokbasen-id",
+          "dataType": "LONG",
+          "range": false,
+          "value": 150366762,
+          "sortNo": 1,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.465Z"
+        },
+        {
+          "name": {
+            "nb": "ISBN"
+          },
+          "importCode": "bokbasen-isbn",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "9788203367939"
+          },
+          "sortNo": 2,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.790Z"
+        },
+        {
+          "name": {
+            "nb": "Utgave"
+          },
+          "importCode": "bokbasen-utgave",
+          "dataType": "LONG",
+          "range": false,
+          "value": 1,
+          "sortNo": 4,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.486Z"
+        },
+        {
+          "name": {
+            "nb": "Bokgruppe"
+          },
+          "importCode": "bokbasen-bokgruppe",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Oversatt skjønnlitteratur for voksne"
+          },
+          "sortNo": 5,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.509Z"
+        },
+        {
+          "name": {
+            "nb": "Varegruppe"
+          },
+          "importCode": "bokbasen-varegruppe",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Krim / spenning lydbøker"
+          },
+          "sortNo": 6,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.514Z"
+        },
+        {
+          "name": {
+            "nb": "Thema-klassifikasjon"
+          },
+          "importCode": "bokbasen-thema",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "FH: Thrillere, FFP: Krim: politi, FFS: Krim med kvinnelige hovedpersoner"
+          },
+          "sortNo": 7,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.531Z"
+        },
+        {
+          "name": {
+            "nb": "Bokbasen form"
+          },
+          "importCode": "bokbasen-form",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Romaner"
+          },
+          "sortNo": 8,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.639Z"
+        },
+        {
+          "name": {
+            "nb": "Emne"
+          },
+          "importCode": "bokbasen-emne",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Prostitusjon, Søsken"
+          },
+          "sortNo": 9,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.485Z"
+        },
+        {
+          "name": {
+            "nb": "Sjanger"
+          },
+          "importCode": "bokbasen-sjanger",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Thrillere, Krim, Politi og detektiver"
+          },
+          "sortNo": 10,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.512Z"
+        },
+        {
+          "name": {
+            "nb": "Geografisk sted"
+          },
+          "importCode": "bokbasen-geo",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "USA"
+          },
+          "sortNo": 11,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.672Z"
+        },
+        {
+          "name": {
+            "nb": "Informasjonstype"
+          },
+          "importCode": "bokbasen-notification-type",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Notification confirmed"
+          },
+          "sortNo": 12,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.467Z"
+        },
+        {
+          "name": {
+            "nb": "Litteraturtype"
+          },
+          "importCode": "bokbasen-litteraturtype",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Skjønnlitteratur"
+          },
+          "sortNo": 13,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.519Z"
+        },
+        {
+          "name": {
+            "nb": "serietittel"
+          },
+          "importCode": "bokbasen-serietittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": ""
+          },
+          "sortNo": 15,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.851Z"
+        },
+        {
+          "name": {
+            "nb": "tittel"
+          },
+          "importCode": "bokbasen-tittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Lang lysende elv"
+          },
+          "sortNo": 16,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.803Z"
+        },
+        {
+          "name": {
+            "nb": "Orginal tittel"
+          },
+          "importCode": "bokbasen-orginaltittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Long bright river"
+          },
+          "sortNo": 17,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.838Z"
+        },
+        {
+          "name": {
+            "nb": "Undertittel"
+          },
+          "importCode": "bokbasen-undertittel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": ""
+          },
+          "sortNo": 18,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.346Z"
+        },
+        {
+          "name": {
+            "nb": "Forfatter"
+          },
+          "importCode": "bokbasen-forfatter",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Liz Moore"
+          },
+          "sortNo": 19,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2022-01-24T12:11:48.993Z"
+        },
+        {
+          "name": {
+            "nb": "innleser"
+          },
+          "importCode": "bokbasen-innleser",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Anne Ryg"
+          },
+          "sortNo": 20,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2022-01-24T12:11:48.996Z"
+        },
+        {
+          "name": {
+            "nb": "oversetter"
+          },
+          "importCode": "bokbasen-oversetter",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Knut Ofstad"
+          },
+          "sortNo": 21,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2022-01-24T12:11:49.002Z"
+        },
+        {
+          "name": {
+            "nb": "målform"
+          },
+          "importCode": "bokbasen-målform",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Norwegian Bokmål"
+          },
+          "sortNo": 22,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.492Z"
+        },
+        {
+          "name": {
+            "nb": "varighet"
+          },
+          "importCode": "bokbasen-varighet",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "772"
+          },
+          "sortNo": 23,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.497Z"
+        },
+        {
+          "name": {
+            "nb": "produsent"
+          },
+          "importCode": "bokbasen-produsent",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Aschehoug"
+          },
+          "sortNo": 24,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.530Z"
+        },
+        {
+          "name": {
+            "nb": "forlag"
+          },
+          "importCode": "bokbasen-forlag",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "Aschehoug & Co"
+          },
+          "sortNo": 25,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.534Z"
+        },
+        {
+          "name": {
+            "nb": "utgivelsesdato"
+          },
+          "importCode": "bokbasen-utgivelsesdato",
+          "dataType": "DATE",
+          "range": false,
+          "value": "2021-02-12T00:00:00.000+00:00",
+          "sortNo": 26,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:47.082Z"
+        },
+        {
+          "name": {
+            "nb": "abonnementsstatus"
+          },
+          "importCode": "bokbasen-abonnementstatus",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "ikke-aktiv": {
+              "nb": "Ikke Aktiv"
+            },
+            "Slipp": {
+              "nb": "Kommer for Strømming"
+            },
+            "Aktiv": {
+              "nb": "Aktiv"
+            },
+            "Utgått": {
+              "nb": "Utgått"
+            }
+          },
+          "value": "Aktiv",
+          "sortNo": 27,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2021-11-29T10:45:17.541Z"
+        },
+        {
+          "name": {
+            "nb": "salgsstatus"
+          },
+          "importCode": "bokbasen-salgsstatus",
+          "dataType": "DATA_REGISTER",
+          "range": false,
+          "options": {
+            "Kommer": {
+              "nb": "Kommer"
+            },
+            "I salg": {
+              "nb": "I salg"
+            },
+            "Utgått": {
+              "nb": "Utgått"
+            }
+          },
+          "value": "I salg",
+          "sortNo": 28,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:47.112Z"
+        },
+        {
+          "name": {
+            "nb": "Strømming"
+          },
+          "importCode": "bokbasen-stromming",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "value": true,
+          "sortNo": 29,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.730Z"
+        },
+        {
+          "name": {
+            "nb": "Pris"
+          },
+          "importCode": "bokbasen-pris",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "189.00"
+          },
+          "sortNo": 30,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:47.138Z"
+        },
+        {
+          "name": {
+            "nb": "bokbasen salgsinformasjon"
+          },
+          "importCode": "bokbasen-salgsinformasjon-deleted",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "sortNo": 31,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14
+        },
+        {
+          "name": {
+            "nb": "forventes utgitt"
+          },
+          "importCode": "bokbasen-forventes-utgitt",
+          "dataType": "DATE",
+          "range": false,
+          "sortNo": 32,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14
+        },
+        {
+          "name": {
+            "nb": "thema alder interesse"
+          },
+          "importCode": "bokbasen-thema-alder-interesse",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": ""
+          },
+          "sortNo": 33,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.973Z"
+        },
+        {
+          "name": {
+            "nb": "thema geografi"
+          },
+          "importCode": "bokbasen-thema-geografi",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "1KBB: USA"
+          },
+          "sortNo": 34,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-01-19T07:04:33.553Z"
+        },
+        {
+          "name": {
+            "nb": "Seriedel"
+          },
+          "importCode": "bokbasen-seriedel",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": ""
+          },
+          "sortNo": 35,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2023-10-06T07:01:46.896Z"
+        },
+        {
+          "name": {
+            "nb": "Målgruppe"
+          },
+          "importCode": "bokbasen-malgruppe",
+          "dataType": "DATA_REGISTER_MULTI",
+          "range": false,
+          "options": {
+            "001": {
+              "nb": "0-3"
+            },
+            "002": {
+              "nb": "3-6"
+            },
+            "003": {
+              "nb": "6-9"
+            },
+            "004": {
+              "nb": "9-12"
+            },
+            "005": {
+              "nb": "12-16"
+            }
+          },
+          "value": [],
+          "sortNo": 36,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14
+        },
+        {
+          "name": {
+            "nb": "Beskrivelse"
+          },
+          "importCode": "bokbasen-beskrivelse",
+          "dataType": "TEXT",
+          "range": false,
+          "value": {
+            "nb": "«... en bok som kryper under huden og blir værende der lenge.» Elin Brend Bjørhei, VG (Terningkast 6) Mickey Fitzpatrick har patruljert 24. distrikt i Philadelphia i flere år, og er på fornavn med de prostituerte og narkomane i The Ave. Opioidkrisen herjer byen, og overdoseofrene blir stadig flere. Hver gang hun blir varslet om et nytt dødsfall, frykter hun at det er lillesøsteren, Kacey, som er død. De to har ikke vært på talefot på flere år, og kollegaene i politiet vet ikke om forbindelsen, men Mickey uroer seg konstant for søsteren sin. Da Kacey forsvinner samtidig med at en rekke gateprostituerte blir funnet drept i distriktet, begynner Mickey på en stadig mer desperat jakt. En jakt som setter både jobben hennes og gutten hun er alenemor for, i fare, og som kaster lys over de to søstrenes barndom. Lang lysende elv er en rå og gripende thriller om misbruk, prostitusjon og søskenkjærlighet."
+          },
+          "sortNo": 37,
+          "attributeGroupImportCode": "bokbasen-attributter",
+          "attributeGroupName": {
+            "nb": "bokbasen-attributter"
+          },
+          "attributeGroupSortNo": 14,
+          "modifiedTime": "2024-08-27T06:06:04.574Z"
+        },
+        {
+          "name": {
+            "nb": "Ny fra bokbasen"
+          },
+          "importCode": "bokbasen-ny",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "value": true,
+          "sortNo": 1,
+          "attributeGroupImportCode": "workflow-export",
+          "attributeGroupName": {
+            "nb": "arbeidsflyt eksport"
+          },
+          "attributeGroupSortNo": 15,
+          "modifiedTime": "2021-12-13T06:50:37.437Z"
+        },
+        {
+          "name": {
+            "nb": "Klar for nettside"
+          },
+          "importCode": "ready-ecommerce",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "sortNo": 2,
+          "attributeGroupImportCode": "workflow-export",
+          "attributeGroupName": {
+            "nb": "arbeidsflyt eksport"
+          },
+          "attributeGroupSortNo": 15
+        },
+        {
+          "name": {
+            "nb": "Klar for BEAT"
+          },
+          "importCode": "BEAT-ready",
+          "dataType": "BOOLEAN",
+          "range": false,
+          "sortNo": 3,
+          "attributeGroupImportCode": "workflow-export",
+          "attributeGroupName": {
+            "nb": "arbeidsflyt eksport"
+          },
+          "attributeGroupSortNo": 15
+        },
+        {
+          "name": {
+            "nb": "bokbasen import dato"
+          },
+          "importCode": "bokbasen-importdato",
+          "dataType": "DATE",
+          "range": false,
+          "sortNo": 4,
+          "attributeGroupImportCode": "workflow-export",
+          "attributeGroupName": {
+            "nb": "arbeidsflyt eksport"
+          },
+          "attributeGroupSortNo": 15
+        },
+        {
+          "name": {
+            "nb": "newest"
+          },
+          "importCode": "newest-books",
+          "dataType": "TEXT",
+          "range": false,
+          "sortNo": 22,
+          "attributeGroupName": {
+            "nb": "Webpage-tags"
+          },
+          "attributeGroupSortNo": 19
+        }
+      ],
+      "texts": [
+        {
+          "name": {
+            "nb": "Salgstekst kort"
+          },
+          "importCode": "salgstekst_kort",
+          "sortNo": 1,
+          "value": null,
+          "maxLength": null,
+          "required": false
+        },
+        {
+          "name": {
+            "nb": "Salgstekst lang"
+          },
+          "importCode": "salgstekst_lang",
+          "sortNo": 2,
+          "value": {
+            "nb": "«... en bok som kryper under huden og blir værende der lenge.» Elin Brend Bjørhei, VG (Terningkast 6) Mickey Fitzpatrick har patruljert 24. distrikt i Philadelphia i flere år, og er på fornavn med de prostituerte og narkomane i The Ave. Opioidkrisen herjer byen, og overdoseofrene blir stadig flere. Hver gang hun blir varslet om et nytt dødsfall, frykter hun at det er lillesøsteren, Kacey, som er død. De to har ikke vært på talefot på flere år, og kollegaene i politiet vet ikke om forbindelsen, men Mickey uroer seg konstant for søsteren sin. Da Kacey forsvinner samtidig med at en rekke gateprostituerte blir funnet drept i distriktet, begynner Mickey på en stadig mer desperat jakt. En jakt som setter både jobben hennes og gutten hun er alenemor for, i fare, og som kaster lys over de to søstrenes barndom. Lang lysende elv er en rå og gripende thriller om misbruk, prostitusjon og søskenkjærlighet."
+          },
+          "maxLength": null,
+          "modifiedTime": "2024-08-27T06:06:04.750Z",
+          "required": false
+        },
+        {
+          "name": {
+            "nb": "Anmeldelser"
+          },
+          "importCode": "anmeldelser",
+          "sortNo": 6,
+          "value": null,
+          "maxLength": null,
+          "required": false
+        }
+      ],
+      "relations": [
+        {
+          "relationImportCode": "Forfatter_relasjon",
+          "relationName": {
+            "nb": "Forfatter"
+          },
+          "productImportCode": "25196",
+          "productNo": "P_54061",
+          "productModifiedTime": "2022-06-07T12:27:19.499004Z",
+          "count": null,
+          "relationTypeSortNo": 1,
+          "productRelationSortNo": 1,
+          "action": "CREATE",
+          "modifiedTime": "2021-03-15T10:25:04.217779Z",
+          "inherited": false
+        },
+        {
+          "relationImportCode": "Innleser_relasjon",
+          "relationName": {
+            "nb": "Innleser"
+          },
+          "productImportCode": "23939",
+          "productNo": "P_41714",
+          "productModifiedTime": "2024-08-19T10:10:11.008061Z",
+          "count": null,
+          "relationTypeSortNo": 2,
+          "productRelationSortNo": 1,
+          "action": "CREATE",
+          "modifiedTime": "2021-03-15T10:25:04.146026Z",
+          "inherited": false
+        },
+        {
+          "relationImportCode": "Oversetter_relasjon",
+          "relationName": {
+            "nb": "Oversetter"
+          },
+          "productImportCode": "25237",
+          "productNo": "P_43905",
+          "productModifiedTime": "2023-10-25T05:43:09.687127Z",
+          "count": null,
+          "relationTypeSortNo": 4,
+          "productRelationSortNo": 1,
+          "action": "CREATE",
+          "modifiedTime": "2021-03-18T14:05:59.219482Z",
+          "inherited": false
+        }
+      ],
+      "linkedTo": [],
+      "structures": [],
+      "packaging": [],
+      "media": [
+        {
+          "action": "CREATE",
+          "mediaCode": "6730",
+          "mediaRoleCodes": [
+            "main_web"
+          ],
+          "checksum": "1592451170",
+          "url": "https://lydbokforlaget-feed.isysnet.no/media/export/base64/mediaCode/withMetaData?mediaCode=6730",
+          "mediaURL": "https://lydbokforlaget-feed.isysnet.no/media/export/stream/mediaCode?mediaCode=6730",
+          "metaDataURL": "https://lydbokforlaget-feed.isysnet.no/media/export/metaData/mediaCode?mediaCode=6730",
+          "description": null,
+          "sortNo": 1,
+          "mediaType": "IMAGE",
+          "fileName": "9788203367939.jpg",
+          "sourceId": null,
+          "modifiedTime": "2024-08-27T06:13:16.853Z"
+        }
+      ],
+      "variants": [],
+      "epd": []
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 1,
+    "sort": {
+      "empty": true,
+      "sorted": false,
+      "unsorted": true
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalElements": 142,
+  "totalPages": 142,
+  "last": false,
+  "size": 1,
+  "number": 0,
+  "sort": {
+    "empty": true,
+    "sorted": false,
+    "unsorted": true
+  },
+  "numberOfElements": 1,
+  "first": true,
+  "empty": false
+}
