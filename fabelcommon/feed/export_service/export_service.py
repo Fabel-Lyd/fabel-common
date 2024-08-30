@@ -157,9 +157,9 @@ class FeedExport(FeedApiService):
             self,
             query_url: str,
             export_from: str
-    ) -> List[Dict]:
+    ) -> Dict:
         url = f'{query_url}?exportFrom={export_from}'
-        books_in_query: List[Dict] = self._send_request(HttpVerb.GET, url).json()
+        books_in_query: Dict = self._send_request(HttpVerb.GET, url).json()
         return books_in_query
 
     def get_import_code_by_product_number(self, product_type: ProductType, product_number: str) -> Optional[str]:
