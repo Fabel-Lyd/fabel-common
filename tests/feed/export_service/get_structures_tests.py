@@ -7,7 +7,7 @@ from fabelcommon.json.json_files import read_json_data
 TEST_DATA_DIRECTORY: str = 'tests/feed/export_service/data/get_structure'
 
 
-def test_get_structure(requests_mock) -> None:
+def test_get_structures(requests_mock) -> None:
     exported_data: List[Dict] = read_json_data(f'{TEST_DATA_DIRECTORY}/exported_structures.json')
     import_code: str = 'sjanger'
 
@@ -21,4 +21,4 @@ def test_get_structure(requests_mock) -> None:
     )
 
     feed_export: FeedExport = FeedExport('test_username', 'test_password')
-    assert feed_export.get_structure(import_code) == exported_data
+    assert feed_export.get_structures(import_code) == exported_data

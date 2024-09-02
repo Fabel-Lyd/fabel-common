@@ -148,7 +148,7 @@ class FeedExport(FeedApiService):
 
         return data_register_list[0]
 
-    def get_structure(self, import_code: str) -> List[Dict]:
+    def get_structures(self, import_code: str) -> List[Dict]:
         url: str = f'{self.BASE_URL}/{ExportEndpoint.STRUCTURE.value}/{import_code}'
         structure_list: List[Dict] = self._send_request(HttpVerb.GET, url).json()
         return structure_list
@@ -161,7 +161,7 @@ class FeedExport(FeedApiService):
         url: str = f'{query_url}?exportFrom={export_from}'
 
         def callback(page_count: int):
-            return self.__export_products_in_query(f'{url}&page={page_count}')
+            return self.__get_products_in_query(f'{url}&page={page_count}')
 
         return get_all_pages(callback)
 
@@ -194,6 +194,6 @@ class FeedExport(FeedApiService):
         response: Response = self._send_request(HttpVerb.POST, url, data)
         return response.json()['content']
 
-    def __export_products_in_query(self, url) -> List[Dict]:
+    def __get_products_in_query(self, url) -> List[Dict]:
         response: Response = self._send_request(HttpVerb.GET, url)
         return response.json()['content']
