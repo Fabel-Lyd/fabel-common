@@ -157,10 +157,13 @@ class FeedExport(FeedApiService):
             self,
             query_url: str,
             export_from: str
-    ) -> Dict:
-        url = f'{query_url}?exportFrom={export_from}'
-        books_in_query: Dict = self._send_request(HttpVerb.GET, url).json()
-        return books_in_query
+    ) -> List[Dict]:
+        url: str = f'{query_url}?exportFrom={export_from}'
+
+        def callback(page_count: int):
+            return self.__export_products_in_query(f'{url}&page={page_count}')
+
+        return get_all_pages(callback)
 
     def get_import_code_by_product_number(self, product_type: ProductType, product_number: str) -> Optional[str]:
         found_products: List[Dict] = self.get_products_by_identifier(
@@ -189,4 +192,8 @@ class FeedExport(FeedApiService):
     ) -> List[Dict]:
 
         response: Response = self._send_request(HttpVerb.POST, url, data)
+        return response.json()['content']
+
+    def __export_products_in_query(self, url) -> List[Dict]:
+        response: Response = self._send_request(HttpVerb.GET, url)
         return response.json()['content']
