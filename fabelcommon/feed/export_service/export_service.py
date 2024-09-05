@@ -156,9 +156,10 @@ class FeedExport(FeedApiService):
     def get_books_from_queries(
             self,
             query_url: str,
-            export_from: str
+            export_from: Optional[datetime]
     ) -> List[Dict]:
-        url: str = f'{query_url}?exportFrom={export_from}'
+
+        url: str = f'{query_url}?exportFrom={TimeFormats.get_date_time_string_utc(export_from) if export_from else ""}'
 
         def callback(page_count: int):
             return self.__get_products_in_query(f'{url}&page={page_count}')
