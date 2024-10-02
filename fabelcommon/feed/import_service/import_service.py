@@ -1,13 +1,15 @@
 from typing import Dict, List, Optional
 import json
 from time import sleep
-from requests import Response
+from requests import Response, HTTPError
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_mode import ImportMode
 from fabelcommon.feed.import_service.import_type import ImportType
 from fabelcommon.feed.import_service.import_result import ImportResult
 from fabelcommon.feed.import_service.media_import_result import MediaImportResult
+from fabelcommon.feed.import_service.product_identifier import ProductIdentifier
+from fabelcommon.feed.import_service.structure_node import StructureNode
 
 
 class FeedImport(FeedApiService):
@@ -32,6 +34,20 @@ class FeedImport(FeedApiService):
             "products": formatted_products
         }
         return self.__send_request(url, json.dumps(payload))
+
+    def add_product_to_structure(
+            self,
+            product_identifier: ProductIdentifier,
+            structure_node: StructureNode
+    ) -> None:
+
+        url: str = f'{self.BASE_URL}/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
+        data: Dict = {
+            "productNo": product_identifier.product_number,
+            "importCode": product_identifier.import_code
+        }
+
+        self.__send_request(url, json.dumps(data))
 
     def import_data_register_items(self, data_register_value: str, data: Dict) -> None:
 
