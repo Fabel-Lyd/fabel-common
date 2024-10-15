@@ -1,7 +1,7 @@
 from typing import Dict, List, Optional
 import json
 from time import sleep
-from requests import Response, HTTPError
+from requests import Response
 from fabelcommon.feed.feed_api_service import FeedApiService
 from fabelcommon.http.verbs import HttpVerb
 from fabelcommon.feed.import_service.import_mode import ImportMode
@@ -48,6 +48,17 @@ class FeedImport(FeedApiService):
         }
 
         self.__send_request(url, json.dumps(data))
+
+    def delete_product_from_structure(
+            self,
+            product_identifier: ProductIdentifier,
+            structure_node: StructureNode
+    ) -> None:
+        url: str = f'{self.BASE_URL}/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
+        data: Dict = {
+            "productNo": product_identifier.product_number,
+        }
+        self._send_request(HttpVerb.DELETE, url, json.dumps(data))
 
     def import_data_register_items(self, data_register_value: str, data: Dict) -> None:
 
