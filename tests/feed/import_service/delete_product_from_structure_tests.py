@@ -31,7 +31,7 @@ def test_delete_product_from_structure(requests_mock) -> None:
     feed_import.delete_product_from_structure(test_product_identifier, test_structure_node)
 
     assert product_delete_call.call_count == 1
-    assert product_delete_call.last_request.text == '{"productNo": "9788234001635"}'
+    assert product_delete_call.last_request.text == '[{"productNo": "9788234001635"}]'
 
 
 def test_delete_product_from_structure_failure(requests_mock) -> None:

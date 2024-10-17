@@ -42,10 +42,10 @@ class FeedImport(FeedApiService):
     ) -> None:
 
         url: str = f'{self.BASE_URL}/import/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
-        data: Dict = {
+        data: List[Dict] = [{
             "productNo": product_identifier.product_number,
             "importCode": product_identifier.import_code
-        }
+        }]
 
         self.__send_request(url, json.dumps(data))
 
@@ -55,9 +55,9 @@ class FeedImport(FeedApiService):
             structure_node: StructureNode
     ) -> None:
         url: str = f'{self.BASE_URL}/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
-        data: Dict = {
+        data: List[Dict] = [{
             "productNo": product_identifier.product_number,
-        }
+        }]
         self._send_request(HttpVerb.DELETE, url, json.dumps(data))
 
     def import_data_register_items(self, data_register_value: str, data: Dict) -> None:
