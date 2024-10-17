@@ -1,6 +1,5 @@
 import json
 from unittest.mock import MagicMock
-
 import pytest
 from rest_framework import status
 from fabelcommon.feed.import_service import FeedImport
@@ -24,7 +23,7 @@ def test_delete_product_from_structure(requests_mock) -> None:
     )
 
     product_delete_call: MagicMock = requests_mock.delete(
-        url='https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product',
+        url='https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product',
         status_code=status.HTTP_204_NO_CONTENT,
     )
     feed_import: FeedImport = FeedImport('test_client_id', 'test_client_secret')
@@ -50,7 +49,7 @@ def test_delete_product_from_structure_failure(requests_mock) -> None:
     )
 
     requests_mock.delete(
-        url='https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product',
+        url='https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product',
         status_code=status.HTTP_404_NOT_FOUND,
         text=json.dumps({
             "type": "about:blank",
@@ -75,4 +74,4 @@ def test_delete_product_from_structure_failure(requests_mock) -> None:
     with pytest.raises(Exception) as exception:
         feed_import.delete_product_from_structure(test_product_identifier, test_structure_node)
 
-    assert str(exception.value) == 'Error 404 calling https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product, details: {"type": "about:blank", "title": "Not Found", "status": 404, "detail": "No value present", "instance": "/import/structure/test-structure/node/romaner-og-fortellingr/product", "Warnings": null, "Body": [{"productNo": "9788241919312", "importCode": null, "sortNo": null}]}'
+    assert str(exception.value) == 'Error 404 calling https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product, details: {"type": "about:blank", "title": "Not Found", "status": 404, "detail": "No value present", "instance": "/import/structure/test-structure/node/romaner-og-fortellingr/product", "Warnings": null, "Body": [{"productNo": "9788241919312", "importCode": null, "sortNo": null}]}'
