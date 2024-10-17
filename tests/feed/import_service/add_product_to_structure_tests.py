@@ -1,6 +1,5 @@
 from unittest.mock import MagicMock
 import json
-
 import pytest
 from rest_framework import status
 from fabelcommon.feed.import_service import FeedImport
@@ -24,7 +23,7 @@ def test_add_product_to_structure_success(requests_mock) -> None:
     )
 
     product_add_call: MagicMock = requests_mock.post(
-        url='https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product',
+        url='https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product',
         status_code=status.HTTP_200_OK,
     )
 
@@ -51,7 +50,7 @@ def test_add_product_to_structure_failure(requests_mock) -> None:
     )
 
     requests_mock.post(
-        url='https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product',
+        url='https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product',
         status_code=status.HTTP_400_BAD_REQUEST,
         text=json.dumps({
             "type": "about:blank",
@@ -78,4 +77,4 @@ def test_add_product_to_structure_failure(requests_mock) -> None:
     with pytest.raises(Exception) as exception:
         feed_import.add_product_to_structure(test_product_identifier, test_structure_node)
 
-    assert str(exception.value) == 'Error 400 calling https://lydbokforlaget-feed.isysnet.no/structure/sjanger/node/barn-romaner-og-fortellinger/product, details: {"type": "about:blank", "title": "Bad Request", "status": 400, "detail": "Unknown error", "instance": "/import/structure/3/node/33/product", "Warnings": {"WARNING_1": "warning text", "WARNING_2": "warning text"}, "Body": [{"productNo": "9788234001635", "importCode": 32781, "sortNo": null}]}'
+    assert str(exception.value) == 'Error 400 calling https://lydbokforlaget-feed.isysnet.no/import/structure/sjanger/node/barn-romaner-og-fortellinger/product, details: {"type": "about:blank", "title": "Bad Request", "status": 400, "detail": "Unknown error", "instance": "/import/structure/3/node/33/product", "Warnings": {"WARNING_1": "warning text", "WARNING_2": "warning text"}, "Body": [{"productNo": "9788234001635", "importCode": 32781, "sortNo": null}]}'
