@@ -31,7 +31,7 @@ def test_add_product_to_structure_success(requests_mock) -> None:
     feed_import.add_product_to_structure(test_product_identifier, test_structure_node)
 
     assert product_add_call.call_count == 1
-    assert product_add_call.last_request.text == '{"productNo": "9788234001635", "importCode": 32781}'
+    assert product_add_call.last_request.text == '[{"productNo": "9788234001635", "importCode": 32781}]'
 
 
 def test_add_product_to_structure_failure(requests_mock) -> None:
