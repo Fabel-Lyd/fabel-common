@@ -54,7 +54,7 @@ class FeedImport(FeedApiService):
             product_identifier: ProductIdentifier,
             structure_node: StructureNode
     ) -> None:
-        url: str = f'{self.BASE_URL}/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
+        url: str = f'{self.BASE_URL}/import/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
         data: List[Dict] = [{
             "productNo": product_identifier.product_number,
         }]
