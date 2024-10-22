@@ -37,15 +37,12 @@ class FeedImport(FeedApiService):
 
     def add_product_to_structure(
             self,
-            product_identifier: ProductIdentifier,
+            product_identifier: List[ProductIdentifier],
             structure_node: StructureNode
     ) -> None:
 
         url: str = f'{self.BASE_URL}/import/structure/{structure_node.structure_import_code}/node/{structure_node.node_import_code}/product'
-        data: List[Dict] = [{
-            "productNo": product_identifier.product_number,
-            "importCode": product_identifier.import_code
-        }]
+        data: List[Dict] = [{"productNo": identifier.product_number} for identifier in product_identifier]
 
         self.__send_request(url, json.dumps(data))
 
