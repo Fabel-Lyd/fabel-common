@@ -1,4 +1,4 @@
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Optional, Generator
 import json
 from requests import Response
 from urllib.parse import urlencode
@@ -43,6 +43,29 @@ class FeedExport(FeedApiService):
             return self.__send_product_export_request(f'{partial_url}{page_count}')
 
         return get_all_pages(callback)
+
+    def get_all_products_pageable(
+            self,
+            product_type: ProductType,
+            export_from: Optional[datetime] = None,
+            page_size: int = DEFAULT_EXPORT_BATCH_SIZE
+    ) -> Generator[List[Dict], None, None]:
+
+        partial_url: str = self.__build_url(
+            ExportEndpoint.PRODUCT,
+            f'changesOnly=false'
+            f'&productTypeImportCodes={product_type.value}'
+            f'&size={page_size}'
+            f'{"&exportFrom=" + TimeFormats.get_date_time_string_utc(export_from) if export_from else ""}'
+            f'&page='
+        )
+        page: int = 0
+        while True:
+            result_page: List[Dict] = self.__send_product_export_request(f'{partial_url}{page}')
+            if len(result_page) == 0:
+                break
+            yield result_page
+            page = page + 1
 
     def get_products_by_name(
             self,
