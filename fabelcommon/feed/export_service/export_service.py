@@ -48,7 +48,8 @@ class FeedExport(FeedApiService):
             self,
             product_type: ProductType,
             export_from: Optional[datetime] = None,
-            page_size: int = DEFAULT_EXPORT_BATCH_SIZE
+            page_size: int = DEFAULT_EXPORT_BATCH_SIZE,
+            start_from_page: int = 0
     ) -> Generator[List[Dict], None, None]:
 
         partial_url: str = self.__build_url(
@@ -59,7 +60,7 @@ class FeedExport(FeedApiService):
             f'{"&exportFrom=" + TimeFormats.get_date_time_string_utc(export_from) if export_from else ""}'
             f'&page='
         )
-        page: int = 0
+        page: int = start_from_page
         while True:
             result_page: List[Dict] = self.__send_product_export_request(f'{partial_url}{page}')
             if len(result_page) == 0:
