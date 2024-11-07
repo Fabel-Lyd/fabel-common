@@ -10,6 +10,7 @@ from fabelcommon.feed.import_service.import_result import ImportResult
 from fabelcommon.feed.import_service.media_import_result import MediaImportResult
 from fabelcommon.feed.import_service.product_identifier import ProductIdentifier
 from fabelcommon.feed.import_service.structure_node import StructureNode
+from fabelcommon.utilities.business_exception import BusinessException
 
 
 class FeedImport(FeedApiService):
@@ -24,7 +25,7 @@ class FeedImport(FeedApiService):
     ) -> str:
 
         if len(formatted_products) == 0:
-            raise Exception('List of products to be imported is empty')
+            raise BusinessException('List of products to be imported is empty')
 
         url: str = self.__build_url(ImportType.PRODUCT)
         payload: Dict = {

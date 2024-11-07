@@ -5,6 +5,7 @@ import json
 from fabelcommon.json.json_files import read_json_data
 from fabelcommon.feed.import_service import FeedImport
 from fabelcommon.feed.import_service.import_mode import ImportMode
+from fabelcommon.utilities.business_exception import BusinessException
 
 TEST_DATA_DIRECTORY: str = 'tests/feed/import_service/data/import_products/'
 
@@ -38,7 +39,7 @@ def test_import_products(mocker) -> None:
 def test_import_products_empty_list():
     feed_import: FeedImport = FeedImport('fake_client_id', 'fake_client_secret')
 
-    with pytest.raises(Exception) as exception:
+    with pytest.raises(BusinessException) as exception:
         feed_import.import_products(
             formatted_products=[],
             import_mode=ImportMode.CREATE_OR_UPDATE
