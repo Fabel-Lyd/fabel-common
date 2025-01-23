@@ -6,10 +6,10 @@ NameCodeType = {
 }
 
 NotificationType = {
-    "01": "Early notification",      # registered, not controlled
-    "02": "Advance notification",    # controlled
+    "01": "Early notification",  # registered, not controlled
+    "02": "Advance notification",  # controlled
     "03": "Notification confirmed",  # controlled and complete
-    "05": "Delete",                  # record MUST be deleted
+    "05": "Delete",  # record MUST be deleted
     "Notification confirmed": "Notification confirmed"
 }
 
@@ -222,7 +222,7 @@ TitleTypeCode = {
 }
 
 TitleElementLevel = {
-    "01": "Product",          # individual product
+    "01": "Product",  # individual product
     "02": "Collection Level"  # top level of bibliographical collection
 }
 
