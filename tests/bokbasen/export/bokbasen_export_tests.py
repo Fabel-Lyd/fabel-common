@@ -32,7 +32,7 @@ def test_export_product_by_isbn(
 
     book = bokbasen_export.get_product_by_isbn('9788234001635')
 
-    send_request_expected_args = (HttpVerb.GET, '/metadata/export/onix/v1/9788234001635')
+    send_request_expected_args = (HttpVerb.GET, '/metadata/export/onix/v2/9788234001635')
     assert send_request_mock.call_args.args == send_request_expected_args
 
     expected_book = read_xml_etree(BOKBASEN_XML_DATA)
@@ -53,7 +53,7 @@ def test_get_after_date(
     expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
     requests_mock.get(
-        url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
+        url=f'https://api.bokbasen.io/metadata/export/onix/v2?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text=export_content
@@ -84,7 +84,7 @@ def test_get_by_cursor(
     expected_product: _Element = OnixXPathReader.get_element(expected_tree, '/o:ONIXMessage/o:Product')
 
     requests_mock.get(
-        url='https://api.bokbasen.io/metadata/export/onix/v1?next=cursor&subscription=extended&pagesize=2',
+        url='https://api.bokbasen.io/metadata/export/onix/v2?next=cursor&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text=export_content
@@ -112,7 +112,7 @@ def test_validate_timestamp_successful(
     timestamp: str = '20200101120000'
 
     requests_mock.get(
-        url=f'https://api.bokbasen.io/metadata/export/onix/v1?after={timestamp}&subscription=extended&pagesize=2',
+        url=f'https://api.bokbasen.io/metadata/export/onix/v2?after={timestamp}&subscription=extended&pagesize=2',
         headers={'next': 'cursor'},
         status_code=status.HTTP_200_OK,
         text='<ONIXMessage/>'

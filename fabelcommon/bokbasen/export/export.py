@@ -18,7 +18,7 @@ class BokbasenExport:
         self.bokbasen_metadata_api_service = bokbasen_metadata_api_service
 
     def get_product_by_isbn(self, isbn: str) -> _Element:
-        url: str = f'/metadata/export/onix/v1/{isbn}'
+        url: str = f'/metadata/export/onix/v2/{isbn}'
         xml: str = self.bokbasen_metadata_api_service.send_request(HttpVerb.GET, url)
         return xml_to_etree(xml)
 
@@ -55,7 +55,7 @@ class BokbasenExport:
 
     @staticmethod
     def __build_url(export_type: ExportType, parameter: str, batch_size: int) -> str:
-        return f'/metadata/export/onix/v1?{export_type.value}={parameter}&subscription=extended&pagesize={batch_size}'
+        return f'/metadata/export/onix/v2?{export_type.value}={parameter}&subscription=extended&pagesize={batch_size}'
 
     @classmethod
     def __parse_exported_books(cls, export: str) -> List[_Element]:
