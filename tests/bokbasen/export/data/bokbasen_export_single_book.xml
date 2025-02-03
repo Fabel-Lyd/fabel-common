@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ONIXMessage xmlns="http://ns.editeur.org/onix/3.0/reference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" release="3.0" xsi:schemaLocation="https://api.boknett.no/schema/ONIX_BookProduct_3.0_reference.xsd">
+<ONIXMessage xmlns="http://ns.editeur.org/onix/3.1/reference" release="3.1">
    <Product>
       <RecordReference>no.bokbasen.150325183</RecordReference>
       <NotificationType>03</NotificationType>

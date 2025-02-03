@@ -3,7 +3,7 @@ from lxml.etree import _Element
 
 
 class OnixXPathReader:
-    __name_spaces: Dict[str, str] = {'o': 'http://ns.editeur.org/onix/3.0/reference'}
+    __name_spaces: Dict[str, str] = {'o': 'http://ns.editeur.org/onix/3.1/reference'}
 
     @staticmethod
     def get_values(element: _Element, xpath: str) -> List[str]:
