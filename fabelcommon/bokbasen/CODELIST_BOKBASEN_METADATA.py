@@ -1552,7 +1552,7 @@ Varegrupper = {
     "47002": "Ungdomsbøker, diverse lydbøker",
     "47010": "Ungdomsbøker",
     "47011": "Ungdomsbøker ebøker",
-    "47012": "Ungdomsbøker lydbøker",
+    "47012": "Ungdomsbøker / grafiske romaner / manga lydbøker",
     "47020": "Ungdomsserier",
     "47021": "Ungdomsserier ebøker",
     "47022": "Ungdomsserier lydbøker",
